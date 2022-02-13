@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hello World</title>
-    <url>/2022/02/12/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>11. 盛最多水的容器 - 力扣（LeetCode）</title>
     <url>/2019/08/30/11-%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8-%E5%8A%9B%E6%89%A3%EF%BC%88leetcode%EF%BC%89/</url>
     <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定 n 个非负整数 [latex]a_1，a_2，\\cdots, a_n[/latex]，每个数代表坐标中的一个点 [latex](i, a_i)[/latex] 。在坐标内画 n 条垂直线，垂直线 i 的两个端点分别为 [latex](i, a_i)[/latex] 和[latex](i, 0)[/latex]。找出其中的两条线，使得它们与 x 轴共同构成的容器可以容纳最多的水。 说明：你不能倾斜容器，且 n 的值至少为 2。 <a href="https://i.loli.net/2019/08/30/gkMoGLnE9VpHANl.jpg"><img src="https://i.loli.net/2019/08/30/gkMoGLnE9VpHANl.jpg" alt=""></a> 示例:</p>
@@ -116,28 +102,6 @@
       </tags>
   </entry>
   <entry>
-    <title>26. 删除排序数组中的重复项 - 力扣（LeetCode）</title>
-    <url>/2019/09/04/26-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9-%E5%8A%9B%E6%89%A3%EF%BC%88leetcode%EF%BC%89/</url>
-    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 <strong>示例1</strong>:</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">给定数组 nums = [1,1,2], </span><br><span class="line">函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
-<p><strong>示例2</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">给定 nums = [0,0,1,1,1,2,2,3,3,4],</span><br><span class="line">函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先数组是有序的，若相邻两元素相等，则存在重复元素（计数器cnt加1）那么移除重复元素后，原位置i的元素现在应在i-cnt处，即nums[i - cnt] = nums[i]。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeDuplicates</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> len = nums.<span class="built_in">size</span>(); <span class="comment">//获取数组长度</span></span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>;<span class="comment">//统计重复元素</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; len; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == nums[i - <span class="number">1</span>])&#123;<span class="comment">//元素重复</span></span><br><span class="line">                ++cnt;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                nums[i - cnt] = nums[i];<span class="comment">//元素前移</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> len - cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><a href="https://i.loli.net/2019/09/04/cDoZepkx2jGEIgH.png"><img src="https://i.loli.net/2019/09/04/cDoZepkx2jGEIgH.png" alt=""></a></p>
-<h2 id="官方题解"><a href="#官方题解" class="headerlink" title="官方题解"></a>官方题解</h2><p>采用双指针，一个快指针j，一个慢指针i，如果相邻元素相等，j++；如果不等，则i++，并把不等的元素复制到i处即 nums[i] = nums[j]，重复相同过程，直到j指向数组末尾。</p>
-<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeDuplicates</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> len = nums.<span class="built_in">size</span>(); <span class="comment">//获取数组长度</span></span><br><span class="line">        <span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">0</span>)&#123;<span class="comment">//数组长度为0直接返回0</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt; len; ++j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[j] != nums[i])&#123;<span class="comment">//元素不等时，移动指针i，并进行复制操作。</span></span><br><span class="line">                ++i;</span><br><span class="line">                nums[i] = nums[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><a href="https://i.loli.net/2019/09/04/VTWJMdLhB7KymIq.png"><img src="https://i.loli.net/2019/09/04/VTWJMdLhB7KymIq.png" alt=""></a></p>
-]]></content>
-      <categories>
-        <category>LeetCode</category>
-      </categories>
-      <tags>
-        <tag>双指针</tag>
-        <tag>数组</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>27. 移除元素 - 力扣（LeetCode）</title>
     <url>/2019/09/04/27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0-%E5%8A%9B%E6%89%A3%EF%BC%88leetcode%EF%BC%89/</url>
     <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个数组 nums 和一个值 val，你需要原地移除所有数值等于 val 的元素，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。 示例 1:</p>
@@ -171,6 +135,28 @@
         <category>LeetCode</category>
       </categories>
       <tags>
+        <tag>数组</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>26. 删除排序数组中的重复项 - 力扣（LeetCode）</title>
+    <url>/2019/09/04/26-%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9-%E5%8A%9B%E6%89%A3%EF%BC%88leetcode%EF%BC%89/</url>
+    <content><![CDATA[<h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个排序数组，你需要在原地删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。 不要使用额外的数组空间，你必须在原地修改输入数组并在使用 O(1) 额外空间的条件下完成。 <strong>示例1</strong>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">给定数组 nums = [1,1,2], </span><br><span class="line">函数应该返回新的长度 2, 并且原数组 nums 的前两个元素被修改为 1, 2。 </span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+<p><strong>示例2</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">给定 nums = [0,0,1,1,1,2,2,3,3,4],</span><br><span class="line">函数应该返回新的长度 5, 并且原数组 nums 的前五个元素被修改为 0, 1, 2, 3, 4。</span><br><span class="line">你不需要考虑数组中超出新长度后面的元素。</span><br></pre></td></tr></table></figure>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>首先数组是有序的，若相邻两元素相等，则存在重复元素（计数器cnt加1）那么移除重复元素后，原位置i的元素现在应在i-cnt处，即nums[i - cnt] = nums[i]。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeDuplicates</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> len = nums.<span class="built_in">size</span>(); <span class="comment">//获取数组长度</span></span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>;<span class="comment">//统计重复元素</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; len; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[i] == nums[i - <span class="number">1</span>])&#123;<span class="comment">//元素重复</span></span><br><span class="line">                ++cnt;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                nums[i - cnt] = nums[i];<span class="comment">//元素前移</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> len - cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><a href="https://i.loli.net/2019/09/04/cDoZepkx2jGEIgH.png"><img src="https://i.loli.net/2019/09/04/cDoZepkx2jGEIgH.png" alt=""></a></p>
+<h2 id="官方题解"><a href="#官方题解" class="headerlink" title="官方题解"></a>官方题解</h2><p>采用双指针，一个快指针j，一个慢指针i，如果相邻元素相等，j++；如果不等，则i++，并把不等的元素复制到i处即 nums[i] = nums[j]，重复相同过程，直到j指向数组末尾。</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">removeDuplicates</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> len = nums.<span class="built_in">size</span>(); <span class="comment">//获取数组长度</span></span><br><span class="line">        <span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">0</span>)&#123;<span class="comment">//数组长度为0直接返回0</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">1</span>; j &lt; len; ++j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums[j] != nums[i])&#123;<span class="comment">//元素不等时，移动指针i，并进行复制操作。</span></span><br><span class="line">                ++i;</span><br><span class="line">                nums[i] = nums[j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> i + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><a href="https://i.loli.net/2019/09/04/VTWJMdLhB7KymIq.png"><img src="https://i.loli.net/2019/09/04/VTWJMdLhB7KymIq.png" alt=""></a></p>
+]]></content>
+      <categories>
+        <category>LeetCode</category>
+      </categories>
+      <tags>
+        <tag>双指针</tag>
         <tag>数组</tag>
       </tags>
   </entry>
@@ -342,28 +328,6 @@
       </tags>
   </entry>
   <entry>
-    <title>AttributeError: &#39;NoneType&#39; object has no attribute &#39;data&#39;</title>
-    <url>/2020/02/07/attributeerror-nonetype-object-has-no-attribute-data/</url>
-    <content><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a href="https://github.com/WuJie1010/Facial-Expression-Recognition.Pytorch/issues/24">issue</a></li>
-<li><a href="https://blog.csdn.net/leogo17/article/details/79970938">pytorch: grad is None while training</a></li>
-<li><a href="https://blog.csdn.net/qq_21997625/article/details/90369838">pytorch冻结部分参数训练另一部分</a></li>
-</ol>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>将别人模型替换成自己的模型，训练过程中出现错误<code>param.grad.data.clamp_(-grad_clip, grad_clip) AttributeError: &#39;NoneType&#39; object has no attribute &#39;data&#39;</code></p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>上网查询这个问题，大部分回答都是模型中定义的某个层没有参与到前向传播，所以反向传播，计算loss时，<code>grad is None</code>。主要是要找到未参与计算的层，并注释掉。 这个问题困扰我很久，因为始终觉得没有多余的层。 下面的代码定义一个AttentionResNet模型。后来才发现罪魁祸首是<code>self.encoder</code>，这所以前面一直没有注意到它，是因为后面的层的定义用到<code>self.encoder</code>中的某个层或某几个层组合。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AttentionResNet</span>(nn.Module):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, in_channels=<span class="number">3</span>, out_channels=<span class="number">1</span>, num_filters=<span class="number">32</span>, encoder_depth=<span class="number">34</span>, pretrained=<span class="literal">True</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(AttentionResNet, self).__init__()</span><br><span class="line">        self.in_channels  = in_channels</span><br><span class="line">        self.out_channels = out_channels </span><br><span class="line">        self.num_filters = num_filters</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> encoder_depth == <span class="number">34</span>:</span><br><span class="line">            self.encoder = torchvision.models.resnet34(pretrained=pretrained)</span><br><span class="line">            bottom_channel_nr = <span class="number">512</span></span><br><span class="line">        <span class="keyword">elif</span> encoder_depth == <span class="number">101</span>:</span><br><span class="line">            self.encoder = torchvision.models.resnet101(pretrained=pretrained)</span><br><span class="line">            bottom_channel_nr = <span class="number">2048</span></span><br><span class="line">        <span class="keyword">elif</span> encoder_depth == <span class="number">152</span>:</span><br><span class="line">            self.encoder = torchvision.models.resnet152(pretrained=pretrained)</span><br><span class="line">            bottom_channel_nr = <span class="number">2048</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> NotImplementedError(<span class="string">&#x27;only 34, 101, 152 version of Resnet are implemented&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">#attention module</span></span><br><span class="line">        self.pool  = nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">        self.relu  = nn.ReLU(inplace=<span class="literal">True</span>)</span><br><span class="line">        self.conv1 = nn.Sequential(self.encoder.conv1, self.encoder.bn1, self.encoder.relu, self.pool)</span><br><span class="line">        self.conv2 = self.encoder.layer1</span><br><span class="line">        self.conv3 = self.encoder.layer2</span><br><span class="line">        self.conv4 = self.encoder.layer3</span><br><span class="line">        self.conv5 = self.encoder.layer4  </span><br><span class="line"></span><br><span class="line">        self.center = DecoderBlockV2(bottom_channel_nr,                        num_filters * <span class="number">8</span> * <span class="number">2</span>, num_filters * <span class="number">8</span>)</span><br><span class="line">        self.dec5   = DecoderBlockV2(bottom_channel_nr + num_filters * <span class="number">8</span>,      num_filters * <span class="number">8</span> * <span class="number">2</span>, num_filters * <span class="number">8</span>)</span><br><span class="line">        self.dec4   = DecoderBlockV2(bottom_channel_nr // <span class="number">2</span> + num_filters * <span class="number">8</span>, num_filters * <span class="number">8</span> * <span class="number">2</span>, num_filters * <span class="number">8</span>)</span><br><span class="line">        self.dec3   = DecoderBlockV2(bottom_channel_nr // <span class="number">4</span> + num_filters * <span class="number">8</span>, num_filters * <span class="number">4</span> * <span class="number">2</span>, num_filters * <span class="number">2</span>)</span><br><span class="line">        self.dec2   = DecoderBlockV2(bottom_channel_nr // <span class="number">8</span> + num_filters * <span class="number">2</span>, num_filters * <span class="number">2</span> * <span class="number">2</span>, num_filters * <span class="number">2</span> * <span class="number">2</span>)</span><br><span class="line">        self.dec1   = DecoderBlockV2(num_filters * <span class="number">2</span> * <span class="number">2</span>,                      num_filters * <span class="number">2</span> * <span class="number">2</span>, num_filters)</span><br><span class="line"></span><br><span class="line">        self.attention_map = nn.Sequential(</span><br><span class="line">            ConvRelu(num_filters, num_filters),</span><br><span class="line">            nn.Conv2d(num_filters, <span class="number">1</span>, kernel_size=<span class="number">1</span>)  </span><br><span class="line">        )  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):        </span><br><span class="line"></span><br><span class="line">        <span class="comment">#attention module</span></span><br><span class="line">        conv1 = self.conv1(x)</span><br><span class="line">        conv2 = self.conv2(conv1)</span><br><span class="line">        conv3 = self.conv3(conv2)</span><br><span class="line">        conv4 = self.conv4(conv3)</span><br><span class="line">        conv5 = self.conv5(conv4)</span><br><span class="line"></span><br><span class="line">        pool = self.pool(conv5)</span><br><span class="line">        center = self.center( pool )  </span><br><span class="line">        dec5 = self.dec5(torch.cat([center, conv5], <span class="number">1</span>))        </span><br><span class="line">        dec4 = self.dec4(torch.cat([dec5, conv4], <span class="number">1</span>))</span><br><span class="line">        dec3 = self.dec3(torch.cat([dec4, conv3], <span class="number">1</span>))</span><br><span class="line">        dec2 = self.dec2(torch.cat([dec3, conv2], <span class="number">1</span>))</span><br><span class="line">        dec1 = self.dec1(dec2)           </span><br><span class="line"></span><br><span class="line">        <span class="comment">#attention map</span></span><br><span class="line">        x = self.attention_map( dec1 ) </span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>找到了出错的位置，如何修改呢？参照资料3，首先将self.encoder中的参数的<code>requires_grad</code>都置为False，然后在优化器中加入过滤器，只更新<code>requires_grad = True</code>的参数。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> param <span class="keyword">in</span> net.encoder.parameters():</span><br><span class="line">    param.requires_grad = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">optimizer = optim.SGD(<span class="built_in">filter</span>(<span class="keyword">lambda</span> p: p.requires_grad, net.parameters()), lr=opt.lr, momentum=<span class="number">0.9</span>, weight_decay=<span class="number">5e-4</span>)</span><br></pre></td></tr></table></figure>
-<p>找了2天，终于找到错误的位置，太难了。</p>
-]]></content>
-      <categories>
-        <category>pytorch</category>
-      </categories>
-      <tags>
-        <tag>pytorch</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Conda使用</title>
     <url>/2019/09/02/condaw%E4%BD%BF%E7%94%A8/</url>
     <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>conda是一款可以运行在windows，macOS和Liunx多系统的开源包管理系统和环境管理系统。Conda能快速安装、运行和更新包及其依赖。Conda能容易在你的电脑上创建、保存、加载和切换运行环境。如果你需要一个满足另一不同版本的Python。你不需要切换到一个不同的环境，因为conda也是一个环境管理器，使用一小段命令，你就可以设置一个完全独立的环境来运行不同版本的Python，然后在一般环境中运行你常用的Python版本。</p>
@@ -513,6 +477,42 @@
       <tags>
         <tag>Attention</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>AttributeError: &#39;NoneType&#39; object has no attribute &#39;data&#39;</title>
+    <url>/2020/02/07/attributeerror-nonetype-object-has-no-attribute-data/</url>
+    <content><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://github.com/WuJie1010/Facial-Expression-Recognition.Pytorch/issues/24">issue</a></li>
+<li><a href="https://blog.csdn.net/leogo17/article/details/79970938">pytorch: grad is None while training</a></li>
+<li><a href="https://blog.csdn.net/qq_21997625/article/details/90369838">pytorch冻结部分参数训练另一部分</a></li>
+</ol>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>将别人模型替换成自己的模型，训练过程中出现错误<code>param.grad.data.clamp_(-grad_clip, grad_clip) AttributeError: &#39;NoneType&#39; object has no attribute &#39;data&#39;</code></p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>上网查询这个问题，大部分回答都是模型中定义的某个层没有参与到前向传播，所以反向传播，计算loss时，<code>grad is None</code>。主要是要找到未参与计算的层，并注释掉。 这个问题困扰我很久，因为始终觉得没有多余的层。 下面的代码定义一个AttentionResNet模型。后来才发现罪魁祸首是<code>self.encoder</code>，这所以前面一直没有注意到它，是因为后面的层的定义用到<code>self.encoder</code>中的某个层或某几个层组合。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">AttentionResNet</span>(nn.Module):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, in_channels=<span class="number">3</span>, out_channels=<span class="number">1</span>, num_filters=<span class="number">32</span>, encoder_depth=<span class="number">34</span>, pretrained=<span class="literal">True</span></span>):</span><br><span class="line">        <span class="built_in">super</span>(AttentionResNet, self).__init__()</span><br><span class="line">        self.in_channels  = in_channels</span><br><span class="line">        self.out_channels = out_channels </span><br><span class="line">        self.num_filters = num_filters</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> encoder_depth == <span class="number">34</span>:</span><br><span class="line">            self.encoder = torchvision.models.resnet34(pretrained=pretrained)</span><br><span class="line">            bottom_channel_nr = <span class="number">512</span></span><br><span class="line">        <span class="keyword">elif</span> encoder_depth == <span class="number">101</span>:</span><br><span class="line">            self.encoder = torchvision.models.resnet101(pretrained=pretrained)</span><br><span class="line">            bottom_channel_nr = <span class="number">2048</span></span><br><span class="line">        <span class="keyword">elif</span> encoder_depth == <span class="number">152</span>:</span><br><span class="line">            self.encoder = torchvision.models.resnet152(pretrained=pretrained)</span><br><span class="line">            bottom_channel_nr = <span class="number">2048</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">raise</span> NotImplementedError(<span class="string">&#x27;only 34, 101, 152 version of Resnet are implemented&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment">#attention module</span></span><br><span class="line">        self.pool  = nn.MaxPool2d(<span class="number">2</span>, <span class="number">2</span>)</span><br><span class="line">        self.relu  = nn.ReLU(inplace=<span class="literal">True</span>)</span><br><span class="line">        self.conv1 = nn.Sequential(self.encoder.conv1, self.encoder.bn1, self.encoder.relu, self.pool)</span><br><span class="line">        self.conv2 = self.encoder.layer1</span><br><span class="line">        self.conv3 = self.encoder.layer2</span><br><span class="line">        self.conv4 = self.encoder.layer3</span><br><span class="line">        self.conv5 = self.encoder.layer4  </span><br><span class="line"></span><br><span class="line">        self.center = DecoderBlockV2(bottom_channel_nr,                        num_filters * <span class="number">8</span> * <span class="number">2</span>, num_filters * <span class="number">8</span>)</span><br><span class="line">        self.dec5   = DecoderBlockV2(bottom_channel_nr + num_filters * <span class="number">8</span>,      num_filters * <span class="number">8</span> * <span class="number">2</span>, num_filters * <span class="number">8</span>)</span><br><span class="line">        self.dec4   = DecoderBlockV2(bottom_channel_nr // <span class="number">2</span> + num_filters * <span class="number">8</span>, num_filters * <span class="number">8</span> * <span class="number">2</span>, num_filters * <span class="number">8</span>)</span><br><span class="line">        self.dec3   = DecoderBlockV2(bottom_channel_nr // <span class="number">4</span> + num_filters * <span class="number">8</span>, num_filters * <span class="number">4</span> * <span class="number">2</span>, num_filters * <span class="number">2</span>)</span><br><span class="line">        self.dec2   = DecoderBlockV2(bottom_channel_nr // <span class="number">8</span> + num_filters * <span class="number">2</span>, num_filters * <span class="number">2</span> * <span class="number">2</span>, num_filters * <span class="number">2</span> * <span class="number">2</span>)</span><br><span class="line">        self.dec1   = DecoderBlockV2(num_filters * <span class="number">2</span> * <span class="number">2</span>,                      num_filters * <span class="number">2</span> * <span class="number">2</span>, num_filters)</span><br><span class="line"></span><br><span class="line">        self.attention_map = nn.Sequential(</span><br><span class="line">            ConvRelu(num_filters, num_filters),</span><br><span class="line">            nn.Conv2d(num_filters, <span class="number">1</span>, kernel_size=<span class="number">1</span>)  </span><br><span class="line">        )  </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, x</span>):        </span><br><span class="line"></span><br><span class="line">        <span class="comment">#attention module</span></span><br><span class="line">        conv1 = self.conv1(x)</span><br><span class="line">        conv2 = self.conv2(conv1)</span><br><span class="line">        conv3 = self.conv3(conv2)</span><br><span class="line">        conv4 = self.conv4(conv3)</span><br><span class="line">        conv5 = self.conv5(conv4)</span><br><span class="line"></span><br><span class="line">        pool = self.pool(conv5)</span><br><span class="line">        center = self.center( pool )  </span><br><span class="line">        dec5 = self.dec5(torch.cat([center, conv5], <span class="number">1</span>))        </span><br><span class="line">        dec4 = self.dec4(torch.cat([dec5, conv4], <span class="number">1</span>))</span><br><span class="line">        dec3 = self.dec3(torch.cat([dec4, conv3], <span class="number">1</span>))</span><br><span class="line">        dec2 = self.dec2(torch.cat([dec3, conv2], <span class="number">1</span>))</span><br><span class="line">        dec1 = self.dec1(dec2)           </span><br><span class="line"></span><br><span class="line">        <span class="comment">#attention map</span></span><br><span class="line">        x = self.attention_map( dec1 ) </span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>找到了出错的位置，如何修改呢？参照资料3，首先将self.encoder中的参数的<code>requires_grad</code>都置为False，然后在优化器中加入过滤器，只更新<code>requires_grad = True</code>的参数。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> param <span class="keyword">in</span> net.encoder.parameters():</span><br><span class="line">    param.requires_grad = <span class="literal">False</span></span><br><span class="line"></span><br><span class="line">optimizer = optim.SGD(<span class="built_in">filter</span>(<span class="keyword">lambda</span> p: p.requires_grad, net.parameters()), lr=opt.lr, momentum=<span class="number">0.9</span>, weight_decay=<span class="number">5e-4</span>)</span><br></pre></td></tr></table></figure>
+<p>找了2天，终于找到错误的位置，太难了。</p>
+]]></content>
+      <categories>
+        <category>pytorch</category>
+      </categories>
+      <tags>
+        <tag>pytorch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2022/02/12/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>LeetCode 2019年第163场周赛</title>
@@ -707,6 +707,27 @@
       </tags>
   </entry>
   <entry>
+    <title>linux screen 命令详解</title>
+    <url>/2020/01/16/linux-screen-%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</url>
+    <content><![CDATA[<p>参见<a href="https://blog.csdn.net/xfg0218/article/details/81869313">博客</a></p>
+<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>会话恢复、多会话、会话共享</p>
+<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Options:</span><br><span class="line">-4            Resolve hostnames only to IPv4 addresses.</span><br><span class="line">-6            Resolve hostnames only to IPv6 addresses.</span><br><span class="line">-a            Force all capabilities into each window&#x27;s termcap.</span><br><span class="line">-A -[rR]     Adapt all windows to the new display width &amp; height.</span><br><span class="line">-c file       Read configuration file instead of &#x27;.screenrc&#x27;.</span><br><span class="line">-d (-r)       Detach the elsewhere running screen (and reattach here).</span><br><span class="line">-dmS name     Start as daemon: Screen session in detached mode.</span><br><span class="line">-D (-r)       Detach and logout remote (and reattach here).</span><br><span class="line">-D -RR        Do whatever is needed to get a screen session.</span><br><span class="line">-e xy         Change command characters.</span><br><span class="line">-f            Flow control on, -fn = off, -fa = auto.</span><br><span class="line">-h lines      Set the size of the scrollback history buffer.</span><br><span class="line">-i            Interrupt output sooner when flow control is on.</span><br><span class="line">-l            Login mode on (update /var/run/utmp), -ln = off.</span><br><span class="line">-ls [match]   or</span><br><span class="line">-list         Do nothing, just list our SockDir [on possible matches].</span><br><span class="line">-L            Turn on output logging.</span><br><span class="line">-m            ignore $STY variable, do create a new screen session.</span><br><span class="line">-O            Choose optimal output rather than exact vt100 emulation.</span><br><span class="line">-p window     Preselect the named window if it exists.</span><br><span class="line">-q            Quiet startup. Exits with non-zero return code if unsuccessful.</span><br><span class="line">-Q            Commands will send the response to the stdout of the querying process.</span><br><span class="line">-r [session]  Reattach to a detached screen process.</span><br><span class="line">-R            Reattach if possible, otherwise start a new session.</span><br><span class="line">-s shell      Shell to execute rather than $SHELL.</span><br><span class="line">-S sockname   Name this session &lt;pid&gt;.sockname instead of &lt;pid&gt;.&lt;tty&gt;.&lt;host&gt;.</span><br><span class="line">-t title      Set title. (window&#x27;s name).</span><br><span class="line">-T term       Use term as $TERM for windows, rather than &quot;screen&quot;.</span><br><span class="line">-U            Tell screen to use UTF-8 encoding.</span><br><span class="line">-v            Print &quot;Screen version 4.01.00devel (GNU) 2-May-06&quot;.</span><br><span class="line">-wipe [match] Do nothing, just clean up SockDir [on possible matches].</span><br><span class="line">-x            Attach to a not detached screen. (Multi display mode).</span><br><span class="line">-X            Execute &lt;cmd&gt; as a screen command in the specified session.</span><br></pre></td></tr></table></figure>
+<h2 id="常用screen参数"><a href="#常用screen参数" class="headerlink" title="常用screen参数"></a>常用screen参数</h2><p>screen -S yourname -&gt; 新建一个叫yourname的session screen -ls -&gt; 列出当前所有的session screen -r yourname -&gt; 回到yourname这个session screen -d yourname -&gt; 远程detach某个session screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</p>
+<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><h3 id="安装screen"><a href="#安装screen" class="headerlink" title="安装screen"></a>安装screen</h3><p><code>yum install screen</code></p>
+<h3 id="创建新会话"><a href="#创建新会话" class="headerlink" title="创建新会话"></a>创建新会话</h3><p><code>screen -S onwaier</code></p>
+<h3 id="显示会话列表"><a href="#显示会话列表" class="headerlink" title="显示会话列表"></a>显示会话列表</h3><p><img src="/images/2020/01/41c572d91420db04e5cae3b024e87a15.png" alt=""></p>
+<h3 id="暂停与恢复会话"><a href="#暂停与恢复会话" class="headerlink" title="暂停与恢复会话"></a>暂停与恢复会话</h3><p><code>screen -d 27537</code> 27537会话已变成detached状态 <img src="/images/2020/01/2e78cb20f3650367284f8a0c92963779.png" alt=""> <code>screen -r 27537</code> 27537会话再次变成attached状态 <img src="/images/2020/01/1bb040a4a88cbcea494bead8c33c8e5c.png" alt=""></p>
+<h3 id="杀死与清除dead会话"><a href="#杀死与清除dead会话" class="headerlink" title="杀死与清除dead会话"></a>杀死与清除dead会话</h3><p><code>kill -9 27537</code> <img src="/images/2020/01/abb08e8489319630f7e12184b9094a5c.png" alt=""> <code>screen -wipe 27537</code> <img src="/images/2020/01/9399c3881226cf3d8bcd3be79c9c6e55.png" alt=""></p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+        <tag>screen</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>LeetCode第13场双周赛</title>
     <url>/2019/11/20/leetcode%E7%AC%AC13%E5%9C%BA%E5%91%A8%E8%B5%9B/</url>
     <content><![CDATA[<h1 id="1256-加密数字"><a href="#1256-加密数字" class="headerlink" title="1256. 加密数字"></a>1256. 加密数字</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个非负整数 num ，返回它的「加密字符串」。 加密的过程是把一个整数用某个未知函数进行转化，你需要从下表推测出该转化函数： <a href="https://i.loli.net/2019/11/20/qP8LSD2McVuxWC4.png" title="题目描述1"><img src="https://i.loli.net/2019/11/20/qP8LSD2McVuxWC4.png" alt="题目描述1" title="题目描述1"></a> 示例 1： 输入：num = 23 输出：”1000” 示例 2： 输入：num = 107 输出：”101100” 提示： 0 &lt;= num &lt;= 10^9</p>
@@ -732,34 +753,38 @@
       </tags>
   </entry>
   <entry>
-    <title>linux screen 命令详解</title>
-    <url>/2020/01/16/linux-screen-%E5%91%BD%E4%BB%A4%E8%AF%A6%E8%A7%A3/</url>
-    <content><![CDATA[<p>参见<a href="https://blog.csdn.net/xfg0218/article/details/81869313">博客</a></p>
-<h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>会话恢复、多会话、会话共享</p>
-<h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Options:</span><br><span class="line">-4            Resolve hostnames only to IPv4 addresses.</span><br><span class="line">-6            Resolve hostnames only to IPv6 addresses.</span><br><span class="line">-a            Force all capabilities into each window&#x27;s termcap.</span><br><span class="line">-A -[rR]     Adapt all windows to the new display width &amp; height.</span><br><span class="line">-c file       Read configuration file instead of &#x27;.screenrc&#x27;.</span><br><span class="line">-d (-r)       Detach the elsewhere running screen (and reattach here).</span><br><span class="line">-dmS name     Start as daemon: Screen session in detached mode.</span><br><span class="line">-D (-r)       Detach and logout remote (and reattach here).</span><br><span class="line">-D -RR        Do whatever is needed to get a screen session.</span><br><span class="line">-e xy         Change command characters.</span><br><span class="line">-f            Flow control on, -fn = off, -fa = auto.</span><br><span class="line">-h lines      Set the size of the scrollback history buffer.</span><br><span class="line">-i            Interrupt output sooner when flow control is on.</span><br><span class="line">-l            Login mode on (update /var/run/utmp), -ln = off.</span><br><span class="line">-ls [match]   or</span><br><span class="line">-list         Do nothing, just list our SockDir [on possible matches].</span><br><span class="line">-L            Turn on output logging.</span><br><span class="line">-m            ignore $STY variable, do create a new screen session.</span><br><span class="line">-O            Choose optimal output rather than exact vt100 emulation.</span><br><span class="line">-p window     Preselect the named window if it exists.</span><br><span class="line">-q            Quiet startup. Exits with non-zero return code if unsuccessful.</span><br><span class="line">-Q            Commands will send the response to the stdout of the querying process.</span><br><span class="line">-r [session]  Reattach to a detached screen process.</span><br><span class="line">-R            Reattach if possible, otherwise start a new session.</span><br><span class="line">-s shell      Shell to execute rather than $SHELL.</span><br><span class="line">-S sockname   Name this session &lt;pid&gt;.sockname instead of &lt;pid&gt;.&lt;tty&gt;.&lt;host&gt;.</span><br><span class="line">-t title      Set title. (window&#x27;s name).</span><br><span class="line">-T term       Use term as $TERM for windows, rather than &quot;screen&quot;.</span><br><span class="line">-U            Tell screen to use UTF-8 encoding.</span><br><span class="line">-v            Print &quot;Screen version 4.01.00devel (GNU) 2-May-06&quot;.</span><br><span class="line">-wipe [match] Do nothing, just clean up SockDir [on possible matches].</span><br><span class="line">-x            Attach to a not detached screen. (Multi display mode).</span><br><span class="line">-X            Execute &lt;cmd&gt; as a screen command in the specified session.</span><br></pre></td></tr></table></figure>
-<h2 id="常用screen参数"><a href="#常用screen参数" class="headerlink" title="常用screen参数"></a>常用screen参数</h2><p>screen -S yourname -&gt; 新建一个叫yourname的session screen -ls -&gt; 列出当前所有的session screen -r yourname -&gt; 回到yourname这个session screen -d yourname -&gt; 远程detach某个session screen -d -r yourname -&gt; 结束当前session并回到yourname这个session</p>
-<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><h3 id="安装screen"><a href="#安装screen" class="headerlink" title="安装screen"></a>安装screen</h3><p><code>yum install screen</code></p>
-<h3 id="创建新会话"><a href="#创建新会话" class="headerlink" title="创建新会话"></a>创建新会话</h3><p><code>screen -S onwaier</code></p>
-<h3 id="显示会话列表"><a href="#显示会话列表" class="headerlink" title="显示会话列表"></a>显示会话列表</h3><p><img src="/images/2020/01/41c572d91420db04e5cae3b024e87a15.png" alt=""></p>
-<h3 id="暂停与恢复会话"><a href="#暂停与恢复会话" class="headerlink" title="暂停与恢复会话"></a>暂停与恢复会话</h3><p><code>screen -d 27537</code> 27537会话已变成detached状态 <img src="/images/2020/01/2e78cb20f3650367284f8a0c92963779.png" alt=""> <code>screen -r 27537</code> 27537会话再次变成attached状态 <img src="/images/2020/01/1bb040a4a88cbcea494bead8c33c8e5c.png" alt=""></p>
-<h3 id="杀死与清除dead会话"><a href="#杀死与清除dead会话" class="headerlink" title="杀死与清除dead会话"></a>杀死与清除dead会话</h3><p><code>kill -9 27537</code> <img src="/images/2020/01/abb08e8489319630f7e12184b9094a5c.png" alt=""> <code>screen -wipe 27537</code> <img src="/images/2020/01/9399c3881226cf3d8bcd3be79c9c6e55.png" alt=""></p>
-]]></content>
+    <title>linux与onedrive间同步/备份</title>
+    <url>/2020/01/17/linux%E4%B8%8Eonedrive%E9%97%B4%E5%90%8C%E6%AD%A5-%E5%A4%87%E4%BB%BD/</url>
+    <content><![CDATA[<p>参照<a href="https://www.moerats.com/archives/740/">博客</a>和<a href="https://github.com/abraunegg/onedrive">github项目</a></p>
+<h2 id="安装依赖（针对centos）"><a href="#安装依赖（针对centos）" class="headerlink" title="安装依赖（针对centos）"></a>安装依赖（针对centos）</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum groupinstall &#x27;Development Tools&#x27; -y</span><br><span class="line">yum install libcurl-devel -y</span><br><span class="line">yum install sqlite-devel -y</span><br><span class="line">yum install libnotify-devel -y</span><br><span class="line">curl -fsS https://dlang.org/install.sh  bash -s dmd</span><br></pre></td></tr></table></figure>
+<p>安装后返回信息 <img src="/images/2020/01/3033f485823bfe9bebed9fb0029d2555.png" alt=""> 执行<code>source ~/dlang/dmd-2.090.0/activate</code>激活环境。</p>
+<h2 id="安装客户端"><a href="#安装客户端" class="headerlink" title="安装客户端"></a>安装客户端</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/abraunegg/onedrive.git</span><br><span class="line">cd onedrive</span><br><span class="line">./configure</span><br><span class="line">make clean; make;</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
+<h2 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h2><p>执行<code>onedrive</code>命令 <img src="/images/2020/01/797dda991ead94618f2cd17541fdeb76.png" alt=""> 复制链接，输入浏览器登录账号进行授权，再将授权后的链接地址复制到SSH客户端运行。</p>
+<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><h3 id="显示参数"><a href="#显示参数" class="headerlink" title="显示参数"></a>显示参数</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">onedrive --display-config</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/980f50f6f48c0f1f880338c4007b2d2c.png" alt=""></p>
+<h3 id="测试参数"><a href="#测试参数" class="headerlink" title="测试参数"></a>测试参数</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">onedrive --synchronize --verbose --dry-run</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/53eb11d9054841c49634b2fc73ded73c.png" alt=""> 展示执行同步命令即将发生的。 <strong>Note</strong>: —dry-run can only be used with —synchronize. It cannot be used with —monitor and will be ignored.</p>
+<h3 id="执行同步（默认）"><a href="#执行同步（默认）" class="headerlink" title="执行同步（默认）"></a>执行同步（默认）</h3><p>默认会将onedrive的所有文件下到<code>/root/onedrive</code>中。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">onedrive --synchronize</span><br></pre></td></tr></table></figure>
+<h3 id="同步某个文件夹"><a href="#同步某个文件夹" class="headerlink" title="同步某个文件夹"></a>同步某个文件夹</h3><p>只同步OndDrive某文件夹到本地</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">onedrive --synchronize --single-directory &#x27;&lt;dir_name&gt;&#x27;</span><br></pre></td></tr></table></figure>
+<h3 id="单向—只执行下载同步"><a href="#单向—只执行下载同步" class="headerlink" title="单向—只执行下载同步"></a>单向—只执行下载同步</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">onedrive --synchronize --download-only </span><br></pre></td></tr></table></figure>
+<h3 id="单向—只执行上传同步"><a href="#单向—只执行上传同步" class="headerlink" title="单向—只执行上传同步"></a>单向—只执行上传同步</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">onedrive --synchronize --upload-only</span><br></pre></td></tr></table></figure>
+<h2 id="部分参数说明"><a href="#部分参数说明" class="headerlink" title="部分参数说明"></a>部分参数说明</h2><p>配置文件 在<code>/root/.config/onedrive</code>中 执行<code>cd /root/.config/onedrive</code>，新建配置文件<code>touch config</code>。然后将下面默认配置内容粘贴进去。</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Configuration for OneDrive Linux Client</span><br><span class="line"># This file contains the list of supported configuration fields</span><br><span class="line"># with their default values.</span><br><span class="line"># All values need to be enclosed in quotes</span><br><span class="line"># When changing a config option below, remove the &#x27;#&#x27; from the start of the line</span><br><span class="line"># For explanations of all config options below see docs/USAGE.md or the man page.</span><br><span class="line">#</span><br><span class="line"># sync_dir = &quot;~/OneDrive&quot;</span><br><span class="line"># skip_file = &quot;~*.~**.tmp&quot;</span><br><span class="line"># monitor_interval = &quot;45&quot;</span><br><span class="line"># skip_dir = &quot;&quot;</span><br><span class="line"># log_dir = &quot;/var/log/onedrive/&quot;</span><br><span class="line"># drive_id = &quot;&quot;</span><br><span class="line"># upload_only = &quot;false&quot;</span><br><span class="line"># check_nomount = &quot;false&quot;</span><br><span class="line"># check_nosync = &quot;false&quot;</span><br><span class="line"># download_only = &quot;false&quot;</span><br><span class="line"># disable_notifications = &quot;false&quot;</span><br><span class="line"># disable_upload_validation = &quot;false&quot;</span><br><span class="line"># enable_logging = &quot;false&quot;</span><br><span class="line"># force_http_11 = &quot;false&quot;</span><br><span class="line"># force_http_2 = &quot;false&quot;</span><br><span class="line"># local_first = &quot;false&quot;</span><br><span class="line"># no_remote_delete = &quot;false&quot;</span><br><span class="line"># skip_symlinks = &quot;false&quot;</span><br><span class="line"># debug_https = &quot;false&quot;</span><br><span class="line"># skip_dotfiles = &quot;false&quot;</span><br><span class="line"># dry_run = &quot;false&quot;</span><br><span class="line"># min_notify_changes = &quot;5&quot;</span><br><span class="line"># monitor_log_frequency = &quot;5&quot;</span><br><span class="line"># monitor_fullscan_frequency = &quot;10&quot;</span><br><span class="line"># sync_root_files = &quot;false&quot;</span><br><span class="line"># classify_as_big_delete = &quot;1000&quot;</span><br><span class="line"># user_agent = &quot;&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="sync-dir"><a href="#sync-dir" class="headerlink" title="sync_dir"></a>sync_dir</h3><p><code>sync_dir</code> 指定OneDrive中的文件同步到本地文件的位置 若修改<code>sync_dir</code>需在同步时，在原命令后加<code>--resync</code>，如<code>onedrive --synchronize --resync</code>。</p>
+<h3 id="skip-dir"><a href="#skip-dir" class="headerlink" title="skip_dir"></a>skip_dir</h3><p><code>skip_dir</code>同步时跳过本地的某些文件夹。</p>
+<h3 id="skip-file"><a href="#skip-file" class="headerlink" title="skip_file"></a>skip_file</h3><p><code>skip_file</code>同步时跳过本地的某些文件 <strong>注意</strong>：修改<code>skip_dir</code>和<code>skip_file</code>都是相对<code>sync_dir</code>而言的，并且修改后同步，要在原命令后加<code>--resync</code>。 具体见<a href="https://github.com/abraunegg/onedrive/blob/master/docs/USAGE.md">这里</a>。</p>
+<h2 id="卸载客户端"><a href="#卸载客户端" class="headerlink" title="卸载客户端"></a>卸载客户端</h2><p>在下载的onedrive目录下执行命令</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo make uninstall</span><br><span class="line">rm -rf ~/.config/onedrive</span><br></pre></td></tr></table></figure>
+<h2 id="onedrive帮助"><a href="#onedrive帮助" class="headerlink" title="onedrive帮助"></a>onedrive帮助</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OneDrive - a client for OneDrive Cloud Services</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line">  onedrive [options] --synchronize</span><br><span class="line">      Do a one time synchronization</span><br><span class="line">  onedrive [options] --monitor</span><br><span class="line">      Monitor filesystem and sync regularly</span><br><span class="line">  onedrive [options] --display-config</span><br><span class="line">      Display the currently used configuration</span><br><span class="line">  onedrive [options] --display-sync-status</span><br><span class="line">      Query OneDrive service and report on pending changes</span><br><span class="line">  onedrive -h  --help</span><br><span class="line">      Show this help screen</span><br><span class="line">  onedrive --version</span><br><span class="line">      Show version</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line"></span><br><span class="line">  --auth-files ARG</span><br><span class="line">      Perform authorization via two files passed in as ARG in the format `authUrl:responseUrl`</span><br><span class="line">      The authorization URL is written to the `authUrl`, then onedrive waits for the file `responseUrl`</span><br><span class="line">      to be present, and reads the response from that file.</span><br><span class="line">  --check-for-nomount</span><br><span class="line">      Check for the presence of .nosync in the syncdir root. If found, do not perform sync.</span><br><span class="line">  --check-for-nosync</span><br><span class="line">      Check for the presence of .nosync in each directory. If found, skip directory from sync.</span><br><span class="line">  --confdir ARG</span><br><span class="line">      Set the directory used to store the configuration files</span><br><span class="line">  --create-directory ARG</span><br><span class="line">      Create a directory on OneDrive - no sync will be performed.</span><br><span class="line">  --debug-https</span><br><span class="line">      Debug OneDrive HTTPS communication.</span><br><span class="line">  --destination-directory ARG</span><br><span class="line">      Destination directory for renamed or move on OneDrive - no sync will be performed.</span><br><span class="line">  --disable-notifications</span><br><span class="line">      Do not use desktop notifications in monitor mode.</span><br><span class="line">  --disable-upload-validation</span><br><span class="line">      Disable upload validation when uploading to OneDrive</span><br><span class="line">  --display-config</span><br><span class="line">      Display what options the client will use as currently configured - no sync will be performed.</span><br><span class="line">  --display-sync-status</span><br><span class="line">      Display the sync status of the client - no sync will be performed.</span><br><span class="line">  --download-only</span><br><span class="line">      Only download remote changes</span><br><span class="line">  --dry-run</span><br><span class="line">      Perform a trial sync with no changes made</span><br><span class="line">  --enable-logging</span><br><span class="line">      Enable client activity to a separate log file</span><br><span class="line">  --force</span><br><span class="line">      Force the deletion of data when a &#x27;big delete&#x27; is detected</span><br><span class="line">  --force-http-1.1</span><br><span class="line">      Force the use of HTTP/1.1 for all operations (DEPRECIATED)</span><br><span class="line">  --force-http-2</span><br><span class="line">      Force the use of HTTP/2 for all operations where applicable</span><br><span class="line">  --get-O365-drive-id ARG</span><br><span class="line">      Query and return the Office 365 Drive ID for a given Office 365 SharePoint Shared Library</span><br><span class="line">  --get-file-link ARG</span><br><span class="line">      Display the file link of a synced file</span><br><span class="line">  --help -h</span><br><span class="line">      This help information.</span><br><span class="line">  --local-first</span><br><span class="line">      Synchronize from the local directory source first, before downloading changes from OneDrive.</span><br><span class="line">  --log-dir ARG</span><br><span class="line">      Directory where logging output is saved to, needs to end with a slash.</span><br><span class="line">  --logout</span><br><span class="line">      Logout the current user</span><br><span class="line">  --min-notify-changes ARG</span><br><span class="line">      Minimum number of pending incoming changes necessary to trigger a desktop notification</span><br><span class="line">  --monitor -m</span><br><span class="line">      Keep monitoring for local and remote changes</span><br><span class="line">  --monitor-fullscan-frequency ARG</span><br><span class="line">      Number of sync runs before performing a full local scan of the synced directory</span><br><span class="line">  --monitor-interval ARG</span><br><span class="line">      Number of seconds by which each sync operation is undertaken when idle under monitor mode.</span><br><span class="line">  --monitor-log-frequency ARG</span><br><span class="line">      Frequency of logging in monitor mode</span><br><span class="line">  --no-remote-delete</span><br><span class="line">      Do not delete local file &#x27;deletes&#x27; from OneDrive when using --upload-only</span><br><span class="line">  --print-token</span><br><span class="line">      Print the access token, useful for debugging</span><br><span class="line">  --remove-directory ARG</span><br><span class="line">      Remove a directory on OneDrive - no sync will be performed.</span><br><span class="line">  --resync</span><br><span class="line">      Forget the last saved state, perform a full sync</span><br><span class="line">  --single-directory ARG</span><br><span class="line">      Specify a single local directory within the OneDrive root to sync.</span><br><span class="line">  --skip-dir</span><br><span class="line">      Skip any directories that match this pattern from syncing</span><br><span class="line">  --skip-dot-files</span><br><span class="line">      Skip dot files and folders from syncing</span><br><span class="line">  --skip-file ARG</span><br><span class="line">      Skip any files that match this pattern from syncing</span><br><span class="line">  --skip-size</span><br><span class="line">      Skip new files larger than this size (in MB)</span><br><span class="line">  --skip-symlinks</span><br><span class="line">      Skip syncing of symlinks</span><br><span class="line">  --source-directory ARG</span><br><span class="line">      Source directory to rename or move on OneDrive - no sync will be performed.</span><br><span class="line">  --sync-root-files</span><br><span class="line">      Sync all files in sync_dir root when using sync_list.</span><br><span class="line">  --syncdir ARG</span><br><span class="line">      Specify the local directory used for synchronization to OneDrive</span><br><span class="line">  --synchronize</span><br><span class="line">      Perform a synchronization</span><br><span class="line">  --upload-only</span><br><span class="line">      Only upload to OneDrive, do not sync changes from OneDrive locally</span><br><span class="line">  --user-agent ARG</span><br><span class="line">      Specify a User Agent string to the http client</span><br><span class="line">  --verbose -v+</span><br><span class="line">      Print more details, useful for debugging (repeat for extra debugging)</span><br><span class="line">  --version</span><br><span class="line">      Print the version and exit</span><br></pre></td></tr></table></figure>]]></content>
       <categories>
         <category>工具</category>
       </categories>
       <tags>
         <tag>linux</tag>
-        <tag>screen</tag>
+        <tag>Onedrive同步</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>linux 配置shadowsocks客户端</title>
-    <url>/2019/10/28/linux-%E9%85%8D%E7%BD%AEshadowsocks%E5%AE%A2%E6%88%B7%E7%AB%AF/</url>
-    <content><![CDATA[<h2 id="具体参考博客"><a href="#具体参考博客" class="headerlink" title="具体参考博客"></a>具体参考<a href="https://lvii.gitbooks.io/outman/content/ss.linux.html">博客</a></h2><p>软件包提到了shadowsocks-libev和python-shadowsocks。 <strong>注意</strong>： 1. python-shadowsockds是不支持chacha20-ietf-poly1305协议的 2. 两者的命令还是存在差异的:<code>ss-local -c ss.json</code>和<code>sslocal -c ss.json</code></p>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
   </entry>
   <entry>
     <title>linux无root权限编译安装tmux到用户目录下</title>
@@ -801,40 +826,6 @@
       <tags>
         <tag>tmux</tag>
         <tag>编译软件</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>linux与onedrive间同步/备份</title>
-    <url>/2020/01/17/linux%E4%B8%8Eonedrive%E9%97%B4%E5%90%8C%E6%AD%A5-%E5%A4%87%E4%BB%BD/</url>
-    <content><![CDATA[<p>参照<a href="https://www.moerats.com/archives/740/">博客</a>和<a href="https://github.com/abraunegg/onedrive">github项目</a></p>
-<h2 id="安装依赖（针对centos）"><a href="#安装依赖（针对centos）" class="headerlink" title="安装依赖（针对centos）"></a>安装依赖（针对centos）</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">yum groupinstall &#x27;Development Tools&#x27; -y</span><br><span class="line">yum install libcurl-devel -y</span><br><span class="line">yum install sqlite-devel -y</span><br><span class="line">yum install libnotify-devel -y</span><br><span class="line">curl -fsS https://dlang.org/install.sh  bash -s dmd</span><br></pre></td></tr></table></figure>
-<p>安装后返回信息 <img src="/images/2020/01/3033f485823bfe9bebed9fb0029d2555.png" alt=""> 执行<code>source ~/dlang/dmd-2.090.0/activate</code>激活环境。</p>
-<h2 id="安装客户端"><a href="#安装客户端" class="headerlink" title="安装客户端"></a>安装客户端</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/abraunegg/onedrive.git</span><br><span class="line">cd onedrive</span><br><span class="line">./configure</span><br><span class="line">make clean; make;</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
-<h2 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h2><p>执行<code>onedrive</code>命令 <img src="/images/2020/01/797dda991ead94618f2cd17541fdeb76.png" alt=""> 复制链接，输入浏览器登录账号进行授权，再将授权后的链接地址复制到SSH客户端运行。</p>
-<h2 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h2><h3 id="显示参数"><a href="#显示参数" class="headerlink" title="显示参数"></a>显示参数</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">onedrive --display-config</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/980f50f6f48c0f1f880338c4007b2d2c.png" alt=""></p>
-<h3 id="测试参数"><a href="#测试参数" class="headerlink" title="测试参数"></a>测试参数</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">onedrive --synchronize --verbose --dry-run</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/53eb11d9054841c49634b2fc73ded73c.png" alt=""> 展示执行同步命令即将发生的。 <strong>Note</strong>: —dry-run can only be used with —synchronize. It cannot be used with —monitor and will be ignored.</p>
-<h3 id="执行同步（默认）"><a href="#执行同步（默认）" class="headerlink" title="执行同步（默认）"></a>执行同步（默认）</h3><p>默认会将onedrive的所有文件下到<code>/root/onedrive</code>中。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">onedrive --synchronize</span><br></pre></td></tr></table></figure>
-<h3 id="同步某个文件夹"><a href="#同步某个文件夹" class="headerlink" title="同步某个文件夹"></a>同步某个文件夹</h3><p>只同步OndDrive某文件夹到本地</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">onedrive --synchronize --single-directory &#x27;&lt;dir_name&gt;&#x27;</span><br></pre></td></tr></table></figure>
-<h3 id="单向—只执行下载同步"><a href="#单向—只执行下载同步" class="headerlink" title="单向—只执行下载同步"></a>单向—只执行下载同步</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">onedrive --synchronize --download-only </span><br></pre></td></tr></table></figure>
-<h3 id="单向—只执行上传同步"><a href="#单向—只执行上传同步" class="headerlink" title="单向—只执行上传同步"></a>单向—只执行上传同步</h3><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">onedrive --synchronize --upload-only</span><br></pre></td></tr></table></figure>
-<h2 id="部分参数说明"><a href="#部分参数说明" class="headerlink" title="部分参数说明"></a>部分参数说明</h2><p>配置文件 在<code>/root/.config/onedrive</code>中 执行<code>cd /root/.config/onedrive</code>，新建配置文件<code>touch config</code>。然后将下面默认配置内容粘贴进去。</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Configuration for OneDrive Linux Client</span><br><span class="line"># This file contains the list of supported configuration fields</span><br><span class="line"># with their default values.</span><br><span class="line"># All values need to be enclosed in quotes</span><br><span class="line"># When changing a config option below, remove the &#x27;#&#x27; from the start of the line</span><br><span class="line"># For explanations of all config options below see docs/USAGE.md or the man page.</span><br><span class="line">#</span><br><span class="line"># sync_dir = &quot;~/OneDrive&quot;</span><br><span class="line"># skip_file = &quot;~*.~**.tmp&quot;</span><br><span class="line"># monitor_interval = &quot;45&quot;</span><br><span class="line"># skip_dir = &quot;&quot;</span><br><span class="line"># log_dir = &quot;/var/log/onedrive/&quot;</span><br><span class="line"># drive_id = &quot;&quot;</span><br><span class="line"># upload_only = &quot;false&quot;</span><br><span class="line"># check_nomount = &quot;false&quot;</span><br><span class="line"># check_nosync = &quot;false&quot;</span><br><span class="line"># download_only = &quot;false&quot;</span><br><span class="line"># disable_notifications = &quot;false&quot;</span><br><span class="line"># disable_upload_validation = &quot;false&quot;</span><br><span class="line"># enable_logging = &quot;false&quot;</span><br><span class="line"># force_http_11 = &quot;false&quot;</span><br><span class="line"># force_http_2 = &quot;false&quot;</span><br><span class="line"># local_first = &quot;false&quot;</span><br><span class="line"># no_remote_delete = &quot;false&quot;</span><br><span class="line"># skip_symlinks = &quot;false&quot;</span><br><span class="line"># debug_https = &quot;false&quot;</span><br><span class="line"># skip_dotfiles = &quot;false&quot;</span><br><span class="line"># dry_run = &quot;false&quot;</span><br><span class="line"># min_notify_changes = &quot;5&quot;</span><br><span class="line"># monitor_log_frequency = &quot;5&quot;</span><br><span class="line"># monitor_fullscan_frequency = &quot;10&quot;</span><br><span class="line"># sync_root_files = &quot;false&quot;</span><br><span class="line"># classify_as_big_delete = &quot;1000&quot;</span><br><span class="line"># user_agent = &quot;&quot;</span><br></pre></td></tr></table></figure>
-<h3 id="sync-dir"><a href="#sync-dir" class="headerlink" title="sync_dir"></a>sync_dir</h3><p><code>sync_dir</code> 指定OneDrive中的文件同步到本地文件的位置 若修改<code>sync_dir</code>需在同步时，在原命令后加<code>--resync</code>，如<code>onedrive --synchronize --resync</code>。</p>
-<h3 id="skip-dir"><a href="#skip-dir" class="headerlink" title="skip_dir"></a>skip_dir</h3><p><code>skip_dir</code>同步时跳过本地的某些文件夹。</p>
-<h3 id="skip-file"><a href="#skip-file" class="headerlink" title="skip_file"></a>skip_file</h3><p><code>skip_file</code>同步时跳过本地的某些文件 <strong>注意</strong>：修改<code>skip_dir</code>和<code>skip_file</code>都是相对<code>sync_dir</code>而言的，并且修改后同步，要在原命令后加<code>--resync</code>。 具体见<a href="https://github.com/abraunegg/onedrive/blob/master/docs/USAGE.md">这里</a>。</p>
-<h2 id="卸载客户端"><a href="#卸载客户端" class="headerlink" title="卸载客户端"></a>卸载客户端</h2><p>在下载的onedrive目录下执行命令</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo make uninstall</span><br><span class="line">rm -rf ~/.config/onedrive</span><br></pre></td></tr></table></figure>
-<h2 id="onedrive帮助"><a href="#onedrive帮助" class="headerlink" title="onedrive帮助"></a>onedrive帮助</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">OneDrive - a client for OneDrive Cloud Services</span><br><span class="line"></span><br><span class="line">Usage:</span><br><span class="line">  onedrive [options] --synchronize</span><br><span class="line">      Do a one time synchronization</span><br><span class="line">  onedrive [options] --monitor</span><br><span class="line">      Monitor filesystem and sync regularly</span><br><span class="line">  onedrive [options] --display-config</span><br><span class="line">      Display the currently used configuration</span><br><span class="line">  onedrive [options] --display-sync-status</span><br><span class="line">      Query OneDrive service and report on pending changes</span><br><span class="line">  onedrive -h  --help</span><br><span class="line">      Show this help screen</span><br><span class="line">  onedrive --version</span><br><span class="line">      Show version</span><br><span class="line"></span><br><span class="line">Options:</span><br><span class="line"></span><br><span class="line">  --auth-files ARG</span><br><span class="line">      Perform authorization via two files passed in as ARG in the format `authUrl:responseUrl`</span><br><span class="line">      The authorization URL is written to the `authUrl`, then onedrive waits for the file `responseUrl`</span><br><span class="line">      to be present, and reads the response from that file.</span><br><span class="line">  --check-for-nomount</span><br><span class="line">      Check for the presence of .nosync in the syncdir root. If found, do not perform sync.</span><br><span class="line">  --check-for-nosync</span><br><span class="line">      Check for the presence of .nosync in each directory. If found, skip directory from sync.</span><br><span class="line">  --confdir ARG</span><br><span class="line">      Set the directory used to store the configuration files</span><br><span class="line">  --create-directory ARG</span><br><span class="line">      Create a directory on OneDrive - no sync will be performed.</span><br><span class="line">  --debug-https</span><br><span class="line">      Debug OneDrive HTTPS communication.</span><br><span class="line">  --destination-directory ARG</span><br><span class="line">      Destination directory for renamed or move on OneDrive - no sync will be performed.</span><br><span class="line">  --disable-notifications</span><br><span class="line">      Do not use desktop notifications in monitor mode.</span><br><span class="line">  --disable-upload-validation</span><br><span class="line">      Disable upload validation when uploading to OneDrive</span><br><span class="line">  --display-config</span><br><span class="line">      Display what options the client will use as currently configured - no sync will be performed.</span><br><span class="line">  --display-sync-status</span><br><span class="line">      Display the sync status of the client - no sync will be performed.</span><br><span class="line">  --download-only</span><br><span class="line">      Only download remote changes</span><br><span class="line">  --dry-run</span><br><span class="line">      Perform a trial sync with no changes made</span><br><span class="line">  --enable-logging</span><br><span class="line">      Enable client activity to a separate log file</span><br><span class="line">  --force</span><br><span class="line">      Force the deletion of data when a &#x27;big delete&#x27; is detected</span><br><span class="line">  --force-http-1.1</span><br><span class="line">      Force the use of HTTP/1.1 for all operations (DEPRECIATED)</span><br><span class="line">  --force-http-2</span><br><span class="line">      Force the use of HTTP/2 for all operations where applicable</span><br><span class="line">  --get-O365-drive-id ARG</span><br><span class="line">      Query and return the Office 365 Drive ID for a given Office 365 SharePoint Shared Library</span><br><span class="line">  --get-file-link ARG</span><br><span class="line">      Display the file link of a synced file</span><br><span class="line">  --help -h</span><br><span class="line">      This help information.</span><br><span class="line">  --local-first</span><br><span class="line">      Synchronize from the local directory source first, before downloading changes from OneDrive.</span><br><span class="line">  --log-dir ARG</span><br><span class="line">      Directory where logging output is saved to, needs to end with a slash.</span><br><span class="line">  --logout</span><br><span class="line">      Logout the current user</span><br><span class="line">  --min-notify-changes ARG</span><br><span class="line">      Minimum number of pending incoming changes necessary to trigger a desktop notification</span><br><span class="line">  --monitor -m</span><br><span class="line">      Keep monitoring for local and remote changes</span><br><span class="line">  --monitor-fullscan-frequency ARG</span><br><span class="line">      Number of sync runs before performing a full local scan of the synced directory</span><br><span class="line">  --monitor-interval ARG</span><br><span class="line">      Number of seconds by which each sync operation is undertaken when idle under monitor mode.</span><br><span class="line">  --monitor-log-frequency ARG</span><br><span class="line">      Frequency of logging in monitor mode</span><br><span class="line">  --no-remote-delete</span><br><span class="line">      Do not delete local file &#x27;deletes&#x27; from OneDrive when using --upload-only</span><br><span class="line">  --print-token</span><br><span class="line">      Print the access token, useful for debugging</span><br><span class="line">  --remove-directory ARG</span><br><span class="line">      Remove a directory on OneDrive - no sync will be performed.</span><br><span class="line">  --resync</span><br><span class="line">      Forget the last saved state, perform a full sync</span><br><span class="line">  --single-directory ARG</span><br><span class="line">      Specify a single local directory within the OneDrive root to sync.</span><br><span class="line">  --skip-dir</span><br><span class="line">      Skip any directories that match this pattern from syncing</span><br><span class="line">  --skip-dot-files</span><br><span class="line">      Skip dot files and folders from syncing</span><br><span class="line">  --skip-file ARG</span><br><span class="line">      Skip any files that match this pattern from syncing</span><br><span class="line">  --skip-size</span><br><span class="line">      Skip new files larger than this size (in MB)</span><br><span class="line">  --skip-symlinks</span><br><span class="line">      Skip syncing of symlinks</span><br><span class="line">  --source-directory ARG</span><br><span class="line">      Source directory to rename or move on OneDrive - no sync will be performed.</span><br><span class="line">  --sync-root-files</span><br><span class="line">      Sync all files in sync_dir root when using sync_list.</span><br><span class="line">  --syncdir ARG</span><br><span class="line">      Specify the local directory used for synchronization to OneDrive</span><br><span class="line">  --synchronize</span><br><span class="line">      Perform a synchronization</span><br><span class="line">  --upload-only</span><br><span class="line">      Only upload to OneDrive, do not sync changes from OneDrive locally</span><br><span class="line">  --user-agent ARG</span><br><span class="line">      Specify a User Agent string to the http client</span><br><span class="line">  --verbose -v+</span><br><span class="line">      Print more details, useful for debugging (repeat for extra debugging)</span><br><span class="line">  --version</span><br><span class="line">      Print the version and exit</span><br></pre></td></tr></table></figure>]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>linux</tag>
-        <tag>Onedrive同步</tag>
       </tags>
   </entry>
   <entry>
@@ -1070,40 +1061,12 @@
       </categories>
   </entry>
   <entry>
-    <title>pytorch入门</title>
-    <url>/2020/01/26/pytorch%E5%85%A5%E9%97%A8/</url>
-    <content><![CDATA[<p>参考<a href="https://pytorch.org/tutorials/">PyTorch官方教程中文版</a></p>
-<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>支持GPU，灵活，支持动态神经网络，底层代码易于理解，命令式体验。</p>
-<h2 id="张量-tensor-学习"><a href="#张量-tensor-学习" class="headerlink" title="张量(tensor)学习"></a>张量(tensor)学习</h2><p>具体用法参照<a href="https://pytorch.org/docs">官方文档</a></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment"># 构造一个5x3矩阵，不初始化。</span></span><br><span class="line">x = torch.empty((<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/ed20c4059b7d2876b35477dbae98c0cc.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 构造一个随机初始化的矩阵</span></span><br><span class="line">x = torch.rand((<span class="number">5</span>, <span class="number">3</span>))</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/d843b2cb1db05d0a87f8acae961e95ab.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 构造一个填充某个值的矩阵</span></span><br><span class="line">x = torch.full((<span class="number">5</span>, <span class="number">3</span>), <span class="number">3.1415</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/3df9c44f3e392ed46360000226f7298f.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 构造全为0的矩阵，且数据类型为long</span></span><br><span class="line">x = torch.zeros((<span class="number">5</span>, <span class="number">3</span>), dtype = torch.long)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/214502b926fc8897cb2b225601a1539c.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 构造单位矩阵</span></span><br><span class="line"><span class="comment"># torch.eye(n, m=None, out=None, dtype=None, layout=torch.strided, device=None, requires_grad=False) → Tensor</span></span><br><span class="line"><span class="comment"># Returns a 2-D tensor with ones on the diagonal and zeros elsewhere.</span></span><br><span class="line">torch.eye(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/3de040933ac1e2449b838670d0f3828a.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用数据构造一个张量</span></span><br><span class="line">x = torch.tensor([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/80e290544e3258d4747a981c07ffc1c6.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用已经存在的tensor构造一个tensor</span></span><br><span class="line">x = x.new_ones((<span class="number">5</span>, <span class="number">3</span>), dtype = torch.double)</span><br><span class="line"><span class="comment"># new_* methods take in sizes</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">x = torch.randn_like(x, dtype = torch.<span class="built_in">float</span>)</span><br><span class="line"><span class="comment"># size和原x的size相同，但数据类型不同</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/c88c5035e16c81a04070fb3fde64b4bb.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取维度信息 size()</span></span><br><span class="line"><span class="built_in">print</span>(x.size())</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/da1e8247bfaf5fbf426c836b02a379dd.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 加法1 +</span></span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(x + y)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/8908dce0053d4a9e7349700e1ae46e95.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 加法2 torch.add</span></span><br><span class="line"><span class="comment"># torch.add(input, alpha=1, other, out=None)</span></span><br><span class="line"><span class="comment"># Each element of the tensor other is multiplied by the scalar alpha and added to each element of the tensor input. The resulting tensor is returned.</span></span><br><span class="line"><span class="built_in">print</span>(torch.add(x, y))</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/44d8b9299f68ef1623e0c4a3028a41aa.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 提供一个输出tensor作为参数</span></span><br><span class="line">result = torch.empty((<span class="number">5</span>, <span class="number">3</span>))</span><br><span class="line">torch.add(x, y, out = result)</span><br><span class="line"><span class="built_in">print</span>(x + y)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/be5c19b1d4267bee2ee93ebcf78045f0.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># add x to y  (in-place)</span></span><br><span class="line"><span class="comment"># 即将x+y的值赋给y</span></span><br><span class="line"><span class="comment"># 任何使张量会发生变化的操作都有一个前缀</span></span><br><span class="line">y.add_(x)</span><br><span class="line"><span class="built_in">print</span>(y)</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/3c954a7cf80df393c107c27f6797a5da.png" alt=""></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 改变大小：如果你想改变一个 tensor 的大小或者形状，你可以使用 torch.view:</span></span><br><span class="line"></span><br><span class="line">x = torch.randn(<span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">y = x.view(<span class="number">16</span>)</span><br><span class="line">z = x.view(-<span class="number">1</span>, <span class="number">8</span>)  <span class="comment"># the size -1 is inferred from other dimensions</span></span><br><span class="line"><span class="built_in">print</span>(x.size(), y.size(), z.size())</span><br></pre></td></tr></table></figure>
-<p><img src="/images/2020/01/7fdd67d05badaa78ee6bb1cf9f51f2ba.png" alt=""></p>
+    <title>linux 配置shadowsocks客户端</title>
+    <url>/2019/10/28/linux-%E9%85%8D%E7%BD%AEshadowsocks%E5%AE%A2%E6%88%B7%E7%AB%AF/</url>
+    <content><![CDATA[<h2 id="具体参考博客"><a href="#具体参考博客" class="headerlink" title="具体参考博客"></a>具体参考<a href="https://lvii.gitbooks.io/outman/content/ss.linux.html">博客</a></h2><p>软件包提到了shadowsocks-libev和python-shadowsocks。 <strong>注意</strong>： 1. python-shadowsockds是不支持chacha20-ietf-poly1305协议的 2. 两者的命令还是存在差异的:<code>ss-local -c ss.json</code>和<code>sslocal -c ss.json</code></p>
 ]]></content>
       <categories>
-        <category>pytorch</category>
+        <category>工具</category>
       </categories>
   </entry>
   <entry>
@@ -1197,6 +1160,23 @@
       </categories>
   </entry>
   <entry>
+    <title>tmux使用教程</title>
+    <url>/2020/06/03/tmux%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
+    <content><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://www.ruanyifeng.com/blog/2019/10/tmux.html">Tmux 使用教程</a></li>
+<li><a href="https://harttle.land/2015/11/06/tmux-startup.html">优雅地使用命令行：Tmux 终端复用</a></li>
+<li><a href="https://www.cnblogs.com/kaiye/p/6275207.html">十分钟学会tmux</a></li>
+<li><a href="http://louiszhai.github.io/2017/09/30/tmux/">Tmux使用手册</a></li>
+</ol>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>tmux教程</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Pytorch载入部分参数并冻结</title>
     <url>/2020/02/28/pytorch%E8%BD%BD%E5%85%A5%E9%83%A8%E5%88%86%E5%8F%82%E6%95%B0%E5%B9%B6%E5%86%BB%E7%BB%93/</url>
     <content><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
@@ -1238,131 +1218,41 @@
       </tags>
   </entry>
   <entry>
-    <title>Region Attention Networks for Pose and Occlusion Robust Facial Expression Recognition阅读笔记</title>
-    <url>/2019/11/26/region-attention-networks-for-pose-and-occlusion-robust-facial-expression-recognition%E6%96%87%E7%AB%A0%E8%A7%A3%E8%AF%BB/</url>
-    <content><![CDATA[<h2 id="原文链接与github源码地址"><a href="#原文链接与github源码地址" class="headerlink" title="原文链接与github源码地址"></a>原文链接与github源码地址</h2><ul>
-<li><a href="https://arxiv.org/pdf/1905.04075.pdf"><strong>原文链接</strong></a></li>
-<li><a href="https://github.com/kaiwang960112/Challenge-condition-FER-dataset"><strong>github地址</strong></a></li>
-</ul>
-<h2 id="overview"><a href="#overview" class="headerlink" title="overview"></a>overview</h2><p>人脸表情识别面临了很多挑战，如光照、姿态、遮挡、个体差异、数据不充分等。作者主要是针对姿态和遮挡这两个难题进行研究，从现有的数据库（FERPlus、AffectNet、RAF-DB）中筛选出数据组成测试数据集(Occlusion-FERPlus、Pose-FerPlus、Occlusion-AffectNet、Post-AffectNet、Occlusion-RAF-DB、Pose-RAF-DB)，然后设计出Region Attention的网络结构，并提出一个新的损失函数（Region Biased Loss），在多个数据集上性能都有所提升。</p>
-<h2 id="Inspiration"><a href="#Inspiration" class="headerlink" title="Inspiration"></a>Inspiration</h2><ol>
-<li>an occluded mouth degrades FER more than occluded eyes on JAFFE and CK$^{[1]}$. 遮挡嘴巴对人脸表情识别性能的影响要大于遮挡眼睛的影响。</li>
-<li>Psychological studies indicated that human can effectively exploit both local regions and holistic faces to perceive the semantics delivered through incomplete faces$^{[2]}$.人之所以能对存在遮挡或姿态偏转的人脸表情准确识别是因为人的注意力机制有效将局部特征信息与全局特征信息相结合。</li>
-</ol>
-<h2 id="Network-architecture"><a href="#Network-architecture" class="headerlink" title="Network architecture"></a>Network architecture</h2><p><img src="/images/2019/11/b78d9cc11c6c502f1c0f28e5db0ca589.png" alt=""> RAN由三个模块组成：特征提取模块、Self-attention模块和Relation-attention模块。</p>
-<h3 id="特征提取模块"><a href="#特征提取模块" class="headerlink" title="特征提取模块"></a>特征提取模块</h3><p>首先对原始人脸copy一份，然后再对人脸裁剪k份（有三种策略，后面会详细介绍）。都经过相同的CNN（VGG或ResNet）结构进行特征提取，这里权值共享。</p>
-<h3 id="Self-attention模块"><a href="#Self-attention模块" class="headerlink" title="Self-attention模块"></a>Self-attention模块</h3><p>下面先介绍一些符号表示： I：Face Image; $I_0$: its duplicate(原始图像的copy) $I_0、I_1、\dots、 I_k$: its crops（原始图像的crop） $r(., \theta)$: backbone CNN(CNN网络) 图像I的特征为： $X = [F_0, F_1, \dots, F_k] = [r(I_0, \theta )， r(I_1, \theta , \dots, r(I_k, \theta ))]$ 第i个裁剪区域的权重记为$\mu _i$为： $\mu _i = f(F_i^Tq^0)$其中$q_0$表示FC的参数而f表示的是激活函数 。即将局部区域提取的特征经过一个全边接层，然后经过激活函数得到对应权重。 全局特征表示为（Gloabl representation） $F_m = \frac{1}{\sum_{i = 0}^{n}\mu _{i}} \sum\limits^{n}_{i = 0}\mu _i F_i$ 将局部区域进行加权表示整体特征</p>
-<h3 id="Relation-attention模块"><a href="#Relation-attention模块" class="headerlink" title="Relation-attention模块"></a>Relation-attention模块</h3><p>$v_i = f((F_i:F_m)^Tq^1)$ $F_i$表示区域提取特征将其与整体特征$F_m$作一个concat操作，然后经过全连接层再经过激活函数，得到结合局部与整体的特征的权重。 $P_{RAN} = \frac{1}{\sum^n_{i=1}\mu_i v_i} \sum\limits^n_{i=0}\mu_iv_i[F_i:F_m]$ 同样将得到特征进行加权求得一个新的全局特征$P_{RAN}$。这个特征作者在后面与$F_m$做过对比。</p>
-<h2 id="crop的三种策略"><a href="#crop的三种策略" class="headerlink" title="crop的三种策略"></a>crop的三种策略</h2><ol>
-<li>Fixed Crop Fixed Crop: top-left、top-right、center-down(0.75)、center(0.85)、center(0.9)</li>
-<li>Landmarks Based Crop Landmarks Based Crop: MTCNN(左眼、右眼、鼻子、嘴左边角、嘴右边角)</li>
-<li>Randomly Crop Randomly Crop: randomly crop N regions（0.7-0.95）</li>
-</ol>
-<h3 id="三种crop策略的性能比较"><a href="#三种crop策略的性能比较" class="headerlink" title="三种crop策略的性能比较"></a>三种crop策略的性能比较</h3><p>Evaluation of region generation strategies <img src="/images/2019/11/1966c300ff97478a5299a1f861dae98f.png" alt=""></p>
-<h2 id="RB-Loss"><a href="#RB-Loss" class="headerlink" title="RB-Loss"></a>RB-Loss</h2><p>$L_{RB} = max(0, \alpha - (\mu_{max} - \mu_0))$ 受到“不同的表情是由不同的表情区域决定的”的相关研究的启发，作者希望对self-Attention中的权重作出直接的限制，使裁剪区域中至少有一个的权重要大于原始人脸特征所占的权重。基于此提出了Region Biased Loss的损失函数，其中$\alpha$是超参数，$\mu_0$表示copy人脸的特征所占的权重，$\mu_{max}$表示所有裁剪人脸中特征所占的最大权重。在训练中，在分类损失函数中加入RB-Loss。作者在后面对该损失函数对实验性能的影响做了相关的实验比较。</p>
-<h2 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h2><p><img src="/images/2019/11/8452178a31233e3845dcfec68966f831.png" alt=""> <strong>Occlusion-FERPlus, Pose-FERPlus, Occlusion-AffectNet, Pose-AffectNet, Occlusion-RAF-DB, and Pose-RAF-DB for testing</strong> Pose: pitch, yaw, roll（通过人脸对齐能消除） Occlusion: 戴面具、戴眼睛、遮挡物体在左、右、上、下及没有遮挡 ps:第一排第三个的那位最近出山的新闻有点多哟。</p>
-<h2 id="expriments"><a href="#expriments" class="headerlink" title="expriments"></a>expriments</h2><h3 id="RAN与Baseline在作者创建的数据库的性能比较"><a href="#RAN与Baseline在作者创建的数据库的性能比较" class="headerlink" title="RAN与Baseline在作者创建的数据库的性能比较"></a>RAN与Baseline在作者创建的数据库的性能比较</h3><p><strong>Performance comparison between the proposed RAN and baseline method with occlusion and variant pose conditions.</strong> <img src="/images/2019/11/a314d0ad87f75afededd35f12be16067.png" alt=""></p>
-<h3 id="对RAN中所有的组成部分的实验"><a href="#对RAN中所有的组成部分的实验" class="headerlink" title="对RAN中所有的组成部分的实验"></a>对RAN中所有的组成部分的实验</h3><p><strong>Evaluation of all components of our RAN along with face alignment on FERPlus.</strong> <img src="/images/2019/11/23640c637958c46316ab021647d167e7.png" alt=""></p>
-<h3 id="RAN与最新的方法在FerPlus上的性能比较"><a href="#RAN与最新的方法在FerPlus上的性能比较" class="headerlink" title="RAN与最新的方法在FerPlus上的性能比较"></a>RAN与最新的方法在FerPlus上的性能比较</h3><p><strong>Comparison to the state-of-the-art results on the FERPlus dataset.These results are trained using label distribution as supervison.</strong> <img src="/images/2019/11/f3c26d20d19ff157b975f65bd7f9019e.png" alt=""></p>
-<h3 id="RAN与最新的方法在AffectNet上的性能比较"><a href="#RAN与最新的方法在AffectNet上的性能比较" class="headerlink" title="RAN与最新的方法在AffectNet上的性能比较"></a>RAN与最新的方法在AffectNet上的性能比较</h3><p><strong>Comparison to the state-of-the-art results on the AffectNet dataset</strong> <img src="/images/2019/11/0e53f4403f532b09222286ca36f6677f.png" alt=""></p>
-<h3 id="RAN与最新的方法在SFEW上的性能比较"><a href="#RAN与最新的方法在SFEW上的性能比较" class="headerlink" title="RAN与最新的方法在SFEW上的性能比较"></a>RAN与最新的方法在SFEW上的性能比较</h3><p><strong>Comparison to the state-of-the-art results on the SFEW dataset</strong> <img src="/images/2019/11/8ec8d96d2d144de3d9191a4feca8bbaa.png" alt=""></p>
-<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ol>
-<li>Region Attention Networks(RAN)</li>
-<li>New FER test datasets</li>
-<li>Region Biased loss(RB-loss) 作者在这篇文章我归纳有三点创新：首先提出一个RAN的网络结构，在已有的数据库中筛选出遮挡和姿态问题的图片组成了测试数据集。另外有一点小贡献是提出了RB-loss。作者的方法在几个数据集上都有性能的提升，证明了它网络的可行性。</li>
-</ol>
-<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] An analysis of facial expression recognition under partial facial image occlusion </p>
-<p>[2] Specialized face perception mechanisms extract both part and spacing information: Evidence from developmental prosopagnosia</p>
+    <title>pytorch入门</title>
+    <url>/2020/01/26/pytorch%E5%85%A5%E9%97%A8/</url>
+    <content><![CDATA[<p>参考<a href="https://pytorch.org/tutorials/">PyTorch官方教程中文版</a></p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>支持GPU，灵活，支持动态神经网络，底层代码易于理解，命令式体验。</p>
+<h2 id="张量-tensor-学习"><a href="#张量-tensor-学习" class="headerlink" title="张量(tensor)学习"></a>张量(tensor)学习</h2><p>具体用法参照<a href="https://pytorch.org/docs">官方文档</a></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment"># 构造一个5x3矩阵，不初始化。</span></span><br><span class="line">x = torch.empty((<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/ed20c4059b7d2876b35477dbae98c0cc.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 构造一个随机初始化的矩阵</span></span><br><span class="line">x = torch.rand((<span class="number">5</span>, <span class="number">3</span>))</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/d843b2cb1db05d0a87f8acae961e95ab.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 构造一个填充某个值的矩阵</span></span><br><span class="line">x = torch.full((<span class="number">5</span>, <span class="number">3</span>), <span class="number">3.1415</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/3df9c44f3e392ed46360000226f7298f.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 构造全为0的矩阵，且数据类型为long</span></span><br><span class="line">x = torch.zeros((<span class="number">5</span>, <span class="number">3</span>), dtype = torch.long)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/214502b926fc8897cb2b225601a1539c.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 构造单位矩阵</span></span><br><span class="line"><span class="comment"># torch.eye(n, m=None, out=None, dtype=None, layout=torch.strided, device=None, requires_grad=False) → Tensor</span></span><br><span class="line"><span class="comment"># Returns a 2-D tensor with ones on the diagonal and zeros elsewhere.</span></span><br><span class="line">torch.eye(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/3de040933ac1e2449b838670d0f3828a.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用数据构造一个张量</span></span><br><span class="line">x = torch.tensor([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/80e290544e3258d4747a981c07ffc1c6.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 用已经存在的tensor构造一个tensor</span></span><br><span class="line">x = x.new_ones((<span class="number">5</span>, <span class="number">3</span>), dtype = torch.double)</span><br><span class="line"><span class="comment"># new_* methods take in sizes</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">x = torch.randn_like(x, dtype = torch.<span class="built_in">float</span>)</span><br><span class="line"><span class="comment"># size和原x的size相同，但数据类型不同</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/c88c5035e16c81a04070fb3fde64b4bb.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 获取维度信息 size()</span></span><br><span class="line"><span class="built_in">print</span>(x.size())</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/da1e8247bfaf5fbf426c836b02a379dd.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 加法1 +</span></span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(x + y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/8908dce0053d4a9e7349700e1ae46e95.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 加法2 torch.add</span></span><br><span class="line"><span class="comment"># torch.add(input, alpha=1, other, out=None)</span></span><br><span class="line"><span class="comment"># Each element of the tensor other is multiplied by the scalar alpha and added to each element of the tensor input. The resulting tensor is returned.</span></span><br><span class="line"><span class="built_in">print</span>(torch.add(x, y))</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/44d8b9299f68ef1623e0c4a3028a41aa.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 提供一个输出tensor作为参数</span></span><br><span class="line">result = torch.empty((<span class="number">5</span>, <span class="number">3</span>))</span><br><span class="line">torch.add(x, y, out = result)</span><br><span class="line"><span class="built_in">print</span>(x + y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/be5c19b1d4267bee2ee93ebcf78045f0.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># add x to y  (in-place)</span></span><br><span class="line"><span class="comment"># 即将x+y的值赋给y</span></span><br><span class="line"><span class="comment"># 任何使张量会发生变化的操作都有一个前缀</span></span><br><span class="line">y.add_(x)</span><br><span class="line"><span class="built_in">print</span>(y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/3c954a7cf80df393c107c27f6797a5da.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 改变大小：如果你想改变一个 tensor 的大小或者形状，你可以使用 torch.view:</span></span><br><span class="line"></span><br><span class="line">x = torch.randn(<span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">y = x.view(<span class="number">16</span>)</span><br><span class="line">z = x.view(-<span class="number">1</span>, <span class="number">8</span>)  <span class="comment"># the size -1 is inferred from other dimensions</span></span><br><span class="line"><span class="built_in">print</span>(x.size(), y.size(), z.size())</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/7fdd67d05badaa78ee6bb1cf9f51f2ba.png" alt=""></p>
 ]]></content>
       <categories>
-        <category>人脸表情识别</category>
+        <category>pytorch</category>
       </categories>
-      <tags>
-        <tag>Attention</tag>
-        <tag>Region Attention</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Suppressing Uncertainties for Large-Scale Facial Expression Recognition阅读笔记</title>
-    <url>/2020/04/04/suppressing-uncertainties-for-large-scale-facial-expression-recognition%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</url>
-    <content><![CDATA[<h2 id="原文地址和源代码"><a href="#原文地址和源代码" class="headerlink" title="原文地址和源代码"></a>原文地址和源代码</h2><ul>
-<li><strong>原文地址：</strong> <a href="https://arxiv.org/pdf/2002.10392.pdf">https://arxiv.org/pdf/2002.10392.pdf</a></li>
-<li>源代码：<a href="https://github.com/kaiwang960112/Self-Cure-Network">github地址</a></li>
-</ul>
-<p>注：2020年4月4日查看github地址，仍未公布源代码。 本文中图片权重的分配，损失函数的设计等思路和作者的另一篇<a href="https://arxiv.org/pdf/1905.04075.pdf">RAN原文</a>（已被TIP接受），<a href="http://onwaier.com/?p=265">RAN解读</a>的思路是相似的，建议两篇论文一起食用会更佳。</p>
-<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><ul>
-<li>主要问题</li>
-</ul>
-<p>如图所示，从左到右，表情逐渐不确定，现在的大型数据集存在着一定的标注不确性问题。 <a href="http://onwaier.com/wp-content/uploads/2020/04/59d9c34cb4c666b1de3ecdc613d501d8.png"><img src="http://onwaier.com/wp-content/uploads/2020/04/59d9c34cb4c666b1de3ecdc613d501d8.png" alt=""></a> 1. 标注者的主观性。 一千个读者有一千个哈姆雷特，表情因不同的标注者的主观判断差异性，标注结果可能不同。 2. 表情图片的二义性。 一张表情图片可能包含几种不同的表情，如白夜追凶最后一幕，左半边脸是邪魅一笑，右半边脸是冷静沉稳。所以会有研究者采用多标注者多label的方式来标注一张图片，如<a href="https://github.com/microsoft/FERPlus">FERPlus</a>。 <a href="http://onwaier.com/wp-content/uploads/2020/04/2c592cd6a3cca012013ee77d8529e49d.png"><img src="http://onwaier.com/wp-content/uploads/2020/04/2c592cd6a3cca012013ee77d8529e49d.png" alt=""></a> 3. 遮挡，光照，图片质量问题等因素影响标注结果。</p>
-<ul>
-<li>可能的影响</li>
-</ul>
-<p>noise label会对训练产生以下几种影响：</p>
-<ol>
-<li>过拟合；</li>
-<li>不利于学习有效表情特征；</li>
-<li>高比率的错误标签使模型初期不收敛</li>
-</ol>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>作者提出的SCN(Self-Cure Network)能有效的抑制图片的这种不确定性。</p>
-<ul>
-<li>self attention importance weighting：为batch中的每张图片分配权重</li>
-<li>ranking regularization：按权重降序排列，加强确定，抑制非确定（RR-Loss）</li>
-<li>noise relabeling：尝试将noise label换成伪标签</li>
-</ul>
-<h2 id="网络模型"><a href="#网络模型" class="headerlink" title="网络模型"></a>网络模型</h2><p><a href="http://onwaier.com/wp-content/uploads/2020/04/e9df44d0547fa3f6eddfa8fb50cdc337.png"><img src="http://onwaier.com/wp-content/uploads/2020/04/e9df44d0547fa3f6eddfa8fb50cdc337.png" alt=""></a> 模型大致可以分为三个模块，首先用<code>CNN Backbone</code>提取epoch中每张图片（共有N张）的特征$F_1, F_2, \\cdots, F_{n-1}, F_{n}$.</p>
-<ol>
-<li><p>Self-Attention Importance Weighting Module. 提取的表情特征$F_i$经过全连接层，Sigmoid激活函数可以得到对应的权重$\\alpha_i$。</p>
-</li>
-<li><p>Rank Regularization Module. 将权重降序排列，按比例$\\beta$划分，前$M = N * \\beta$属于确定性区域，后$N - M$张图片属于非确定区域。通过RR-Loss来保证前一组权重的均值$\\alpha_H = \\frac{1}{M}\\sum\\limits_{i = 0}^{M}\\alpha_i$至少要比后一组均值$\\alpha_L = \\frac{1}{N - M}\\sum\\limits_{i = 0}^{N - M}\\alpha_i$ 大于 $\\delta_1$，在RAN中，作者也使用了相同的损失函数设计思路。通过RR-Loss可以加强确定区域，拟制非确定区域。 $L_{RR} = max(0, \\delta_1 - (\\alpha_H - \\alpha_L))$</p>
-</li>
-<li><p>Rabeling Module. 权重经过Re-Weighting后，将表情特征用分类器进行分类（m类）,会得到m个类别的分类概率$P_1, P_2, \\cdots, P_m$。正确类别的概率为$P_{gtInd}$，分类结果的概率为$P_{max}$。作者定义了一个限制关系$P_{max} \\gt P_{gtInd} + \\delta_{2}$，当关系成立，表明这个标签可能是noise label，此时会进行Relabel操作，将原始类别修改为最大分类概率对应的类别。</p>
-</li>
-</ol>
-<h2 id="实验"><a href="#实验" class="headerlink" title="实验"></a>实验</h2><ul>
-<li>权重可视化</li>
-</ul>
-<p><a href="http://onwaier.com/wp-content/uploads/2020/04/237cbd64ed60eedee3042b03919fbb9b.png"><img src="http://onwaier.com/wp-content/uploads/2020/04/237cbd64ed60eedee3042b03919fbb9b.png" alt=""></a> 第一行使用的是RAF-DB中的原始图片进行训练，第二行给原始图片的label加入噪声（修改label），然后用不带relabel的网络训练，我们会发现表情的权重相对原始图片的权重都有所下降，表明模型很好的对错误label的表情权重进行了抑制，第三行是带relabel的网络训练噪声label，可以发现模型对于happy表情的错误label能进行很好的纠正，其它表情也能取得较为接近的纠正效果。</p>
-<ul>
-<li>SCN在合成的噪声数据集上的性能表现</li>
-</ul>
-<p><a href="http://onwaier.com/wp-content/uploads/2020/04/364fb0347035e77b7a767c71c59742f4.png"><img src="http://onwaier.com/wp-content/uploads/2020/04/364fb0347035e77b7a767c71c59742f4.png" alt=""></a> SCN在噪声数据集上的表现要优于其它模型，在RAF-DB上的表现最佳。作者也对这一现象给出了原因，因为RAF-DB的label是由非专业人士标注，相对其它数据集来说，错误的标签更多。</p>
-<ul>
-<li>SCN在各个模块的表现</li>
-</ul>
-<p><a href="http://onwaier.com/wp-content/uploads/2020/04/3c78da4f72c4add9e6112d8489e67a50.png"><img src="http://onwaier.com/wp-content/uploads/2020/04/3c78da4f72c4add9e6112d8489e67a50.png" alt=""></a></p>
-<ul>
-<li>几个超参的评估</li>
-</ul>
-<p><a href="http://onwaier.com/wp-content/uploads/2020/04/84c65727de12e646c8ba7bdf012ceeaf.png"><img src="http://onwaier.com/wp-content/uploads/2020/04/84c65727de12e646c8ba7bdf012ceeaf.png" alt=""></a></p>
-<ul>
-<li>SCN在RAF、AffectNet、FERPlus上的性能表现</li>
-</ul>
-<p><a href="http://onwaier.com/wp-content/uploads/2020/04/c04bb6d341647476adf359ea0f9aa7fd.png"><img src="http://onwaier.com/wp-content/uploads/2020/04/c04bb6d341647476adf359ea0f9aa7fd.png" alt=""></a> 表现的很好，尤其是RAF-DB，达到88.14精度。</p>
-<h2 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h2><p>作者独辟蹊径，不在原有的label上训练（某种程度上数据集已经不再是原来的数据集，比较似乎有点不公平）， 尝试修改错误的label，来提高的训练精度。他的分区域以及损失函数的设计方式都有一定的借鉴意义。</p>
-]]></content>
-      <categories>
-        <category>人脸表情识别</category>
-      </categories>
-      <tags>
-        <tag>表情识别</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>tmux使用教程</title>
-    <url>/2020/06/03/tmux%E4%BD%BF%E7%94%A8%E6%95%99%E7%A8%8B/</url>
-    <content><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a href="https://www.ruanyifeng.com/blog/2019/10/tmux.html">Tmux 使用教程</a></li>
-<li><a href="https://harttle.land/2015/11/06/tmux-startup.html">优雅地使用命令行：Tmux 终端复用</a></li>
-<li><a href="https://www.cnblogs.com/kaiye/p/6275207.html">十分钟学会tmux</a></li>
-<li><a href="http://louiszhai.github.io/2017/09/30/tmux/">Tmux使用手册</a></li>
-</ol>
-]]></content>
-      <categories>
-        <category>工具</category>
-      </categories>
-      <tags>
-        <tag>tmux教程</tag>
-      </tags>
   </entry>
   <entry>
     <title>transforms.ToPILImage(): pic should be Tensor or ndarray</title>
@@ -1511,6 +1401,123 @@
       </categories>
       <tags>
         <tag>cuda</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>vim常见操作</title>
+    <url>/2019/08/20/vim%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/</url>
+    <content><![CDATA[<h1 id="vim简介"><a href="#vim简介" class="headerlink" title="vim简介"></a>vim简介</h1><p>vim是功能强大的文本编辑器，常用于Linux上，作用是用来建立、编辑、显示文件。</p>
+<h1 id="vim的三种工作模式"><a href="#vim的三种工作模式" class="headerlink" title="vim的三种工作模式"></a>vim的三种工作模式</h1><p>vim有三种工作模式：命令模式、插入模式、编辑模式。 <a href="https://i.loli.net/2019/08/20/iaQJuNgVlSF58dP.png" title="vim三种模式转换"><img src="https://i.loli.net/2019/08/20/iaQJuNgVlSF58dP.png" alt="vim三种模式转换" title="vim三种模式转换"></a></p>
+<h1 id="插入命令"><a href="#插入命令" class="headerlink" title="插入命令"></a>插入命令</h1><p>插入命令常见的有a，A，i，I，o，O等</p>
+<p>命令</p>
+<p>作用</p>
+<p>a</p>
+<p>在光标所在字符后插入</p>
+<p>A</p>
+<p>在光标所在行尾插入</p>
+<p>i</p>
+<p>在光标所在字符前插入</p>
+<p>I</p>
+<p>在光标所有行行首插入</p>
+<p>o</p>
+<p>在光标下插入新行</p>
+<p>O</p>
+<p>在光标上插入新行</p>
+<h1 id="定位命令"><a href="#定位命令" class="headerlink" title="定位命令"></a>定位命令</h1><p>命令</p>
+<p>作用</p>
+<p>:set nu</p>
+<p>设置行号</p>
+<p>:set nonu</p>
+<p>取消行号</p>
+<p>gg</p>
+<p>到第一行</p>
+<p>G</p>
+<p>到最后一行</p>
+<p>nG</p>
+<p>到第n行</p>
+<p>:n</p>
+<p>到第n行</p>
+<p>$</p>
+<p>移至行尾</p>
+<p>0</p>
+<p>移到行首</p>
+<h1 id="移动光标命令"><a href="#移动光标命令" class="headerlink" title="移动光标命令"></a>移动光标命令</h1><p>命令</p>
+<p>作用</p>
+<p>h</p>
+<p>光标左移</p>
+<p>l</p>
+<p>光标右移</p>
+<p>j</p>
+<p>光标下移</p>
+<p>k</p>
+<p>光标上移</p>
+<h1 id="删除命令"><a href="#删除命令" class="headerlink" title="删除命令"></a>删除命令</h1><p>命令</p>
+<p>作用</p>
+<p>x</p>
+<p>删除光标所在处字符</p>
+<p>nx</p>
+<p>删除光标所在处后n个字符</p>
+<p>dd</p>
+<p>删除光标所在行，ndd删除n行</p>
+<p>dG</p>
+<p>删除光标所在行到文件末尾内容</p>
+<p>D</p>
+<p>删除光标所在处到行尾的内容</p>
+<p>d0</p>
+<p>删除光标前到行首的内容</p>
+<p>:n1,n2d</p>
+<p>删除指定范围的行</p>
+<h1 id="复制和剪切命令"><a href="#复制和剪切命令" class="headerlink" title="复制和剪切命令"></a>复制和剪切命令</h1><p>命令</p>
+<p>作用</p>
+<p>yy</p>
+<p>复制当前行</p>
+<p>nyy</p>
+<p>复制当前行以下n行</p>
+<p>dd</p>
+<p>剪切当前行</p>
+<p>ndd</p>
+<p>剪切当前行以下n行</p>
+<p>p、P</p>
+<p>粘贴在当前光标所在行下或行上</p>
+<h1 id="替换和取消命令"><a href="#替换和取消命令" class="headerlink" title="替换和取消命令"></a>替换和取消命令</h1><p>命令</p>
+<p>作用</p>
+<p>r</p>
+<p>取消光标所在处的字符</p>
+<p>R</p>
+<p>从光标所在处开始替换字符，按ESC结束</p>
+<p>u</p>
+<p>取消上一步的操作</p>
+<h1 id="搜索和搜索替换命令"><a href="#搜索和搜索替换命令" class="headerlink" title="搜索和搜索替换命令"></a>搜索和搜索替换命令</h1><p>命令</p>
+<p>作用</p>
+<p>/string</p>
+<p>搜索指定字符串，搜索时忽略大小写:set ic</p>
+<p>n</p>
+<p>搜索指定字符串的下一个出现位置</p>
+<p>:%s/old/new/g</p>
+<p>全文替换指定字符串</p>
+<p>:n1，n2s/old/new/g</p>
+<p>在指定范围内替换指定字符串</p>
+<h1 id="保存和退出命令"><a href="#保存和退出命令" class="headerlink" title="保存和退出命令"></a>保存和退出命令</h1><p>命令</p>
+<p>作用</p>
+<p>:w</p>
+<p>保存修改(write)</p>
+<p>:w new_filename</p>
+<p>另存为指定文件</p>
+<p>:wq</p>
+<p>保存修改并退出</p>
+<p>ZZ</p>
+<p>快捷键，保存修改并退出</p>
+<p>:q!</p>
+<p>不保存修改并退出(quit)</p>
+<p>:wq!</p>
+<p>保存修改并退出</p>
+<h1 id="一些使用技巧"><a href="#一些使用技巧" class="headerlink" title="一些使用技巧"></a>一些使用技巧</h1><p>1、导入命令执行结果 :r !命令 2、定义快捷键 :map 快捷键 触发命令 如设置注释快捷键 :map ^P I#<ESC> 按ctrl + p 应可以行首添加”#”进行注释 同样取消注释快捷键可以设为 :map ^B 0x 按ctrl + b 可以删除行首的”#” 3、连续行注释 :n1,n2s/^/#/g 在n1至n2行添加注释 :n1,n2s/^#/g 取消n1 n2行的注释 4、替换 :ab mail onwaier@163.com mail用onwaier@163.com来代替</p>
+]]></content>
+      <categories>
+        <category>工具</category>
+      </categories>
+      <tags>
+        <tag>vim常见操作</tag>
       </tags>
   </entry>
   <entry>
@@ -1876,30 +1883,6 @@
       </tags>
   </entry>
   <entry>
-    <title>计算理论学习笔记（一）</title>
-    <url>/2020/01/05/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<h1 id="确定性有穷自动机（DFA）"><a href="#确定性有穷自动机（DFA）" class="headerlink" title="确定性有穷自动机（DFA）"></a>确定性有穷自动机（DFA）</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/878690a705b21453697f807fbd4dc483.png" alt=""> <strong>注意</strong>：允许没有接受状态，此时接受语言为空集；转移函数对每一个状态和每一个可能的输入都恰好指定了一个状态。 <img src="/images/2020/01/efcfdbecc5e9964a5c1fa943e341af90.png" alt=""> 定义正则运算的并、连结和星号 <img src="/images/2020/01/9fa80a1dc151df38b35818424fd504a3.png" alt=""> <strong>正则运算的并，连结和星号都是封闭的，后面在证明DFA与NFA等价后，会用NFA对其进行证明。</strong></p>
-<h2 id="常见语言的DFA状态图举例"><a href="#常见语言的DFA状态图举例" class="headerlink" title="常见语言的DFA状态图举例"></a>常见语言的DFA状态图举例</h2><p><img src="/images/2020/01/fa79be91ff4b6fdd4589ecffe91fb161.png" alt=""> c题含某子串，首先画出对应的子串，然后再判断其它输入的状态转换即可。 f题不含某个子串，首先画出含某个子串的DFA，然后将接受态转为非接受态，将非接受态转为接受态。这里运用了DFA的补是封闭这一性质。 <img src="/images/2020/01/ad3e56368713da601dd85e71d64e222d.png" alt=""> 对于l这种类型的题即DFA的或和且运算，画图比较麻烦，有时采用横1纵0不失为一种好方法。 对于n的倍数余m，首先画出n个状态围成的圈，然后从起始状态数起，将第m个状态标为接受态即可。对于这道题有个变形。画出长度除以3余2且除以4余1的DFA，这里先用中国剩余定理求出长度规律为$12n+5(n = 0, 1, \cdots,)$也就是画出长度除以12余5的DFA。 注意：DFA一般不能对保证串中字符a与字符b相等，如$a^nb^n$不是正则语言，通过后面学习知道它是上下无关语言。但是它能表示一个很特殊的串，即串中01和10子串个数相等，它等价于串以相同的字符开始和结尾。（可以把01和10想象成波形图中的下升与下降，现在下升段与下降段相等，那么开始与结尾的值一定相等，同为0或同为1），DFA如图。 <img src="/images/2020/01/29068a7acdb87dcdf1b56496331a6eea.png" alt=""></p>
-<h1 id="非确定性有穷自动机（NFA）"><a href="#非确定性有穷自动机（NFA）" class="headerlink" title="非确定性有穷自动机（NFA）"></a>非确定性有穷自动机（NFA）</h1><h2 id="NFA与DFA的不同："><a href="#NFA与DFA的不同：" class="headerlink" title="NFA与DFA的不同："></a>NFA与DFA的不同：</h2><ol>
-<li>一入多出。NFA中一个状态对于每个符号可能有0个，1个或多个转换的箭头。而DFA中每一个状态对于每个符号有唯一的转换箭头（状态转换）</li>
-<li>加入空漂。NFA的输入字符比DFA多了一个$\epsilon$，即空漂。 <img src="/images/2020/01/95117f4eeee2bba84da943ef17f6cc94.png" alt=""></li>
-</ol>
-<h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/1cb1aec89e5040e6a93904c49931dfff.png" alt=""> 与DFA的定义同为五元组，但仍存在一定差异。$\Sigma$中新增了$\epsilon$；$\delta$的映射结果属于状态集的幂集，即一入多出，同一个符号，可能对应多个状态转换。 <strong>注意</strong>：由于NFA加入非确定性，一个输入产生了多条路径，只要求所有路径中至少有一条路径能到达接受状态即可，这点与DFA也有所不同。</p>
-<h2 id="DFA与NFA的等价性。"><a href="#DFA与NFA的等价性。" class="headerlink" title="DFA与NFA的等价性。"></a>DFA与NFA的等价性。</h2><p>首先DFA是特殊的NFA，即一入一出，没有空漂的NFA。 下面主要是将一个NFA转换成与之对应的DFA。 <img src="/images/2020/01/6c3a4698c35776d6a44ad4b6b57f6c8b.png" alt=""> 已知$DFA\space A = \lbrace Q,\Sigma, \delta, q_0, F\rbrace$，现在要构造出一台与之对应的$NFA\space B = \lbrace Q^{\prime},\Sigma^{\prime}, \delta^{\prime}, q_0^{\prime}, F^{\prime}\rbrace$ 首先原来的DFA有n个状态，那NFA有$2^n$个状态（即状态的组合）$Q^{\prime} = \lbrace Q_{00\dots0}, Q_{10\dots0},\cdots,Q_{11\dots1}\rbrace$，$\Sigma^{\prime}$很简单就为$\lbrace0,1\rbrace$，$\delta^{\prime}$要随$Q^{\prime}$相应的改变，多个状态经过相同的输入的结果要进行位与，最后接受态$F^{\prime}$含有$2^{n-1}$即只是含$q_1$即可（第一个二进制位为1）。这样就构造出一台DFA与NFA对应。 即证DFA与NFA是等价的。</p>
-<h2 id="NFA证正则语言的并、连接、星号运算为封闭的。"><a href="#NFA证正则语言的并、连接、星号运算为封闭的。" class="headerlink" title="NFA证正则语言的并、连接、星号运算为封闭的。"></a>NFA证正则语言的并、连接、星号运算为封闭的。</h2><p><img src="/images/2020/01/22d15579c085b4a803186360f11cc93a.png" alt=""> 证明并运算，加入一个新的起始态，然后空漂到两台DFA的接受态即可。连接运算，将$M_1$中接受态全转为非接受态，然后将其空漂到$M_2$的起始态。星号运算，首先加入一个新的起始态（也是接受态）空漂到$M_1$的起始态，然后再将$M_1$的所有接受态空漂到新加入的起始态即可。</p>
-<h1 id="正则表达式（RE）"><a href="#正则表达式（RE）" class="headerlink" title="正则表达式（RE）"></a>正则表达式（RE）</h1><h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/6bf0bbee71b49e5b3e24fd143ad13560.png" alt=""></p>
-<h2 id="NFA转成RE"><a href="#NFA转成RE" class="headerlink" title="NFA转成RE"></a>NFA转成RE</h2><p><img src="/images/2020/01/bae061a56828c388645128e653d0df68.png" alt=""> 利用法则：用力拉首尾，拓扑变形，以星换圈，以并换多路，逐步减少内态。最后得到就是RE。具体可以参考书上46页的2张图。</p>
-<h2 id="RE转成NFA"><a href="#RE转成NFA" class="headerlink" title="RE转成NFA"></a>RE转成NFA</h2><p><img src="/images/2020/01/6d163ac352353f47faa97bd101ba5c0f.png" alt=""> 从最小的子表达式到大一点的子表达式逐步建立，直到获得关于原始表达式的NFA. 所以NFA与RE是等价的.</p>
-<h2 id="DFA-NFA与RE三者的关系"><a href="#DFA-NFA与RE三者的关系" class="headerlink" title="DFA,NFA与RE三者的关系"></a>DFA,NFA与RE三者的关系</h2><p>三者关系如图所求. <img src="/images/2020/01/d5a73102ce0660dbe2e80562b76fe39a.png" alt=""></p>
-<h1 id="泵引理"><a href="#泵引理" class="headerlink" title="泵引理"></a>泵引理</h1><h2 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/0d3d366fbbf4546abf9f8f9d6df06bff.png" alt=""></p>
-<h2 id="应用泵引理证明非正则语言"><a href="#应用泵引理证明非正则语言" class="headerlink" title="应用泵引理证明非正则语言"></a>应用泵引理证明非正则语言</h2><p>上述定义是一个正则语言的必要不充分条件，即如果一个语言是正则语言，则它一定满足泵引理。如果不满足泵引理，一定不是正则语言。 注意： 1. 泵引理只能用来证明非正则语言，不能证正则语言。 2. 泵引理只能将“相等”抽成“不等”，“是”抽成“不是”，不能反过来。可能先利用正则语言的交，并，补运算是封闭的，先进行转换。 下面是一些例子 <img src="/images/2020/01/f06c63f84809d8e892c27bc12b8e6b99.png" alt=""> <img src="/images/2020/01/0fa714b908171c1a30e23b9c3037280c.png" alt=""> 另外证明$1^{n^2}$或者$1^{2^p}$这种形式语言，可以在序列中相邻两串长度间隔在不能增大作文章，因为长度间隔的离散性，一定不能满足任意抽取均能满足原语言。</p>
-<h1 id="笔记教材及答案"><a href="#笔记教材及答案" class="headerlink" title="笔记教材及答案"></a>笔记教材及答案</h1><p><a href="https://github.com/Onwaier/TheoryOfComputation">github地址</a></p>
-]]></content>
-      <categories>
-        <category>计算理论学习笔记</category>
-      </categories>
-  </entry>
-  <entry>
     <title>第十八次CCF计算机软件能力认证总结与经验分享</title>
     <url>/2019/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E6%AC%A1ccf%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BD%AF%E4%BB%B6%E8%83%BD%E5%8A%9B%E8%AE%A4%E8%AF%81%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93%E4%B8%8E%E7%BB%8F%E9%AA%8C%E5%88%86/</url>
     <content><![CDATA[<h2 id="成绩"><a href="#成绩" class="headerlink" title="成绩"></a>成绩</h2><p>首先晒一下成绩。 <img src="https://img-blog.csdnimg.cn/2019121620505333.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9vbndhaWVyLmJsb2cuY3Nkbi5uZXQ=,size_16,color_FFFFFF,t_70" alt="成绩"> 成绩单 <img src="/images/uploads/2019/12/c0f821c46377bbd42f81edda936af279.png" alt="成绩单"></p>
@@ -1936,6 +1919,30 @@
       </tags>
   </entry>
   <entry>
+    <title>计算理论学习笔记（一）</title>
+    <url>/2020/01/05/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="确定性有穷自动机（DFA）"><a href="#确定性有穷自动机（DFA）" class="headerlink" title="确定性有穷自动机（DFA）"></a>确定性有穷自动机（DFA）</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/878690a705b21453697f807fbd4dc483.png" alt=""> <strong>注意</strong>：允许没有接受状态，此时接受语言为空集；转移函数对每一个状态和每一个可能的输入都恰好指定了一个状态。 <img src="/images/2020/01/efcfdbecc5e9964a5c1fa943e341af90.png" alt=""> 定义正则运算的并、连结和星号 <img src="/images/2020/01/9fa80a1dc151df38b35818424fd504a3.png" alt=""> <strong>正则运算的并，连结和星号都是封闭的，后面在证明DFA与NFA等价后，会用NFA对其进行证明。</strong></p>
+<h2 id="常见语言的DFA状态图举例"><a href="#常见语言的DFA状态图举例" class="headerlink" title="常见语言的DFA状态图举例"></a>常见语言的DFA状态图举例</h2><p><img src="/images/2020/01/fa79be91ff4b6fdd4589ecffe91fb161.png" alt=""> c题含某子串，首先画出对应的子串，然后再判断其它输入的状态转换即可。 f题不含某个子串，首先画出含某个子串的DFA，然后将接受态转为非接受态，将非接受态转为接受态。这里运用了DFA的补是封闭这一性质。 <img src="/images/2020/01/ad3e56368713da601dd85e71d64e222d.png" alt=""> 对于l这种类型的题即DFA的或和且运算，画图比较麻烦，有时采用横1纵0不失为一种好方法。 对于n的倍数余m，首先画出n个状态围成的圈，然后从起始状态数起，将第m个状态标为接受态即可。对于这道题有个变形。画出长度除以3余2且除以4余1的DFA，这里先用中国剩余定理求出长度规律为$12n+5(n = 0, 1, \cdots,)$也就是画出长度除以12余5的DFA。 注意：DFA一般不能对保证串中字符a与字符b相等，如$a^nb^n$不是正则语言，通过后面学习知道它是上下无关语言。但是它能表示一个很特殊的串，即串中01和10子串个数相等，它等价于串以相同的字符开始和结尾。（可以把01和10想象成波形图中的下升与下降，现在下升段与下降段相等，那么开始与结尾的值一定相等，同为0或同为1），DFA如图。 <img src="/images/2020/01/29068a7acdb87dcdf1b56496331a6eea.png" alt=""></p>
+<h1 id="非确定性有穷自动机（NFA）"><a href="#非确定性有穷自动机（NFA）" class="headerlink" title="非确定性有穷自动机（NFA）"></a>非确定性有穷自动机（NFA）</h1><h2 id="NFA与DFA的不同："><a href="#NFA与DFA的不同：" class="headerlink" title="NFA与DFA的不同："></a>NFA与DFA的不同：</h2><ol>
+<li>一入多出。NFA中一个状态对于每个符号可能有0个，1个或多个转换的箭头。而DFA中每一个状态对于每个符号有唯一的转换箭头（状态转换）</li>
+<li>加入空漂。NFA的输入字符比DFA多了一个$\epsilon$，即空漂。 <img src="/images/2020/01/95117f4eeee2bba84da943ef17f6cc94.png" alt=""></li>
+</ol>
+<h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/1cb1aec89e5040e6a93904c49931dfff.png" alt=""> 与DFA的定义同为五元组，但仍存在一定差异。$\Sigma$中新增了$\epsilon$；$\delta$的映射结果属于状态集的幂集，即一入多出，同一个符号，可能对应多个状态转换。 <strong>注意</strong>：由于NFA加入非确定性，一个输入产生了多条路径，只要求所有路径中至少有一条路径能到达接受状态即可，这点与DFA也有所不同。</p>
+<h2 id="DFA与NFA的等价性。"><a href="#DFA与NFA的等价性。" class="headerlink" title="DFA与NFA的等价性。"></a>DFA与NFA的等价性。</h2><p>首先DFA是特殊的NFA，即一入一出，没有空漂的NFA。 下面主要是将一个NFA转换成与之对应的DFA。 <img src="/images/2020/01/6c3a4698c35776d6a44ad4b6b57f6c8b.png" alt=""> 已知$DFA\space A = \lbrace Q,\Sigma, \delta, q_0, F\rbrace$，现在要构造出一台与之对应的$NFA\space B = \lbrace Q^{\prime},\Sigma^{\prime}, \delta^{\prime}, q_0^{\prime}, F^{\prime}\rbrace$ 首先原来的DFA有n个状态，那NFA有$2^n$个状态（即状态的组合）$Q^{\prime} = \lbrace Q_{00\dots0}, Q_{10\dots0},\cdots,Q_{11\dots1}\rbrace$，$\Sigma^{\prime}$很简单就为$\lbrace0,1\rbrace$，$\delta^{\prime}$要随$Q^{\prime}$相应的改变，多个状态经过相同的输入的结果要进行位与，最后接受态$F^{\prime}$含有$2^{n-1}$即只是含$q_1$即可（第一个二进制位为1）。这样就构造出一台DFA与NFA对应。 即证DFA与NFA是等价的。</p>
+<h2 id="NFA证正则语言的并、连接、星号运算为封闭的。"><a href="#NFA证正则语言的并、连接、星号运算为封闭的。" class="headerlink" title="NFA证正则语言的并、连接、星号运算为封闭的。"></a>NFA证正则语言的并、连接、星号运算为封闭的。</h2><p><img src="/images/2020/01/22d15579c085b4a803186360f11cc93a.png" alt=""> 证明并运算，加入一个新的起始态，然后空漂到两台DFA的接受态即可。连接运算，将$M_1$中接受态全转为非接受态，然后将其空漂到$M_2$的起始态。星号运算，首先加入一个新的起始态（也是接受态）空漂到$M_1$的起始态，然后再将$M_1$的所有接受态空漂到新加入的起始态即可。</p>
+<h1 id="正则表达式（RE）"><a href="#正则表达式（RE）" class="headerlink" title="正则表达式（RE）"></a>正则表达式（RE）</h1><h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/6bf0bbee71b49e5b3e24fd143ad13560.png" alt=""></p>
+<h2 id="NFA转成RE"><a href="#NFA转成RE" class="headerlink" title="NFA转成RE"></a>NFA转成RE</h2><p><img src="/images/2020/01/bae061a56828c388645128e653d0df68.png" alt=""> 利用法则：用力拉首尾，拓扑变形，以星换圈，以并换多路，逐步减少内态。最后得到就是RE。具体可以参考书上46页的2张图。</p>
+<h2 id="RE转成NFA"><a href="#RE转成NFA" class="headerlink" title="RE转成NFA"></a>RE转成NFA</h2><p><img src="/images/2020/01/6d163ac352353f47faa97bd101ba5c0f.png" alt=""> 从最小的子表达式到大一点的子表达式逐步建立，直到获得关于原始表达式的NFA. 所以NFA与RE是等价的.</p>
+<h2 id="DFA-NFA与RE三者的关系"><a href="#DFA-NFA与RE三者的关系" class="headerlink" title="DFA,NFA与RE三者的关系"></a>DFA,NFA与RE三者的关系</h2><p>三者关系如图所求. <img src="/images/2020/01/d5a73102ce0660dbe2e80562b76fe39a.png" alt=""></p>
+<h1 id="泵引理"><a href="#泵引理" class="headerlink" title="泵引理"></a>泵引理</h1><h2 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/0d3d366fbbf4546abf9f8f9d6df06bff.png" alt=""></p>
+<h2 id="应用泵引理证明非正则语言"><a href="#应用泵引理证明非正则语言" class="headerlink" title="应用泵引理证明非正则语言"></a>应用泵引理证明非正则语言</h2><p>上述定义是一个正则语言的必要不充分条件，即如果一个语言是正则语言，则它一定满足泵引理。如果不满足泵引理，一定不是正则语言。 注意： 1. 泵引理只能用来证明非正则语言，不能证正则语言。 2. 泵引理只能将“相等”抽成“不等”，“是”抽成“不是”，不能反过来。可能先利用正则语言的交，并，补运算是封闭的，先进行转换。 下面是一些例子 <img src="/images/2020/01/f06c63f84809d8e892c27bc12b8e6b99.png" alt=""> <img src="/images/2020/01/0fa714b908171c1a30e23b9c3037280c.png" alt=""> 另外证明$1^{n^2}$或者$1^{2^p}$这种形式语言，可以在序列中相邻两串长度间隔在不能增大作文章，因为长度间隔的离散性，一定不能满足任意抽取均能满足原语言。</p>
+<h1 id="笔记教材及答案"><a href="#笔记教材及答案" class="headerlink" title="笔记教材及答案"></a>笔记教材及答案</h1><p><a href="https://github.com/Onwaier/TheoryOfComputation">github地址</a></p>
+]]></content>
+      <categories>
+        <category>计算理论学习笔记</category>
+      </categories>
+  </entry>
+  <entry>
     <title>计算理论学习笔记（三）</title>
     <url>/2020/01/05/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%89%EF%BC%89/</url>
     <content><![CDATA[<h1 id="图灵机-TM"><a href="#图灵机-TM" class="headerlink" title="图灵机(TM)"></a>图灵机(TM)</h1><p>有穷自动机与图灵机区别：图灵机在带子上能写能读；读写头即能左移也能右移；带子无限长；进入拒绝和接受状态立即停机。</p>
@@ -1947,71 +1954,6 @@
       <categories>
         <category>计算理论学习笔记</category>
       </categories>
-  </entry>
-  <entry>
-    <title>计算理论学习笔记（二）</title>
-    <url>/2020/01/05/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<h1 id="上下文无关文法-CFG"><a href="#上下文无关文法-CFG" class="headerlink" title="上下文无关文法(CFG)"></a>上下文无关文法(CFG)</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/ec257bf072e5678d3f6e4e49fbcc7bcf.png" alt=""> 前面提到的$0^n1^n$可以用上下文无关文法表示如下： $S\rarr 0S1\vert \epsilon$.</p>
-<h2 id="设计CFG"><a href="#设计CFG" class="headerlink" title="设计CFG"></a>设计CFG</h2><p>CFG的设计很难对于多个简单CFG的合并或者语言本身是DFA都较容易设计。 <img src="/images/2020/01/efc4fed579db23874d4f6a61d77117cc.png" alt=""> <img src="/images/2020/01/d8977a48297675283310766f00739b48.png" alt=""> 有些很难的CFG是在一些基础的CFG上发展来的，所以需要记住一些常见的CFG的形式。 一些常见的CFG表示如图所求. <img src="/images/2020/01/a30d0f4e459ef5364c6b02104c40e7f4.png" alt=""></p>
-<h2 id="乔姆斯基范式"><a href="#乔姆斯基范式" class="headerlink" title="乔姆斯基范式"></a>乔姆斯基范式</h2><p><img src="/images/2020/01/2471ecfff792ec2c259800fadd94198f.png" alt=""> 乔姆斯基范式有两个特点：一分为二；终级化. 将任意一个上下文无关文法转为乔姆斯基范式的步骤如下： 1. 引入新的起始变元 2. 删除$\epsilon$规则，相同的只替换一次，不循环替换 3. 去掉单一规则 4. 添加终结符规则 5. 添加新变元，使得所有变量规则都是一分为二 具体可参考65页的例3.7. 乔姆斯基范式有一个很重要的性质，在后面证$A_{CFG}$图灵可判定及多项式时间内判定某个串是否可以派生，都要用到乔姆斯基范式。因为乔姆斯基范式派生任何长为n的串，只需要$2n-1$步。 <img src="/images/2020/01/a283c02416ef3c6ba21f9dea11b28e4e.png" alt=""> 证明如图所求。 <img src="/images/2020/01/7e2620b45e8f33f0bd0eb1295dcc0a2b.png" alt=""></p>
-<h1 id="下推自动机-PDA"><a href="#下推自动机-PDA" class="headerlink" title="下推自动机(PDA)"></a>下推自动机(PDA)</h1><p>下推自动机相比NFA多了一个栈（可以压入与弹出）。可以进行简单的串的数量的统计。</p>
-<h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/72116a19c4f42dbd25530a15cfcc1937.png" alt=""></p>
-<h2 id="常见的PDA"><a href="#常见的PDA" class="headerlink" title="常见的PDA"></a>常见的PDA</h2><p><img src="/images/2020/01/10a80d8fe531ce2a135c691b59eecef1.png" alt=""> <img src="/images/2020/01/7387be5de7a97d0c1d6f426efed369b1.png" alt=""> <img src="/images/2020/01/2edb78074b80d4843fe9fc4b8e787df1.png" alt=""></p>
-<h1 id="泵引理"><a href="#泵引理" class="headerlink" title="泵引理"></a>泵引理</h1><p>与正则语言相同，上下文无关语言也有泵引理。</p>
-<h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/32fd48d550914efeb1887ab76861d0d8.png" alt=""></p>
-<h2 id="用泵引理证明非上下文无关语言"><a href="#用泵引理证明非上下文无关语言" class="headerlink" title="用泵引理证明非上下文无关语言"></a>用泵引理证明非上下文无关语言</h2><p><img src="/images/2020/01/1b2af2cdb4799406121220c0eddb5ca4.png" alt=""> “抽进”+“抽出” <img src="/images/2020/01/9f33594a5c9eeca7e7b7eac42401b0f6.png" alt=""> <strong>注意</strong>：上下文 无关语言对并运算是封闭的，而对交，补，差都不是封闭的.</p>
-<h1 id="笔记教材及答案"><a href="#笔记教材及答案" class="headerlink" title="笔记教材及答案"></a>笔记教材及答案</h1><p><a href="https://github.com/Onwaier/TheoryOfComputation">github地址</a></p>
-]]></content>
-      <categories>
-        <category>计算理论学习笔记</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>调试运行ns2 lab22.tcl中遇到的问题</title>
-    <url>/2019/12/01/%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8Cns2-lab22-tcl%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>需要用到threshold来计算不同的无线传输模型的传输矩离，但使用gcc编译过程中出错。 首先进入ns文件夹下的<code>indep-utils/propagation</code>，我的路径是<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/indep-utils/propagation</code> 编辑命令为<code>g++ -lm threshold.cc -o threshold</code></p>
-<h2 id="错误1-报错”threshold-cc-56-22-fatal-error-iostream-h-没有那个文件或目录”"><a href="#错误1-报错”threshold-cc-56-22-fatal-error-iostream-h-没有那个文件或目录”" class="headerlink" title="错误1 报错”threshold.cc:56:22: fatal error: iostream.h: 没有那个文件或目录”"></a>错误1 报错”threshold.cc:56:22: fatal error: iostream.h: 没有那个文件或目录”</h2><p>找到<code>#include&lt;iostream.h&gt;</code>这一行，把<code>#include&lt;iostream.h&gt;</code>修改为<code>#include&lt;iostream&gt;</code>,并添加命令空间std，代码为<code>using namespace std;</code> 编译再次出现新的错误</p>
-<h2 id="错误2-报错”threshold-cc-211-30-error-‘strcmp’-was-not-declared-in-this-scope”"><a href="#错误2-报错”threshold-cc-211-30-error-‘strcmp’-was-not-declared-in-this-scope”" class="headerlink" title="错误2 报错”threshold.cc:211:30: error: ‘strcmp’ was not declared in this scope”"></a>错误2 报错”threshold.cc:211:30: error: ‘strcmp’ was not declared in this scope”</h2><p><code>strcmp</code>函数是关于字符串的操作，头文件为<code>#include&lt;string.h&gt;</code>，而文件中并未包含，加入<code>#include&lt;string.h&gt;</code>一行。 再次编译，没有报错，编译成功。 以Two Ray Ground，希望有效的传输距离为250m为例。 输入命令<code>./threshold -m TwoRayGround 250</code> 运行结果如图所示。 <img src="https://img-blog.csdnimg.cn/20191201154059892.png" alt="运行结果"> 执行命令<code>ns test_2nodes.tcl</code>出错，</p>
-<h2 id="错误3-报错”invalid-command-name-“Agent-mUDP””"><a href="#错误3-报错”invalid-command-name-“Agent-mUDP””" class="headerlink" title="错误3 报错”invalid command name “Agent/mUDP””"></a>错误3 报错”invalid command name “Agent/mUDP””</h2><p>查询发现<strong>mUDP,mUdpSink,mTcpsink是NS2中没有的，是后来人写的。所以要使用此功能必须自行加入。</strong>下载mUDP, mUdpSink的文件，要下载的有下列几个文件 mudp.cc、mudp.h、mudpsink.cc、mudpsink.h。下载地址为:<a href="https://pan.baidu.com/s/1y8HluXPEQVDm8O8Ei34nNQ">百度网盘</a>，提取码为<code>65j6</code>。<a href="http://onwaier.com:7777/share/oywQUpGI">个人网盘</a>。 具体如何添加参照<a href="https://www.cnblogs.com/helloWaston/p/4549735.html">博客1</a>和<a href="http://blog.sina.com.cn/s/blog_4bb73ce80100m18r.html">博客2</a> 下面以我的路径（ns在<code>/home/onwaier</code>）来说明配置过程 1. 在<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35</code>目录下新建文件夹，添加刚才下载的文件<code>mtcpsink.cc</code>、<code>mtcpsink.h</code>、<code>mudp.cc</code>、<code>mudp.h</code>、<code>mudpsink.cc</code>、<code>mudpsink.h</code>。 2. 修改<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/common/packet.h</code>，在<code>struct hdr_cmn&#123;&#125;</code>中添加以下代码</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> frametype_; <span class="comment">//added by smallko</span></span><br><span class="line"><span class="type">double</span>  sendtime_;  <span class="comment">// added by smallko</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> pkt_id_; <span class="comment">// added by smallko</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> frame_pkt_id_; <span class="comment">//added by smallko</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>修改<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/Makefile</code>,找到<code>OBJ_CC</code>这一行， 在其下行添加代码<code>measure/mtcpsink.o measure/mudp.o measure/mudpsink.o \</code>。注意Makefile对于语法要求很高，不能有空行或多余的空格。</li>
-<li>修改<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/tcl/lib/ns-default.tcl</code>，找到<code>Delayer set debug_ false</code>这一行，在其下一行添加<code>Agent/mUDP set packetSize_ 1000</code>。</li>
-<li>执行命令<code>./configure --with-tcl-ver=8.5;make clean;make</code> 出现新的错误。</li>
-</ol>
-<h2 id="错误4-报错”cannot-call-constructor-mUdpAgent-UdpAgent’-directly-fpermissive-“"><a href="#错误4-报错”cannot-call-constructor-mUdpAgent-UdpAgent’-directly-fpermissive-“" class="headerlink" title="错误4 报错”cannot call constructor mUdpAgent::UdpAgent’ directly [-fpermissive]“"></a>错误4 报错”cannot call constructor mUdpAgent::UdpAgent’ directly [-fpermissive]“</h2><ol>
-<li>在makefile中加入以下<code>CCOPT = -Wall -Wno-write-strings -fpermissive</code></li>
-<li>修改<code>measure/mudp.cc</code> 将代码</li>
-</ol>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">mUdpAgent::<span class="built_in">mUdpAgent</span>() : <span class="built_in">id_</span>(<span class="number">0</span>), <span class="built_in">openfile</span>(<span class="number">0</span>)  </span><br><span class="line">&#123;  </span><br><span class="line">        <span class="built_in">bind</span>(<span class="string">&quot;packetSize_&quot;</span>, &amp;size_);  </span><br><span class="line">       UdpAgent::<span class="built_in">UdpAgent</span>();  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-<p>改为</p>
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">mUdpAgent::<span class="built_in">mUdpAgent</span>() :<span class="built_in">UdpAgent</span>(), <span class="built_in">id_</span>(<span class="number">0</span>), <span class="built_in">openfile</span>(<span class="number">0</span>)  </span><br><span class="line">&#123;  </span><br><span class="line">        <span class="built_in">bind</span>(<span class="string">&quot;packetSize_&quot;</span>, &amp;size_);  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-<p>重新编译，运行通过。 但仍有上述问题<code>invalid command name &quot;Agent/mUDP&quot;</code> 尝试进入目录<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35</code>，执行<code>./install</code>，然后进入目录<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35</code>执行<code>sudo make install</code>。 再次执行命令<code>ns test_2nodes.tcl</code>，运行结果为： <img src="https://img-blog.csdnimg.cn/2019120121585676.png" alt="执行结果"></p>
-]]></content>
-      <categories>
-        <category>ns</category>
-      </categories>
-      <tags>
-        <tag>ns2</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>释放GPU资源</title>
-    <url>/2020/03/17/%E9%87%8A%E6%94%BEgpu%E8%B5%84%E6%BA%90/</url>
-    <content><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a href="https://blog.csdn.net/u013241583/article/details/90174967">linux GPU查询和空闲时自动抢占脚本</a></li>
-<li><a href="https://ptorch.com/news/161.html">pytorc使用后正确释放GPU内存以及检测GPU使用情况</a></li>
-<li><a href="https://blog.csdn.net/liangdong2014/article/details/78860661">GPU 命令行释放内存</a></li>
-</ol>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>一大早起来，看看实验室的服务器有没有空闲的GPU，仍被占的满满的，太难了。想着自己总不能这样一直盯着吧，能不能写个脚本自动检测空闲GPU并占用呢？于是查到<a href="https://blog.csdn.net/u013241583/article/details/90174967">资料1</a>，按照上面的提示，用命令<code>pip install gpustat</code>，安装了<code>gpustat</code>。然后在服务器上执行一下<code>gpustat</code>，发生了一件诡异的事。 <a href="/images/2020/03/4bddccd1896b50a72044d1fb5789393b.png"><img src="/images/2020/03/4bddccd1896b50a72044d1fb5789393b.png" alt=""></a> 第4块GPU的GPU显存占用了10066M，<code>GPU-Util Compute</code>却是0%（原来是0%，释放内存后恢复正常，这里对图片进行了修改）。昨天晚上我有一个在第4块GPU运行的程序异常退出，然后再次运行，发现GPU内存不够，当时以为有人跑了其它程序。现在看看，可能是主程序退出，子线程没有及时释放GPU资源，导致内存泄漏。</p>
-<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>参照[资料3]，先使用命令<code>fuser -v /dev/nvidia*</code>查找占用GPU资源的PID，然后用<code>kill -9 PID</code>杀死程序，再用<code>nvidia-smi</code>发现资源已经成功释放了。</p>
-]]></content>
-      <categories>
-        <category>pytorch</category>
-      </categories>
-      <tags>
-        <tag>pytorch</tag>
-      </tags>
   </entry>
   <entry>
     <title>非root用户编译安装GCC</title>
@@ -2060,120 +2002,68 @@
       </tags>
   </entry>
   <entry>
-    <title>vim常见操作</title>
-    <url>/2019/08/20/vim%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C/</url>
-    <content><![CDATA[<h1 id="vim简介"><a href="#vim简介" class="headerlink" title="vim简介"></a>vim简介</h1><p>vim是功能强大的文本编辑器，常用于Linux上，作用是用来建立、编辑、显示文件。</p>
-<h1 id="vim的三种工作模式"><a href="#vim的三种工作模式" class="headerlink" title="vim的三种工作模式"></a>vim的三种工作模式</h1><p>vim有三种工作模式：命令模式、插入模式、编辑模式。 <a href="https://i.loli.net/2019/08/20/iaQJuNgVlSF58dP.png" title="vim三种模式转换"><img src="https://i.loli.net/2019/08/20/iaQJuNgVlSF58dP.png" alt="vim三种模式转换" title="vim三种模式转换"></a></p>
-<h1 id="插入命令"><a href="#插入命令" class="headerlink" title="插入命令"></a>插入命令</h1><p>插入命令常见的有a，A，i，I，o，O等</p>
-<p>命令</p>
-<p>作用</p>
-<p>a</p>
-<p>在光标所在字符后插入</p>
-<p>A</p>
-<p>在光标所在行尾插入</p>
-<p>i</p>
-<p>在光标所在字符前插入</p>
-<p>I</p>
-<p>在光标所有行行首插入</p>
-<p>o</p>
-<p>在光标下插入新行</p>
-<p>O</p>
-<p>在光标上插入新行</p>
-<h1 id="定位命令"><a href="#定位命令" class="headerlink" title="定位命令"></a>定位命令</h1><p>命令</p>
-<p>作用</p>
-<p>:set nu</p>
-<p>设置行号</p>
-<p>:set nonu</p>
-<p>取消行号</p>
-<p>gg</p>
-<p>到第一行</p>
-<p>G</p>
-<p>到最后一行</p>
-<p>nG</p>
-<p>到第n行</p>
-<p>:n</p>
-<p>到第n行</p>
-<p>$</p>
-<p>移至行尾</p>
-<p>0</p>
-<p>移到行首</p>
-<h1 id="移动光标命令"><a href="#移动光标命令" class="headerlink" title="移动光标命令"></a>移动光标命令</h1><p>命令</p>
-<p>作用</p>
-<p>h</p>
-<p>光标左移</p>
-<p>l</p>
-<p>光标右移</p>
-<p>j</p>
-<p>光标下移</p>
-<p>k</p>
-<p>光标上移</p>
-<h1 id="删除命令"><a href="#删除命令" class="headerlink" title="删除命令"></a>删除命令</h1><p>命令</p>
-<p>作用</p>
-<p>x</p>
-<p>删除光标所在处字符</p>
-<p>nx</p>
-<p>删除光标所在处后n个字符</p>
-<p>dd</p>
-<p>删除光标所在行，ndd删除n行</p>
-<p>dG</p>
-<p>删除光标所在行到文件末尾内容</p>
-<p>D</p>
-<p>删除光标所在处到行尾的内容</p>
-<p>d0</p>
-<p>删除光标前到行首的内容</p>
-<p>:n1,n2d</p>
-<p>删除指定范围的行</p>
-<h1 id="复制和剪切命令"><a href="#复制和剪切命令" class="headerlink" title="复制和剪切命令"></a>复制和剪切命令</h1><p>命令</p>
-<p>作用</p>
-<p>yy</p>
-<p>复制当前行</p>
-<p>nyy</p>
-<p>复制当前行以下n行</p>
-<p>dd</p>
-<p>剪切当前行</p>
-<p>ndd</p>
-<p>剪切当前行以下n行</p>
-<p>p、P</p>
-<p>粘贴在当前光标所在行下或行上</p>
-<h1 id="替换和取消命令"><a href="#替换和取消命令" class="headerlink" title="替换和取消命令"></a>替换和取消命令</h1><p>命令</p>
-<p>作用</p>
-<p>r</p>
-<p>取消光标所在处的字符</p>
-<p>R</p>
-<p>从光标所在处开始替换字符，按ESC结束</p>
-<p>u</p>
-<p>取消上一步的操作</p>
-<h1 id="搜索和搜索替换命令"><a href="#搜索和搜索替换命令" class="headerlink" title="搜索和搜索替换命令"></a>搜索和搜索替换命令</h1><p>命令</p>
-<p>作用</p>
-<p>/string</p>
-<p>搜索指定字符串，搜索时忽略大小写:set ic</p>
-<p>n</p>
-<p>搜索指定字符串的下一个出现位置</p>
-<p>:%s/old/new/g</p>
-<p>全文替换指定字符串</p>
-<p>:n1，n2s/old/new/g</p>
-<p>在指定范围内替换指定字符串</p>
-<h1 id="保存和退出命令"><a href="#保存和退出命令" class="headerlink" title="保存和退出命令"></a>保存和退出命令</h1><p>命令</p>
-<p>作用</p>
-<p>:w</p>
-<p>保存修改(write)</p>
-<p>:w new_filename</p>
-<p>另存为指定文件</p>
-<p>:wq</p>
-<p>保存修改并退出</p>
-<p>ZZ</p>
-<p>快捷键，保存修改并退出</p>
-<p>:q!</p>
-<p>不保存修改并退出(quit)</p>
-<p>:wq!</p>
-<p>保存修改并退出</p>
-<h1 id="一些使用技巧"><a href="#一些使用技巧" class="headerlink" title="一些使用技巧"></a>一些使用技巧</h1><p>1、导入命令执行结果 :r !命令 2、定义快捷键 :map 快捷键 触发命令 如设置注释快捷键 :map ^P I#<ESC> 按ctrl + p 应可以行首添加”#”进行注释 同样取消注释快捷键可以设为 :map ^B 0x 按ctrl + b 可以删除行首的”#” 3、连续行注释 :n1,n2s/^/#/g 在n1至n2行添加注释 :n1,n2s/^#/g 取消n1 n2行的注释 4、替换 :ab mail onwaier@163.com mail用onwaier@163.com来代替</p>
+    <title>计算理论学习笔记（二）</title>
+    <url>/2020/01/05/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<h1 id="上下文无关文法-CFG"><a href="#上下文无关文法-CFG" class="headerlink" title="上下文无关文法(CFG)"></a>上下文无关文法(CFG)</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/ec257bf072e5678d3f6e4e49fbcc7bcf.png" alt=""> 前面提到的$0^n1^n$可以用上下文无关文法表示如下： $S\rarr 0S1\vert \epsilon$.</p>
+<h2 id="设计CFG"><a href="#设计CFG" class="headerlink" title="设计CFG"></a>设计CFG</h2><p>CFG的设计很难对于多个简单CFG的合并或者语言本身是DFA都较容易设计。 <img src="/images/2020/01/efc4fed579db23874d4f6a61d77117cc.png" alt=""> <img src="/images/2020/01/d8977a48297675283310766f00739b48.png" alt=""> 有些很难的CFG是在一些基础的CFG上发展来的，所以需要记住一些常见的CFG的形式。 一些常见的CFG表示如图所求. <img src="/images/2020/01/a30d0f4e459ef5364c6b02104c40e7f4.png" alt=""></p>
+<h2 id="乔姆斯基范式"><a href="#乔姆斯基范式" class="headerlink" title="乔姆斯基范式"></a>乔姆斯基范式</h2><p><img src="/images/2020/01/2471ecfff792ec2c259800fadd94198f.png" alt=""> 乔姆斯基范式有两个特点：一分为二；终级化. 将任意一个上下文无关文法转为乔姆斯基范式的步骤如下： 1. 引入新的起始变元 2. 删除$\epsilon$规则，相同的只替换一次，不循环替换 3. 去掉单一规则 4. 添加终结符规则 5. 添加新变元，使得所有变量规则都是一分为二 具体可参考65页的例3.7. 乔姆斯基范式有一个很重要的性质，在后面证$A_{CFG}$图灵可判定及多项式时间内判定某个串是否可以派生，都要用到乔姆斯基范式。因为乔姆斯基范式派生任何长为n的串，只需要$2n-1$步。 <img src="/images/2020/01/a283c02416ef3c6ba21f9dea11b28e4e.png" alt=""> 证明如图所求。 <img src="/images/2020/01/7e2620b45e8f33f0bd0eb1295dcc0a2b.png" alt=""></p>
+<h1 id="下推自动机-PDA"><a href="#下推自动机-PDA" class="headerlink" title="下推自动机(PDA)"></a>下推自动机(PDA)</h1><p>下推自动机相比NFA多了一个栈（可以压入与弹出）。可以进行简单的串的数量的统计。</p>
+<h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/72116a19c4f42dbd25530a15cfcc1937.png" alt=""></p>
+<h2 id="常见的PDA"><a href="#常见的PDA" class="headerlink" title="常见的PDA"></a>常见的PDA</h2><p><img src="/images/2020/01/10a80d8fe531ce2a135c691b59eecef1.png" alt=""> <img src="/images/2020/01/7387be5de7a97d0c1d6f426efed369b1.png" alt=""> <img src="/images/2020/01/2edb78074b80d4843fe9fc4b8e787df1.png" alt=""></p>
+<h1 id="泵引理"><a href="#泵引理" class="headerlink" title="泵引理"></a>泵引理</h1><p>与正则语言相同，上下文无关语言也有泵引理。</p>
+<h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/32fd48d550914efeb1887ab76861d0d8.png" alt=""></p>
+<h2 id="用泵引理证明非上下文无关语言"><a href="#用泵引理证明非上下文无关语言" class="headerlink" title="用泵引理证明非上下文无关语言"></a>用泵引理证明非上下文无关语言</h2><p><img src="/images/2020/01/1b2af2cdb4799406121220c0eddb5ca4.png" alt=""> “抽进”+“抽出” <img src="/images/2020/01/9f33594a5c9eeca7e7b7eac42401b0f6.png" alt=""> <strong>注意</strong>：上下文 无关语言对并运算是封闭的，而对交，补，差都不是封闭的.</p>
+<h1 id="笔记教材及答案"><a href="#笔记教材及答案" class="headerlink" title="笔记教材及答案"></a>笔记教材及答案</h1><p><a href="https://github.com/Onwaier/TheoryOfComputation">github地址</a></p>
 ]]></content>
       <categories>
-        <category>工具</category>
+        <category>计算理论学习笔记</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>释放GPU资源</title>
+    <url>/2020/03/17/%E9%87%8A%E6%94%BEgpu%E8%B5%84%E6%BA%90/</url>
+    <content><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://blog.csdn.net/u013241583/article/details/90174967">linux GPU查询和空闲时自动抢占脚本</a></li>
+<li><a href="https://ptorch.com/news/161.html">pytorc使用后正确释放GPU内存以及检测GPU使用情况</a></li>
+<li><a href="https://blog.csdn.net/liangdong2014/article/details/78860661">GPU 命令行释放内存</a></li>
+</ol>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>一大早起来，看看实验室的服务器有没有空闲的GPU，仍被占的满满的，太难了。想着自己总不能这样一直盯着吧，能不能写个脚本自动检测空闲GPU并占用呢？于是查到<a href="https://blog.csdn.net/u013241583/article/details/90174967">资料1</a>，按照上面的提示，用命令<code>pip install gpustat</code>，安装了<code>gpustat</code>。然后在服务器上执行一下<code>gpustat</code>，发生了一件诡异的事。 <a href="/images/2020/03/4bddccd1896b50a72044d1fb5789393b.png"><img src="/images/2020/03/4bddccd1896b50a72044d1fb5789393b.png" alt=""></a> 第4块GPU的GPU显存占用了10066M，<code>GPU-Util Compute</code>却是0%（原来是0%，释放内存后恢复正常，这里对图片进行了修改）。昨天晚上我有一个在第4块GPU运行的程序异常退出，然后再次运行，发现GPU内存不够，当时以为有人跑了其它程序。现在看看，可能是主程序退出，子线程没有及时释放GPU资源，导致内存泄漏。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>参照[资料3]，先使用命令<code>fuser -v /dev/nvidia*</code>查找占用GPU资源的PID，然后用<code>kill -9 PID</code>杀死程序，再用<code>nvidia-smi</code>发现资源已经成功释放了。</p>
+]]></content>
+      <categories>
+        <category>pytorch</category>
       </categories>
       <tags>
-        <tag>vim常见操作</tag>
+        <tag>pytorch</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>调试运行ns2 lab22.tcl中遇到的问题</title>
+    <url>/2019/12/01/%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8Cns2-lab22-tcl%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<p>需要用到threshold来计算不同的无线传输模型的传输矩离，但使用gcc编译过程中出错。 首先进入ns文件夹下的<code>indep-utils/propagation</code>，我的路径是<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/indep-utils/propagation</code> 编辑命令为<code>g++ -lm threshold.cc -o threshold</code></p>
+<h2 id="错误1-报错”threshold-cc-56-22-fatal-error-iostream-h-没有那个文件或目录”"><a href="#错误1-报错”threshold-cc-56-22-fatal-error-iostream-h-没有那个文件或目录”" class="headerlink" title="错误1 报错”threshold.cc:56:22: fatal error: iostream.h: 没有那个文件或目录”"></a>错误1 报错”threshold.cc:56:22: fatal error: iostream.h: 没有那个文件或目录”</h2><p>找到<code>#include&lt;iostream.h&gt;</code>这一行，把<code>#include&lt;iostream.h&gt;</code>修改为<code>#include&lt;iostream&gt;</code>,并添加命令空间std，代码为<code>using namespace std;</code> 编译再次出现新的错误</p>
+<h2 id="错误2-报错”threshold-cc-211-30-error-‘strcmp’-was-not-declared-in-this-scope”"><a href="#错误2-报错”threshold-cc-211-30-error-‘strcmp’-was-not-declared-in-this-scope”" class="headerlink" title="错误2 报错”threshold.cc:211:30: error: ‘strcmp’ was not declared in this scope”"></a>错误2 报错”threshold.cc:211:30: error: ‘strcmp’ was not declared in this scope”</h2><p><code>strcmp</code>函数是关于字符串的操作，头文件为<code>#include&lt;string.h&gt;</code>，而文件中并未包含，加入<code>#include&lt;string.h&gt;</code>一行。 再次编译，没有报错，编译成功。 以Two Ray Ground，希望有效的传输距离为250m为例。 输入命令<code>./threshold -m TwoRayGround 250</code> 运行结果如图所示。 <img src="https://img-blog.csdnimg.cn/20191201154059892.png" alt="运行结果"> 执行命令<code>ns test_2nodes.tcl</code>出错，</p>
+<h2 id="错误3-报错”invalid-command-name-“Agent-mUDP””"><a href="#错误3-报错”invalid-command-name-“Agent-mUDP””" class="headerlink" title="错误3 报错”invalid command name “Agent/mUDP””"></a>错误3 报错”invalid command name “Agent/mUDP””</h2><p>查询发现<strong>mUDP,mUdpSink,mTcpsink是NS2中没有的，是后来人写的。所以要使用此功能必须自行加入。</strong>下载mUDP, mUdpSink的文件，要下载的有下列几个文件 mudp.cc、mudp.h、mudpsink.cc、mudpsink.h。下载地址为:<a href="https://pan.baidu.com/s/1y8HluXPEQVDm8O8Ei34nNQ">百度网盘</a>，提取码为<code>65j6</code>。<a href="http://onwaier.com:7777/share/oywQUpGI">个人网盘</a>。 具体如何添加参照<a href="https://www.cnblogs.com/helloWaston/p/4549735.html">博客1</a>和<a href="http://blog.sina.com.cn/s/blog_4bb73ce80100m18r.html">博客2</a> 下面以我的路径（ns在<code>/home/onwaier</code>）来说明配置过程 1. 在<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35</code>目录下新建文件夹，添加刚才下载的文件<code>mtcpsink.cc</code>、<code>mtcpsink.h</code>、<code>mudp.cc</code>、<code>mudp.h</code>、<code>mudpsink.cc</code>、<code>mudpsink.h</code>。 2. 修改<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/common/packet.h</code>，在<code>struct hdr_cmn&#123;&#125;</code>中添加以下代码</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="type">int</span> frametype_; <span class="comment">//added by smallko</span></span><br><span class="line"><span class="type">double</span>  sendtime_;  <span class="comment">// added by smallko</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> pkt_id_; <span class="comment">// added by smallko</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> frame_pkt_id_; <span class="comment">//added by smallko</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>修改<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/Makefile</code>,找到<code>OBJ_CC</code>这一行， 在其下行添加代码<code>measure/mtcpsink.o measure/mudp.o measure/mudpsink.o \</code>。注意Makefile对于语法要求很高，不能有空行或多余的空格。</li>
+<li>修改<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/tcl/lib/ns-default.tcl</code>，找到<code>Delayer set debug_ false</code>这一行，在其下一行添加<code>Agent/mUDP set packetSize_ 1000</code>。</li>
+<li>执行命令<code>./configure --with-tcl-ver=8.5;make clean;make</code> 出现新的错误。</li>
+</ol>
+<h2 id="错误4-报错”cannot-call-constructor-mUdpAgent-UdpAgent’-directly-fpermissive-“"><a href="#错误4-报错”cannot-call-constructor-mUdpAgent-UdpAgent’-directly-fpermissive-“" class="headerlink" title="错误4 报错”cannot call constructor mUdpAgent::UdpAgent’ directly [-fpermissive]“"></a>错误4 报错”cannot call constructor mUdpAgent::UdpAgent’ directly [-fpermissive]“</h2><ol>
+<li>在makefile中加入以下<code>CCOPT = -Wall -Wno-write-strings -fpermissive</code></li>
+<li>修改<code>measure/mudp.cc</code> 将代码</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">mUdpAgent::<span class="built_in">mUdpAgent</span>() : <span class="built_in">id_</span>(<span class="number">0</span>), <span class="built_in">openfile</span>(<span class="number">0</span>)  </span><br><span class="line">&#123;  </span><br><span class="line">        <span class="built_in">bind</span>(<span class="string">&quot;packetSize_&quot;</span>, &amp;size_);  </span><br><span class="line">       UdpAgent::<span class="built_in">UdpAgent</span>();  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<p>改为</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line">mUdpAgent::<span class="built_in">mUdpAgent</span>() :<span class="built_in">UdpAgent</span>(), <span class="built_in">id_</span>(<span class="number">0</span>), <span class="built_in">openfile</span>(<span class="number">0</span>)  </span><br><span class="line">&#123;  </span><br><span class="line">        <span class="built_in">bind</span>(<span class="string">&quot;packetSize_&quot;</span>, &amp;size_);  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<p>重新编译，运行通过。 但仍有上述问题<code>invalid command name &quot;Agent/mUDP&quot;</code> 尝试进入目录<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35</code>，执行<code>./install</code>，然后进入目录<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35</code>执行<code>sudo make install</code>。 再次执行命令<code>ns test_2nodes.tcl</code>，运行结果为： <img src="https://img-blog.csdnimg.cn/2019120121585676.png" alt="执行结果"></p>
+]]></content>
+      <categories>
+        <category>ns</category>
+      </categories>
+      <tags>
+        <tag>ns2</tag>
       </tags>
   </entry>
 </search>
