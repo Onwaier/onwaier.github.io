@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="成绩首先晒一下成绩。  成绩单  认证经历这是第二次参加CCF认证，第一次是在大四的时候，部分考研的同学需要用CCF的成绩作为考研复试机试成绩，找班主任（也是院长）请假去其它学校参加考试。院长一听，就去了解一下CCF认证，觉得还不错，就向那边将我们学校申请为CCF考点，但是一次CCF考试的报名的人数需要达到一定人数才能进行，然后就出现了下面戏剧性的一幕：院长要求XX，XX和XX几个专业的所有大四学">
+<meta property="og:type" content="website">
+<meta property="og:title" content="第十八次CCF计算机软件能力认证总结与经验分享">
+<meta property="og:url" content="http://example.com/2019/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E6%AC%A1ccf%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BD%AF%E4%BB%B6%E8%83%BD%E5%8A%9B%E8%AE%A4%E8%AF%81%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93%E4%B8%8E%E7%BB%8F%E9%AA%8C%E5%88%86/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="成绩首先晒一下成绩。  成绩单  认证经历这是第二次参加CCF认证，第一次是在大四的时候，部分考研的同学需要用CCF的成绩作为考研复试机试成绩，找班主任（也是院长）请假去其它学校参加考试。院长一听，就去了解一下CCF认证，觉得还不错，就向那边将我们学校申请为CCF考点，但是一次CCF考试的报名的人数需要达到一定人数才能进行，然后就出现了下面戏剧性的一幕：院长要求XX，XX和XX几个专业的所有大四学">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019121620505333.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9vbndhaWVyLmJsb2cuY3Nkbi5uZXQ=,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="http://example.com/images/uploads/2019/12/c0f821c46377bbd42f81edda936af279.png">
+<meta property="article:published_time" content="2019-12-16T16:08:53.000Z">
+<meta property="article:modified_time" content="2022-02-13T05:54:10.436Z">
+<meta property="article:author" content="Onwaier">
+<meta property="article:tag" content="CCF">
+<meta property="article:tag" content="杂谈">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/2019121620505333.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9vbndhaWVyLmJsb2cuY3Nkbi5uZXQ=,size_16,color_FFFFFF,t_70">
+
+
+<link rel="canonical" href="http://example.com/2019/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E6%AC%A1ccf%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BD%AF%E4%BB%B6%E8%83%BD%E5%8A%9B%E8%AE%A4%E8%AF%81%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93%E4%B8%8E%E7%BB%8F%E9%AA%8C%E5%88%86/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2019/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E6%AC%A1ccf%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BD%AF%E4%BB%B6%E8%83%BD%E5%8A%9B%E8%AE%A4%E8%AF%81%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93%E4%B8%8E%E7%BB%8F%E9%AA%8C%E5%88%86/","path":"2019/12/17/第十八次ccf计算机软件能力认证赛后总结与经验分/","title":"第十八次CCF计算机软件能力认证总结与经验分享"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>第十八次CCF计算机软件能力认证总结与经验分享 | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%88%90%E7%BB%A9"><span class="nav-number">1.</span> <span class="nav-text">成绩</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A4%E8%AF%81%E7%BB%8F%E5%8E%86"><span class="nav-number">2.</span> <span class="nav-text">认证经历</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#201912-1%E6%8A%A5%E6%95%B0-%E9%A2%98%E8%A7%A3"><span class="nav-number">2.1.</span> <span class="nav-text">201912-1报数 题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#201912-1%E6%8A%A5%E6%95%B0-%E8%80%83%E8%AF%95%E6%97%B6%E4%BB%A3%E7%A0%81%EF%BC%88100%E5%88%86%EF%BC%89"><span class="nav-number">2.2.</span> <span class="nav-text">201912-1报数 考试时代码（100分）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#201912-2%E5%9B%9E%E6%94%B6%E7%AB%99%E9%80%89%E5%9D%80-%E9%A2%98%E8%A7%A3"><span class="nav-number">2.3.</span> <span class="nav-text">201912-2回收站选址 题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#201912-2%E5%9B%9E%E6%94%B6%E7%AB%99%E9%80%89%E5%9D%80-%E8%80%83%E8%AF%95%E6%97%B6%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%88100%E5%88%86%EF%BC%89"><span class="nav-number">2.4.</span> <span class="nav-text">201912-2回收站选址 考试时的代码（100分）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#201912-4%E5%8C%BA%E5%9D%97%E9%93%BE-%E9%A2%98%E8%A7%A3"><span class="nav-number">2.5.</span> <span class="nav-text">201912-4区块链 题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#201912-4%E5%8C%BA%E5%9D%97%E9%93%BE-%E8%80%83%E8%AF%95%E6%97%B6%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%8870%E5%88%86%EF%BC%89"><span class="nav-number">2.6.</span> <span class="nav-text">201912-4区块链 考试时的代码（70分）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#201912-3%E5%8C%96%E5%AD%A6%E6%96%B9%E7%A8%8B%E5%BC%8F-%E9%A2%98%E8%A7%A3"><span class="nav-number">2.7.</span> <span class="nav-text">201912-3化学方程式 题解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#201912-3%E5%8C%96%E5%AD%A6%E6%96%B9%E7%A8%8B%E5%BC%8F-%E8%80%83%E8%AF%95%E6%97%B6%E7%9A%84%E4%BB%A3%E7%A0%81%EF%BC%8860%E5%88%86%EF%BC%89"><span class="nav-number">2.8.</span> <span class="nav-text">201912-3化学方程式 考试时的代码（60分）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%8D%E6%80%9D"><span class="nav-number">3.</span> <span class="nav-text">反思</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB"><span class="nav-number">4.</span> <span class="nav-text">经验分享</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E6%AC%A1ccf%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BD%AF%E4%BB%B6%E8%83%BD%E5%8A%9B%E8%AE%A4%E8%AF%81%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93%E4%B8%8E%E7%BB%8F%E9%AA%8C%E5%88%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          第十八次CCF计算机软件能力认证总结与经验分享
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-12-17 00:08:53" itemprop="dateCreated datePublished" datetime="2019-12-17T00:08:53+08:00">2019-12-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 13:54:10" itemprop="dateModified" datetime="2022-02-13T13:54:10+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%9D%82%E8%B0%88/" itemprop="url" rel="index"><span itemprop="name">杂谈</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E6%AC%A1ccf%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BD%AF%E4%BB%B6%E8%83%BD%E5%8A%9B%E8%AE%A4%E8%AF%81%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93%E4%B8%8E%E7%BB%8F%E9%AA%8C%E5%88%86/" class="post-meta-item leancloud_visitors" data-flag-title="第十八次CCF计算机软件能力认证总结与经验分享" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/12/17/%E7%AC%AC%E5%8D%81%E5%85%AB%E6%AC%A1ccf%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%BD%AF%E4%BB%B6%E8%83%BD%E5%8A%9B%E8%AE%A4%E8%AF%81%E8%B5%9B%E5%90%8E%E6%80%BB%E7%BB%93%E4%B8%8E%E7%BB%8F%E9%AA%8C%E5%88%86/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/17/第十八次ccf计算机软件能力认证赛后总结与经验分/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="成绩"><a href="#成绩" class="headerlink" title="成绩"></a>成绩</h2><p>首先晒一下成绩。 <img src="https://img-blog.csdnimg.cn/2019121620505333.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9vbndhaWVyLmJsb2cuY3Nkbi5uZXQ=,size_16,color_FFFFFF,t_70" alt="成绩"> 成绩单 <img src="/images/uploads/2019/12/c0f821c46377bbd42f81edda936af279.png" alt="成绩单"></p>
+<h2 id="认证经历"><a href="#认证经历" class="headerlink" title="认证经历"></a>认证经历</h2><p>这是第二次参加CCF认证，第一次是在大四的时候，部分考研的同学需要用CCF的成绩作为考研复试机试成绩，找班主任（也是院长）请假去其它学校参加考试。院长一听，就去了解一下CCF认证，觉得还不错，就向那边将我们学校申请为CCF考点，但是一次CCF考试的报名的人数需要达到一定人数才能进行，然后就出现了下面戏剧性的一幕：院长要求XX，XX和XX几个专业的所有大四学生必须参加第16次的CCF考试，并且免报名费，学院出钱。我就这样参加了CCF的考试。第一次参加CCF考试，经验不足。虽然平时有刷天梯赛和蓝桥杯的题目，但是两者的出题思路及考查点不太一样，特别是CCF第3题的题目长度在蓝桥杯和天梯赛基本见不到。并且第16次认证的题目比往年难多了，第2题求中缀表达式的值，这是栈的常见的应用，当时比较执拗，想的是如何用栈将中缀表达式转成后缀表达式，然后再用栈对后缀表达式的值，在这道题上花费了太长时间，到了最后才选择暴力的方法，看了第3题和第4题的题目，选择做了第4题，与进程死锁有关。当时很快有了模拟的思路，写完时间也差不多了，赛后第4题得了80分还不错。但是第1题却破天荒的错了，后来分析错误原因：用了g%的格式控制符。但最后提交只得了一点分，所以，这里需要提醒各位的是，考试建议使用常用的写法，有一些写法不同的编译器不一定能通过。总的来说，第一次认证考试体验感不是很好，题目长（3 4题都很大，并且涉及专业知识看了比较难受）并且题目有些问题，中途组委会通知改的。考试时采用的策略也不够明智，在第2道上花费太长时间，很大一部分时间是想着如何用常规解法去解题，而忽略了快捷的暴力解法。 周日参加的第二次CCF认证考试，题意很好理解。很快把1、2和4题做出来了（大概花了一个半小时），这里大概说一下解题思路。</p>
+<h3 id="201912-1报数-题解"><a href="#201912-1报数-题解" class="headerlink" title="201912-1报数 题解"></a>201912-1报数 题解</h3><p>题目大意是4个人轮流报数从1开始，遇到7的倍数或含7的数就跳过。题目输入是n表示的4个人总共报的数（不含跳过的数）。 思路很简单：模拟用idx表示当前报数人的编号，num表示当前报的数，i计数（不含路过的数）。如果当前数是7的倍数或含7的数，则idx跳过的数加1，然后i不变。反之，idx跳过的数不变，i+1。</p>
+<h3 id="201912-1报数-考试时代码（100分）"><a href="#201912-1报数-考试时代码（100分）" class="headerlink" title="201912-1报数 考试时代码（100分）"></a>201912-1报数 考试时代码（100分）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">judge</span><span class="params">(<span class="type">int</span> num)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(num % <span class="number">7</span> == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> tmp = num;</span><br><span class="line">    <span class="keyword">while</span>(tmp)&#123;</span><br><span class="line">        <span class="keyword">if</span>(tmp % <span class="number">10</span> == <span class="number">7</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        tmp = tmp / <span class="number">10</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//  freopen(&quot;D://a.txt&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="type">int</span> n, cnt[<span class="number">4</span>], num = <span class="number">0</span>, idx = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">memset</span>(cnt, <span class="number">0</span>, <span class="built_in">sizeof</span>(cnt));</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n;)&#123;</span><br><span class="line">        ++num;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">judge</span>(num))&#123;</span><br><span class="line">            ++cnt[idx];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            ++i;</span><br><span class="line">        &#125;</span><br><span class="line">        idx = (idx + <span class="number">1</span>) % <span class="number">4</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, cnt[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="201912-2回收站选址-题解"><a href="#201912-2回收站选址-题解" class="headerlink" title="201912-2回收站选址 题解"></a>201912-2回收站选址 题解</h3><p>题目大意：先给所有垃圾堆的坐标，然后从这些垃圾堆中选出回收站，回收站需满足：首先上下左右必须都是垃圾堆，然后4个对角的垃圾堆的个数表示该回收站的分数。最后需要统计的是得分为0， 1， 2， 3， 4回收站的个数。 思路：首先选用map对所有垃圾堆的坐标进行标记（因为垃圾堆的坐标可能为负值，用int数组不能直接标记，除非用哈希函数映射），并用vector存下所有垃圾堆的坐标。然后遍历vector中按题目给出的要求判断即可。注意这里vector中的元素和map的键都是pair类型。</p>
+<h3 id="201912-2回收站选址-考试时的代码（100分）"><a href="#201912-2回收站选址-考试时的代码（100分）" class="headerlink" title="201912-2回收站选址 考试时的代码（100分）"></a>201912-2回收站选址 考试时的代码（100分）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">map&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;, <span class="type">bool</span>&gt;myMap;</span><br><span class="line">vector&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;&gt;vec;</span><br><span class="line"><span class="type">int</span> dir[<span class="number">4</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">-1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">-1</span>&#125;&#125;;</span><br><span class="line"><span class="type">int</span> dir2[<span class="number">4</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">-1</span>, <span class="number">-1</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">-1</span>&#125;&#125;;</span><br><span class="line"><span class="type">int</span> cnt[<span class="number">5</span>];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//  freopen(&quot;D://a.txt&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="type">int</span> n, x, y, nx, ny;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    myMap.<span class="built_in">clear</span>();</span><br><span class="line">    vec.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="built_in">memset</span>(cnt, <span class="number">0</span>, <span class="built_in">sizeof</span>(cnt));</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;x, &amp;y);</span><br><span class="line">        vec.<span class="built_in">push_back</span>(<span class="built_in">make_pair</span>(x, y));</span><br><span class="line">        myMap[<span class="built_in">make_pair</span>(x, y)] = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i= <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">        x = vec[i].first;</span><br><span class="line">        y = vec[i].second;</span><br><span class="line">        <span class="type">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">        <span class="type">int</span> num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i)&#123;</span><br><span class="line">            nx = x + dir[i][<span class="number">0</span>];</span><br><span class="line">            ny = y + dir[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span>(myMap.<span class="built_in">find</span>(<span class="built_in">make_pair</span>(nx, ny)) == myMap.<span class="built_in">end</span>())&#123;</span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i)&#123;</span><br><span class="line">                nx = x + dir2[i][<span class="number">0</span>];</span><br><span class="line">                ny = y + dir2[i][<span class="number">1</span>];</span><br><span class="line">                <span class="keyword">if</span>(myMap.<span class="built_in">find</span>(<span class="built_in">make_pair</span>(nx, ny)) != myMap.<span class="built_in">end</span>())&#123;</span><br><span class="line">                    ++num;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            cnt[num]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; ++i)&#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">&quot;%d\n&quot;</span>, cnt[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="201912-4区块链-题解"><a href="#201912-4区块链-题解" class="headerlink" title="201912-4区块链 题解"></a>201912-4区块链 题解</h3><p>我的理解是：首先根据题意可以建图，然后图中的每个结点都维持了一条链，每个结点初始时，链上都有一个编号为0的初始块。然后有两个操作：查询操作和更新操作。在进行查询操作和更新操作都需要检查在此之前，是否存在其它节点的更新操作的信息传过来，如果有的话，则需要判断传播节点的主链$l_1$与当前节点的主链$l_2$关系，$l_1$的长度大于$l_2$的长度，直接令$l_2$ = $l_1$。如果$len(l_1)=len(l_2)$且$l_1$的最后一个元素的值小于$l_2$的最后一个值，则令$l_2$ = $l_1$。注意，一旦结点维持的主链的信息更新，就需要将其传播给相邻节点（存在传播时长）。我考试的时侯是用一个队列来维持这个传播的更新信息，存储的元素包含节点值，信息到达节点的时刻，主链三个信息。我估计可能是数据太大的时候，队列可能会内存超限。</p>
+<h3 id="201912-4区块链-考试时的代码（70分）"><a href="#201912-4区块链-考试时的代码（70分）" class="headerlink" title="201912-4区块链 考试时的代码（70分）"></a>201912-4区块链 考试时的代码（70分）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span>&#123;</span><br><span class="line">    <span class="type">int</span> time;</span><br><span class="line">    <span class="type">int</span> u;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;vec;</span><br><span class="line">&#125;;</span><br><span class="line">queue&lt;Node&gt;que;</span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;<span class="built_in">gra</span>(<span class="number">505</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;());</span><br><span class="line">vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;<span class="built_in">block</span>(<span class="number">505</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;());</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">toNum</span><span class="params">(string s, vector&lt;<span class="type">int</span>&gt;&amp; res)</span></span>&#123;</span><br><span class="line">    res.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="type">int</span> num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">isdigit</span>(s[i]))&#123;</span><br><span class="line">            num = num * <span class="number">10</span> + s[i] - <span class="string">&#x27;0&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            res.<span class="built_in">push_back</span>(num);</span><br><span class="line">            num = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(num != <span class="number">0</span>)</span><br><span class="line">        res.<span class="built_in">push_back</span>(num);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//  freopen(&quot;D://a.txt&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="type">int</span> n, m, t, k;</span><br><span class="line">    <span class="type">int</span> u, v, a, b, c;</span><br><span class="line">    string s;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;res;</span><br><span class="line">    <span class="keyword">while</span>(!que.<span class="built_in">empty</span>())&#123;</span><br><span class="line">        que.<span class="built_in">pop</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    gra.<span class="built_in">clear</span>();</span><br><span class="line">    block.<span class="built_in">clear</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">505</span>; ++i)&#123;</span><br><span class="line">        block[i].<span class="built_in">push_back</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>,&amp;n, &amp;m);</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; ++i)&#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;u, &amp;v);</span><br><span class="line">        gra[u].<span class="built_in">push_back</span>(v);</span><br><span class="line">        gra[v].<span class="built_in">push_back</span>(u);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d%d&quot;</span>, &amp;t, &amp;k);</span><br><span class="line">    <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; k; ++i)&#123;</span><br><span class="line">        <span class="built_in">getline</span>(cin, s);</span><br><span class="line">        <span class="built_in">toNum</span>(s, res);</span><br><span class="line">        <span class="keyword">while</span>(!que.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            Node frt = que.<span class="built_in">front</span>();</span><br><span class="line">            <span class="keyword">if</span>(frt.time &lt;= res[<span class="number">1</span>])&#123;</span><br><span class="line">                que.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="type">int</span> u = frt.u, v;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; gra[u].<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">                    v = gra[u][i];</span><br><span class="line">                    <span class="keyword">if</span>(block[v].<span class="built_in">size</span>() &lt; frt.vec.<span class="built_in">size</span>())&#123;</span><br><span class="line">                        block[v] = frt.vec;</span><br><span class="line">                        Node tmp;</span><br><span class="line">                        tmp.time = frt.time + t;</span><br><span class="line">                        tmp.u = v;</span><br><span class="line">                        tmp.vec = block[v];</span><br><span class="line">                        que.<span class="built_in">push</span>(tmp);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span>(block[v].<span class="built_in">size</span>() == frt.vec.<span class="built_in">size</span>())&#123;</span><br><span class="line">                        <span class="keyword">if</span>(block[v].<span class="built_in">back</span>() &gt; frt.vec.<span class="built_in">back</span>())&#123;</span><br><span class="line">                            block[v] = frt.vec;</span><br><span class="line">                            Node tmp;</span><br><span class="line">                            tmp.time = frt.time + t;</span><br><span class="line">                            tmp.u = v;</span><br><span class="line">                            tmp.vec = block[v];</span><br><span class="line">                            que.<span class="built_in">push</span>(tmp);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(res.<span class="built_in">size</span>() == <span class="number">3</span>)&#123;<span class="comment">//update</span></span><br><span class="line">            block[res[<span class="number">0</span>]].<span class="built_in">push_back</span>(res[<span class="number">2</span>]);</span><br><span class="line">            Node tmp;</span><br><span class="line">            tmp.time = res[<span class="number">1</span>] + t;</span><br><span class="line">            tmp.u = res[<span class="number">0</span>];</span><br><span class="line">            tmp.vec = block[res[<span class="number">0</span>]];</span><br><span class="line">            que.<span class="built_in">push</span>(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="type">int</span> u = res[<span class="number">0</span>];</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;%d&quot;</span>, block[u].<span class="built_in">size</span>());</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; block[u].<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot; %d&quot;</span>, block[u][i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="201912-3化学方程式-题解"><a href="#201912-3化学方程式-题解" class="headerlink" title="201912-3化学方程式 题解"></a>201912-3化学方程式 题解</h3><p>题目大意：化学方程式配平，检查两边的元素是否相等。 考试只考虑了60%的测试用例，带括号的一直调试不通（其实也算不上调试，我的调试有问题，只能用printf慢慢输出了）。具体见代码，过60%很容易。</p>
+<h3 id="201912-3化学方程式-考试时的代码（60分）"><a href="#201912-3化学方程式-考试时的代码（60分）" class="headerlink" title="201912-3化学方程式 考试时的代码（60分）"></a>201912-3化学方程式 考试时的代码（60分）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line">map&lt;string, <span class="type">int</span>&gt;myMap1, myMap2;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">deal</span><span class="params">(string s, map&lt;string, <span class="type">int</span>&gt;&amp; myMap)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> num = <span class="number">1</span>, len = s.<span class="built_in">size</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; s.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="built_in">isdigit</span>(s[i]))&#123;</span><br><span class="line">            num = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">while</span>(<span class="built_in">isdigit</span>(s[i]))&#123;</span><br><span class="line">                num = num * <span class="number">10</span> + (s[i] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            --i;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(<span class="built_in">isupper</span>(s[i]))&#123;</span><br><span class="line">            string tmp;</span><br><span class="line">            <span class="type">int</span> sum = num;</span><br><span class="line">            tmp.<span class="built_in">push_back</span>(s[i]);</span><br><span class="line">            <span class="keyword">if</span>(i &lt; len - <span class="number">1</span> &amp;&amp; <span class="built_in">islower</span>(s[i + <span class="number">1</span>]))&#123;</span><br><span class="line">                ++i;</span><br><span class="line">                tmp.<span class="built_in">push_back</span>(s[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i &lt; len - <span class="number">1</span> &amp;&amp; <span class="built_in">isdigit</span>(s[i + <span class="number">1</span>]))&#123;</span><br><span class="line">                <span class="type">int</span> tmpNum = <span class="number">0</span>;</span><br><span class="line">                ++i;</span><br><span class="line">                <span class="keyword">while</span>(i &lt; len &amp;&amp; <span class="built_in">isdigit</span>(s[i]))&#123;</span><br><span class="line">                    tmpNum = tmpNum * <span class="number">10</span> + (s[i] - <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">                    ++i;</span><br><span class="line">                &#125;</span><br><span class="line">                --i;</span><br><span class="line">                sum = sum * tmpNum;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(myMap.<span class="built_in">find</span>(tmp) != myMap.<span class="built_in">end</span>())&#123;</span><br><span class="line">                myMap[tmp] = myMap[tmp] + sum;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                myMap[tmp] = sum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">cal</span><span class="params">(string s, map&lt;string, <span class="type">int</span>&gt;&amp; myMap)</span></span>&#123;</span><br><span class="line">    <span class="type">int</span> idx = <span class="number">0</span>, tmp;</span><br><span class="line">    string str;</span><br><span class="line">    <span class="keyword">while</span>((tmp = s.<span class="built_in">find</span>(<span class="string">&#x27;+&#x27;</span>, idx)) != <span class="number">-1</span>)&#123;</span><br><span class="line">        str = s.<span class="built_in">substr</span>(idx, tmp - idx);</span><br><span class="line">        <span class="built_in">deal</span>(str, myMap);</span><br><span class="line">        idx = tmp + <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    str = s.<span class="built_in">substr</span>(idx);</span><br><span class="line">    <span class="built_in">deal</span>(str, myMap);</span><br><span class="line"><span class="comment">//  for(auto iter = myMap.begin(); iter != myMap.end();++iter)&#123;</span></span><br><span class="line"><span class="comment">//      cout &lt;&lt; iter-&gt;first &lt;&lt; &quot;:&quot; &lt;&lt; iter-&gt;second&lt;&lt;endl;   </span></span><br><span class="line"><span class="comment">//  &#125;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="comment">//  freopen(&quot;D://a.txt&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    string s;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>, &amp;n);</span><br><span class="line">    <span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">        <span class="built_in">getline</span>(cin, s);</span><br><span class="line">        <span class="type">int</span> idx = s.<span class="built_in">find</span>(<span class="string">&#x27;=&#x27;</span>);</span><br><span class="line">        string str1 = s.<span class="built_in">substr</span>(<span class="number">0</span>, idx);</span><br><span class="line">        string str2 = s.<span class="built_in">substr</span>(idx+<span class="number">1</span>);</span><br><span class="line">        myMap1.<span class="built_in">clear</span>();</span><br><span class="line">        myMap2.<span class="built_in">clear</span>();</span><br><span class="line">        <span class="built_in">cal</span>(str1, myMap1);</span><br><span class="line">        <span class="built_in">cal</span>(str2, myMap2);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(myMap1.<span class="built_in">size</span>() != myMap2.<span class="built_in">size</span>())&#123;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">&quot;N\n&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="type">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> iter1 = myMap1.<span class="built_in">begin</span>(), iter2 = myMap2.<span class="built_in">begin</span>(); iter1 != myMap1.<span class="built_in">end</span>() &amp;&amp; iter2 != myMap2.<span class="built_in">end</span>(); ++iter1, ++iter2)&#123;</span><br><span class="line"><span class="comment">//              cout &lt;&lt; iter1-&gt;first &lt;&lt; &quot;:&quot; &lt;&lt; iter1-&gt;second&lt;&lt;endl;</span></span><br><span class="line"><span class="comment">//              cout &lt;&lt; iter2-&gt;first &lt;&lt; &quot;:&quot; &lt;&lt; iter2-&gt;second&lt;&lt;endl;</span></span><br><span class="line">                <span class="keyword">if</span>(iter1-&gt;first != iter2-&gt;first  iter1-&gt;second != iter2-&gt;second)&#123;</span><br><span class="line">                    flag = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;Y\n&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">&quot;N\n&quot;</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这次在第3题仍然采用不太明智的策略，则开始就考虑了多重括号嵌套的情况，然后代码写了很长时间，真的很长时间，因为一直没有理清思路。后来写完了，运行一直有问题，排错很长时间无效，最后又只能放弃后40%的测试用例，专心调试前60%的用例，很快就通过。所以，在这里需要注意的是，对于用例层层递进的情形，代码如果一时不能处理所有情况，也可以逐渐完善，先保证通过最简单的测试用例，再考虑其它情况。</p>
+<h2 id="反思"><a href="#反思" class="headerlink" title="反思"></a>反思</h2><p>可能是最后一次CCF，成绩离预期还是有点小差距，毕竟写题解的过程发现题目并不是很难，所以存在的问题还是要反省。 前一个半小时做完1，2，4题，后两个半小时做第3道题只得60分，对于时间利用率不高。做完1，2，4题大脑开始有点反应不过来（身体还是有点虚啊），第3题对于括号嵌套的情形迟迟没想清楚，导致代码Bug横生，如果及时调整思绪，从简单的情形做起，逐渐增加难度，完善代码，通过一重括号的测试用例应该没有问题。这里可以+20。第5题是大数模拟，听说水个20分没问题。用c++写个大数运算更应该没问题，只是麻烦，这里可以+20。最佳可达370+。 DEV的调试无法使用属于特殊情况，不应归咎。但个人的心态的调整，做题策略的更换，做题时间的分配却应该<strong>以时间，地点，条件为转移</strong>（巧妙将马克思原理应用于实践）。流水不腐，户枢不蠹。</p>
+<h2 id="经验分享"><a href="#经验分享" class="headerlink" title="经验分享"></a>经验分享</h2><p><strong>针对C++</strong>： 1. 头文件用万能头文件避免include一堆其它头文件，带来记忆负担。代码如下：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>从文本读入数据，对于3， 4， 5题，题目的输入往往很长，而它的题目往往又是图片，不能用CV大法。这时，就能充分发挥文件读入的优势了。使用方法，在main函数的第一行加入以下代码<code>freopen(&quot;D://a.txt&quot;, &quot;r&quot;, stdin)</code>然后将数据粘贴进入D盘下的a.txt，这个路径可以自定义，然后运行的时候，直接从文件输入，输出仍在控制台。 注意：提交的时候<code>freopen(&quot;D://a.txt&quot;, &quot;r&quot;, stdin)</code>一行一定要注释掉，一定要注释掉，一定要注释掉，重要的事情说三遍，不然提交会是0分。 我常用的模板文件代码为：</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="comment">//freopen(&quot;E://a.txt&quot;, &quot;r&quot;, stdin);</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>常用的stl的数据结构及函数一定要牢记，考试的时候能事半功倍。比如：数据结构：<code>map</code>（这次的2 3 题都有用到），<code>set</code>，<code>pair</code>，<code>stack</code>，<code>queue</code>（其中优先队列蛮香的），<code>string</code>， <code>vector</code>等。函数如<code>sort</code>(排序)，<code>binary_search</code>(二分查找)，<a target="_blank" rel="noopener" href="https://zh.cppreference.com/w/cpp/header/cctype">cctype</a>的字符判断函数<code>isdigit</code>（是否为数字），<code>isupper</code>（是否为大写字母），<code>islower</code>（是否为小写字母）等，<code>stoi</code>（string转int），<code>atoi</code>（字符串转int），<code>sprintf</code>等。</li>
+<li>c++11是真香的，里面有正则表达式，它能让字符串的处理更加简单。有<code>unordered_map</code>，<code>unordered_set</code>能有效解决查询超时的问题。</li>
+<li>掌握常见的算法：<code>DFS</code>，<code>BFS</code>，<code>Prim</code>，<code>Dijstra</code>，<code>并查集</code>等，虽然最近几次考的第4题模拟都能做的，不会涉及算法。</li>
+</ol>
+<p><strong>针对CCF考试</strong>： 1. 做题策略：我一般是1 2 4 3的顺序，如果第3题的题意比较容易理解，容易模拟，可以先做。第5题可以过前面简单规模，简单逻辑的用例。 2. 考试的时候无任何反馈，类似于蓝桥杯，与pat的在线评测不同，所以对于1，2题需仔细设计测试用例，保证得满分。 3. 注意输入输出的格式， 这个有时候很致命，201903-2的中缀表达式的那一题，当时我一个同学就把乘号当成常见的<code>*</code>，实际是<code>x</code>（小写的x），结果可想而知。对于输出<code>YES</code>和<code>NO</code>的，稍有不慎，会看成<code>Yes</code>和<code>No</code>。 这种情况理应避免。 4. 平常多练，注重首次通过率。 我要分享就这么多，这次200+，满足毕业答辨的要求了，2019太过平淡无奇，也算完成了一个小目标。，明天继续一天一道 LeetCode打卡任务，暂时告别CCF。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/CCF/" rel="tag"># CCF</a>
+              <a href="/tags/%E6%9D%82%E8%B0%88/" rel="tag"># 杂谈</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/12/05/%E6%B7%B1%E5%BA%A6%E9%9D%99%E6%80%81%E4%BA%BA%E8%84%B8%E8%A1%A8%E6%83%85%E8%AF%86%E5%88%AB%E7%BB%BC%E8%BF%B0%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="prev" title="深度静态人脸表情识别综述阅读笔记">
+                  <i class="fa fa-chevron-left"></i> 深度静态人脸表情识别综述阅读笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/12/22/leetcode2019%E7%AC%AC-168-%E5%9C%BA%E5%91%A8%E8%B5%9B/" rel="next" title="LeetCode2019第 168 场周赛">
+                  LeetCode2019第 168 场周赛 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

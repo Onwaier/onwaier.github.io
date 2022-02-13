@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="参考资料 个人博客 - Pytorch同时对输入输出使用transform 知乎 - 4个例子让你的pytorch数据增强过程不随机 CSDN - Tensorflow如何对两幅图像做同样的数据增广操作 Pytorch官方文档 - torchvision.transforms.functional  问题描述原始的人脸表情识别训练过程中，对于每张输入的图片，都有一个表情标签与之对应（这里只考虑单标">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Pytorch对两张图片进行相同的数据增广操作">
+<meta property="og:url" content="http://example.com/2020/02/16/pytorch%E5%AF%B9%E4%B8%A4%E5%BC%A0%E5%9B%BE%E7%89%87%E8%BF%9B%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%B9%BF%E6%93%8D%E4%BD%9C/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="参考资料 个人博客 - Pytorch同时对输入输出使用transform 知乎 - 4个例子让你的pytorch数据增强过程不随机 CSDN - Tensorflow如何对两幅图像做同样的数据增广操作 Pytorch官方文档 - torchvision.transforms.functional  问题描述原始的人脸表情识别训练过程中，对于每张输入的图片，都有一个表情标签与之对应（这里只考虑单标">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/2020/02/a224c83a16ac9de23a6d622063e8274f.png">
+<meta property="og:image" content="http://example.com/images/2020/02/cc8c79c6d866801fab0a166386706afe.png">
+<meta property="og:image" content="http://example.com/images/2020/02/488f76c329186d7ec3a42e72f032c942.png">
+<meta property="og:image" content="http://example.com/images/2020/02/88758350925fa2953bc0d0747f61ef3e.png">
+<meta property="og:image" content="http://example.com/images/2020/02/462a90f6e8b3e61c13c9a9b30fe88a1f.png">
+<meta property="og:image" content="http://example.com/images/2020/02/2ef457bac586668f6fa9fab7a9a2362b.png">
+<meta property="og:image" content="http://example.com/images/2020/02/4d13b7f8b17042df1b272f701770e3d9.png">
+<meta property="og:image" content="http://example.com/images/2020/02/3c4bf2f5dbac43a03d95553492fb9bd1.png">
+<meta property="article:published_time" content="2020-02-16T14:30:29.000Z">
+<meta property="article:modified_time" content="2022-02-13T06:28:35.535Z">
+<meta property="article:author" content="Onwaier">
+<meta property="article:tag" content="pytorch">
+<meta property="article:tag" content="transform">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/2020/02/a224c83a16ac9de23a6d622063e8274f.png">
+
+
+<link rel="canonical" href="http://example.com/2020/02/16/pytorch%E5%AF%B9%E4%B8%A4%E5%BC%A0%E5%9B%BE%E7%89%87%E8%BF%9B%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%B9%BF%E6%93%8D%E4%BD%9C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/02/16/pytorch%E5%AF%B9%E4%B8%A4%E5%BC%A0%E5%9B%BE%E7%89%87%E8%BF%9B%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%B9%BF%E6%93%8D%E4%BD%9C/","path":"2020/02/16/pytorch对两张图片进行相同的数据增广操作/","title":"Pytorch对两张图片进行相同的数据增广操作"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Pytorch对两张图片进行相同的数据增广操作 | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">1.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">3.</span> <span class="nav-text">解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%A4%BA%E4%BE%8B"><span class="nav-number">4.</span> <span class="nav-text">示例</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/16/pytorch%E5%AF%B9%E4%B8%A4%E5%BC%A0%E5%9B%BE%E7%89%87%E8%BF%9B%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%B9%BF%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Pytorch对两张图片进行相同的数据增广操作
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-16 22:30:29" itemprop="dateCreated datePublished" datetime="2020-02-16T22:30:29+08:00">2020-02-16</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 14:28:35" itemprop="dateModified" datetime="2022-02-13T14:28:35+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/pytorch/" itemprop="url" rel="index"><span itemprop="name">pytorch</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/02/16/pytorch%E5%AF%B9%E4%B8%A4%E5%BC%A0%E5%9B%BE%E7%89%87%E8%BF%9B%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%B9%BF%E6%93%8D%E4%BD%9C/" class="post-meta-item leancloud_visitors" data-flag-title="Pytorch对两张图片进行相同的数据增广操作" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/02/16/pytorch%E5%AF%B9%E4%B8%A4%E5%BC%A0%E5%9B%BE%E7%89%87%E8%BF%9B%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%B9%BF%E6%93%8D%E4%BD%9C/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/16/pytorch对两张图片进行相同的数据增广操作/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://dingguanglei.com/pytorch/">个人博客 - Pytorch同时对输入输出使用transform</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/95680105">知乎 - 4个例子让你的pytorch数据增强过程不随机</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/liangdong2014/article/details/83339444">CSDN - Tensorflow如何对两幅图像做同样的数据增广操作</a></li>
+<li><a target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/torchvision/transforms.html?highlight=torchvision%20transforms%20functional#module-torchvision.transforms.functional">Pytorch官方文档 - torchvision.transforms.functional</a></li>
+</ol>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>原始的人脸表情识别训练过程中，对于每张输入的图片，都有一个表情标签与之对应（这里只考虑单标签）。可以直接使用<code>torchvision.transform</code>中的<code>transforms.RandomCrop</code>、<code>transforms.RandomHorizontalFlip</code>、<code>transforms.RandomRotation</code>等对图片进行随机操作，从而实现对数据的增广操作，提高模型的泛化能力。 但在人脸表情识别中引入<strong>Attention</strong>机制后，对于每张输入图片，则对应一个脸部分割的概率图。在对原始图片进行<code>transform</code>的变换时，与之对应的脸部分割图mask应与之进行相同的变化。但是上面提到的所有操作都是随机操作，涉及一个随机值。所以，无法做到输入与mask进行相同的<code>transform</code>。所以，决定放弃使用数据增广的操作，而是直接使用的是原图，训练过程中出现train的准确率不断上升，最后达到100%，而test的准确率则开始是上升，中间出现波动。最后开始下降。很显然，模型过拟化。为了解决这个问题，相当于解决如何用Pytorch对两张图片进行相同的数据增广操作的问题？</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><blockquote>
+<p>在pytorch文档上可以看到，除了torchvision.transform 还有torchvision.transforms.functional。 相比transform ，transforms.functional 更加灵活，该方法只提供了图像的增强变换功能，而并没有随机部分</p>
+</blockquote>
+<p>引用自<a target="_blank" rel="noopener" href="https://dingguanglei.com/pytorch/">资料1</a> 实际上是用<strong>torchvision.transforms.functional</strong>中提供的函数（都没有引入随机性），来自定义<code>transform</code>函数。</p>
+<h2 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h2><p>原图及脸部分割mask如图所求 <img src="/images/2020/02/a224c83a16ac9de23a6d622063e8274f.png" alt=""> <img src="/images/2020/02/cc8c79c6d866801fab0a166386706afe.png" alt=""> 然后对图片同时进行随机旋转和翻转，代码如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> transforms</span><br><span class="line"><span class="keyword">import</span> torchvision.transforms.functional <span class="keyword">as</span> tf</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_transform1</span>(<span class="params">image, mask</span>):</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 拿到角度的随机数。angle是一个-180到180之间的一个数</span></span><br><span class="line">        angle = transforms.RandomRotation.get_params([-<span class="number">180</span>, <span class="number">180</span>])</span><br><span class="line">        <span class="comment"># 对image和mask做相同的旋转操作，保证他们都旋转angle角度</span></span><br><span class="line">        image = image.rotate(angle)</span><br><span class="line">        mask = mask.rotate(angle)</span><br><span class="line"></span><br><span class="line">        image = tf.to_tensor(image)</span><br><span class="line">        mask = tf.to_tensor(mask)</span><br><span class="line">        <span class="keyword">return</span> image, mask</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_transform2</span>(<span class="params">image, mask</span>):</span><br><span class="line">    <span class="comment"># 50%的概率应用垂直，水平翻转。</span></span><br><span class="line">    <span class="keyword">if</span> random.random() &gt; <span class="number">0.5</span>:</span><br><span class="line">        image = tf.hflip(image)</span><br><span class="line">        mask = tf.hflip(mask)</span><br><span class="line">    <span class="keyword">if</span> random.random() &gt; <span class="number">0.5</span>:</span><br><span class="line">        image = tf.vflip(image)</span><br><span class="line">        mask = tf.vflip(mask)</span><br><span class="line">    image = tf.to_tensor(image)</span><br><span class="line">    mask = tf.to_tensor(mask)</span><br><span class="line">    <span class="keyword">return</span> image, mask</span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">my_transform3</span>(<span class="params">image, mask</span>):</span><br><span class="line">    <span class="comment"># 随机裁剪</span></span><br><span class="line">    i, j, h, w = transforms.RandomResizedCrop.get_params(</span><br><span class="line">    image, scale=(<span class="number">0.7</span>, <span class="number">1.0</span>), ratio=(<span class="number">1</span>, <span class="number">1</span>))</span><br><span class="line">    image = tf.resized_crop(image, i, j, h, w, <span class="number">48</span>)</span><br><span class="line">    mask = tf.resized_crop(mask, i, j, h, w, <span class="number">48</span>)</span><br><span class="line">    image = tf.to_tensor(image)</span><br><span class="line">    mask = tf.to_tensor(mask)</span><br><span class="line">    <span class="keyword">return</span> image, mask</span><br><span class="line"></span><br><span class="line"><span class="comment"># transform处理对象一般都是 PIL Image</span></span><br><span class="line"></span><br><span class="line">image = Image.<span class="built_in">open</span>(<span class="string">&#x27;./0.jpg&#x27;</span>) <span class="comment"># 原图</span></span><br><span class="line">mask = Image.<span class="built_in">open</span>(<span class="string">&#x27;./0_seg_face.jpg&#x27;</span>) <span class="comment"># mask</span></span><br><span class="line"></span><br><span class="line">image_tensor, mask_tensor = my_transform1(image, mask)</span><br><span class="line"></span><br><span class="line"><span class="comment">#此时image, mask为tensor,需转成PIL Image</span></span><br><span class="line">image_rotate = transforms.ToPILImage()(image_tensor).convert(<span class="string">&#x27;L&#x27;</span>).save(<span class="string">&#x27;0_rotate.jpg&#x27;</span>)</span><br><span class="line">mask_rotate = transforms.ToPILImage()(mask_tensor).convert(<span class="string">&#x27;L&#x27;</span>).save(<span class="string">&#x27;0_seg_face_rotate.jpg&#x27;</span>)</span><br><span class="line"></span><br><span class="line">image_tensor, mask_tensor = my_transform2(image, mask)</span><br><span class="line"></span><br><span class="line"><span class="comment">#此时image, mask为tensor,需转成PIL Image</span></span><br><span class="line">image_flip = transforms.ToPILImage()(image_tensor).convert(<span class="string">&#x27;L&#x27;</span>).save(<span class="string">&#x27;0_flip.jpg&#x27;</span>)</span><br><span class="line">mask_flip = transforms.ToPILImage()(mask_tensor).convert(<span class="string">&#x27;L&#x27;</span>).save(<span class="string">&#x27;0_seg_face_flip.jpg&#x27;</span>)</span><br><span class="line"></span><br><span class="line">image_tensor, mask_tensor = my_transform3(image, mask)</span><br><span class="line"></span><br><span class="line"><span class="comment">#此时image, mask为tensor,需转成PIL Image</span></span><br><span class="line">image_crop = transforms.ToPILImage()(image_tensor).convert(<span class="string">&#x27;L&#x27;</span>).save(<span class="string">&#x27;0_crop.jpg&#x27;</span>)</span><br><span class="line">mask_crop = transforms.ToPILImage()(mask_tensor).convert(<span class="string">&#x27;L&#x27;</span>).save(<span class="string">&#x27;0_seg_face_crop.jpg&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p>旋转后图片为（每次旋转结果可能都不一样，角度随机） <img src="/images/2020/02/488f76c329186d7ec3a42e72f032c942.png" alt=""> <img src="/images/2020/02/88758350925fa2953bc0d0747f61ef3e.png" alt=""> 50%可能性翻转后图片为 <img src="/images/2020/02/462a90f6e8b3e61c13c9a9b30fe88a1f.png" alt=""> <img src="/images/2020/02/2ef457bac586668f6fa9fab7a9a2362b.png" alt=""> 随机裁剪，裁剪后大小为原来的[0.8,1]，长宽比例为1：1，最后并将resize为(48, 48)，图片为： <img src="/images/2020/02/4d13b7f8b17042df1b272f701770e3d9.png" alt=""> <img src="/images/2020/02/3c4bf2f5dbac43a03d95553492fb9bd1.png" alt=""></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/pytorch/" rel="tag"># pytorch</a>
+              <a href="/tags/transform/" rel="tag"># transform</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/02/10/typeerror-object-dtype-dtypeo-has-no-native-hdf5-equivalent/" rel="prev" title="TypeError: Object dtype dtype('O') has no native HDF5 equivalent">
+                  <i class="fa fa-chevron-left"></i> TypeError: Object dtype dtype('O') has no native HDF5 equivalent
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/02/17/leetcode2020%E7%AC%AC176%E5%9C%BA%E5%91%A8%E8%B5%9B/" rel="next" title="LeetCode2020第176场周赛">
+                  LeetCode2020第176场周赛 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

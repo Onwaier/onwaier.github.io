@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="参考资料 Floyd判圈算法 Brent’s Cycle Detection Algorithm Floyd判圈算法（龟兔赛跑算法, Floyd’s cycle detection）及其证明 算法-floyd判环(圈)算法  算法解读 Floyd判圈算法(Floyd Cycle Detection Algorithm)，又称龟兔赛跑算法(Tortoise and Hare Algorithm)，是">
+<meta property="og:type" content="website">
+<meta property="og:title" content="弗洛伊德的兔子与乌龟(Floyd&#39;s Tortoise and the Hare algorithm)">
+<meta property="og:url" content="http://example.com/2020/02/05/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9Ffloyds-tortoise-and-the-hare-algorithm/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="参考资料 Floyd判圈算法 Brent’s Cycle Detection Algorithm Floyd判圈算法（龟兔赛跑算法, Floyd’s cycle detection）及其证明 算法-floyd判环(圈)算法  算法解读 Floyd判圈算法(Floyd Cycle Detection Algorithm)，又称龟兔赛跑算法(Tortoise and Hare Algorithm)，是">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/2020/02/5cca0237fddaff11241dcb3204ae8b3c.png">
+<meta property="og:image" content="http://example.com/images/2020/02/677e7ad79f99cd994a480aaa03b4b11b.png">
+<meta property="article:published_time" content="2020-02-05T11:26:59.000Z">
+<meta property="article:modified_time" content="2022-02-13T05:55:54.783Z">
+<meta property="article:author" content="Onwaier">
+<meta property="article:tag" content="floyd判圈法">
+<meta property="article:tag" content="兔子与乌龟">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/2020/02/5cca0237fddaff11241dcb3204ae8b3c.png">
+
+
+<link rel="canonical" href="http://example.com/2020/02/05/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9Ffloyds-tortoise-and-the-hare-algorithm/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/02/05/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9Ffloyds-tortoise-and-the-hare-algorithm/","path":"2020/02/05/弗洛伊德的兔子与乌龟floyds-tortoise-and-the-hare-algorithm/","title":"弗洛伊德的兔子与乌龟(Floyd's Tortoise and the Hare algorithm)"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>弗洛伊德的兔子与乌龟(Floyd's Tortoise and the Hare algorithm) | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">1.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E8%A7%A3%E8%AF%BB"><span class="nav-number">2.</span> <span class="nav-text">算法解读</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E5%BC%95%E5%85%A5"><span class="nav-number">2.1.</span> <span class="nav-text">问题引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%8F%8F%E8%BF%B0"><span class="nav-number">2.2.</span> <span class="nav-text">算法描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">2.3.</span> <span class="nav-text">代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E5%8D%95%E8%AF%81%E6%98%8E"><span class="nav-number">2.4.</span> <span class="nav-text">简单证明</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%A4%8D%E6%9D%82%E5%BA%A6%E5%88%86%E6%9E%90"><span class="nav-number">2.5.</span> <span class="nav-text">复杂度分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Brent%E7%9A%84%E7%A7%BB%E5%8A%A8%E7%9A%84%E5%85%94%E5%AD%90%E5%92%8C%E4%BC%A0%E9%80%81%E7%9A%84%E4%B9%8C%E9%BE%9F"><span class="nav-number">3.</span> <span class="nav-text">Brent的移动的兔子和传送的乌龟</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%80%E4%BB%8B"><span class="nav-number">3.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%80%9D%E8%B7%AF"><span class="nav-number">3.2.</span> <span class="nav-text">算法思路</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%AE%97%E6%B3%95%E6%95%88%E7%8E%87"><span class="nav-number">3.3.</span> <span class="nav-text">算法效率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">3.4.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/05/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9Ffloyds-tortoise-and-the-hare-algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          弗洛伊德的兔子与乌龟(Floyd's Tortoise and the Hare algorithm)
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-05 19:26:59" itemprop="dateCreated datePublished" datetime="2020-02-05T19:26:59+08:00">2020-02-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 13:55:54" itemprop="dateModified" datetime="2022-02-13T13:55:54+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/02/05/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9Ffloyds-tortoise-and-the-hare-algorithm/" class="post-meta-item leancloud_visitors" data-flag-title="弗洛伊德的兔子与乌龟(Floyd's Tortoise and the Hare algorithm)" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/02/05/%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7%E7%9A%84%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9Ffloyds-tortoise-and-the-hare-algorithm/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/05/弗洛伊德的兔子与乌龟floyds-tortoise-and-the-hare-algorithm/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/Floyd%E5%88%A4%E5%9C%88%E7%AE%97%E6%B3%95">Floyd判圈算法</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.siafoo.net/algorithm/11">Brent’s Cycle Detection Algorithm</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/gdymind/article/details/70544153">Floyd判圈算法（龟兔赛跑算法, Floyd’s cycle detection）及其证明</a></li>
+<li><a target="_blank" rel="noopener" href="https://qht1003077897.github.io/2017/07/03/%E7%AE%97%E6%B3%95-floyd%E5%88%A4%E6%96%AD%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF/">算法-floyd判环(圈)算法</a></li>
+</ol>
+<h2 id="算法解读"><a href="#算法解读" class="headerlink" title="算法解读"></a>算法解读</h2><blockquote>
+<p>Floyd判圈算法(Floyd Cycle Detection Algorithm)，又称龟兔赛跑算法(Tortoise and Hare Algorithm)，是一个可以在有限状态机、迭代函数或者链表上判断是否存在环，求出该环的起点与长度的算法。该算法据高德纳称由美国科学家罗伯特·弗洛伊德发明。</p>
+</blockquote>
+<p>引用自<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/Floyd%E5%88%A4%E5%9C%88%E7%AE%97%E6%B3%95">维基百科-Floyd判圈算法</a></p>
+<h3 id="问题引入"><a href="#问题引入" class="headerlink" title="问题引入"></a>问题引入</h3><blockquote>
+<p>如何检测一个链表是否有环（循环节），如果有，那么如何确定环的起点以及环的长度。</p>
+</blockquote>
+<p>引用自<a target="_blank" rel="noopener" href="https://blog.csdn.net/gdymind/article/details/70544153">博客</a> 上述问题是一个经典问题，经常会在面试中被问到。我之前在杭州一家网络公司的电话面试中就很不巧的问到，当时是第一次遇到那个问题（毕竟太菜，没有专门准备过算法面试），我思考片刻，问答的是用一个哈希表存储访问的节点的地址，当访问某节点时，发现哈希表中已存在，表明链表中存在环。面试官听了我的回答就反问了我一句：如果链表的环很大，那么哈希表的空间消耗就很大，你的方法并不实用。你能在不消耗额外空间的情况下，找到链表的环吗？当时，想了很久没想到，面试官就说可以这样做，balabala…</p>
+<h3 id="算法描述"><a href="#算法描述" class="headerlink" title="算法描述"></a>算法描述</h3><ul>
+<li>形象化解释</li>
+</ul>
+<p>解决上述问题的方法就是我们常说的<code>快慢指针</code>。乌龟与兔子在一个含环的跑道上（如图所求）进行比赛，乌龟在单位时间内移动一步，而兔子则在单位时间内移动两步，其移动速度是乌龟的两倍。乌龟与兔子同时从A点出发，兔子移动的快先行进入环形跑道，但那以后，一直在转圈。所以如果存在环的话，乌龟总能与兔子相遇（首次相遇在C点），甚至还能跑到兔子前面:joy:。 <img src="/images/2020/02/5cca0237fddaff11241dcb3204ae8b3c.png" alt=""></p>
+<ul>
+<li>判断是否有环</li>
+</ul>
+<p>定义两个指针p1与p2，起始时，都指向链表的起点A，p1每次移动1个长度，p2每次移动2个长度。如果p2在移到链表的尾端时，并未与p1相遇，表明链表中不存在环。如果p1与p2相遇在环上的某一点C，表明链表有环。</p>
+<ul>
+<li>环的长度</li>
+</ul>
+<p>将指针p1固定在相遇位置C，移动p2，每次移动1个长度，并用变量<code>cnt</code>计数。当p2再次与p1相遇时，此时<code>cnt</code>的值就是链表的长度。</p>
+<ul>
+<li>环的起点</li>
+</ul>
+<p>环的起点即图中点B，将指针p1指向链表的起始位置A，指针p2仍在位置C，指针p1与p2每次均移动一个单位，p1与p2再次相遇的位置就是环的起点位置点B。</p>
+<h3 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h3><ul>
+<li>伪代码</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">t := &amp;S</span><br><span class="line">h := &amp;S                 //令指针t和h均指向起始节点S。</span><br><span class="line">repeat</span><br><span class="line">    t := t-&gt;next</span><br><span class="line">    h := h-&gt;next</span><br><span class="line">    if h is not NULL       //要注意这一判断一般不能省略</span><br><span class="line">        h := h-&gt;next</span><br><span class="line">until t = h or h = NULL</span><br><span class="line">if h != NULL             //如果存在环的話</span><br><span class="line">    n := 0</span><br><span class="line">    repeat                //求环的度</span><br><span class="line">        t := t-&gt;next</span><br><span class="line">        n := n+1</span><br><span class="line">    until t = h</span><br><span class="line">    t := &amp;S               //求环的一个起点</span><br><span class="line">    while t != h</span><br><span class="line">    t := t-&gt;next</span><br><span class="line">        h := h-&gt;next</span><br><span class="line">P := *t</span><br></pre></td></tr></table></figure>
+<p>引用自<a target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-hans/Floyd%E5%88%A4%E5%9C%88%E7%AE%97%E6%B3%95">维基百科</a></p>
+<ul>
+<li>c++代码</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span><span class="comment">//链表节点</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">    Node * next;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">findCircle</span><span class="params">(Node * list)</span></span>&#123;</span><br><span class="line">    Node* p1  = list-&gt;next, *p2;<span class="comment">//p1移动1个单位</span></span><br><span class="line">    <span class="type">bool</span> flag;</span><br><span class="line">    <span class="keyword">if</span>(p1 == <span class="literal">NULL</span>)&#123;<span class="comment">//链表只有1个节点</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    p2 = p1 -&gt; next;<span class="comment">//p2移动两个单位</span></span><br><span class="line">    <span class="keyword">while</span>(p1 != p2 &amp;&amp; p2 != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        p1 = p1-&gt;next;</span><br><span class="line">        p2 = p2-&gt;next;</span><br><span class="line">        <span class="keyword">if</span>(p2 == <span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        p2 = p2-&gt;next;<span class="comment">//p2移动两个单位</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(p2 == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//存在环，首先求环的长度</span></span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">1</span>, p2 = p2-&gt;next;</span><br><span class="line">        <span class="keyword">while</span>(p2 != p1)&#123;</span><br><span class="line">            ++cnt;</span><br><span class="line">            p2 = p2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//此时cnt就是环的长度</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//求环的起点</span></span><br><span class="line">        p1 = list;</span><br><span class="line">        <span class="keyword">while</span>(p1 != p2)&#123;</span><br><span class="line">            p1 = p1-&gt;next;</span><br><span class="line">            p2 = p2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//此时p1与p2都指向环的起点</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="简单证明"><a href="#简单证明" class="headerlink" title="简单证明"></a>简单证明</h3><p>借鉴于<a target="_blank" rel="noopener" href="https://qht1003077897.github.io/2017/07/03/%E7%AE%97%E6%B3%95-floyd%E5%88%A4%E6%96%AD%E9%93%BE%E8%A1%A8%E6%98%AF%E5%90%A6%E6%9C%89%E7%8E%AF/">博客</a> 上面求链表是否存在环及求环的长度的思路都很好理解，主要是为什么p1与p2再次相遇就是环的起点呢？这里假设从跑道的起始点A到环的起点B的路程为m，从B到相遇点C的路程为k，环的长度为n，相遇时乌龟的爬行路程为$S_1 = m + k + t_1 * n$，兔子的奔跑距离为$S_2 = m + k + t_2 * n(t_2 &gt; t_1)$，兔子的速度是乌龟的两倍即$S_2 = 2 * S_1$，则$S_1 = S_2 - S_1 = (t_2 - t_1) * n$，$S_2 = 2 * (t_2 - t_1) * n$即兔子和乌龟相遇时的奔跑距离为环的整数倍，而$m + k = (t_2 - 2 * t_1) * n$也为环的整数倍。当兔子回到跑道的起始位置，乌龟从相遇点B出发时，这时，两人的速度均为单位时间内爬行1个长度，当兔子到达环的起点B即爬行了m距离时，乌龟则是k+m，此时刚好爬行环的整数倍，也处于环的起点B，即乌龟与兔子再次相遇的位置即为环的起点位置B。</p>
+<h3 id="复杂度分析"><a href="#复杂度分析" class="headerlink" title="复杂度分析"></a>复杂度分析</h3><ul>
+<li>空间复杂度</li>
+</ul>
+<p>空间复杂度为：$O(1)$。使用的p1，p2，cnt均为常量空间。</p>
+<ul>
+<li>时间复杂度</li>
+</ul>
+<p>假设链表中存在环，则p1移动m个长度即可到达环的起点，p2与p1间的最大距离为n-1。而p2移动速度是p1的两倍，每个单位时间内可以将其与p1的距离缩短1，则最多n-1时间，即可与p1相遇。时间复杂度为$O(m + n)$，即线性时间。</p>
+<h2 id="Brent的移动的兔子和传送的乌龟"><a href="#Brent的移动的兔子和传送的乌龟" class="headerlink" title="Brent的移动的兔子和传送的乌龟"></a>Brent的移动的兔子和传送的乌龟</h2><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><blockquote>
+<p>How do you determine if your singly-linked list has a cycle? In 1980, Brent invented an algorithm that not only worked in linear time, but required less stepping than Floyd’s Tortoise and the Hare algorithm (however it is slightly more complex). Although stepping through a ‘regular’ linked list is computationally easy, these algorithms are also used for factorization and pseudorandom number generators, linked lists are implicit and finding the next member is computationally difficult.</p>
+</blockquote>
+<p>引用自<a target="_blank" rel="noopener" href="http://www.siafoo.net/algorithm/11">网站</a> 1980年，Brent提出了一种算法，不仅能在线性时间内找到环，并且使用的步数比Floyd的判圈算法要少。</p>
+<h3 id="算法思路"><a href="#算法思路" class="headerlink" title="算法思路"></a>算法思路</h3><blockquote>
+<p><img src="/images/2020/02/677e7ad79f99cd994a480aaa03b4b11b.png" alt=""> Brent’s algorithm features a moving rabbit and a stationary, then teleporting, turtle. Both turtle and rabbit start at the top of the list. The rabbit takes one step per iteration. If it is then at the same position as the stationary turtle, there is obviously a loop. If it reaches the end of the list, there is no loop. Of course, this by itself will take infinite time if there is a loop. So every once in a while, we teleport the turtle to the rabbit’s position, and let the rabbit continue moving. We start out waiting just 2 steps before teleportation, and we double that each time we move the turtle.</p>
+</blockquote>
+<p>相比Floyd的兔子与乌龟，Brent的兔子仍然移动，但乌龟静止，达到传送时间t时，乌龟直接移动到兔子当前的位置，然后传送时间t翻倍（t = 2 * t），如此下去，如果兔子到达终点，则表示不存在环，如果兔子与乌龟相遇（兔子回到自己曾去达的位置）表示有环。</p>
+<h3 id="算法效率"><a href="#算法效率" class="headerlink" title="算法效率"></a>算法效率</h3><blockquote>
+<p>Note that like Floyd’s Tortoise and Hare algorithm, this one runs in O(N). However you’re doing less stepping than with Floyd’s (in fact the upper bound for steps is the number you would do with Floyd’s algorithm). According to Brent’s research, his algorithm is 24-36% faster on average for implicit linked list algorithms.</p>
+</blockquote>
+<p>兔子仍在不断移动，乌龟的传送使得其位置瞬移，缩短了它与兔子相遇时间。并且传送等待时间的不断翻倍，保证了兔子与乌龟在有限的时间内一定能相遇。</p>
+<h3 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h3><ul>
+<li>伪代码</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">turtle = top</span><br><span class="line">rabbit = top</span><br><span class="line"></span><br><span class="line">steps_taken = 0</span><br><span class="line">step_limit = 2</span><br><span class="line"></span><br><span class="line">forever:</span><br><span class="line">    if rabbit == end:</span><br><span class="line">       return &#x27;No Loop Found&#x27;</span><br><span class="line">    rabbit = rabbit.next</span><br><span class="line"></span><br><span class="line">    steps_taken += 1</span><br><span class="line"></span><br><span class="line">    if rabbit == turtle:</span><br><span class="line">        return &#x27;Loop found&#x27;</span><br><span class="line"></span><br><span class="line">    if steps_taken == step_limit:</span><br><span class="line">        steps_taken = 0</span><br><span class="line">        step_limit *= 2</span><br><span class="line">        // teleport the turtle</span><br><span class="line">        turtle = rabbit</span><br></pre></td></tr></table></figure>
+<p>引用自<a target="_blank" rel="noopener" href="http://www.siafoo.net/algorithm/11">网站</a></p>
+<ul>
+<li>c++代码</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Node</span><span class="comment">//链表节点</span></span><br><span class="line">&#123;</span><br><span class="line">    <span class="type">int</span> data;</span><br><span class="line">    Node * next;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">bool</span> <span class="title">findCircle</span><span class="params">(Node * list)</span></span>&#123;</span><br><span class="line">    Node* p1  = list-&gt;next, *p2 = list;<span class="comment">//p1移动1个单位</span></span><br><span class="line">    <span class="type">int</span> steps_taken = <span class="number">1</span>, step_limit = <span class="number">2</span>;</span><br><span class="line">    <span class="type">bool</span> flag;</span><br><span class="line">    <span class="keyword">if</span>(p1 == <span class="literal">NULL</span>)&#123;<span class="comment">//链表只有1个节点</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(p1 != p2 &amp;&amp; p1 != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        p1 = p1-&gt;next;</span><br><span class="line">        ++steps_taken;</span><br><span class="line">        <span class="keyword">if</span>(p1 == <span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(steps_taken == step_limit)&#123;<span class="comment">//达到传送时间</span></span><br><span class="line">            steps_taken = <span class="number">0</span>;<span class="comment">//步数清0</span></span><br><span class="line">            step_limit = step_limit * <span class="number">2</span>;<span class="comment">//传送时间翻倍</span></span><br><span class="line">            p2 = p1;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(p1 == <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//存在环，首先求环的长度</span></span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">1</span>, p2 = p2-&gt;next;</span><br><span class="line">        <span class="keyword">while</span>(p2 != p1)&#123;</span><br><span class="line">            ++cnt;</span><br><span class="line">            p2 = p2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//此时cnt就是环的长度</span></span><br><span class="line"></span><br><span class="line">        <span class="comment">//求环的起点</span></span><br><span class="line">        p1 = list;</span><br><span class="line">        <span class="keyword">while</span>(p1 != p2)&#123;</span><br><span class="line">            p1 = p1-&gt;next;</span><br><span class="line">            p2 = p2-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//此时p1与p2都指向环的起点</span></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/floyd%E5%88%A4%E5%9C%88%E6%B3%95/" rel="tag"># floyd判圈法</a>
+              <a href="/tags/%E5%85%94%E5%AD%90%E4%B8%8E%E4%B9%8C%E9%BE%9F/" rel="tag"># 兔子与乌龟</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/02/03/transforms-topilimage-pic-should-be-tensor-or-ndarray/" rel="prev" title="transforms.ToPILImage(): pic should be Tensor or ndarray">
+                  <i class="fa fa-chevron-left"></i> transforms.ToPILImage(): pic should be Tensor or ndarray
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/02/07/attributeerror-nonetype-object-has-no-attribute-data/" rel="next" title="AttributeError: 'NoneType' object has no attribute 'data'">
+                  AttributeError: 'NoneType' object has no attribute 'data' <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

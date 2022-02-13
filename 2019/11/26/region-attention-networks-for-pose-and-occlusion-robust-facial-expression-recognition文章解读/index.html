@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="原文链接与github源码地址 原文链接 github地址  overview人脸表情识别面临了很多挑战，如光照、姿态、遮挡、个体差异、数据不充分等。作者主要是针对姿态和遮挡这两个难题进行研究，从现有的数据库（FERPlus、AffectNet、RAF-DB）中筛选出数据组成测试数据集(Occlusion-FERPlus、Pose-FerPlus、Occlusion-AffectNet、Post-">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Region Attention Networks for Pose and Occlusion Robust Facial Expression Recognition阅读笔记">
+<meta property="og:url" content="http://example.com/2019/11/26/region-attention-networks-for-pose-and-occlusion-robust-facial-expression-recognition%E6%96%87%E7%AB%A0%E8%A7%A3%E8%AF%BB/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="原文链接与github源码地址 原文链接 github地址  overview人脸表情识别面临了很多挑战，如光照、姿态、遮挡、个体差异、数据不充分等。作者主要是针对姿态和遮挡这两个难题进行研究，从现有的数据库（FERPlus、AffectNet、RAF-DB）中筛选出数据组成测试数据集(Occlusion-FERPlus、Pose-FerPlus、Occlusion-AffectNet、Post-">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/2019/11/b78d9cc11c6c502f1c0f28e5db0ca589.png">
+<meta property="og:image" content="http://example.com/images/2019/11/1966c300ff97478a5299a1f861dae98f.png">
+<meta property="og:image" content="http://example.com/images/2019/11/8452178a31233e3845dcfec68966f831.png">
+<meta property="og:image" content="http://example.com/images/2019/11/a314d0ad87f75afededd35f12be16067.png">
+<meta property="og:image" content="http://example.com/images/2019/11/23640c637958c46316ab021647d167e7.png">
+<meta property="og:image" content="http://example.com/images/2019/11/f3c26d20d19ff157b975f65bd7f9019e.png">
+<meta property="og:image" content="http://example.com/images/2019/11/0e53f4403f532b09222286ca36f6677f.png">
+<meta property="og:image" content="http://example.com/images/2019/11/8ec8d96d2d144de3d9191a4feca8bbaa.png">
+<meta property="article:published_time" content="2019-11-25T17:06:16.000Z">
+<meta property="article:modified_time" content="2022-02-13T06:33:03.037Z">
+<meta property="article:author" content="Onwaier">
+<meta property="article:tag" content="Attention">
+<meta property="article:tag" content="Region Attention">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/2019/11/b78d9cc11c6c502f1c0f28e5db0ca589.png">
+
+
+<link rel="canonical" href="http://example.com/2019/11/26/region-attention-networks-for-pose-and-occlusion-robust-facial-expression-recognition%E6%96%87%E7%AB%A0%E8%A7%A3%E8%AF%BB/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2019/11/26/region-attention-networks-for-pose-and-occlusion-robust-facial-expression-recognition%E6%96%87%E7%AB%A0%E8%A7%A3%E8%AF%BB/","path":"2019/11/26/region-attention-networks-for-pose-and-occlusion-robust-facial-expression-recognition文章解读/","title":"Region Attention Networks for Pose and Occlusion Robust Facial Expression Recognition阅读笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Region Attention Networks for Pose and Occlusion Robust Facial Expression Recognition阅读笔记 | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E6%96%87%E9%93%BE%E6%8E%A5%E4%B8%8Egithub%E6%BA%90%E7%A0%81%E5%9C%B0%E5%9D%80"><span class="nav-number">1.</span> <span class="nav-text">原文链接与github源码地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#overview"><span class="nav-number">2.</span> <span class="nav-text">overview</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Inspiration"><span class="nav-number">3.</span> <span class="nav-text">Inspiration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-architecture"><span class="nav-number">4.</span> <span class="nav-text">Network architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96%E6%A8%A1%E5%9D%97"><span class="nav-number">4.1.</span> <span class="nav-text">特征提取模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Self-attention%E6%A8%A1%E5%9D%97"><span class="nav-number">4.2.</span> <span class="nav-text">Self-attention模块</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Relation-attention%E6%A8%A1%E5%9D%97"><span class="nav-number">4.3.</span> <span class="nav-text">Relation-attention模块</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#crop%E7%9A%84%E4%B8%89%E7%A7%8D%E7%AD%96%E7%95%A5"><span class="nav-number">5.</span> <span class="nav-text">crop的三种策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%89%E7%A7%8Dcrop%E7%AD%96%E7%95%A5%E7%9A%84%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83"><span class="nav-number">5.1.</span> <span class="nav-text">三种crop策略的性能比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RB-Loss"><span class="nav-number">6.</span> <span class="nav-text">RB-Loss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Datasets"><span class="nav-number">7.</span> <span class="nav-text">Datasets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expriments"><span class="nav-number">8.</span> <span class="nav-text">expriments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#RAN%E4%B8%8EBaseline%E5%9C%A8%E4%BD%9C%E8%80%85%E5%88%9B%E5%BB%BA%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83"><span class="nav-number">8.1.</span> <span class="nav-text">RAN与Baseline在作者创建的数据库的性能比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%AF%B9RAN%E4%B8%AD%E6%89%80%E6%9C%89%E7%9A%84%E7%BB%84%E6%88%90%E9%83%A8%E5%88%86%E7%9A%84%E5%AE%9E%E9%AA%8C"><span class="nav-number">8.2.</span> <span class="nav-text">对RAN中所有的组成部分的实验</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAN%E4%B8%8E%E6%9C%80%E6%96%B0%E7%9A%84%E6%96%B9%E6%B3%95%E5%9C%A8FerPlus%E4%B8%8A%E7%9A%84%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83"><span class="nav-number">8.3.</span> <span class="nav-text">RAN与最新的方法在FerPlus上的性能比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAN%E4%B8%8E%E6%9C%80%E6%96%B0%E7%9A%84%E6%96%B9%E6%B3%95%E5%9C%A8AffectNet%E4%B8%8A%E7%9A%84%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83"><span class="nav-number">8.4.</span> <span class="nav-text">RAN与最新的方法在AffectNet上的性能比较</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#RAN%E4%B8%8E%E6%9C%80%E6%96%B0%E7%9A%84%E6%96%B9%E6%B3%95%E5%9C%A8SFEW%E4%B8%8A%E7%9A%84%E6%80%A7%E8%83%BD%E6%AF%94%E8%BE%83"><span class="nav-number">8.5.</span> <span class="nav-text">RAN与最新的方法在SFEW上的性能比较</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#conclusion"><span class="nav-number">9.</span> <span class="nav-text">conclusion</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%8C%AE"><span class="nav-number">10.</span> <span class="nav-text">参考文献</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/26/region-attention-networks-for-pose-and-occlusion-robust-facial-expression-recognition%E6%96%87%E7%AB%A0%E8%A7%A3%E8%AF%BB/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Region Attention Networks for Pose and Occlusion Robust Facial Expression Recognition阅读笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-26 01:06:16" itemprop="dateCreated datePublished" datetime="2019-11-26T01:06:16+08:00">2019-11-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 14:33:03" itemprop="dateModified" datetime="2022-02-13T14:33:03+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BA%BA%E8%84%B8%E8%A1%A8%E6%83%85%E8%AF%86%E5%88%AB/" itemprop="url" rel="index"><span itemprop="name">人脸表情识别</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/11/26/region-attention-networks-for-pose-and-occlusion-robust-facial-expression-recognition%E6%96%87%E7%AB%A0%E8%A7%A3%E8%AF%BB/" class="post-meta-item leancloud_visitors" data-flag-title="Region Attention Networks for Pose and Occlusion Robust Facial Expression Recognition阅读笔记" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/11/26/region-attention-networks-for-pose-and-occlusion-robust-facial-expression-recognition%E6%96%87%E7%AB%A0%E8%A7%A3%E8%AF%BB/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/26/region-attention-networks-for-pose-and-occlusion-robust-facial-expression-recognition文章解读/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="原文链接与github源码地址"><a href="#原文链接与github源码地址" class="headerlink" title="原文链接与github源码地址"></a>原文链接与github源码地址</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1905.04075.pdf"><strong>原文链接</strong></a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kaiwang960112/Challenge-condition-FER-dataset"><strong>github地址</strong></a></li>
+</ul>
+<h2 id="overview"><a href="#overview" class="headerlink" title="overview"></a>overview</h2><p>人脸表情识别面临了很多挑战，如光照、姿态、遮挡、个体差异、数据不充分等。作者主要是针对姿态和遮挡这两个难题进行研究，从现有的数据库（FERPlus、AffectNet、RAF-DB）中筛选出数据组成测试数据集(Occlusion-FERPlus、Pose-FerPlus、Occlusion-AffectNet、Post-AffectNet、Occlusion-RAF-DB、Pose-RAF-DB)，然后设计出Region Attention的网络结构，并提出一个新的损失函数（Region Biased Loss），在多个数据集上性能都有所提升。</p>
+<h2 id="Inspiration"><a href="#Inspiration" class="headerlink" title="Inspiration"></a>Inspiration</h2><ol>
+<li>an occluded mouth degrades FER more than occluded eyes on JAFFE and CK$^{[1]}$. 遮挡嘴巴对人脸表情识别性能的影响要大于遮挡眼睛的影响。</li>
+<li>Psychological studies indicated that human can effectively exploit both local regions and holistic faces to perceive the semantics delivered through incomplete faces$^{[2]}$.人之所以能对存在遮挡或姿态偏转的人脸表情准确识别是因为人的注意力机制有效将局部特征信息与全局特征信息相结合。</li>
+</ol>
+<h2 id="Network-architecture"><a href="#Network-architecture" class="headerlink" title="Network architecture"></a>Network architecture</h2><p><img src="/images/2019/11/b78d9cc11c6c502f1c0f28e5db0ca589.png" alt=""> RAN由三个模块组成：特征提取模块、Self-attention模块和Relation-attention模块。</p>
+<h3 id="特征提取模块"><a href="#特征提取模块" class="headerlink" title="特征提取模块"></a>特征提取模块</h3><p>首先对原始人脸copy一份，然后再对人脸裁剪k份（有三种策略，后面会详细介绍）。都经过相同的CNN（VGG或ResNet）结构进行特征提取，这里权值共享。</p>
+<h3 id="Self-attention模块"><a href="#Self-attention模块" class="headerlink" title="Self-attention模块"></a>Self-attention模块</h3><p>下面先介绍一些符号表示： I：Face Image; $I_0$: its duplicate(原始图像的copy) $I_0、I_1、\dots、 I_k$: its crops（原始图像的crop） $r(., \theta)$: backbone CNN(CNN网络) 图像I的特征为： $X = [F_0, F_1, \dots, F_k] = [r(I_0, \theta )， r(I_1, \theta , \dots, r(I_k, \theta ))]$ 第i个裁剪区域的权重记为$\mu _i$为： $\mu _i = f(F_i^Tq^0)$其中$q_0$表示FC的参数而f表示的是激活函数 。即将局部区域提取的特征经过一个全边接层，然后经过激活函数得到对应权重。 全局特征表示为（Gloabl representation） $F_m = \frac{1}{\sum_{i = 0}^{n}\mu _{i}} \sum\limits^{n}_{i = 0}\mu _i F_i$ 将局部区域进行加权表示整体特征</p>
+<h3 id="Relation-attention模块"><a href="#Relation-attention模块" class="headerlink" title="Relation-attention模块"></a>Relation-attention模块</h3><p>$v_i = f((F_i:F_m)^Tq^1)$ $F_i$表示区域提取特征将其与整体特征$F_m$作一个concat操作，然后经过全连接层再经过激活函数，得到结合局部与整体的特征的权重。 $P_{RAN} = \frac{1}{\sum^n_{i=1}\mu_i v_i} \sum\limits^n_{i=0}\mu_iv_i[F_i:F_m]$ 同样将得到特征进行加权求得一个新的全局特征$P_{RAN}$。这个特征作者在后面与$F_m$做过对比。</p>
+<h2 id="crop的三种策略"><a href="#crop的三种策略" class="headerlink" title="crop的三种策略"></a>crop的三种策略</h2><ol>
+<li>Fixed Crop Fixed Crop: top-left、top-right、center-down(0.75)、center(0.85)、center(0.9)</li>
+<li>Landmarks Based Crop Landmarks Based Crop: MTCNN(左眼、右眼、鼻子、嘴左边角、嘴右边角)</li>
+<li>Randomly Crop Randomly Crop: randomly crop N regions（0.7-0.95）</li>
+</ol>
+<h3 id="三种crop策略的性能比较"><a href="#三种crop策略的性能比较" class="headerlink" title="三种crop策略的性能比较"></a>三种crop策略的性能比较</h3><p>Evaluation of region generation strategies <img src="/images/2019/11/1966c300ff97478a5299a1f861dae98f.png" alt=""></p>
+<h2 id="RB-Loss"><a href="#RB-Loss" class="headerlink" title="RB-Loss"></a>RB-Loss</h2><p>$L_{RB} = max(0, \alpha - (\mu_{max} - \mu_0))$ 受到“不同的表情是由不同的表情区域决定的”的相关研究的启发，作者希望对self-Attention中的权重作出直接的限制，使裁剪区域中至少有一个的权重要大于原始人脸特征所占的权重。基于此提出了Region Biased Loss的损失函数，其中$\alpha$是超参数，$\mu_0$表示copy人脸的特征所占的权重，$\mu_{max}$表示所有裁剪人脸中特征所占的最大权重。在训练中，在分类损失函数中加入RB-Loss。作者在后面对该损失函数对实验性能的影响做了相关的实验比较。</p>
+<h2 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h2><p><img src="/images/2019/11/8452178a31233e3845dcfec68966f831.png" alt=""> <strong>Occlusion-FERPlus, Pose-FERPlus, Occlusion-AffectNet, Pose-AffectNet, Occlusion-RAF-DB, and Pose-RAF-DB for testing</strong> Pose: pitch, yaw, roll（通过人脸对齐能消除） Occlusion: 戴面具、戴眼睛、遮挡物体在左、右、上、下及没有遮挡 ps:第一排第三个的那位最近出山的新闻有点多哟。</p>
+<h2 id="expriments"><a href="#expriments" class="headerlink" title="expriments"></a>expriments</h2><h3 id="RAN与Baseline在作者创建的数据库的性能比较"><a href="#RAN与Baseline在作者创建的数据库的性能比较" class="headerlink" title="RAN与Baseline在作者创建的数据库的性能比较"></a>RAN与Baseline在作者创建的数据库的性能比较</h3><p><strong>Performance comparison between the proposed RAN and baseline method with occlusion and variant pose conditions.</strong> <img src="/images/2019/11/a314d0ad87f75afededd35f12be16067.png" alt=""></p>
+<h3 id="对RAN中所有的组成部分的实验"><a href="#对RAN中所有的组成部分的实验" class="headerlink" title="对RAN中所有的组成部分的实验"></a>对RAN中所有的组成部分的实验</h3><p><strong>Evaluation of all components of our RAN along with face alignment on FERPlus.</strong> <img src="/images/2019/11/23640c637958c46316ab021647d167e7.png" alt=""></p>
+<h3 id="RAN与最新的方法在FerPlus上的性能比较"><a href="#RAN与最新的方法在FerPlus上的性能比较" class="headerlink" title="RAN与最新的方法在FerPlus上的性能比较"></a>RAN与最新的方法在FerPlus上的性能比较</h3><p><strong>Comparison to the state-of-the-art results on the FERPlus dataset.These results are trained using label distribution as supervison.</strong> <img src="/images/2019/11/f3c26d20d19ff157b975f65bd7f9019e.png" alt=""></p>
+<h3 id="RAN与最新的方法在AffectNet上的性能比较"><a href="#RAN与最新的方法在AffectNet上的性能比较" class="headerlink" title="RAN与最新的方法在AffectNet上的性能比较"></a>RAN与最新的方法在AffectNet上的性能比较</h3><p><strong>Comparison to the state-of-the-art results on the AffectNet dataset</strong> <img src="/images/2019/11/0e53f4403f532b09222286ca36f6677f.png" alt=""></p>
+<h3 id="RAN与最新的方法在SFEW上的性能比较"><a href="#RAN与最新的方法在SFEW上的性能比较" class="headerlink" title="RAN与最新的方法在SFEW上的性能比较"></a>RAN与最新的方法在SFEW上的性能比较</h3><p><strong>Comparison to the state-of-the-art results on the SFEW dataset</strong> <img src="/images/2019/11/8ec8d96d2d144de3d9191a4feca8bbaa.png" alt=""></p>
+<h2 id="conclusion"><a href="#conclusion" class="headerlink" title="conclusion"></a>conclusion</h2><ol>
+<li>Region Attention Networks(RAN)</li>
+<li>New FER test datasets</li>
+<li>Region Biased loss(RB-loss) 作者在这篇文章我归纳有三点创新：首先提出一个RAN的网络结构，在已有的数据库中筛选出遮挡和姿态问题的图片组成了测试数据集。另外有一点小贡献是提出了RB-loss。作者的方法在几个数据集上都有性能的提升，证明了它网络的可行性。</li>
+</ol>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] An analysis of facial expression recognition under partial facial image occlusion </p>
+<p>[2] Specialized face perception mechanisms extract both part and spacing information: Evidence from developmental prosopagnosia</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Attention/" rel="tag"># Attention</a>
+              <a href="/tags/Region-Attention/" rel="tag"># Region Attention</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/20/leetcode%E7%AC%AC13%E5%9C%BA%E5%91%A8%E8%B5%9B/" rel="prev" title="LeetCode第13场双周赛">
+                  <i class="fa fa-chevron-left"></i> LeetCode第13场双周赛
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/11/26/leetcode-2019%E5%B9%B4%E7%AC%AC163%E5%9C%BA%E5%91%A8%E8%B5%9B/" rel="next" title="LeetCode 2019年第163场周赛">
+                  LeetCode 2019年第163场周赛 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

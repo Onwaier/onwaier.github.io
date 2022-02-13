@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="5340. 统计有序矩阵中的负数题目描述给你一个 m * n 的矩阵 grid，矩阵中的元素无论是按行还是按列，都以非递增顺序排列。  请你统计并返回 grid 中 负数 的数目。   示例 1： 输入：grid &#x3D; [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]输出：8解释：矩阵中共有 8 个负数。 示例 2： 输入：grid &#x3D; [[3,2]">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LeetCode2020第176场周赛">
+<meta property="og:url" content="http://example.com/2020/02/17/leetcode2020%E7%AC%AC176%E5%9C%BA%E5%91%A8%E8%B5%9B/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="5340. 统计有序矩阵中的负数题目描述给你一个 m * n 的矩阵 grid，矩阵中的元素无论是按行还是按列，都以非递增顺序排列。  请你统计并返回 grid 中 负数 的数目。   示例 1： 输入：grid &#x3D; [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]输出：8解释：矩阵中共有 8 个负数。 示例 2： 输入：grid &#x3D; [[3,2]">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/16/e1.png">
+<meta property="article:published_time" content="2020-02-17T10:51:07.000Z">
+<meta property="article:modified_time" content="2022-02-13T06:09:35.473Z">
+<meta property="article:author" content="Onwaier">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="优先队列">
+<meta property="article:tag" content="贪心">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/16/e1.png">
+
+
+<link rel="canonical" href="http://example.com/2020/02/17/leetcode2020%E7%AC%AC176%E5%9C%BA%E5%91%A8%E8%B5%9B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/02/17/leetcode2020%E7%AC%AC176%E5%9C%BA%E5%91%A8%E8%B5%9B/","path":"2020/02/17/leetcode2020第176场周赛/","title":"LeetCode2020第176场周赛"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LeetCode2020第176场周赛 | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#5340-%E7%BB%9F%E8%AE%A1%E6%9C%89%E5%BA%8F%E7%9F%A9%E9%98%B5%E4%B8%AD%E7%9A%84%E8%B4%9F%E6%95%B0"><span class="nav-number">1.</span> <span class="nav-text">5340. 统计有序矩阵中的负数</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5341-%E6%9C%80%E5%90%8E-K-%E4%B8%AA%E6%95%B0%E7%9A%84%E4%B9%98%E7%A7%AF"><span class="nav-number">2.</span> <span class="nav-text">5341. 最后 K 个数的乘积</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A31"><span class="nav-number">2.2.</span> <span class="nav-text">题解1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%811"><span class="nav-number">2.3.</span> <span class="nav-text">代码1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A32"><span class="nav-number">2.4.</span> <span class="nav-text">题解2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%812"><span class="nav-number">2.5.</span> <span class="nav-text">代码2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1353-%E6%9C%80%E5%A4%9A%E5%8F%AF%E4%BB%A5%E5%8F%82%E5%8A%A0%E7%9A%84%E4%BC%9A%E8%AE%AE%E6%95%B0%E7%9B%AE"><span class="nav-number">3.</span> <span class="nav-text">1353. 最多可以参加的会议数目</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-1"><span class="nav-number">3.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-1"><span class="nav-number">3.3.</span> <span class="nav-text">代码</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5343-%E5%A4%9A%E6%AC%A1%E6%B1%82%E5%92%8C%E6%9E%84%E9%80%A0%E7%9B%AE%E6%A0%87%E6%95%B0%E7%BB%84"><span class="nav-number">4.</span> <span class="nav-text">5343. 多次求和构造目标数组</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A3-2"><span class="nav-number">4.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81-2"><span class="nav-number">4.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/17/leetcode2020%E7%AC%AC176%E5%9C%BA%E5%91%A8%E8%B5%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode2020第176场周赛
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-17 18:51:07" itemprop="dateCreated datePublished" datetime="2020-02-17T18:51:07+08:00">2020-02-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 14:09:35" itemprop="dateModified" datetime="2022-02-13T14:09:35+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/02/17/leetcode2020%E7%AC%AC176%E5%9C%BA%E5%91%A8%E8%B5%9B/" class="post-meta-item leancloud_visitors" data-flag-title="LeetCode2020第176场周赛" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/02/17/leetcode2020%E7%AC%AC176%E5%9C%BA%E5%91%A8%E8%B5%9B/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/17/leetcode2020第176场周赛/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="5340-统计有序矩阵中的负数"><a href="#5340-统计有序矩阵中的负数" class="headerlink" title="5340. 统计有序矩阵中的负数"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-negative-numbers-in-a-sorted-matrix/">5340. 统计有序矩阵中的负数</a></h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个 <code>m * n</code> 的矩阵 <code>grid</code>，矩阵中的元素无论是按行还是按列，都以非递增顺序排列。  请你统计并返回 <code>grid</code> 中 <strong>负数</strong> 的数目。   <strong>示例 1：</strong></p>
+<p><strong>输入：</strong>grid = [[4,3,2,-1],[3,2,1,-1],[1,1,-1,-2],[-1,-1,-2,-3]]<br><strong>输出：</strong>8<br><strong>解释：</strong>矩阵中共有 8 个负数。</p>
+<p><strong>示例 2：</strong></p>
+<p><strong>输入：</strong>grid = [[3,2],[1,0]]<br><strong>输出：</strong>0</p>
+<p><strong>示例 3：</strong></p>
+<p><strong>输入：</strong>grid = [[1,-1],[-1,-1]]<br><strong>输出：</strong>3</p>
+<p><strong>示例 4：</strong></p>
+<p><strong>输入：</strong>grid = [[-1]]<br><strong>输出：</strong>1</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>遍历二维数组，统计负数的个数即可。 时间复杂度为：$O(n^2)$ 空间复杂度为：$O(1)$</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">countNegatives</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> m = grid.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> n = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; n; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(grid[i][j] &lt; <span class="number">0</span>)&#123;<span class="comment">//统计负数的个数</span></span><br><span class="line">                    ++cnt;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="5341-最后-K-个数的乘积"><a href="#5341-最后-K-个数的乘积" class="headerlink" title="5341. 最后 K 个数的乘积"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/product-of-the-last-k-numbers/">5341. 最后 K 个数的乘积</a></h1><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>请你实现一个「数字乘积类」<code>ProductOfNumbers</code>，要求支持下述两种方法： 1. <code>add(int num)</code></p>
+<ul>
+<li>将数字 <code>num</code> 添加到当前数字列表的最后面。</li>
+</ul>
+<ol>
+<li><code>getProduct(int k)</code></li>
+</ol>
+<ul>
+<li>返回当前数字列表中，最后 <code>k</code> 个数字的乘积。</li>
+<li>你可以假设当前列表中始终 <strong>至少</strong> 包含 <code>k</code> 个数字。</li>
+</ul>
+<p>题目数据保证：任何时候，任一连续数字序列的乘积都在 32-bit 整数范围内，不会溢出。   <strong>示例：</strong></p>
+<p><strong>输入：</strong><br>[“ProductOfNumbers”,”add”,”add”,”add”,”add”,”add”,”getProduct”,”getProduct”,”getProduct”,”add”,”getProduct”]<br>[[],[3],[0],[2],[5],[4],[2],[3],[4],[8],[2]]</p>
+<p><strong>输出：</strong><br>[null,null,null,null,null,null,20,40,0,null,32]</p>
+<p><strong>解释：</strong><br>ProductOfNumbers productOfNumbers = new ProductOfNumbers();<br>productOfNumbers.add(3);        // [3]<br>productOfNumbers.add(0);        // [3,0]<br>productOfNumbers.add(2);        // [3,0,2]<br>productOfNumbers.add(5);        // [3,0,2,5]<br>productOfNumbers.add(4);        // [3,0,2,5,4]<br>productOfNumbers.getProduct(2); // 返回 20 。最后 2 个数字的乘积是 5 * 4 = 20<br>productOfNumbers.getProduct(3); // 返回 40 。最后 3 个数字的乘积是 2 * 5 * 4 = 40<br>productOfNumbers.getProduct(4); // 返回  0 。最后 4 个数字的乘积是 0 * 2 * 5 * 4 = 0<br>productOfNumbers.add(8);        // [3,0,2,5,4,8]<br>productOfNumbers.getProduct(2); // 返回 32 。最后 2 个数字的乘积是 4 * 8 = 32 </p>
+<h2 id="题解1"><a href="#题解1" class="headerlink" title="题解1"></a>题解1</h2><p>周赛的时候没有多想，上来直接用vector来存储所有的数，<code>add</code>函数用<code>push_back</code>来实现。最后k个元素乘积直接从vector的最后一个元素开始，将k个元素乘起来即可。 时间复杂度为：O(n) 空间复杂度为：O(n)</p>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ProductOfNumbers</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;vec;</span><br><span class="line">    <span class="built_in">ProductOfNumbers</span>() &#123;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> num)</span> </span>&#123;</span><br><span class="line">        vec.<span class="built_in">push_back</span>(num);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getProduct</span><span class="params">(<span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> len = vec.<span class="built_in">size</span>(), res = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = len - <span class="number">1</span>; i &gt;= len - k; --i)&#123;</span><br><span class="line">            res = res * vec[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your ProductOfNumbers object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * ProductOfNumbers* obj = new ProductOfNumbers();</span></span><br><span class="line"><span class="comment"> * obj-&gt;add(num);</span></span><br><span class="line"><span class="comment"> * int param_2 = obj-&gt;getProduct(k);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h2 id="题解2"><a href="#题解2" class="headerlink" title="题解2"></a>题解2</h2><p>参照<a target="_blank" rel="noopener" href="https://leetcode-cn.com/circle/discuss/0gO5RS/">LeetCode - 圈子</a>，对于第二题给出了许多优化的算法。题目中给出的限制条件需要注意。</p>
+<blockquote>
+<p>题目数据保证：任何时候，任一连续数字序列的乘积都在 32-bit 整数范围内，不会溢出。 0 &lt;= num &lt;= 100</p>
+</blockquote>
+<p>对于任一连续序列的乘积都小于32位整数范围，表示序列中最多只有31个数大于1（$2^{31} - 1$），其它数字都是0和1。所以可以用前缀和来统计0-100这101个数字在序列中出现的个数，这里空间开销是101 * n（n是序列的总长度）。计算最后K个数的乘积，只需要先找出每个数字num出现的次数cnt，$cnt_{num} = vec[n][num] - vec[n - k][num]$，出现0，最后乘积就为0，出现1，则跳过1不算。然后再求其它数字乘积即可。 这里我介绍前缀积的思路。数组存储连续数字的乘积，遇到0，清除数组，重新统计。当最后数组长度不足K时，表示乘积为0，否则就用总乘积除以前面元素的乘积。 时间复杂度为：O(1) 空间复杂度为：O(n)</p>
+<h2 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">ProductOfNumbers</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;vec;</span><br><span class="line">    <span class="built_in">ProductOfNumbers</span>() &#123;</span><br><span class="line">        vec.<span class="built_in">clear</span>();</span><br><span class="line">        vec.<span class="built_in">push_back</span>(<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">add</span><span class="params">(<span class="type">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(num == <span class="number">0</span>)&#123;<span class="comment">//遇到0，清空前缀积数组</span></span><br><span class="line">            vec.<span class="built_in">clear</span>();</span><br><span class="line">            vec.<span class="built_in">push_back</span>(<span class="number">1</span>);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            vec.<span class="built_in">push_back</span>(vec.<span class="built_in">back</span>() * num);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getProduct</span><span class="params">(<span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(vec.<span class="built_in">size</span>() - <span class="number">1</span> &lt; k)&#123;<span class="comment">//数组长度不足K表示，最后K个数中存在0</span></span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> vec[vec.<span class="built_in">size</span>() - <span class="number">1</span>] / vec[vec.<span class="built_in">size</span>() - <span class="number">1</span> - k];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your ProductOfNumbers object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * ProductOfNumbers* obj = new ProductOfNumbers();</span></span><br><span class="line"><span class="comment"> * obj-&gt;add(num);</span></span><br><span class="line"><span class="comment"> * int param_2 = obj-&gt;getProduct(k);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h1 id="1353-最多可以参加的会议数目"><a href="#1353-最多可以参加的会议数目" class="headerlink" title="1353. 最多可以参加的会议数目"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-number-of-events-that-can-be-attended/">1353. 最多可以参加的会议数目</a></h1><h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个数组 <code>events</code>，其中 <code>events[i] = [startDayi, endDayi]</code> ，表示会议 <code>i</code> 开始于 <code>startDayi</code> ，结束于 <code>endDayi</code> 。 你可以在满足 <code>startDayi &lt;= d &lt;= endDayi</code> 中的任意一天 <code>d</code> 参加会议 <code>i</code> 。注意，一天只能参加一个会议。 请你返回你可以参加的 <strong>最大</strong> 会议数目。   <strong>示例 1：</strong> <img src="https://assets.leetcode-cn.com/aliyun-lc-upload/uploads/2020/02/16/e1.png" alt=""></p>
+<p><strong>输入：</strong>events = [[1,2],[2,3],[3,4]]<br><strong>输出：</strong>3<br><strong>解释：</strong>你可以参加所有的三个会议。<br>安排会议的一种方案如上图。<br>第 1 天参加第一个会议。<br>第 2 天参加第二个会议。<br>第 3 天参加第三个会议。</p>
+<p><strong>示例 2：</strong></p>
+<p><strong>输入：</strong>events= [[1,2],[2,3],[3,4],[1,2]]<br><strong>输出：</strong>4</p>
+<p><strong>示例 3：</strong></p>
+<p><strong>输入：</strong>events = [[1,4],[4,4],[2,2],[3,4],[1,1]]<br><strong>输出：</strong>4</p>
+<p><strong>示例 4：</strong></p>
+<p><strong>输入：</strong>events = [[1,100000]]<br><strong>输出：</strong>1</p>
+<p><strong>示例 5：</strong></p>
+<p><strong>输入：</strong>events = [[1,1],[1,2],[1,3],[1,4],[1,5],[1,6],[1,7]]<br><strong>输出：</strong>7</p>
+<h2 id="题解-1"><a href="#题解-1" class="headerlink" title="题解"></a>题解</h2><p>贪心+优先队列 首先将区间按开始时间进行排序，然后结束时间早的先安排。还需要鼗安排冲突，不合理的去掉。 时间复杂度为：O(nlogn) 空间复杂度为：O(n)</p>
+<h2 id="代码-1"><a href="#代码-1" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxEvents</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; events)</span> </span>&#123;</span><br><span class="line">        priority_queue&lt;<span class="type">int</span>, vector&lt;<span class="type">int</span>&gt;, greater&lt;<span class="type">int</span>&gt;&gt;que;</span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>, idx = <span class="number">1</span>, i = <span class="number">0</span>;</span><br><span class="line">        <span class="comment">//先排序</span></span><br><span class="line">        <span class="built_in">sort</span>(events.<span class="built_in">begin</span>(), events.<span class="built_in">end</span>());</span><br><span class="line">        <span class="keyword">while</span>(i &lt; events.<span class="built_in">size</span>()  que.<span class="built_in">size</span>() &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            <span class="keyword">while</span>(i &lt; events.<span class="built_in">size</span>() &amp;&amp; events[i][<span class="number">0</span>] == idx)&#123;<span class="comment">//开始时间为idx的，均添加到优先队列</span></span><br><span class="line">                que.<span class="built_in">push</span>(events[i][<span class="number">1</span>]);</span><br><span class="line">                ++i;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">while</span>(que.<span class="built_in">size</span>() &gt; <span class="number">0</span> &amp;&amp; que.<span class="built_in">top</span>() &lt; idx)&#123;<span class="comment">//去除安排冲突的</span></span><br><span class="line">                que.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(que.<span class="built_in">size</span>() &gt; <span class="number">0</span>)&#123;<span class="comment">//优先安排结束时间早的</span></span><br><span class="line">                ++cnt;</span><br><span class="line">                que.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            ++idx;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="5343-多次求和构造目标数组"><a href="#5343-多次求和构造目标数组" class="headerlink" title="5343. 多次求和构造目标数组"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/construct-target-array-with-multiple-sums/">5343. 多次求和构造目标数组</a></h1><h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个整数数组 <code>target</code> 。一开始，你有一个数组 <code>A</code> ，它的所有元素均为 1 ，你可以执行以下操作：</p>
+<ul>
+<li>令 <code>x</code> 为你数组里所有元素的和</li>
+<li>选择满足 <code>0 &lt;= i &lt; target.size</code> 的任意下标 <code>i</code> ，并让 <code>A</code> 数组里下标为 <code>i</code> 处的值为 <code>x</code> 。</li>
+<li>你可以重复该过程任意次</li>
+</ul>
+<p>如果能从 <code>A</code> 开始构造出目标数组 <code>target</code> ，请你返回 True ，否则返回 False 。   <strong>示例 1：</strong></p>
+<p><strong>输入：</strong>target = [9,3,5]<br><strong>输出：</strong>true<br><strong>解释：</strong>从 [1, 1, 1] 开始<br>[1, 1, 1], 和为 3 ，选择下标 1<br>[1, 3, 1], 和为 5， 选择下标 2<br>[1, 3, 5], 和为 9， 选择下标 0<br>[9, 3, 5] 完成</p>
+<p><strong>示例 2：</strong></p>
+<p><strong>输入：</strong>target = [1,1,1,2]<br><strong>输出：</strong>false<br><strong>解释：</strong>不可能从 [1,1,1,1] 出发构造目标数组。</p>
+<p><strong>示例 3：</strong></p>
+<p><strong>输入：</strong>target = [8,5]<br><strong>输出：</strong>true</p>
+<h2 id="题解-2"><a href="#题解-2" class="headerlink" title="题解"></a>题解</h2><p>正向思考，不知道用所有的数字之和去替换哪一个数字，尝试的话可能性太多，实现难度太大。反向思考的话，数组中最大的数字显然是上一个数组中所有数字之和，而它所替换的数字等于最大的数字减去其它数字之和。如此替换下去，如果最后所有的数字都为1，表示可以构造目标数组，一旦出现数字0或负数，表示不能构造。</p>
+<h2 id="代码-2"><a href="#代码-2" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isPossible</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; target)</span> </span>&#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="type">int</span> rep_num = <span class="number">0</span>;</span><br><span class="line">        <span class="type">bool</span> flag = <span class="literal">true</span>;</span><br><span class="line">        priority_queue&lt;<span class="type">int</span>&gt;que;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; target.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">            sum += target[i];</span><br><span class="line">            que.<span class="built_in">push</span>(target[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(que.<span class="built_in">top</span>() != <span class="number">1</span>)&#123;</span><br><span class="line">            sum = sum - que.<span class="built_in">top</span>();<span class="comment">//除去最大数字其它数字之和</span></span><br><span class="line">            <span class="keyword">if</span>(sum == <span class="number">1</span>)&#123;</span><br><span class="line">                flag = <span class="literal">true</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">/*</span></span><br><span class="line"><span class="comment">            这里用除法而不用减法是为了处理像[100000, 1]这样的例子超时的问题</span></span><br><span class="line"><span class="comment">            用除法，直接使当前的最大数字小于其它数字之和，避免多轮最大数字都是同一个。</span></span><br><span class="line"><span class="comment">            */</span></span><br><span class="line">            <span class="keyword">if</span>(que.<span class="built_in">top</span>() / sum == <span class="number">0</span>  (que.<span class="built_in">top</span>() % sum == <span class="number">0</span>))&#123;<span class="comment">//出现负数和0</span></span><br><span class="line">                flag = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                que.<span class="built_in">push</span>(que.<span class="built_in">top</span>() % sum);</span><br><span class="line">                sum = sum + que.<span class="built_in">top</span>() % sum;<span class="comment">//上一个数组的所有元素之和</span></span><br><span class="line">                que.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
+              <a href="/tags/%E4%BC%98%E5%85%88%E9%98%9F%E5%88%97/" rel="tag"># 优先队列</a>
+              <a href="/tags/%E8%B4%AA%E5%BF%83/" rel="tag"># 贪心</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/02/16/pytorch%E5%AF%B9%E4%B8%A4%E5%BC%A0%E5%9B%BE%E7%89%87%E8%BF%9B%E8%A1%8C%E7%9B%B8%E5%90%8C%E7%9A%84%E6%95%B0%E6%8D%AE%E5%A2%9E%E5%B9%BF%E6%93%8D%E4%BD%9C/" rel="prev" title="Pytorch对两张图片进行相同的数据增广操作">
+                  <i class="fa fa-chevron-left"></i> Pytorch对两张图片进行相同的数据增广操作
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/02/28/pytorch%E8%BD%BD%E5%85%A5%E9%83%A8%E5%88%86%E5%8F%82%E6%95%B0%E5%B9%B6%E5%86%BB%E7%BB%93/" rel="next" title="Pytorch载入部分参数并冻结">
+                  Pytorch载入部分参数并冻结 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

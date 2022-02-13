@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="参考资料 【Dlib】人脸检测、特征点检测、人脸对齐、人脸识别 深度学习与人脸识别之-脸部分割与校正 github项目FaceSegmentation http:&#x2F;&#x2F;dlib.net&#x2F;face_alignment.py.html 知乎问答  关键点检测首先获取模型，下载地址在这，我使用的是获取脸部68个关键点的模型shape_predictor_68_face_landmarks.dat 68关键">
+<meta property="og:type" content="website">
+<meta property="og:title" content="dlib实现脸部分割与人脸对齐">
+<meta property="og:url" content="http://example.com/2020/01/29/dlib%E5%AE%9E%E7%8E%B0%E8%84%B8%E9%83%A8%E5%88%86%E5%89%B2%E4%B8%8E%E4%BA%BA%E8%84%B8%E5%AF%B9%E9%BD%90/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="参考资料 【Dlib】人脸检测、特征点检测、人脸对齐、人脸识别 深度学习与人脸识别之-脸部分割与校正 github项目FaceSegmentation http:&#x2F;&#x2F;dlib.net&#x2F;face_alignment.py.html 知乎问答  关键点检测首先获取模型，下载地址在这，我使用的是获取脸部68个关键点的模型shape_predictor_68_face_landmarks.dat 68关键">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/2020/01/bc388216b03bc751c8a6505207243e59.png">
+<meta property="og:image" content="http://example.com/images/2020/01/0b76bab4c8876e791592ab1ba4bfb760.png">
+<meta property="og:image" content="http://example.com/images/2020/01/63d16c7784509d2f8880da7e92b37d9c.png">
+<meta property="og:image" content="http://example.com/images/2020/01/a8fc125fa7af4ec67798e3ba6ee2290e.png">
+<meta property="og:image" content="http://example.com/images/2020/01/41bcb607dddb2e1b274cfa79516723c8.png">
+<meta property="og:image" content="http://example.com/images/2020/01/fac8463e6dfcc01af5f1f95560df7787.png">
+<meta property="og:image" content="http://example.com/images/2020/01/1f008f4ffc9f58946de4579a8e71e2fd.png">
+<meta property="og:image" content="http://example.com/images/2020/01/d371e91bffc8b8158b282a0d5115bc00.png">
+<meta property="og:image" content="http://example.com/images/2020/01/9b242c562a1fb5a0b059ae1bf4218aa6.png">
+<meta property="article:published_time" content="2020-01-29T09:27:03.000Z">
+<meta property="article:modified_time" content="2022-02-13T06:04:08.454Z">
+<meta property="article:author" content="Onwaier">
+<meta property="article:tag" content="dlib">
+<meta property="article:tag" content="人脸对齐">
+<meta property="article:tag" content="脸部分割">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/2020/01/bc388216b03bc751c8a6505207243e59.png">
+
+
+<link rel="canonical" href="http://example.com/2020/01/29/dlib%E5%AE%9E%E7%8E%B0%E8%84%B8%E9%83%A8%E5%88%86%E5%89%B2%E4%B8%8E%E4%BA%BA%E8%84%B8%E5%AF%B9%E9%BD%90/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/01/29/dlib%E5%AE%9E%E7%8E%B0%E8%84%B8%E9%83%A8%E5%88%86%E5%89%B2%E4%B8%8E%E4%BA%BA%E8%84%B8%E5%AF%B9%E9%BD%90/","path":"2020/01/29/dlib实现脸部分割与人脸对齐/","title":"dlib实现脸部分割与人脸对齐"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>dlib实现脸部分割与人脸对齐 | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">1.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E9%94%AE%E7%82%B9%E6%A3%80%E6%B5%8B"><span class="nav-number">2.</span> <span class="nav-text">关键点检测</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#cv2%E8%AF%BB%E5%8F%96%E5%9B%BE%E5%83%8F"><span class="nav-number"></span> <span class="nav-text">cv2读取图像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%96%E7%81%B0%E5%BA%A6"><span class="nav-number"></span> <span class="nav-text">取灰度</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BA%BA%E8%84%B8%E6%95%B0rects%EF%BC%88rectangles%EF%BC%89"><span class="nav-number"></span> <span class="nav-text">人脸数rects（rectangles）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%84%B8%E9%83%A8%E5%88%86%E5%89%B2"><span class="nav-number">1.</span> <span class="nav-text">脸部分割</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E5%BD%A2%E6%A1%86%E5%88%86%E5%89%B2%E4%BA%BA%E8%84%B8"><span class="nav-number">1.1.</span> <span class="nav-text">矩形框分割人脸</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%8D%E8%A7%84%E5%88%99%E5%BD%A2%E7%8A%B6%E5%88%86%E5%89%B2%E4%BA%BA%E8%84%B8"><span class="nav-number">1.2.</span> <span class="nav-text">不规则形状分割人脸</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%BA%E8%84%B8%E5%AF%B9%E9%BD%90"><span class="nav-number">2.</span> <span class="nav-text">人脸对齐</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/29/dlib%E5%AE%9E%E7%8E%B0%E8%84%B8%E9%83%A8%E5%88%86%E5%89%B2%E4%B8%8E%E4%BA%BA%E8%84%B8%E5%AF%B9%E9%BD%90/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          dlib实现脸部分割与人脸对齐
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-29 17:27:03" itemprop="dateCreated datePublished" datetime="2020-01-29T17:27:03+08:00">2020-01-29</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 14:04:08" itemprop="dateModified" datetime="2022-02-13T14:04:08+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BA%BA%E8%84%B8%E8%A1%A8%E6%83%85%E8%AF%86%E5%88%AB/" itemprop="url" rel="index"><span itemprop="name">人脸表情识别</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/01/29/dlib%E5%AE%9E%E7%8E%B0%E8%84%B8%E9%83%A8%E5%88%86%E5%89%B2%E4%B8%8E%E4%BA%BA%E8%84%B8%E5%AF%B9%E9%BD%90/" class="post-meta-item leancloud_visitors" data-flag-title="dlib实现脸部分割与人脸对齐" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/01/29/dlib%E5%AE%9E%E7%8E%B0%E8%84%B8%E9%83%A8%E5%88%86%E5%89%B2%E4%B8%8E%E4%BA%BA%E8%84%B8%E5%AF%B9%E9%BD%90/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/01/29/dlib实现脸部分割与人脸对齐/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/liuxiao214/article/details/83411820">【Dlib】人脸检测、特征点检测、人脸对齐、人脸识别</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/wujuxkkoolerter/article/details/86152586">深度学习与人脸识别之-脸部分割与校正</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/AIfaceLab/FaceSegmentation">github项目FaceSegmentation</a></li>
+<li><a target="_blank" rel="noopener" href="http://dlib.net/face_alignment.py.html">http://dlib.net/face_alignment.py.html</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/268307551">知乎问答</a></li>
+</ol>
+<h2 id="关键点检测"><a href="#关键点检测" class="headerlink" title="关键点检测"></a>关键点检测</h2><p>首先获取模型，下载地址在<a target="_blank" rel="noopener" href="http://dlib.net/files/">这</a>，我使用的是获取脸部68个关键点的<a target="_blank" rel="noopener" href="http://onwaier.com:7777/share/e9FOpQTO">模型<code>shape_predictor_68_face_landmarks.dat</code></a> 68关键点位置示意图如下： <img src="/images/2020/01/bc388216b03bc751c8a6505207243e59.png" alt=""> 首先贴出python代码 ` ```python<br>“””<br>代码功能：</p>
+<ol>
+<li>用dlib人脸检测器检测出人脸，返回的人脸矩形框</li>
+<li>对检测出的人脸进行关键点检测并用圈进行标记</li>
+<li>将检测出的人脸关键点信息写到txt文本中<br>“””<br>import cv2<br>import dlib<br>import numpy as np</li>
+</ol>
+<p>predictor_model = ‘shape_predictor_68_face_landmarks.dat’<br>detector = dlib.get_frontal_face_detector()# dlib人脸检测器<br>predictor = dlib.shape_predictor(predictor_model)</p>
+<h1 id="cv2读取图像"><a href="#cv2读取图像" class="headerlink" title="cv2读取图像"></a>cv2读取图像</h1><p>test_img_path = “input/Messi.jpg”<br>output_pos_info = “output_pos_info/Messi.txt”<br>img = cv2.imread(test_img_path)<br>file_handle = open(output_pos_info, ‘a’)</p>
+<h1 id="取灰度"><a href="#取灰度" class="headerlink" title="取灰度"></a>取灰度</h1><p>img_gray = cv2.cvtColor(img, cv2.COLOR_RGB2GRAY)</p>
+<h1 id="人脸数rects（rectangles）"><a href="#人脸数rects（rectangles）" class="headerlink" title="人脸数rects（rectangles）"></a>人脸数rects（rectangles）</h1><p>rects = detector(img_gray, 0)</p>
+<p>for i in range(len(rects)):<br>    landmarks = np.matrix([[p.x, p.y] for p in predictor(img,rects[i]).parts()])<br>    for idx, point in enumerate(landmarks):</p>
+<pre><code>    # 68点的坐标
+    pos = (point[0, 0], point[0, 1])
+    print(idx+1, pos)
+    pos_info = str(point[0, 0]) + &#39; &#39; + str(point[0, 1]) + &#39;\n&#39;
+    file_handle.write(pos_info)
+    # 利用cv2.circle给每个特征点画一个圈，共68个
+    cv2.circle(img, pos, 3, color=(0, 255, 0))
+    # 利用cv2.putText输出1-68
+    #font = cv2.FONT_HERSHEY_SIMPLEX
+    #cv2.putText(img, str(idx+1), pos, font, 0.5, (0, 0, 255), 1, cv2.LINE_AA)
+</code></pre><p>file_handle.close()<br>cv2.imwrite(“output/Messi_keypoints.png”, img)<br><figure class="highlight plaintext"><figcaption><span>大致过程如下：先用人脸检测器获取到人脸矩形框rectangles，再用68点shape模型获取`full_object_detection`对象。最后将关键点标记出来，并写入文本中。 `rects </span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">```python</span><br><span class="line">predictor = dlib.shape_predictor(predictor_model)</span><br><span class="line">predictor(img,rects[i]).parts()</span><br><span class="line">predictor(img, rects[i]).part(1)</span><br></pre></td></tr></table></figure></p>
+<p>predictor返回的是一个<code>full_object_detection</code>对象，通过<code>parts()</code>可以获得所有关键点的位置，通过<code>part(idx)</code>idx从0开始，可以获取某个关键点的信息。 <img src="/images/2020/01/0b76bab4c8876e791592ab1ba4bfb760.png" alt=""> 测试图片的原图与标注关键点后图片如下图所示。 <img src="/images/2020/01/63d16c7784509d2f8880da7e92b37d9c.png" alt=""> <img src="/images/2020/01/a8fc125fa7af4ec67798e3ba6ee2290e.png" alt=""></p>
+<h2 id="脸部分割"><a href="#脸部分割" class="headerlink" title="脸部分割"></a>脸部分割</h2><p>两种方式：矩形框分割人脸和 不规则形状分割人脸</p>
+<h3 id="矩形框分割人脸"><a href="#矩形框分割人脸" class="headerlink" title="矩形框分割人脸"></a>矩形框分割人脸</h3><p>可以采用<code>dlib.get_face_chip()</code>来分割人脸</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">代码功能：</span></span><br><span class="line"><span class="string">1. 用dlib人脸检测器检测出人脸，返回的人脸矩形框</span></span><br><span class="line"><span class="string">2. 对检测出的人脸进行关键点检测并切割出人脸</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> dlib</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line">predictor_model = <span class="string">&#x27;shape_predictor_68_face_landmarks.dat&#x27;</span></span><br><span class="line">detector = dlib.get_frontal_face_detector()<span class="comment"># dlib人脸检测器</span></span><br><span class="line">predictor = dlib.shape_predictor(predictor_model)</span><br><span class="line"></span><br><span class="line"><span class="comment"># cv2读取图像</span></span><br><span class="line">test_img_path = <span class="string">&quot;input/Messi.jpg&quot;</span></span><br><span class="line">img = cv2.imread(test_img_path)</span><br><span class="line">img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)</span><br><span class="line"><span class="comment"># 人脸数rects</span></span><br><span class="line">rects = detector(img, <span class="number">0</span>)</span><br><span class="line"><span class="comment"># faces存储full_object_detection对象</span></span><br><span class="line">faces = dlib.full_object_detections()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(rects)):</span><br><span class="line">    faces.append(predictor(img,rects[i]))</span><br><span class="line"></span><br><span class="line">face_images = dlib.get_face_chips(img, faces, size=<span class="number">320</span>)</span><br><span class="line"><span class="keyword">for</span> image <span class="keyword">in</span> face_images:</span><br><span class="line">    cv_bgr_img = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)</span><br><span class="line">    cv2.imwrite(<span class="string">&#x27;output/Messi_clip.png&#x27;</span>, cv_bgr_img)</span><br></pre></td></tr></table></figure>
+<p>Dlib检测出的脸部区域对于下巴和额头区域会做过多的裁剪，并且分割使用的是矩形框。 分割结果如图 <img src="/images/2020/01/41bcb607dddb2e1b274cfa79516723c8.png" alt=""></p>
+<h3 id="不规则形状分割人脸"><a href="#不规则形状分割人脸" class="headerlink" title="不规则形状分割人脸"></a>不规则形状分割人脸</h3><blockquote>
+<p>先用dlib等打点工具把人脸最外层的landmark点打出来，然后利用opencv的convexhull得到凸包然后就可以抠出人脸区域了.</p>
+</blockquote>
+<p>python代码(获取人脸的掩模)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_image_hull_mask</span>(<span class="params">image_shape, image_landmarks, ie_polys=<span class="literal">None</span></span>):</span><br><span class="line">    <span class="comment"># get the mask of the image</span></span><br><span class="line">    <span class="keyword">if</span> image_landmarks.shape[<span class="number">0</span>] != <span class="number">68</span>:</span><br><span class="line">        <span class="keyword">raise</span> Exception(</span><br><span class="line">            <span class="string">&#x27;get_image_hull_mask works only with 68 landmarks&#x27;</span>)</span><br><span class="line">    int_lmrks = np.array(image_landmarks, dtype=np.<span class="built_in">int</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#hull_mask = np.zeros(image_shape[0:2]+(1,), dtype=np.float32)</span></span><br><span class="line">    hull_mask = np.full(image_shape[<span class="number">0</span>:<span class="number">2</span>] + (<span class="number">1</span>,), <span class="number">0</span>, dtype=np.float32)</span><br><span class="line"></span><br><span class="line">    cv2.fillConvexPoly(hull_mask, cv2.convexHull(</span><br><span class="line">        np.concatenate((int_lmrks[<span class="number">0</span>:<span class="number">9</span>],</span><br><span class="line">                        int_lmrks[<span class="number">17</span>:<span class="number">18</span>]))), (<span class="number">1</span>,))</span><br><span class="line"></span><br><span class="line">    cv2.fillConvexPoly(hull_mask, cv2.convexHull(</span><br><span class="line">        np.concatenate((int_lmrks[<span class="number">8</span>:<span class="number">17</span>],</span><br><span class="line">                        int_lmrks[<span class="number">26</span>:<span class="number">27</span>]))), (<span class="number">1</span>,))</span><br><span class="line"></span><br><span class="line">    cv2.fillConvexPoly(hull_mask, cv2.convexHull(</span><br><span class="line">        np.concatenate((int_lmrks[<span class="number">17</span>:<span class="number">20</span>],</span><br><span class="line">                        int_lmrks[<span class="number">8</span>:<span class="number">9</span>]))), (<span class="number">1</span>,))</span><br><span class="line"></span><br><span class="line">    cv2.fillConvexPoly(hull_mask, cv2.convexHull(</span><br><span class="line">        np.concatenate((int_lmrks[<span class="number">24</span>:<span class="number">27</span>],</span><br><span class="line">                        int_lmrks[<span class="number">8</span>:<span class="number">9</span>]))), (<span class="number">1</span>,))</span><br><span class="line"></span><br><span class="line">    cv2.fillConvexPoly(hull_mask, cv2.convexHull(</span><br><span class="line">        np.concatenate((int_lmrks[<span class="number">19</span>:<span class="number">25</span>],</span><br><span class="line">                        int_lmrks[<span class="number">8</span>:<span class="number">9</span>],</span><br><span class="line">                        ))), (<span class="number">1</span>,))</span><br><span class="line"></span><br><span class="line">    cv2.fillConvexPoly(hull_mask, cv2.convexHull(</span><br><span class="line">        np.concatenate((int_lmrks[<span class="number">17</span>:<span class="number">22</span>],</span><br><span class="line">                        int_lmrks[<span class="number">27</span>:<span class="number">28</span>],</span><br><span class="line">                        int_lmrks[<span class="number">31</span>:<span class="number">36</span>],</span><br><span class="line">                        int_lmrks[<span class="number">8</span>:<span class="number">9</span>]</span><br><span class="line">                        ))), (<span class="number">1</span>,))</span><br><span class="line"></span><br><span class="line">    cv2.fillConvexPoly(hull_mask, cv2.convexHull(</span><br><span class="line">        np.concatenate((int_lmrks[<span class="number">22</span>:<span class="number">27</span>],</span><br><span class="line">                        int_lmrks[<span class="number">27</span>:<span class="number">28</span>],</span><br><span class="line">                        int_lmrks[<span class="number">31</span>:<span class="number">36</span>],</span><br><span class="line">                        int_lmrks[<span class="number">8</span>:<span class="number">9</span>]</span><br><span class="line">                        ))), (<span class="number">1</span>,))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># nose</span></span><br><span class="line">    cv2.fillConvexPoly(</span><br><span class="line">        hull_mask, cv2.convexHull(int_lmrks[<span class="number">27</span>:<span class="number">36</span>]), (<span class="number">1</span>,))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span> ie_polys <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        ie_polys.overlay_mask(hull_mask)</span><br><span class="line">    <span class="built_in">print</span>()</span><br><span class="line">    <span class="keyword">return</span> hull_mask</span><br></pre></td></tr></table></figure>
+<p>方法利用的就是opencv的convexhull得到凸包然后就可以抠出人脸区域。 得到掩模，这里使用两种方式来得到人脸区域 1. 将mask作为$\\alpha$通道，来控制图片区域的透明度，最后得到图片是4通道的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">merge_add_alpha</span>(<span class="params">img_1, mask</span>):</span><br><span class="line">    <span class="comment"># merge rgb and mask into a rgba image</span></span><br><span class="line">    r_channel, g_channel, b_channel = cv2.split(img_1)</span><br><span class="line">    <span class="keyword">if</span> mask <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        alpha_channel = np.ones(mask.shape, dtype=img_1.dtype)</span><br><span class="line">        alpha_channel *= mask*<span class="number">255</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        alpha_channel = np.zeros(img_1.shape[:<span class="number">2</span>], dtype=img_1.dtype)</span><br><span class="line">    img_BGRA = cv2.merge((b_channel, g_channel, r_channel, alpha_channel))</span><br><span class="line">    <span class="keyword">return</span> img_BGRA</span><br></pre></td></tr></table></figure>
+<p>分割结果 <img src="/images/2020/01/fac8463e6dfcc01af5f1f95560df7787.png" alt=""></p>
+<ol>
+<li>掩模与原始图像进行与运算，返回图像是三通道。</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">merge_add_mask</span>(<span class="params">img_1, mask</span>):</span><br><span class="line">    <span class="keyword">if</span> mask <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        height = mask.shape[<span class="number">0</span>]</span><br><span class="line">        width = mask.shape[<span class="number">1</span>]</span><br><span class="line">        channel_num = mask.shape[<span class="number">2</span>]</span><br><span class="line">        <span class="keyword">for</span> row <span class="keyword">in</span> <span class="built_in">range</span>(height):</span><br><span class="line">            <span class="keyword">for</span> col <span class="keyword">in</span> <span class="built_in">range</span>(width):</span><br><span class="line">                <span class="keyword">for</span> c <span class="keyword">in</span> <span class="built_in">range</span>(channel_num):</span><br><span class="line">                    <span class="keyword">if</span> mask[row, col, c] == <span class="number">0</span>:</span><br><span class="line">                        mask[row, col, c] = <span class="number">0</span></span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        mask[row, col, c] = <span class="number">255</span></span><br><span class="line"></span><br><span class="line">        r_channel, g_channel, b_channel = cv2.split(img_1)</span><br><span class="line">        r_channel = cv2.bitwise_and(r_channel, mask)</span><br><span class="line">        g_channel = cv2.bitwise_and(g_channel, mask)</span><br><span class="line">        b_channel = cv2.bitwise_and(b_channel, mask)</span><br><span class="line">        res_img = cv2.merge((b_channel, g_channel, r_channel))</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        res_img = img_1</span><br><span class="line">    <span class="keyword">return</span> res_img</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>分割结果为 <img src="/images/2020/01/1f008f4ffc9f58946de4579a8e71e2fd.png" alt=""></p>
+<h2 id="人脸对齐"><a href="#人脸对齐" class="headerlink" title="人脸对齐"></a>人脸对齐</h2><p>思路比较简单，计算两眼连线与水平线的夹角，然后通过角度得到对应的旋转矩阵。对图片进行相应的变换。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">single_face_alignment</span>(<span class="params">face, landmarks</span>):</span><br><span class="line">    eye_center = ((landmarks[<span class="number">36</span>, <span class="number">0</span>] + landmarks[<span class="number">45</span>, <span class="number">0</span>]) * <span class="number">1.</span> / <span class="number">2</span>,  <span class="comment"># 计算两眼的中心坐标</span></span><br><span class="line">                  (landmarks[<span class="number">36</span>, <span class="number">1</span>] + landmarks[<span class="number">45</span>, <span class="number">1</span>]) * <span class="number">1.</span> / <span class="number">2</span>)</span><br><span class="line">    dx = (landmarks[<span class="number">45</span>, <span class="number">0</span>] - landmarks[<span class="number">36</span>, <span class="number">0</span>])  <span class="comment"># note: right - right</span></span><br><span class="line">    dy = (landmarks[<span class="number">45</span>, <span class="number">1</span>] - landmarks[<span class="number">36</span>, <span class="number">1</span>])</span><br><span class="line"></span><br><span class="line">    angle = math.atan2(dy, dx) * <span class="number">180.</span> / math.pi  <span class="comment"># 计算角度</span></span><br><span class="line">    RotateMatrix = cv2.getRotationMatrix2D(eye_center, angle, scale=<span class="number">1</span>)  <span class="comment"># 计算仿射矩阵</span></span><br><span class="line">    align_face = cv2.warpAffine(face, RotateMatrix, (face.shape[<span class="number">0</span>], face.shape[<span class="number">1</span>]))  <span class="comment"># 进行放射变换，即旋转</span></span><br><span class="line">    <span class="keyword">return</span> align_face</span><br></pre></td></tr></table></figure>
+<p>人脸对齐后如图 <img src="/images/2020/01/d371e91bffc8b8158b282a0d5115bc00.png" alt=""> 这样就完成人脸检测—&gt;人脸关键点检测—&gt;人脸分割—&gt;人脸对齐。 具体代码参照<a target="_blank" rel="noopener" href="https://github.com/Onwaier/SegfaceAndAlignByDlib">github</a> 可以用以上方法对fer2013数据集进行预处理，如图所示。 <img src="/images/2020/01/9b242c562a1fb5a0b059ae1bf4218aa6.png" alt=""></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/dlib/" rel="tag"># dlib</a>
+              <a href="/tags/%E4%BA%BA%E8%84%B8%E5%AF%B9%E9%BD%90/" rel="tag"># 人脸对齐</a>
+              <a href="/tags/%E8%84%B8%E9%83%A8%E5%88%86%E5%89%B2/" rel="tag"># 脸部分割</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/01/28/%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E4%BE%A7%E8%BE%B9%E6%A0%8F%E8%B7%9F%E9%9A%8F%E5%9B%BA%E5%AE%9A%E8%8C%83%E5%9B%B4%E6%B5%AE%E5%8A%A8/" rel="prev" title="实现智能侧边栏跟随固定范围浮动">
+                  <i class="fa fa-chevron-left"></i> 实现智能侧边栏跟随固定范围浮动
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/02/01/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95boyer-moore-majority-vote-algorithm/" rel="next" title="摩尔投票法(Boyer–Moore majority vote algorithm)">
+                  摩尔投票法(Boyer–Moore majority vote algorithm) <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

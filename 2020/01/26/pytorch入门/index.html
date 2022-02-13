@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="参考PyTorch官方教程中文版 特点支持GPU，灵活，支持动态神经网络，底层代码易于理解，命令式体验。 张量(tensor)学习具体用法参照官方文档 1234import torch# 构造一个5x3矩阵，不初始化。x &#x3D; torch.empty((5, 3)print(x)  123# 构造一个随机初始化的矩阵x &#x3D; torch.rand((5, 3))print(x)  123# 构造一个填">
+<meta property="og:type" content="website">
+<meta property="og:title" content="pytorch入门">
+<meta property="og:url" content="http://example.com/2020/01/26/pytorch%E5%85%A5%E9%97%A8/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="参考PyTorch官方教程中文版 特点支持GPU，灵活，支持动态神经网络，底层代码易于理解，命令式体验。 张量(tensor)学习具体用法参照官方文档 1234import torch# 构造一个5x3矩阵，不初始化。x &#x3D; torch.empty((5, 3)print(x)  123# 构造一个随机初始化的矩阵x &#x3D; torch.rand((5, 3))print(x)  123# 构造一个填">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/2020/01/ed20c4059b7d2876b35477dbae98c0cc.png">
+<meta property="og:image" content="http://example.com/images/2020/01/d843b2cb1db05d0a87f8acae961e95ab.png">
+<meta property="og:image" content="http://example.com/images/2020/01/3df9c44f3e392ed46360000226f7298f.png">
+<meta property="og:image" content="http://example.com/images/2020/01/214502b926fc8897cb2b225601a1539c.png">
+<meta property="og:image" content="http://example.com/images/2020/01/3de040933ac1e2449b838670d0f3828a.png">
+<meta property="og:image" content="http://example.com/images/2020/01/80e290544e3258d4747a981c07ffc1c6.png">
+<meta property="og:image" content="http://example.com/images/2020/01/c88c5035e16c81a04070fb3fde64b4bb.png">
+<meta property="og:image" content="http://example.com/images/2020/01/da1e8247bfaf5fbf426c836b02a379dd.png">
+<meta property="og:image" content="http://example.com/images/2020/01/8908dce0053d4a9e7349700e1ae46e95.png">
+<meta property="og:image" content="http://example.com/images/2020/01/44d8b9299f68ef1623e0c4a3028a41aa.png">
+<meta property="og:image" content="http://example.com/images/2020/01/be5c19b1d4267bee2ee93ebcf78045f0.png">
+<meta property="og:image" content="http://example.com/images/2020/01/3c954a7cf80df393c107c27f6797a5da.png">
+<meta property="og:image" content="http://example.com/images/2020/01/7fdd67d05badaa78ee6bb1cf9f51f2ba.png">
+<meta property="article:published_time" content="2020-01-26T09:19:15.000Z">
+<meta property="article:modified_time" content="2022-02-13T06:29:29.867Z">
+<meta property="article:author" content="Onwaier">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/2020/01/ed20c4059b7d2876b35477dbae98c0cc.png">
+
+
+<link rel="canonical" href="http://example.com/2020/01/26/pytorch%E5%85%A5%E9%97%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/01/26/pytorch%E5%85%A5%E9%97%A8/","path":"2020/01/26/pytorch入门/","title":"pytorch入门"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>pytorch入门 | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%89%B9%E7%82%B9"><span class="nav-number">1.</span> <span class="nav-text">特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%A0%E9%87%8F-tensor-%E5%AD%A6%E4%B9%A0"><span class="nav-number">2.</span> <span class="nav-text">张量(tensor)学习</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/26/pytorch%E5%85%A5%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pytorch入门
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-26 17:19:15" itemprop="dateCreated datePublished" datetime="2020-01-26T17:19:15+08:00">2020-01-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 14:29:29" itemprop="dateModified" datetime="2022-02-13T14:29:29+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/pytorch/" itemprop="url" rel="index"><span itemprop="name">pytorch</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/01/26/pytorch%E5%85%A5%E9%97%A8/" class="post-meta-item leancloud_visitors" data-flag-title="pytorch入门" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/01/26/pytorch%E5%85%A5%E9%97%A8/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/01/26/pytorch入门/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>参考<a target="_blank" rel="noopener" href="https://pytorch.org/tutorials/">PyTorch官方教程中文版</a></p>
+<h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>支持GPU，灵活，支持动态神经网络，底层代码易于理解，命令式体验。</p>
+<h2 id="张量-tensor-学习"><a href="#张量-tensor-学习" class="headerlink" title="张量(tensor)学习"></a>张量(tensor)学习</h2><p>具体用法参照<a target="_blank" rel="noopener" href="https://pytorch.org/docs">官方文档</a></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="comment"># 构造一个5x3矩阵，不初始化。</span></span><br><span class="line">x = torch.empty((<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/ed20c4059b7d2876b35477dbae98c0cc.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构造一个随机初始化的矩阵</span></span><br><span class="line">x = torch.rand((<span class="number">5</span>, <span class="number">3</span>))</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/d843b2cb1db05d0a87f8acae961e95ab.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构造一个填充某个值的矩阵</span></span><br><span class="line">x = torch.full((<span class="number">5</span>, <span class="number">3</span>), <span class="number">3.1415</span>)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/3df9c44f3e392ed46360000226f7298f.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构造全为0的矩阵，且数据类型为long</span></span><br><span class="line">x = torch.zeros((<span class="number">5</span>, <span class="number">3</span>), dtype = torch.long)</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/214502b926fc8897cb2b225601a1539c.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 构造单位矩阵</span></span><br><span class="line"><span class="comment"># torch.eye(n, m=None, out=None, dtype=None, layout=torch.strided, device=None, requires_grad=False) → Tensor</span></span><br><span class="line"><span class="comment"># Returns a 2-D tensor with ones on the diagonal and zeros elsewhere.</span></span><br><span class="line">torch.eye(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/3de040933ac1e2449b838670d0f3828a.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用数据构造一个张量</span></span><br><span class="line">x = torch.tensor([<span class="number">5.5</span>, <span class="number">3</span>])</span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/80e290544e3258d4747a981c07ffc1c6.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 用已经存在的tensor构造一个tensor</span></span><br><span class="line">x = x.new_ones((<span class="number">5</span>, <span class="number">3</span>), dtype = torch.double)</span><br><span class="line"><span class="comment"># new_* methods take in sizes</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br><span class="line"></span><br><span class="line">x = torch.randn_like(x, dtype = torch.<span class="built_in">float</span>)</span><br><span class="line"><span class="comment"># size和原x的size相同，但数据类型不同</span></span><br><span class="line"><span class="built_in">print</span>(x)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/c88c5035e16c81a04070fb3fde64b4bb.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 获取维度信息 size()</span></span><br><span class="line"><span class="built_in">print</span>(x.size())</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/da1e8247bfaf5fbf426c836b02a379dd.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加法1 +</span></span><br><span class="line">y = torch.rand(<span class="number">5</span>, <span class="number">3</span>)</span><br><span class="line"><span class="built_in">print</span>(x + y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/8908dce0053d4a9e7349700e1ae46e95.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 加法2 torch.add</span></span><br><span class="line"><span class="comment"># torch.add(input, alpha=1, other, out=None)</span></span><br><span class="line"><span class="comment"># Each element of the tensor other is multiplied by the scalar alpha and added to each element of the tensor input. The resulting tensor is returned.</span></span><br><span class="line"><span class="built_in">print</span>(torch.add(x, y))</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/44d8b9299f68ef1623e0c4a3028a41aa.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 提供一个输出tensor作为参数</span></span><br><span class="line">result = torch.empty((<span class="number">5</span>, <span class="number">3</span>))</span><br><span class="line">torch.add(x, y, out = result)</span><br><span class="line"><span class="built_in">print</span>(x + y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/be5c19b1d4267bee2ee93ebcf78045f0.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># add x to y  (in-place)</span></span><br><span class="line"><span class="comment"># 即将x+y的值赋给y</span></span><br><span class="line"><span class="comment"># 任何使张量会发生变化的操作都有一个前缀</span></span><br><span class="line">y.add_(x)</span><br><span class="line"><span class="built_in">print</span>(y)</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/3c954a7cf80df393c107c27f6797a5da.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 改变大小：如果你想改变一个 tensor 的大小或者形状，你可以使用 torch.view:</span></span><br><span class="line"></span><br><span class="line">x = torch.randn(<span class="number">4</span>, <span class="number">4</span>)</span><br><span class="line">y = x.view(<span class="number">16</span>)</span><br><span class="line">z = x.view(-<span class="number">1</span>, <span class="number">8</span>)  <span class="comment"># the size -1 is inferred from other dimensions</span></span><br><span class="line"><span class="built_in">print</span>(x.size(), y.size(), z.size())</span><br></pre></td></tr></table></figure>
+<p><img src="/images/2020/01/7fdd67d05badaa78ee6bb1cf9f51f2ba.png" alt=""></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/01/17/linux%E4%B8%8Eonedrive%E9%97%B4%E5%90%8C%E6%AD%A5-%E5%A4%87%E4%BB%BD/" rel="prev" title="linux与onedrive间同步/备份">
+                  <i class="fa fa-chevron-left"></i> linux与onedrive间同步/备份
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/01/27/pytorch%E8%87%AA%E5%8A%A8%E6%B1%82%E5%AF%BC/" rel="next" title="pytorch自动求导">
+                  pytorch自动求导 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

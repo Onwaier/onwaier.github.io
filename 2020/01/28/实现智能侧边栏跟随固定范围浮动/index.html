@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="问题描述我的博客是两列布局，当文章内容过多时，向下滑动，左侧栏会出现空白，影响阅读体验。想要实现这种效果：当左侧栏滑到底时，不继续左边内容向下滑动。查阅网上的资料，实现的方法大致分为三种。 解决方法解决方法大致分为两种类型：通过插件实现或者修改代码。 插件Q2W3 Fixed Widget参考博客，我添加后没有达到理想效果，可能是哪里没设置好或者设置冲突。 - 安装插件 通过插件安装器搜索或者zi">
+<meta property="og:type" content="website">
+<meta property="og:title" content="实现智能侧边栏跟随固定范围浮动">
+<meta property="og:url" content="http://example.com/2020/01/28/%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E4%BE%A7%E8%BE%B9%E6%A0%8F%E8%B7%9F%E9%9A%8F%E5%9B%BA%E5%AE%9A%E8%8C%83%E5%9B%B4%E6%B5%AE%E5%8A%A8/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="问题描述我的博客是两列布局，当文章内容过多时，向下滑动，左侧栏会出现空白，影响阅读体验。想要实现这种效果：当左侧栏滑到底时，不继续左边内容向下滑动。查阅网上的资料，实现的方法大致分为三种。 解决方法解决方法大致分为两种类型：通过插件实现或者修改代码。 插件Q2W3 Fixed Widget参考博客，我添加后没有达到理想效果，可能是哪里没设置好或者设置冲突。 - 安装插件 通过插件安装器搜索或者zi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/2020/01/ccca529e7f22a669404f043baa87a2cf.png">
+<meta property="og:image" content="http://example.com/images/2020/01/fix1.gif">
+<meta property="og:image" content="http://example.com/images/2020/01/fix2.gif">
+<meta property="article:published_time" content="2020-01-28T03:23:46.000Z">
+<meta property="article:modified_time" content="2022-02-13T06:02:56.718Z">
+<meta property="article:author" content="Onwaier">
+<meta property="article:tag" content="wordpress">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/2020/01/ccca529e7f22a669404f043baa87a2cf.png">
+
+
+<link rel="canonical" href="http://example.com/2020/01/28/%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E4%BE%A7%E8%BE%B9%E6%A0%8F%E8%B7%9F%E9%9A%8F%E5%9B%BA%E5%AE%9A%E8%8C%83%E5%9B%B4%E6%B5%AE%E5%8A%A8/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/01/28/%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E4%BE%A7%E8%BE%B9%E6%A0%8F%E8%B7%9F%E9%9A%8F%E5%9B%BA%E5%AE%9A%E8%8C%83%E5%9B%B4%E6%B5%AE%E5%8A%A8/","path":"2020/01/28/实现智能侧边栏跟随固定范围浮动/","title":"实现智能侧边栏跟随固定范围浮动"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>实现智能侧边栏跟随固定范围浮动 | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%B3%95"><span class="nav-number">2.</span> <span class="nav-text">解决方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E4%BB%B6Q2W3-Fixed-Widget"><span class="nav-number">2.1.</span> <span class="nav-text">插件Q2W3 Fixed Widget</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E4%BB%A3%E7%A0%81"><span class="nav-number">2.2.</span> <span class="nav-text">修改代码</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/28/%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E4%BE%A7%E8%BE%B9%E6%A0%8F%E8%B7%9F%E9%9A%8F%E5%9B%BA%E5%AE%9A%E8%8C%83%E5%9B%B4%E6%B5%AE%E5%8A%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          实现智能侧边栏跟随固定范围浮动
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-28 11:23:46" itemprop="dateCreated datePublished" datetime="2020-01-28T11:23:46+08:00">2020-01-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 14:02:56" itemprop="dateModified" datetime="2022-02-13T14:02:56+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/wordpress/" itemprop="url" rel="index"><span itemprop="name">wordpress</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/01/28/%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E4%BE%A7%E8%BE%B9%E6%A0%8F%E8%B7%9F%E9%9A%8F%E5%9B%BA%E5%AE%9A%E8%8C%83%E5%9B%B4%E6%B5%AE%E5%8A%A8/" class="post-meta-item leancloud_visitors" data-flag-title="实现智能侧边栏跟随固定范围浮动" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/01/28/%E5%AE%9E%E7%8E%B0%E6%99%BA%E8%83%BD%E4%BE%A7%E8%BE%B9%E6%A0%8F%E8%B7%9F%E9%9A%8F%E5%9B%BA%E5%AE%9A%E8%8C%83%E5%9B%B4%E6%B5%AE%E5%8A%A8/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/01/28/实现智能侧边栏跟随固定范围浮动/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>我的博客是两列布局，当文章内容过多时，向下滑动，左侧栏会出现空白，影响阅读体验。想要实现这种效果：当左侧栏滑到底时，不继续左边内容向下滑动。查阅网上的资料，实现的方法大致分为三种。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>解决方法大致分为两种类型：通过插件实现或者修改代码。</p>
+<h3 id="插件Q2W3-Fixed-Widget"><a href="#插件Q2W3-Fixed-Widget" class="headerlink" title="插件Q2W3 Fixed Widget"></a>插件Q2W3 Fixed Widget</h3><p>参考<a target="_blank" rel="noopener" href="https://www.freeluffy.com/q2w3-fixed-widget/">博客</a>，我添加后没有达到理想效果，可能是哪里没设置好或者设置冲突。 - 安装插件 通过插件安装器搜索或者zip压缩包安装即可.</p>
+<ul>
+<li><p>设置Widget固定 先启动插件<code>Q2W3 Fixed Widget</code>，然后点击<code>外观-&gt;小工具</code>. 对于添加在左侧栏的小工具，多了一个设置选项。如图所示。 <img src="/images/2020/01/ccca529e7f22a669404f043baa87a2cf.png" alt=""> 将需要固定的工具的<code>Fixed widget</code>勾上即可。</p>
+<h3 id="修改代码"><a href="#修改代码" class="headerlink" title="修改代码"></a>修改代码</h3><p>参照<a target="_blank" rel="noopener" href="http://wanlimm.com/77201807015793.html">博客</a></p>
+<ol>
+<li>修改js和css代码</li>
+</ol>
+<ul>
+<li>修改<code>single.php</code>文件 在文件最后添加如下代码</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;http://code.jquery.com/jquery.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">$(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> offset_left = $(<span class="string">&quot;.sidebar&quot;</span>).<span class="title function_">offset</span>().<span class="property">left</span>; <span class="comment">//body左边距 = 右边距</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> sidebar_w = $(<span class="string">&quot;.sidebar&quot;</span>).<span class="title function_">width</span>(); <span class="comment">//侧边栏宽度</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> sidebar_h = $(<span class="string">&quot;.sidebar&quot;</span>).<span class="title function_">outerHeight</span>(); <span class="comment">//侧边栏高</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="keyword">var</span> sidebar_top = $(<span class="string">&quot;.sidebar&quot;</span>).<span class="title function_">offset</span>().<span class="property">top</span>; <span class="comment">//侧边栏上边距</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="variable language_">console</span>.<span class="title function_">log</span>(sidebar_top + sidebar_h)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="variable language_">console</span>.<span class="title function_">log</span>($(<span class="variable language_">window</span>).<span class="title function_">height</span>())</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="variable language_">console</span>.<span class="title function_">log</span>($(<span class="variable language_">document</span>).<span class="title function_">height</span>())</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="variable language_">window</span>.<span class="property">innerHeight</span>)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">$(<span class="variable language_">document</span>).<span class="title function_">scroll</span>(<span class="keyword">function</span>(<span class="params"></span>)&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">var</span> scroll_h = $(<span class="variable language_">document</span>).<span class="title function_">scrollTop</span>(); <span class="comment">//滚动条高度</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    <span class="keyword">if</span>( scroll_h &gt; (sidebar_top+sidebar_h - <span class="variable language_">window</span>.<span class="property">innerHeight</span>))&#123; <span class="comment">//当滚动条高度 &gt; 侧边栏底部到顶部的高</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        $(<span class="string">&quot;.sidebar&quot;</span>).<span class="title function_">addClass</span>(<span class="string">&quot;fixed&quot;</span>);  <span class="comment">//给侧边栏添加fixed类</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        $(<span class="string">&quot;.fixed&quot;</span>).<span class="title function_">css</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="string">&#x27;width&#x27;</span>:sidebar_w+<span class="string">&#x27;px&#x27;</span>, <span class="comment">//设置宽度</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">            <span class="string">&#x27;top&#x27;</span>:sidebar_top + <span class="string">&#x27;px&#x27;</span> <span class="comment">//设置上边距</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;<span class="keyword">else</span>&#123; <span class="comment">//如果滚动条高度 &lt;  侧边栏底部到顶部的高</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">        $(<span class="string">&quot;.sidebar&quot;</span>).<span class="title function_">removeClass</span>(<span class="string">&quot;fixed&quot;</span>);  <span class="comment">//去除侧边栏的fixed类</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;)</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">&#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改<code>style.css</code> 在<code>style.css</code>查找<code>.sidebar</code>在其下面添加类fixed的样式代码。</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.fixed</span>&#123;</span><br><span class="line">    <span class="attribute">position</span>:fixed;</span><br><span class="line">    <span class="attribute">z-index</span>:<span class="number">999</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>最后实现效果如图所求。 <img src="/images/2020/01/fix1.gif" alt=""> 最后实现效果是左侧栏滑到底时，直接回到顶部。</p>
+<ol>
+<li>利用第三方js代码 参照<a target="_blank" rel="noopener" href="https://www.mybj123.com/4288.html">博客</a></li>
+</ol>
+<ul>
+<li>下载第三方js 在<a target="_blank" rel="noopener" href="https://github.com/WeCodePixels/theia-sticky-sidebar">github</a>下载<code>theia-sticky-sidebar</code></li>
+</ul>
+<p>放到js目录下，我的目录位置为：<code>/www/wwwroot/onwaier.com/wp-content/themes/twentyfifteen/js</code></p>
+<ul>
+<li>修改<code>single.php</code>代码 在原代码最后加入以下代码</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span> src=<span class="string">&quot;http://code.jquery.com/jquery.min.js&quot;</span>&gt;&lt;/script&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;&lt;?php echo esc_url( get_template_directory_uri() ); ?&gt;/js/theia-sticky-sidebar.js&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><span class="language-javascript"></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  $(<span class="variable language_">document</span>).<span class="title function_">ready</span>(<span class="keyword">function</span>(<span class="params"></span>) &#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    $(<span class="string">&#x27;.sidebar&#x27;</span>).<span class="title function_">theiaStickySidebar</span>(&#123;</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="comment">// Settings</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">      <span class="attr">additionalMarginTop</span>: <span class="number">30</span></span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">    &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml">  &#125;);</span></span></span><br><span class="line"><span class="language-javascript"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>最后实现效果如图所求。 <img src="/images/2020/01/fix2.gif" alt=""> 注意：上面代码修改都是<code>single.php</code>，只能修改每篇文章的侧栏滑动效果，如果想要修改首页的侧栏滑动效果，可以修改<code>index.php</code>的代码.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/wordpress/" rel="tag"># wordpress</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/01/27/pytorch%E6%9E%84%E5%BB%BA%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/" rel="prev" title="Pytorch构建神经网络">
+                  <i class="fa fa-chevron-left"></i> Pytorch构建神经网络
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/01/29/dlib%E5%AE%9E%E7%8E%B0%E8%84%B8%E9%83%A8%E5%88%86%E5%89%B2%E4%B8%8E%E4%BA%BA%E8%84%B8%E5%AF%B9%E9%BD%90/" rel="next" title="dlib实现脸部分割与人脸对齐">
+                  dlib实现脸部分割与人脸对齐 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="1260. 二维网格迁移题目描述给你一个 n 行 m 列的二维网格 grid 和一个整数 k。你需要将 grid 迁移 k 次。 每次「迁移」操作将会引发下述活动： 位于 grid[i][j] 的元素将会移动到 grid[i][j + 1]。 位于 grid[i][m - 1] 的元素将会移动到 grid[i + 1][0]。 位于 grid[n - 1][m - 1] 的元素将会移动到 grid">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LeetCode 2019年第163场周赛">
+<meta property="og:url" content="http://example.com/2019/11/26/leetcode-2019%E5%B9%B4%E7%AC%AC163%E5%9C%BA%E5%91%A8%E8%B5%9B/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="1260. 二维网格迁移题目描述给你一个 n 行 m 列的二维网格 grid 和一个整数 k。你需要将 grid 迁移 k 次。 每次「迁移」操作将会引发下述活动： 位于 grid[i][j] 的元素将会移动到 grid[i][j + 1]。 位于 grid[i][m - 1] 的元素将会移动到 grid[i + 1][0]。 位于 grid[n - 1][m - 1] 的元素将会移动到 grid">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2019/11/23/2orHBzp5tOAvcku.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/23/XAE2bzdtPO6nhLU.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/23/EnSBGjdxgfKOuQt.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/11/23/cqVMmel29TdQ4YW.jpg">
+<meta property="og:image" content="https://i.loli.net/2019/11/23/tLzRWBQbChTl8y7.jpg">
+<meta property="og:image" content="http://onwaier.com/wp-content/uploads/2019/11/e6a45f2f849776d3b3f691a9c3738854.png">
+<meta property="article:published_time" content="2019-11-26T11:56:45.000Z">
+<meta property="article:modified_time" content="2022-02-13T05:43:28.371Z">
+<meta property="article:author" content="Onwaier">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2019/11/23/2orHBzp5tOAvcku.png">
+
+
+<link rel="canonical" href="http://example.com/2019/11/26/leetcode-2019%E5%B9%B4%E7%AC%AC163%E5%9C%BA%E5%91%A8%E8%B5%9B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2019/11/26/leetcode-2019%E5%B9%B4%E7%AC%AC163%E5%9C%BA%E5%91%A8%E8%B5%9B/","path":"2019/11/26/leetcode-2019年第163场周赛/","title":"LeetCode 2019年第163场周赛"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LeetCode 2019年第163场周赛 | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1260-%E4%BA%8C%E7%BB%B4%E7%BD%91%E6%A0%BC%E8%BF%81%E7%A7%BB"><span class="nav-number">1.</span> <span class="nav-text">1260. 二维网格迁移</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A31"><span class="nav-number">1.2.</span> <span class="nav-text">题解1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%811"><span class="nav-number">1.3.</span> <span class="nav-text">代码1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1261-%E5%9C%A8%E5%8F%97%E6%B1%A1%E6%9F%93%E7%9A%84%E4%BA%8C%E5%8F%89%E6%A0%91%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0"><span class="nav-number">2.</span> <span class="nav-text">1261. 在受污染的二叉树中查找元素</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A31-1"><span class="nav-number">2.2.</span> <span class="nav-text">题解1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%811-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1262-%E5%8F%AF%E8%A2%AB%E4%B8%89%E6%95%B4%E9%99%A4%E7%9A%84%E6%9C%80%E5%A4%A7%E5%92%8C"><span class="nav-number">3.</span> <span class="nav-text">1262. 可被三整除的最大和</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A31-2"><span class="nav-number">3.2.</span> <span class="nav-text">题解1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%811-2"><span class="nav-number">3.3.</span> <span class="nav-text">代码1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1263-%E6%8E%A8%E7%AE%B1%E5%AD%90"><span class="nav-number">4.</span> <span class="nav-text">1263. 推箱子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A31-3"><span class="nav-number">4.2.</span> <span class="nav-text">题解1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%811-3"><span class="nav-number">4.3.</span> <span class="nav-text">代码1</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/26/leetcode-2019%E5%B9%B4%E7%AC%AC163%E5%9C%BA%E5%91%A8%E8%B5%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode 2019年第163场周赛
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-26 19:56:45" itemprop="dateCreated datePublished" datetime="2019-11-26T19:56:45+08:00">2019-11-26</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 13:43:28" itemprop="dateModified" datetime="2022-02-13T13:43:28+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/11/26/leetcode-2019%E5%B9%B4%E7%AC%AC163%E5%9C%BA%E5%91%A8%E8%B5%9B/" class="post-meta-item leancloud_visitors" data-flag-title="LeetCode 2019年第163场周赛" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/11/26/leetcode-2019%E5%B9%B4%E7%AC%AC163%E5%9C%BA%E5%91%A8%E8%B5%9B/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/26/leetcode-2019年第163场周赛/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="1260-二维网格迁移"><a href="#1260-二维网格迁移" class="headerlink" title="1260. 二维网格迁移"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/shift-2d-grid/">1260. 二维网格迁移</a></h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个 n 行 m 列的二维网格 grid 和一个整数 k。你需要将 grid 迁移 k 次。 每次「迁移」操作将会引发下述活动： 位于 grid[i][j] 的元素将会移动到 grid[i][j + 1]。 位于 grid[i][m - 1] 的元素将会移动到 grid[i + 1][0]。 位于 grid[n - 1][m - 1] 的元素将会移动到 grid[0][0]。 请你返回 k 次迁移操作后最终得到的 二维网格。 示例 1： <a target="_blank" rel="noopener" href="https://i.loli.net/2019/11/23/2orHBzp5tOAvcku.png"><img src="https://i.loli.net/2019/11/23/2orHBzp5tOAvcku.png" alt=""></a> 输入：grid = [[1,2,3],[4,5,6],[7,8,9]], k = 1 输出：[[9,1,2],[3,4,5],[6,7,8]] 示例 2： <a target="_blank" rel="noopener" href="https://i.loli.net/2019/11/23/XAE2bzdtPO6nhLU.png"><img src="https://i.loli.net/2019/11/23/XAE2bzdtPO6nhLU.png" alt=""></a> 输入：grid = [[3,8,1,9],[19,7,2,5],[4,6,11,10],[12,0,21,13]], k = 4 输出：[[12,0,21,13],[3,8,1,9],[19,7,2,5],[4,6,11,10]] 示例 3： 输入：grid = [[1,2,3],[4,5,6],[7,8,9]], k = 9 输出：[[1,2,3],[4,5,6],[7,8,9]] 提示： 1 &lt;= grid.length &lt;= 50 1 &lt;= grid[i].length &lt;= 50 -1000 &lt;= grid[i][j] &lt;= 1000 0 &lt;= k &lt;= 100</p>
+<h2 id="题解1"><a href="#题解1" class="headerlink" title="题解1"></a>题解1</h2><p>之前做过一个一维数组元素平移，最后面的移到前面。比赛时首先想到的是先把二维数组转成一维数组，然后平移元素。注意平移周期为数组长度。可以先对平移长度取模。</p>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">时间复杂度为o(m * n)</span></span><br><span class="line"><span class="comment">空间复杂度为o(m * n)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">shiftGrid</span>(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid, <span class="type">int</span> k) &#123;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt;tmp;</span><br><span class="line">        <span class="type">int</span> rows = grid.<span class="built_in">size</span>(), cols = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; grid.<span class="built_in">size</span>(); ++i)&#123;<span class="comment">//将二维数组转成一维数组</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; grid[i].<span class="built_in">size</span>(); ++j)&#123;</span><br><span class="line">                tmp.<span class="built_in">push_back</span>(grid[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="type">int</span> len = tmp.<span class="built_in">size</span>();</span><br><span class="line">        k = k % len;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; ++i)&#123;<span class="comment">//对元素进行平移，不过这里是逆向思维</span></span><br><span class="line">            grid[i / cols][i % cols] = tmp[(i - k + len) % len];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> grid;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="1261-在受污染的二叉树中查找元素"><a href="#1261-在受污染的二叉树中查找元素" class="headerlink" title="1261. 在受污染的二叉树中查找元素"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/find-elements-in-a-contaminated-binary-tree/">1261. 在受污染的二叉树中查找元素</a></h1><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>给出一个满足下述规则的二叉树： root.val == 0 如果 treeNode.val == x 且 treeNode.left != null，那么 treeNode.left.val == 2 * x + 1 如果 treeNode.val == x 且 treeNode.right != null，那么 treeNode.right.val == 2 * x + 2 现在这个二叉树受到「污染」，所有的 treeNode.val 都变成了 -1。 请你先还原二叉树，然后实现 FindElements 类： FindElements(TreeNode* root) 用受污染的二叉树初始化对象，你需要先把它还原。 bool find(int target) 判断目标值 target 是否存在于还原后的二叉树中并返回结果。 示例 1： <a target="_blank" rel="noopener" href="https://i.loli.net/2019/11/23/EnSBGjdxgfKOuQt.jpg"><img src="https://i.loli.net/2019/11/23/EnSBGjdxgfKOuQt.jpg" alt=""></a> 输入： [“FindElements”,”find”,”find”] [[[-1,null,-1]],[1],[2]] 输出： [null,false,true] 解释： FindElements findElements = new FindElements([-1,null,-1]); findElements.find(1); // return False findElements.find(2); // return True 示例 2： <a target="_blank" rel="noopener" href="https://i.loli.net/2019/11/23/cqVMmel29TdQ4YW.jpg"><img src="https://i.loli.net/2019/11/23/cqVMmel29TdQ4YW.jpg" alt=""></a> 输入： [“FindElements”,”find”,”find”,”find”] [[[-1,-1,-1,-1,-1]],[1],[3],[5]] 输出： [null,true,true,false] 解释： FindElements findElements = new FindElements([-1,-1,-1,-1,-1]); findElements.find(1); // return True findElements.find(3); // return True findElements.find(5); // return False 示例 3： <a target="_blank" rel="noopener" href="https://i.loli.net/2019/11/23/tLzRWBQbChTl8y7.jpg"><img src="https://i.loli.net/2019/11/23/tLzRWBQbChTl8y7.jpg" alt=""></a> 输入： [“FindElements”,”find”,”find”,”find”,”find”] [[[-1,null,-1,-1,null,-1]],[2],[3],[4],[5]] 输出： [null,true,false,false,true] 解释： FindElements findElements = new FindElements([-1,null,-1,-1,null,-1]); findElements.find(2); // return True findElements.find(3); // return False findElements.find(4); // return False findElements.find(5); // return True 提示： TreeNode.val == -1 二叉树的高度不超过 20 节点的总数在 [1, 10^4] 之间 调用 find() 的总次数在 [1, 10^4] 之间 0 &lt;= target &lt;= 10^6</p>
+<h2 id="题解1-1"><a href="#题解1-1" class="headerlink" title="题解1"></a>题解1</h2><p>题目大意是已经给出二叉树的结构，但是结点值不正确，首先根据给定的规则，对二叉树节点重新赋值。然后写出find函数。 对于二叉树的构建及find函数常见的方法是递归的方式，但是后来我发现find的传入参数不是没有root。实现有点麻烦，后来用的是队列实现的。类似于BFS</p>
+<h2 id="代码1-1"><a href="#代码1-1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for a binary tree node.</span></span><br><span class="line"><span class="comment"> * struct TreeNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     TreeNode *left;</span></span><br><span class="line"><span class="comment"> *     TreeNode *right;</span></span><br><span class="line"><span class="comment"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FindElements</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    TreeNode *res;</span><br><span class="line">    <span class="built_in">FindElements</span>(TreeNode* root) &#123;</span><br><span class="line">        res = root;</span><br><span class="line">        <span class="keyword">if</span>(res == <span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        queue&lt;TreeNode*&gt;que;</span><br><span class="line">        TreeNode* frt;</span><br><span class="line">        res-&gt;val = <span class="number">0</span>;</span><br><span class="line">        que.<span class="built_in">push</span>(res);</span><br><span class="line">        <span class="keyword">while</span>(!que.<span class="built_in">empty</span>())&#123;<span class="comment">//BFS为节点赋值</span></span><br><span class="line">            frt = que.<span class="built_in">front</span>();</span><br><span class="line">            que.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">if</span>(frt-&gt;left != <span class="literal">NULL</span>)&#123;</span><br><span class="line">                frt-&gt;left-&gt;val = frt-&gt;val * <span class="number">2</span> + <span class="number">1</span>;</span><br><span class="line">                que.<span class="built_in">push</span>(frt-&gt;left);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(frt-&gt;right != <span class="literal">NULL</span>)&#123;</span><br><span class="line">                frt-&gt;right-&gt;val = frt-&gt;val * <span class="number">2</span> + <span class="number">2</span>;</span><br><span class="line">                que.<span class="built_in">push</span>(frt-&gt;right);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">find</span><span class="params">(<span class="type">int</span> target)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(res == <span class="literal">NULL</span>)&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;  </span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            queue&lt;TreeNode*&gt;que;</span><br><span class="line">            TreeNode* frt;</span><br><span class="line">            que.<span class="built_in">push</span>(res);</span><br><span class="line">            <span class="keyword">while</span>(!que.<span class="built_in">empty</span>())&#123;<span class="comment">//BFS遍历节点，来寻找节点</span></span><br><span class="line">                frt = que.<span class="built_in">front</span>();</span><br><span class="line">                que.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">if</span>(frt-&gt;val == target)&#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(frt-&gt;left != <span class="literal">NULL</span>)&#123;</span><br><span class="line">                    que.<span class="built_in">push</span>(frt-&gt;left);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(frt-&gt;right != <span class="literal">NULL</span>)&#123;</span><br><span class="line">                    que.<span class="built_in">push</span>(frt-&gt;right);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your FindElements object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * FindElements* obj = new FindElements(root);</span></span><br><span class="line"><span class="comment"> * bool param_1 = obj-&gt;find(target);</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h1 id="1262-可被三整除的最大和"><a href="#1262-可被三整除的最大和" class="headerlink" title="1262. 可被三整除的最大和"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/greatest-sum-divisible-by-three/">1262. 可被三整除的最大和</a></h1><h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个整数数组 nums，请你找出并返回能被三整除的元素最大和。 示例 1： 输入：nums = [3,6,5,1,8] 输出：18 解释：选出数字 3, 6, 1 和 8，它们的和是 18（可被 3 整除的最大和）。 示例 2： 输入：nums = [4] 输出：0 解释：4 不能被 3 整除，所以无法选出数字，返回 0。 示例 3： 输入：nums = [1,2,3,4,4] 输出：12 解释：选出数字 1, 3, 4 以及 4，它们的和是 12（可被 3 整除的最大和）。 提示： 1 &lt;= nums.length &lt;= 4 * 10^4 1 &lt;= nums[i] &lt;= 10^4</p>
+<h2 id="题解1-2"><a href="#题解1-2" class="headerlink" title="题解1"></a>题解1</h2><p>这个题比赛的时候，思路没理清，导致写出来的代码bug多，赛后想了感觉很简单。 1. 所有元素排序 2. 求所有元素之和对3的余数res，期间各存下余数为1和余数为2的最小的2个数（4个数） 3. res = 0的话，被三整除的最大和为元素和。res=1的话需要去除1个余数为1的数或2个余数为2的数，需要比较一个，选择和大的一个。res=2的话需要去除2个余数为1的数或1个余数为2的数，同样比较取和较大的一种方案</p>
+<h2 id="代码1-2"><a href="#代码1-2" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxSumDivThree</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">sort</span>(nums.<span class="built_in">begin</span>(), nums.<span class="built_in">end</span>());</span><br><span class="line"></span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span> , mod = <span class="number">0</span>, len = nums.<span class="built_in">size</span>(), res;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt;v1, v2;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; len; ++i)&#123;</span><br><span class="line">            sum = sum + nums[i];</span><br><span class="line">            mod = (mod + nums[i]) % <span class="number">3</span>;</span><br><span class="line">            <span class="keyword">if</span>(v1.<span class="built_in">size</span>() &lt; <span class="number">2</span> &amp;&amp; nums[i] % <span class="number">3</span> == <span class="number">1</span>)&#123;<span class="comment">//存储至多2个最小的余数为1的</span></span><br><span class="line">                v1.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(v2.<span class="built_in">size</span>() &lt; <span class="number">2</span> &amp;&amp; nums[i] % <span class="number">3</span> == <span class="number">2</span>)&#123;<span class="comment">//存储至多2个最小的余数为2的</span></span><br><span class="line">                v2.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(mod == <span class="number">0</span>)&#123;<span class="comment">//刚好余数为0</span></span><br><span class="line">            res = sum;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(mod == <span class="number">1</span>)&#123;<span class="comment">//需去除1个余数为1的或2个余数为2的</span></span><br><span class="line">            <span class="type">int</span> num1 = sum - (v1.<span class="built_in">size</span>() &gt; <span class="number">0</span>?v1[<span class="number">0</span>]:sum);</span><br><span class="line">            <span class="type">int</span> num2 = sum - (v2.<span class="built_in">size</span>() &gt; <span class="number">1</span>?v2[<span class="number">0</span>] + v2[<span class="number">1</span>]:sum);</span><br><span class="line">            res = <span class="built_in">max</span>(num1, num2);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;<span class="comment">//需去除2个余数为1的或者1个余数为2的</span></span><br><span class="line">            <span class="type">int</span> num1 = sum - (v1.<span class="built_in">size</span>() &gt; <span class="number">1</span>?v1[<span class="number">0</span>] + v1[<span class="number">1</span>]:sum);</span><br><span class="line">            <span class="type">int</span> num2 = sum - (v2.<span class="built_in">size</span>() &gt; <span class="number">0</span>?v2[<span class="number">0</span>]:sum);</span><br><span class="line">            res = <span class="built_in">max</span>(num1, num2);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="1263-推箱子"><a href="#1263-推箱子" class="headerlink" title="1263. 推箱子"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-moves-to-move-a-box-to-their-target-location/">1263. 推箱子</a></h1><h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>「推箱子」是一款风靡全球的益智小游戏，玩家需要将箱子推到仓库中的目标位置。 游戏地图用大小为 n * m 的网格 grid 表示，其中每个元素可以是墙、地板或者是箱子。 现在你将作为玩家参与游戏，按规则将箱子 ‘B’ 移动到目标位置 ‘T’ ： 玩家用字符 ‘S’ 表示，只要他在地板上，就可以在网格中向上、下、左、右四个方向移动。 地板用字符 ‘.’ 表示，意味着可以自由行走。 墙用字符 ‘#’ 表示，意味着障碍物，不能通行。  箱子仅有一个，用字符 ‘B’ 表示。相应地，网格上有一个目标位置 ‘T’。 玩家需要站在箱子旁边，然后沿着箱子的方向进行移动，此时箱子会被移动到相邻的地板单元格。记作一次「推动」。 玩家无法越过箱子。 返回将箱子推到目标位置的最小 推动 次数，如果无法做到，请返回 -1。 示例 1： <img src="http://onwaier.com/wp-content/uploads/2019/11/e6a45f2f849776d3b3f691a9c3738854.png" alt=""> 输入：grid = [[“#”,”#”,”#”,”#”,”#”,”#”], [“#”,”T”,”#”,”#”,”#”,”#”],   [“#”,”.”,”.”,”B”,”.”,”#”],   [“#”,”.”,”#”,”#”,”.”,”#”],   [“#”,”.”,”.”,”.”,”S”,”#”],   [“#”,”#”,”#”,”#”,”#”,”#”]] 输出：3 解释：我们只需要返回推箱子的次数。 示例 2： 输入：grid = [[“#”,”#”,”#”,”#”,”#”,”#”], [“#”,”T”,”#”,”#”,”#”,”#”],   [“#”,”.”,”.”,”B”,”.”,”#”],   [“#”,”#”,”#”,”#”,”.”,”#”],   [“#”,”.”,”.”,”.”,”S”,”#”],   [“#”,”#”,”#”,”#”,”#”,”#”]] 输出：-1 示例 3： 输入：grid = [[“#”,”#”,”#”,”#”,”#”,”#”],   [“#”,”T”,”.”,”.”,”#”,”#”],   [“#”,”.”,”#”,”B”,”.”,”#”],   [“#”,”.”,”.”,”.”,”.”,”#”],   [“#”,”.”,”.”,”.”,”S”,”#”],   [“#”,”#”,”#”,”#”,”#”,”#”]] 输出：5 解释：向下、向左、向左、向上再向上。 示例 4： 输入：grid = [[“#”,”#”,”#”,”#”,”#”,”#”,”#”],   [“#”,”S”,”#”,”.”,”B”,”T”,”#”],   [“#”,”#”,”#”,”#”,”#”,”#”,”#”]] 输出：-1 提示： 1 &lt;= grid.length &lt;= 20 1 &lt;= grid[i].length &lt;= 20 grid 仅包含字符 ‘.’, ‘#’,  ‘S’ , ‘T’, 以及 ‘B’。 grid 中 ‘S’, ‘B’ 和 ‘T’ 各只能出现一个。</p>
+<h2 id="题解1-3"><a href="#题解1-3" class="headerlink" title="题解1"></a>题解1</h2><p>参照<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-moves-to-move-a-box-to-their-target-location/solution/1263-by-ikaruga/">题解</a> 如果只有箱子没有人，只是将箱子移到目标位置，就是常见的BFS问题。而这个题有两个对象，箱子和人，要保证箱子能被推到目标位置。加入队列的信息除了箱子的坐标还有人的坐标，随着人的移动来判断人是否能走到箱子的位置，能表示箱子移动，步数加1；否则只是人的位置发生移动，此时步数并未增加。此外，标记对象也发生改变，以前只是箱子这个二元组，现在变成了人和箱子这个四元组。因为人移动带来的步数并不一定增长，这里需要用到优先队列，每次选取步数最小的来移动。</p>
+<h2 id="代码1-3"><a href="#代码1-3" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">cmp</span>&#123;</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">operator</span><span class="params">()</span><span class="params">(vector&lt;<span class="type">int</span>&gt;v1, vector&lt;<span class="type">int</span>&gt;v2)</span></span>&#123;<span class="comment">//定义优先级别</span></span><br><span class="line">        <span class="keyword">return</span> v1[<span class="number">0</span>] &gt; v2[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="type">int</span> dir[<span class="number">4</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>, <span class="number">1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">0</span>&#125;, &#123;<span class="number">0</span>, <span class="number">-1</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">0</span>&#125;&#125;;<span class="comment">//定义移动方向</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minPushBox</span><span class="params">(vector&lt;vector&lt;<span class="type">char</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        set&lt;vector&lt;<span class="type">int</span>&gt; &gt;mark;<span class="comment">//用set来标记</span></span><br><span class="line">        <span class="type">int</span> rows = grid.<span class="built_in">size</span>(), cols = grid[<span class="number">0</span>].<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">int</span> x1, x2, y1, y2, x3, y3, next_x, next_y, dist;</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt;v;</span><br><span class="line">        priority_queue&lt;vector&lt;<span class="type">int</span>&gt;, vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;, cmp&gt;que;<span class="comment">//定义优先队列</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; rows; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; cols; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(grid[i][j] == <span class="string">&#x27;S&#x27;</span>)&#123;<span class="comment">//玩家</span></span><br><span class="line">                    x1 = i;</span><br><span class="line">                    y1 = j;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(grid[i][j] == <span class="string">&#x27;B&#x27;</span>)&#123;<span class="comment">//箱子</span></span><br><span class="line">                    x2 = i;</span><br><span class="line">                    y2 = j;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span> <span class="keyword">if</span>(grid[i][j] == <span class="string">&#x27;T&#x27;</span>)&#123;<span class="comment">//目标</span></span><br><span class="line">                    x3 = i;</span><br><span class="line">                    y3 = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        que.<span class="built_in">push</span>(&#123;<span class="number">0</span>, x1, y1, x2, y2&#125;);<span class="comment">//初始化</span></span><br><span class="line">        mark.<span class="built_in">insert</span>(&#123;x1, y1, x2, y2&#125;);</span><br><span class="line">        <span class="keyword">while</span>(!que.<span class="built_in">empty</span>())&#123;</span><br><span class="line">            v = que.<span class="built_in">top</span>();</span><br><span class="line">            que.<span class="built_in">pop</span>();</span><br><span class="line">            <span class="keyword">if</span>(v[<span class="number">3</span>] == x3 &amp;&amp; v[<span class="number">4</span>] == y3)&#123;</span><br><span class="line">                <span class="keyword">return</span> v[<span class="number">0</span>];</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i)&#123;</span><br><span class="line">                x1 = v[<span class="number">1</span>] + dir[i][<span class="number">0</span>];</span><br><span class="line">                y1 = v[<span class="number">2</span>] + dir[i][<span class="number">1</span>];</span><br><span class="line">                dist = v[<span class="number">0</span>];</span><br><span class="line">                <span class="keyword">if</span>(x1 &lt; <span class="number">0</span>  x1 &gt;= rows  y1 &lt; <span class="number">0</span>  y1 &gt;= cols)&#123;</span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(grid[x1][y1] != <span class="string">&#x27;#&#x27;</span>)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(x1 == v[<span class="number">3</span>] &amp;&amp; y1 == v[<span class="number">4</span>])&#123;</span><br><span class="line">                        x2 = v[<span class="number">3</span>] + dir[i][<span class="number">0</span>];</span><br><span class="line">                        y2 = v[<span class="number">4</span>] + dir[i][<span class="number">1</span>];</span><br><span class="line">                        <span class="keyword">if</span>(x2 &gt;= <span class="number">0</span> &amp;&amp; x2 &lt; rows &amp;&amp; y2 &gt;= <span class="number">0</span> &amp;&amp; y2 &lt; cols &amp;&amp; grid[x2][y2] != <span class="string">&#x27;#&#x27;</span>)&#123;</span><br><span class="line">                            <span class="keyword">if</span>(mark.<span class="built_in">find</span>(&#123;x1, y1, x2, y2&#125;) == mark.<span class="built_in">end</span>())&#123;<span class="comment">//未访问过</span></span><br><span class="line">                                mark.<span class="built_in">insert</span>(&#123;x1, y1, x2, y2&#125;);</span><br><span class="line">                                que.<span class="built_in">push</span>(&#123;dist + <span class="number">1</span>, x1, y1, x2, y2&#125;);</span><br><span class="line">                            &#125;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">else</span>&#123;</span><br><span class="line">                        <span class="keyword">if</span>(mark.<span class="built_in">find</span>(&#123;x1, y1, v[<span class="number">3</span>], v[<span class="number">4</span>]&#125;) == mark.<span class="built_in">end</span>())&#123;<span class="comment">//未访问过</span></span><br><span class="line">                            mark.<span class="built_in">insert</span>(&#123;x1, y1, v[<span class="number">3</span>], v[<span class="number">4</span>]&#125;);</span><br><span class="line">                            que.<span class="built_in">push</span>(&#123;dist, x1, y1, v[<span class="number">3</span>], v[<span class="number">4</span>]&#125;);</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/26/region-attention-networks-for-pose-and-occlusion-robust-facial-expression-recognition%E6%96%87%E7%AB%A0%E8%A7%A3%E8%AF%BB/" rel="prev" title="Region Attention Networks for Pose and Occlusion Robust Facial Expression Recognition阅读笔记">
+                  <i class="fa fa-chevron-left"></i> Region Attention Networks for Pose and Occlusion Robust Facial Expression Recognition阅读笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/11/27/leetcode2019%E7%AC%AC-164-%E5%9C%BA%E5%91%A8%E8%B5%9B/" rel="next" title="LeetCode2019第 164 场周赛">
+                  LeetCode2019第 164 场周赛 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

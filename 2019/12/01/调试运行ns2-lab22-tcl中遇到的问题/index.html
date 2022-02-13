@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="需要用到threshold来计算不同的无线传输模型的传输矩离，但使用gcc编译过程中出错。 首先进入ns文件夹下的indep-utils&#x2F;propagation，我的路径是&#x2F;home&#x2F;onwaier&#x2F;ns-allinone-2.35_gcc482&#x2F;ns-allinone-2.35&#x2F;ns-2.35&#x2F;indep-utils&#x2F;propagation 编辑命令为g++ -lm threshold.cc -">
+<meta property="og:type" content="website">
+<meta property="og:title" content="调试运行ns2 lab22.tcl中遇到的问题">
+<meta property="og:url" content="http://example.com/2019/12/01/%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8Cns2-lab22-tcl%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="需要用到threshold来计算不同的无线传输模型的传输矩离，但使用gcc编译过程中出错。 首先进入ns文件夹下的indep-utils&#x2F;propagation，我的路径是&#x2F;home&#x2F;onwaier&#x2F;ns-allinone-2.35_gcc482&#x2F;ns-allinone-2.35&#x2F;ns-2.35&#x2F;indep-utils&#x2F;propagation 编辑命令为g++ -lm threshold.cc -">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20191201154059892.png">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019120121585676.png">
+<meta property="article:published_time" content="2019-12-01T15:29:42.000Z">
+<meta property="article:modified_time" content="2022-02-13T05:54:55.392Z">
+<meta property="article:author" content="Onwaier">
+<meta property="article:tag" content="ns2">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20191201154059892.png">
+
+
+<link rel="canonical" href="http://example.com/2019/12/01/%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8Cns2-lab22-tcl%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2019/12/01/%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8Cns2-lab22-tcl%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/","path":"2019/12/01/调试运行ns2-lab22-tcl中遇到的问题/","title":"调试运行ns2 lab22.tcl中遇到的问题"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>调试运行ns2 lab22.tcl中遇到的问题 | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF1-%E6%8A%A5%E9%94%99%E2%80%9Dthreshold-cc-56-22-fatal-error-iostream-h-%E6%B2%A1%E6%9C%89%E9%82%A3%E4%B8%AA%E6%96%87%E4%BB%B6%E6%88%96%E7%9B%AE%E5%BD%95%E2%80%9D"><span class="nav-number">1.</span> <span class="nav-text">错误1 报错”threshold.cc:56:22: fatal error: iostream.h: 没有那个文件或目录”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF2-%E6%8A%A5%E9%94%99%E2%80%9Dthreshold-cc-211-30-error-%E2%80%98strcmp%E2%80%99-was-not-declared-in-this-scope%E2%80%9D"><span class="nav-number">2.</span> <span class="nav-text">错误2 报错”threshold.cc:211:30: error: ‘strcmp’ was not declared in this scope”</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF3-%E6%8A%A5%E9%94%99%E2%80%9Dinvalid-command-name-%E2%80%9CAgent-mUDP%E2%80%9D%E2%80%9D"><span class="nav-number">3.</span> <span class="nav-text">错误3 报错”invalid command name “Agent&#x2F;mUDP””</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%94%99%E8%AF%AF4-%E6%8A%A5%E9%94%99%E2%80%9Dcannot-call-constructor-mUdpAgent-UdpAgent%E2%80%99-directly-fpermissive-%E2%80%9C"><span class="nav-number">4.</span> <span class="nav-text">错误4 报错”cannot call constructor mUdpAgent::UdpAgent’ directly [-fpermissive]“</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/01/%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8Cns2-lab22-tcl%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          调试运行ns2 lab22.tcl中遇到的问题
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-12-01 23:29:42" itemprop="dateCreated datePublished" datetime="2019-12-01T23:29:42+08:00">2019-12-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 13:54:55" itemprop="dateModified" datetime="2022-02-13T13:54:55+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ns/" itemprop="url" rel="index"><span itemprop="name">ns</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/12/01/%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8Cns2-lab22-tcl%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="调试运行ns2 lab22.tcl中遇到的问题" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/12/01/%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8Cns2-lab22-tcl%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/01/调试运行ns2-lab22-tcl中遇到的问题/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>需要用到threshold来计算不同的无线传输模型的传输矩离，但使用gcc编译过程中出错。 首先进入ns文件夹下的<code>indep-utils/propagation</code>，我的路径是<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/indep-utils/propagation</code> 编辑命令为<code>g++ -lm threshold.cc -o threshold</code></p>
+<h2 id="错误1-报错”threshold-cc-56-22-fatal-error-iostream-h-没有那个文件或目录”"><a href="#错误1-报错”threshold-cc-56-22-fatal-error-iostream-h-没有那个文件或目录”" class="headerlink" title="错误1 报错”threshold.cc:56:22: fatal error: iostream.h: 没有那个文件或目录”"></a>错误1 报错”threshold.cc:56:22: fatal error: iostream.h: 没有那个文件或目录”</h2><p>找到<code>#include&lt;iostream.h&gt;</code>这一行，把<code>#include&lt;iostream.h&gt;</code>修改为<code>#include&lt;iostream&gt;</code>,并添加命令空间std，代码为<code>using namespace std;</code> 编译再次出现新的错误</p>
+<h2 id="错误2-报错”threshold-cc-211-30-error-‘strcmp’-was-not-declared-in-this-scope”"><a href="#错误2-报错”threshold-cc-211-30-error-‘strcmp’-was-not-declared-in-this-scope”" class="headerlink" title="错误2 报错”threshold.cc:211:30: error: ‘strcmp’ was not declared in this scope”"></a>错误2 报错”threshold.cc:211:30: error: ‘strcmp’ was not declared in this scope”</h2><p><code>strcmp</code>函数是关于字符串的操作，头文件为<code>#include&lt;string.h&gt;</code>，而文件中并未包含，加入<code>#include&lt;string.h&gt;</code>一行。 再次编译，没有报错，编译成功。 以Two Ray Ground，希望有效的传输距离为250m为例。 输入命令<code>./threshold -m TwoRayGround 250</code> 运行结果如图所示。 <img src="https://img-blog.csdnimg.cn/20191201154059892.png" alt="运行结果"> 执行命令<code>ns test_2nodes.tcl</code>出错，</p>
+<h2 id="错误3-报错”invalid-command-name-“Agent-mUDP””"><a href="#错误3-报错”invalid-command-name-“Agent-mUDP””" class="headerlink" title="错误3 报错”invalid command name “Agent/mUDP””"></a>错误3 报错”invalid command name “Agent/mUDP””</h2><p>查询发现<strong>mUDP,mUdpSink,mTcpsink是NS2中没有的，是后来人写的。所以要使用此功能必须自行加入。</strong>下载mUDP, mUdpSink的文件，要下载的有下列几个文件 mudp.cc、mudp.h、mudpsink.cc、mudpsink.h。下载地址为:<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1y8HluXPEQVDm8O8Ei34nNQ">百度网盘</a>，提取码为<code>65j6</code>。<a target="_blank" rel="noopener" href="http://onwaier.com:7777/share/oywQUpGI">个人网盘</a>。 具体如何添加参照<a target="_blank" rel="noopener" href="https://www.cnblogs.com/helloWaston/p/4549735.html">博客1</a>和<a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_4bb73ce80100m18r.html">博客2</a> 下面以我的路径（ns在<code>/home/onwaier</code>）来说明配置过程 1. 在<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35</code>目录下新建文件夹，添加刚才下载的文件<code>mtcpsink.cc</code>、<code>mtcpsink.h</code>、<code>mudp.cc</code>、<code>mudp.h</code>、<code>mudpsink.cc</code>、<code>mudpsink.h</code>。 2. 修改<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/common/packet.h</code>，在<code>struct hdr_cmn&#123;&#125;</code>中添加以下代码</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> frametype_; <span class="comment">//added by smallko</span></span><br><span class="line"><span class="type">double</span>  sendtime_;  <span class="comment">// added by smallko</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> pkt_id_; <span class="comment">// added by smallko</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> frame_pkt_id_; <span class="comment">//added by smallko</span></span><br></pre></td></tr></table></figure>
+<ol>
+<li>修改<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/Makefile</code>,找到<code>OBJ_CC</code>这一行， 在其下行添加代码<code>measure/mtcpsink.o measure/mudp.o measure/mudpsink.o \</code>。注意Makefile对于语法要求很高，不能有空行或多余的空格。</li>
+<li>修改<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/tcl/lib/ns-default.tcl</code>，找到<code>Delayer set debug_ false</code>这一行，在其下一行添加<code>Agent/mUDP set packetSize_ 1000</code>。</li>
+<li>执行命令<code>./configure --with-tcl-ver=8.5;make clean;make</code> 出现新的错误。</li>
+</ol>
+<h2 id="错误4-报错”cannot-call-constructor-mUdpAgent-UdpAgent’-directly-fpermissive-“"><a href="#错误4-报错”cannot-call-constructor-mUdpAgent-UdpAgent’-directly-fpermissive-“" class="headerlink" title="错误4 报错”cannot call constructor mUdpAgent::UdpAgent’ directly [-fpermissive]“"></a>错误4 报错”cannot call constructor mUdpAgent::UdpAgent’ directly [-fpermissive]“</h2><ol>
+<li>在makefile中加入以下<code>CCOPT = -Wall -Wno-write-strings -fpermissive</code></li>
+<li>修改<code>measure/mudp.cc</code> 将代码</li>
+</ol>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mUdpAgent::<span class="built_in">mUdpAgent</span>() : <span class="built_in">id_</span>(<span class="number">0</span>), <span class="built_in">openfile</span>(<span class="number">0</span>)  </span><br><span class="line">&#123;  </span><br><span class="line">        <span class="built_in">bind</span>(<span class="string">&quot;packetSize_&quot;</span>, &amp;size_);  </span><br><span class="line">       UdpAgent::<span class="built_in">UdpAgent</span>();  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<p>改为</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mUdpAgent::<span class="built_in">mUdpAgent</span>() :<span class="built_in">UdpAgent</span>(), <span class="built_in">id_</span>(<span class="number">0</span>), <span class="built_in">openfile</span>(<span class="number">0</span>)  </span><br><span class="line">&#123;  </span><br><span class="line">        <span class="built_in">bind</span>(<span class="string">&quot;packetSize_&quot;</span>, &amp;size_);  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<p>重新编译，运行通过。 但仍有上述问题<code>invalid command name &quot;Agent/mUDP&quot;</code> 尝试进入目录<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35</code>，执行<code>./install</code>，然后进入目录<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35</code>执行<code>sudo make install</code>。 再次执行命令<code>ns test_2nodes.tcl</code>，运行结果为： <img src="https://img-blog.csdnimg.cn/2019120121585676.png" alt="执行结果"></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/ns2/" rel="tag"># ns2</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/27/leetcode2019%E7%AC%AC-164-%E5%9C%BA%E5%91%A8%E8%B5%9B/" rel="prev" title="LeetCode2019第 164 场周赛">
+                  <i class="fa fa-chevron-left"></i> LeetCode2019第 164 场周赛
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/12/02/leetcode2019%E5%B9%B4%E7%AC%AC165%E5%9C%BA%E5%91%A8%E8%B5%9B/" rel="next" title="LeetCode2019年第165场周赛">
+                  LeetCode2019年第165场周赛 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="确定性有穷自动机（DFA）定义 注意：允许没有接受状态，此时接受语言为空集；转移函数对每一个状态和每一个可能的输入都恰好指定了一个状态。  定义正则运算的并、连结和星号  正则运算的并，连结和星号都是封闭的，后面在证明DFA与NFA等价后，会用NFA对其进行证明。 常见语言的DFA状态图举例 c题含某子串，首先画出对应的子串，然后再判断其它输入的状态转换即可。 f题不含某个子串，首先画出含某个子串">
+<meta property="og:type" content="website">
+<meta property="og:title" content="计算理论学习笔记（一）">
+<meta property="og:url" content="http://example.com/2020/01/05/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="确定性有穷自动机（DFA）定义 注意：允许没有接受状态，此时接受语言为空集；转移函数对每一个状态和每一个可能的输入都恰好指定了一个状态。  定义正则运算的并、连结和星号  正则运算的并，连结和星号都是封闭的，后面在证明DFA与NFA等价后，会用NFA对其进行证明。 常见语言的DFA状态图举例 c题含某子串，首先画出对应的子串，然后再判断其它输入的状态转换即可。 f题不含某个子串，首先画出含某个子串">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/2020/01/878690a705b21453697f807fbd4dc483.png">
+<meta property="og:image" content="http://example.com/images/2020/01/efcfdbecc5e9964a5c1fa943e341af90.png">
+<meta property="og:image" content="http://example.com/images/2020/01/9fa80a1dc151df38b35818424fd504a3.png">
+<meta property="og:image" content="http://example.com/images/2020/01/fa79be91ff4b6fdd4589ecffe91fb161.png">
+<meta property="og:image" content="http://example.com/images/2020/01/ad3e56368713da601dd85e71d64e222d.png">
+<meta property="og:image" content="http://example.com/images/2020/01/29068a7acdb87dcdf1b56496331a6eea.png">
+<meta property="og:image" content="http://example.com/images/2020/01/95117f4eeee2bba84da943ef17f6cc94.png">
+<meta property="og:image" content="http://example.com/images/2020/01/1cb1aec89e5040e6a93904c49931dfff.png">
+<meta property="og:image" content="http://example.com/images/2020/01/6c3a4698c35776d6a44ad4b6b57f6c8b.png">
+<meta property="og:image" content="http://example.com/images/2020/01/22d15579c085b4a803186360f11cc93a.png">
+<meta property="og:image" content="http://example.com/images/2020/01/6bf0bbee71b49e5b3e24fd143ad13560.png">
+<meta property="og:image" content="http://example.com/images/2020/01/bae061a56828c388645128e653d0df68.png">
+<meta property="og:image" content="http://example.com/images/2020/01/6d163ac352353f47faa97bd101ba5c0f.png">
+<meta property="og:image" content="http://example.com/images/2020/01/d5a73102ce0660dbe2e80562b76fe39a.png">
+<meta property="og:image" content="http://example.com/images/2020/01/0d3d366fbbf4546abf9f8f9d6df06bff.png">
+<meta property="og:image" content="http://example.com/images/2020/01/f06c63f84809d8e892c27bc12b8e6b99.png">
+<meta property="og:image" content="http://example.com/images/2020/01/0fa714b908171c1a30e23b9c3037280c.png">
+<meta property="article:published_time" content="2020-01-05T10:24:54.000Z">
+<meta property="article:modified_time" content="2022-02-13T05:59:20.123Z">
+<meta property="article:author" content="Onwaier">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/2020/01/878690a705b21453697f807fbd4dc483.png">
+
+
+<link rel="canonical" href="http://example.com/2020/01/05/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/01/05/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/","path":"2020/01/05/计算理论学习笔记（一）/","title":"计算理论学习笔记（一）"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>计算理论学习笔记（一） | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%A1%AE%E5%AE%9A%E6%80%A7%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA%EF%BC%88DFA%EF%BC%89"><span class="nav-number">1.</span> <span class="nav-text">确定性有穷自动机（DFA）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81%E8%AF%AD%E8%A8%80%E7%9A%84DFA%E7%8A%B6%E6%80%81%E5%9B%BE%E4%B8%BE%E4%BE%8B"><span class="nav-number">1.2.</span> <span class="nav-text">常见语言的DFA状态图举例</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%9D%9E%E7%A1%AE%E5%AE%9A%E6%80%A7%E6%9C%89%E7%A9%B7%E8%87%AA%E5%8A%A8%E6%9C%BA%EF%BC%88NFA%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">非确定性有穷自动机（NFA）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#NFA%E4%B8%8EDFA%E7%9A%84%E4%B8%8D%E5%90%8C%EF%BC%9A"><span class="nav-number">2.1.</span> <span class="nav-text">NFA与DFA的不同：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-1"><span class="nav-number">2.2.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DFA%E4%B8%8ENFA%E7%9A%84%E7%AD%89%E4%BB%B7%E6%80%A7%E3%80%82"><span class="nav-number">2.3.</span> <span class="nav-text">DFA与NFA的等价性。</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFA%E8%AF%81%E6%AD%A3%E5%88%99%E8%AF%AD%E8%A8%80%E7%9A%84%E5%B9%B6%E3%80%81%E8%BF%9E%E6%8E%A5%E3%80%81%E6%98%9F%E5%8F%B7%E8%BF%90%E7%AE%97%E4%B8%BA%E5%B0%81%E9%97%AD%E7%9A%84%E3%80%82"><span class="nav-number">2.4.</span> <span class="nav-text">NFA证正则语言的并、连接、星号运算为封闭的。</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%EF%BC%88RE%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">正则表达式（RE）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-2"><span class="nav-number">3.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#NFA%E8%BD%AC%E6%88%90RE"><span class="nav-number">3.2.</span> <span class="nav-text">NFA转成RE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RE%E8%BD%AC%E6%88%90NFA"><span class="nav-number">3.3.</span> <span class="nav-text">RE转成NFA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DFA-NFA%E4%B8%8ERE%E4%B8%89%E8%80%85%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="nav-number">3.4.</span> <span class="nav-text">DFA,NFA与RE三者的关系</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%B5%E5%BC%95%E7%90%86"><span class="nav-number">4.</span> <span class="nav-text">泵引理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AE%9A%E4%B9%89-3"><span class="nav-number">4.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BA%94%E7%94%A8%E6%B3%B5%E5%BC%95%E7%90%86%E8%AF%81%E6%98%8E%E9%9D%9E%E6%AD%A3%E5%88%99%E8%AF%AD%E8%A8%80"><span class="nav-number">4.2.</span> <span class="nav-text">应用泵引理证明非正则语言</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%94%E8%AE%B0%E6%95%99%E6%9D%90%E5%8F%8A%E7%AD%94%E6%A1%88"><span class="nav-number">5.</span> <span class="nav-text">笔记教材及答案</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/05/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计算理论学习笔记（一）
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-05 18:24:54" itemprop="dateCreated datePublished" datetime="2020-01-05T18:24:54+08:00">2020-01-05</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 13:59:20" itemprop="dateModified" datetime="2022-02-13T13:59:20+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" itemprop="url" rel="index"><span itemprop="name">计算理论学习笔记</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/01/05/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/" class="post-meta-item leancloud_visitors" data-flag-title="计算理论学习笔记（一）" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/01/05/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/01/05/计算理论学习笔记（一）/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="确定性有穷自动机（DFA）"><a href="#确定性有穷自动机（DFA）" class="headerlink" title="确定性有穷自动机（DFA）"></a>确定性有穷自动机（DFA）</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/878690a705b21453697f807fbd4dc483.png" alt=""> <strong>注意</strong>：允许没有接受状态，此时接受语言为空集；转移函数对每一个状态和每一个可能的输入都恰好指定了一个状态。 <img src="/images/2020/01/efcfdbecc5e9964a5c1fa943e341af90.png" alt=""> 定义正则运算的并、连结和星号 <img src="/images/2020/01/9fa80a1dc151df38b35818424fd504a3.png" alt=""> <strong>正则运算的并，连结和星号都是封闭的，后面在证明DFA与NFA等价后，会用NFA对其进行证明。</strong></p>
+<h2 id="常见语言的DFA状态图举例"><a href="#常见语言的DFA状态图举例" class="headerlink" title="常见语言的DFA状态图举例"></a>常见语言的DFA状态图举例</h2><p><img src="/images/2020/01/fa79be91ff4b6fdd4589ecffe91fb161.png" alt=""> c题含某子串，首先画出对应的子串，然后再判断其它输入的状态转换即可。 f题不含某个子串，首先画出含某个子串的DFA，然后将接受态转为非接受态，将非接受态转为接受态。这里运用了DFA的补是封闭这一性质。 <img src="/images/2020/01/ad3e56368713da601dd85e71d64e222d.png" alt=""> 对于l这种类型的题即DFA的或和且运算，画图比较麻烦，有时采用横1纵0不失为一种好方法。 对于n的倍数余m，首先画出n个状态围成的圈，然后从起始状态数起，将第m个状态标为接受态即可。对于这道题有个变形。画出长度除以3余2且除以4余1的DFA，这里先用中国剩余定理求出长度规律为$12n+5(n = 0, 1, \cdots,)$也就是画出长度除以12余5的DFA。 注意：DFA一般不能对保证串中字符a与字符b相等，如$a^nb^n$不是正则语言，通过后面学习知道它是上下无关语言。但是它能表示一个很特殊的串，即串中01和10子串个数相等，它等价于串以相同的字符开始和结尾。（可以把01和10想象成波形图中的下升与下降，现在下升段与下降段相等，那么开始与结尾的值一定相等，同为0或同为1），DFA如图。 <img src="/images/2020/01/29068a7acdb87dcdf1b56496331a6eea.png" alt=""></p>
+<h1 id="非确定性有穷自动机（NFA）"><a href="#非确定性有穷自动机（NFA）" class="headerlink" title="非确定性有穷自动机（NFA）"></a>非确定性有穷自动机（NFA）</h1><h2 id="NFA与DFA的不同："><a href="#NFA与DFA的不同：" class="headerlink" title="NFA与DFA的不同："></a>NFA与DFA的不同：</h2><ol>
+<li>一入多出。NFA中一个状态对于每个符号可能有0个，1个或多个转换的箭头。而DFA中每一个状态对于每个符号有唯一的转换箭头（状态转换）</li>
+<li>加入空漂。NFA的输入字符比DFA多了一个$\epsilon$，即空漂。 <img src="/images/2020/01/95117f4eeee2bba84da943ef17f6cc94.png" alt=""></li>
+</ol>
+<h2 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/1cb1aec89e5040e6a93904c49931dfff.png" alt=""> 与DFA的定义同为五元组，但仍存在一定差异。$\Sigma$中新增了$\epsilon$；$\delta$的映射结果属于状态集的幂集，即一入多出，同一个符号，可能对应多个状态转换。 <strong>注意</strong>：由于NFA加入非确定性，一个输入产生了多条路径，只要求所有路径中至少有一条路径能到达接受状态即可，这点与DFA也有所不同。</p>
+<h2 id="DFA与NFA的等价性。"><a href="#DFA与NFA的等价性。" class="headerlink" title="DFA与NFA的等价性。"></a>DFA与NFA的等价性。</h2><p>首先DFA是特殊的NFA，即一入一出，没有空漂的NFA。 下面主要是将一个NFA转换成与之对应的DFA。 <img src="/images/2020/01/6c3a4698c35776d6a44ad4b6b57f6c8b.png" alt=""> 已知$DFA\space A = \lbrace Q,\Sigma, \delta, q_0, F\rbrace$，现在要构造出一台与之对应的$NFA\space B = \lbrace Q^{\prime},\Sigma^{\prime}, \delta^{\prime}, q_0^{\prime}, F^{\prime}\rbrace$ 首先原来的DFA有n个状态，那NFA有$2^n$个状态（即状态的组合）$Q^{\prime} = \lbrace Q_{00\dots0}, Q_{10\dots0},\cdots,Q_{11\dots1}\rbrace$，$\Sigma^{\prime}$很简单就为$\lbrace0,1\rbrace$，$\delta^{\prime}$要随$Q^{\prime}$相应的改变，多个状态经过相同的输入的结果要进行位与，最后接受态$F^{\prime}$含有$2^{n-1}$即只是含$q_1$即可（第一个二进制位为1）。这样就构造出一台DFA与NFA对应。 即证DFA与NFA是等价的。</p>
+<h2 id="NFA证正则语言的并、连接、星号运算为封闭的。"><a href="#NFA证正则语言的并、连接、星号运算为封闭的。" class="headerlink" title="NFA证正则语言的并、连接、星号运算为封闭的。"></a>NFA证正则语言的并、连接、星号运算为封闭的。</h2><p><img src="/images/2020/01/22d15579c085b4a803186360f11cc93a.png" alt=""> 证明并运算，加入一个新的起始态，然后空漂到两台DFA的接受态即可。连接运算，将$M_1$中接受态全转为非接受态，然后将其空漂到$M_2$的起始态。星号运算，首先加入一个新的起始态（也是接受态）空漂到$M_1$的起始态，然后再将$M_1$的所有接受态空漂到新加入的起始态即可。</p>
+<h1 id="正则表达式（RE）"><a href="#正则表达式（RE）" class="headerlink" title="正则表达式（RE）"></a>正则表达式（RE）</h1><h2 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/6bf0bbee71b49e5b3e24fd143ad13560.png" alt=""></p>
+<h2 id="NFA转成RE"><a href="#NFA转成RE" class="headerlink" title="NFA转成RE"></a>NFA转成RE</h2><p><img src="/images/2020/01/bae061a56828c388645128e653d0df68.png" alt=""> 利用法则：用力拉首尾，拓扑变形，以星换圈，以并换多路，逐步减少内态。最后得到就是RE。具体可以参考书上46页的2张图。</p>
+<h2 id="RE转成NFA"><a href="#RE转成NFA" class="headerlink" title="RE转成NFA"></a>RE转成NFA</h2><p><img src="/images/2020/01/6d163ac352353f47faa97bd101ba5c0f.png" alt=""> 从最小的子表达式到大一点的子表达式逐步建立，直到获得关于原始表达式的NFA. 所以NFA与RE是等价的.</p>
+<h2 id="DFA-NFA与RE三者的关系"><a href="#DFA-NFA与RE三者的关系" class="headerlink" title="DFA,NFA与RE三者的关系"></a>DFA,NFA与RE三者的关系</h2><p>三者关系如图所求. <img src="/images/2020/01/d5a73102ce0660dbe2e80562b76fe39a.png" alt=""></p>
+<h1 id="泵引理"><a href="#泵引理" class="headerlink" title="泵引理"></a>泵引理</h1><h2 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h2><p><img src="/images/2020/01/0d3d366fbbf4546abf9f8f9d6df06bff.png" alt=""></p>
+<h2 id="应用泵引理证明非正则语言"><a href="#应用泵引理证明非正则语言" class="headerlink" title="应用泵引理证明非正则语言"></a>应用泵引理证明非正则语言</h2><p>上述定义是一个正则语言的必要不充分条件，即如果一个语言是正则语言，则它一定满足泵引理。如果不满足泵引理，一定不是正则语言。 注意： 1. 泵引理只能用来证明非正则语言，不能证正则语言。 2. 泵引理只能将“相等”抽成“不等”，“是”抽成“不是”，不能反过来。可能先利用正则语言的交，并，补运算是封闭的，先进行转换。 下面是一些例子 <img src="/images/2020/01/f06c63f84809d8e892c27bc12b8e6b99.png" alt=""> <img src="/images/2020/01/0fa714b908171c1a30e23b9c3037280c.png" alt=""> 另外证明$1^{n^2}$或者$1^{2^p}$这种形式语言，可以在序列中相邻两串长度间隔在不能增大作文章，因为长度间隔的离散性，一定不能满足任意抽取均能满足原语言。</p>
+<h1 id="笔记教材及答案"><a href="#笔记教材及答案" class="headerlink" title="笔记教材及答案"></a>笔记教材及答案</h1><p><a target="_blank" rel="noopener" href="https://github.com/Onwaier/TheoryOfComputation">github地址</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/12/22/leetcode2019%E7%AC%AC-168-%E5%9C%BA%E5%91%A8%E8%B5%9B/" rel="prev" title="LeetCode2019第 168 场周赛">
+                  <i class="fa fa-chevron-left"></i> LeetCode2019第 168 场周赛
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/01/05/%E8%AE%A1%E7%AE%97%E7%90%86%E8%AE%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%EF%BC%88%E4%BA%8C%EF%BC%89/" rel="next" title="计算理论学习笔记（二）">
+                  计算理论学习笔记（二） <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="预览这是一篇CVPRW2019的论文，作者将Attention机制引入到人脸表情识别中。提出Attention model，并写出了一个合成图片的生成器，模型对噪声有较强的鲁棒性，并在CK+，BU-3DFE数据集上有一定的性能提升。 原文地址和github源码地址原文地址 github源码地址 Problem Recent developments for the facial expressio">
+<meta property="og:type" content="website">
+<meta property="og:title" content="FERAtt: Facial Expression Recognition with Attention Net阅读笔记">
+<meta property="og:url" content="http://example.com/2020/01/06/feratt-facial-expression-recognition-with-attention-net%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="预览这是一篇CVPRW2019的论文，作者将Attention机制引入到人脸表情识别中。提出Attention model，并写出了一个合成图片的生成器，模型对噪声有较强的鲁棒性，并在CK+，BU-3DFE数据集上有一定的性能提升。 原文地址和github源码地址原文地址 github源码地址 Problem Recent developments for the facial expressio">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/images/2020/01/98f0ed8bc463b9a20b4782c4b6a68fb8.png">
+<meta property="og:image" content="http://example.com/images/2020/01/505ffabc6a64bcbd5c26e320570eafad.png">
+<meta property="og:image" content="http://example.com/images/2020/01/fdcd31b5324549e3bdefbcd6330fe65d.png">
+<meta property="og:image" content="http://example.com/images/2020/01/f76e64e1b7af96ed39806180bd5dde21.png">
+<meta property="og:image" content="http://example.com/images/2020/01/86bcf19e0523e7fe72f5e1d3471112ec.png">
+<meta property="og:image" content="http://example.com/images/2020/01/ee75c94c91828d1209e92a61b9664428.png">
+<meta property="og:image" content="http://example.com/images/2020/01/86bcf19e0523e7fe72f5e1d3471112ec.png">
+<meta property="og:image" content="http://example.com/images/2020/01/822c0cf06bd22a1e5900a56743403fa8.png">
+<meta property="og:image" content="http://example.com/images/2020/01/f92f5b8b65b3e763a49f6851932497e0.png">
+<meta property="og:image" content="http://example.com/images/2020/01/e50c646b0345a85f896b26abe0d35d53.png">
+<meta property="og:image" content="http://example.com/images/2020/01/78f82671a69914be48da83ffecfbb42e.png">
+<meta property="og:image" content="http://example.com/images/2020/01/6b39eaeebf9d845f73242cdb60004a80.png">
+<meta property="og:image" content="http://example.com/images/2020/01/4dc600a7167dd01e6dc50a7f50030a47.png">
+<meta property="og:image" content="http://example.com/images/2020/01/129c6e7ef5e4c4a5e564afc3ce255b20.png">
+<meta property="og:image" content="http://example.com/images/2020/01/3d26de5c4ae9e4adf798e7906e823288.png">
+<meta property="og:image" content="http://example.com/images/2020/01/2effcfe6a06fe696e4ba74dcc1cfa929.png">
+<meta property="og:image" content="http://example.com/images/2020/01/28bdc6ed1023a7ad8320ca781d4fcf3c.png">
+<meta property="og:image" content="http://example.com/images/2020/01/ca160a0a38b6391f62903167d8ac154b.png">
+<meta property="og:image" content="http://example.com/images/2020/01/0645fc08ae449ba1ad4afe6bca0fb918.png">
+<meta property="og:image" content="http://example.com/images/2020/01/94cff341025800dc28d02de14269eba8.png">
+<meta property="article:published_time" content="2020-01-06T12:29:25.000Z">
+<meta property="article:modified_time" content="2022-02-13T06:05:50.504Z">
+<meta property="article:author" content="Onwaier">
+<meta property="article:tag" content="Attention">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/2020/01/98f0ed8bc463b9a20b4782c4b6a68fb8.png">
+
+
+<link rel="canonical" href="http://example.com/2020/01/06/feratt-facial-expression-recognition-with-attention-net%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2020/01/06/feratt-facial-expression-recognition-with-attention-net%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/","path":"2020/01/06/feratt-facial-expression-recognition-with-attention-net阅读笔记/","title":"FERAtt: Facial Expression Recognition with Attention Net阅读笔记"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>FERAtt: Facial Expression Recognition with Attention Net阅读笔记 | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%84%E8%A7%88"><span class="nav-number">1.</span> <span class="nav-text">预览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E6%96%87%E5%9C%B0%E5%9D%80%E5%92%8Cgithub%E6%BA%90%E7%A0%81%E5%9C%B0%E5%9D%80"><span class="nav-number">2.</span> <span class="nav-text">原文地址和github源码地址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Problem"><span class="nav-number">3.</span> <span class="nav-text">Problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Method"><span class="nav-number">4.</span> <span class="nav-text">Method</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Network-architecture"><span class="nav-number">5.</span> <span class="nav-text">Network architecture</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Attention-Module"><span class="nav-number">5.1.</span> <span class="nav-text">Attention Module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Feature-extration-Module"><span class="nav-number">5.2.</span> <span class="nav-text">Feature extration Module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reconstruction-Module"><span class="nav-number">5.3.</span> <span class="nav-text">Reconstruction Module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Representation-and-classification-module"><span class="nav-number">5.4.</span> <span class="nav-text">Representation and classification module</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8D%9F%E5%A4%B1%E5%87%BD%E6%95%B0"><span class="nav-number">5.5.</span> <span class="nav-text">损失函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#expriments"><span class="nav-number">6.</span> <span class="nav-text">expriments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Datasets"><span class="nav-number">6.1.</span> <span class="nav-text">Datasets</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Expression-recognition-results"><span class="nav-number">6.2.</span> <span class="nav-text">Expression recognition results</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Rebustness-to-noise"><span class="nav-number">6.3.</span> <span class="nav-text">Rebustness to noise</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Contribution"><span class="nav-number">7.</span> <span class="nav-text">Contribution</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/06/feratt-facial-expression-recognition-with-attention-net%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          FERAtt: Facial Expression Recognition with Attention Net阅读笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-06 20:29:25" itemprop="dateCreated datePublished" datetime="2020-01-06T20:29:25+08:00">2020-01-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 14:05:50" itemprop="dateModified" datetime="2022-02-13T14:05:50+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BA%BA%E8%84%B8%E8%A1%A8%E6%83%85%E8%AF%86%E5%88%AB/" itemprop="url" rel="index"><span itemprop="name">人脸表情识别</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/01/06/feratt-facial-expression-recognition-with-attention-net%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="FERAtt: Facial Expression Recognition with Attention Net阅读笔记" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/01/06/feratt-facial-expression-recognition-with-attention-net%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/01/06/feratt-facial-expression-recognition-with-attention-net阅读笔记/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h2><p>这是一篇CVPRW2019的论文，作者将Attention机制引入到人脸表情识别中。提出Attention model，并写出了一个合成图片的生成器，模型对噪声有较强的鲁棒性，并在CK+，BU-3DFE数据集上有一定的性能提升。</p>
+<h2 id="原文地址和github源码地址"><a href="#原文地址和github源码地址" class="headerlink" title="原文地址和github源码地址"></a>原文地址和github源码地址</h2><p><a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content_CVPRW_2019/papers/MBCCV/Fernandez_FERAtt_Facial_Expression_Recognition_With_Attention_Net_CVPRW_2019_paper.pdf">原文地址</a> <a target="_blank" rel="noopener" href="https://github.com/pedrodiamel/ferattention">github源码地址</a></p>
+<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><blockquote>
+<p>Recent developments for the facial expression recognition problem consider processing the entire image regardless of the face crop location within the image. Such developments bring in extraneous artifacts, including noise,which might be harmful for classification as well as incur in unnecessary additional computational cost. This is problematic as the minutiae that characterizes facial expressions can be affected by elements such as hair, jewelry, and other environmental objects not defining the actual face and as part of the image background.</p>
+</blockquote>
+<p>作者认为现在存在的很多研究关注在整张人脸，带来不必要的计算，并引入了一些噪声可能对识别性能产生影响，引入的一些因素像头发，珠宝等并不能决定表情识别的结果，应该作为图片的背景。</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p>引入Attention机制，像人类的视觉感知一样，只关注目标区域的处理，与之无关的信息直接丢弃。如图所示。 <img src="/images/2020/01/98f0ed8bc463b9a20b4782c4b6a68fb8.png" alt=""><img src="/images/2020/01/505ffabc6a64bcbd5c26e320570eafad.png" alt=""></p>
+<h2 id="Network-architecture"><a href="#Network-architecture" class="headerlink" title="Network architecture"></a>Network architecture</h2><p><img src="/images/2020/01/fdcd31b5324549e3bdefbcd6330fe65d.png" alt=""> 网络结构由4部分组成：注意力模块，特征提取模块，重建模块和分类表示模块。</p>
+<h3 id="Attention-Module"><a href="#Attention-Module" class="headerlink" title="Attention Module"></a>Attention Module</h3><p><img src="/images/2020/01/f76e64e1b7af96ed39806180bd5dde21.png" alt=""> Attention模块将传统的人脸检测来用图像分割来代替。用了U-net来对图片进行分割，输出的是人脸的掩模。如图所示 <img src="/images/2020/01/86bcf19e0523e7fe72f5e1d3471112ec.png" alt=""><img src="/images/2020/01/ee75c94c91828d1209e92a61b9664428.png" alt=""></p>
+<h3 id="Feature-extration-Module"><a href="#Feature-extration-Module" class="headerlink" title="Feature extration Module"></a>Feature extration Module</h3><blockquote>
+<p>Four ResBlocks were used to extract high-dimensional features for image attention and to maintain spatial information; no pooling or strided convolutional layers were used.</p>
+</blockquote>
+<p>使用4个ResBlocks来提取高维度特征，保留空间信息。如图所示。 <img src="/images/2020/01/86bcf19e0523e7fe72f5e1d3471112ec.png" alt=""><img src="/images/2020/01/822c0cf06bd22a1e5900a56743403fa8.png" alt=""></p>
+<h3 id="Reconstruction-Module"><a href="#Reconstruction-Module" class="headerlink" title="Reconstruction Module"></a>Reconstruction Module</h3><blockquote>
+<p>The reconstruction layer adjusts the attention map to create an enhanced input to the representation module. This module has two convolutional layers, a Relu layer, and an Average Pooling layer which, by design choice, resizes the input image of 128 × 128 to 32 × 32.</p>
+</blockquote>
+<p><img src="/images/2020/01/f92f5b8b65b3e763a49f6851932497e0.png" alt=""></p>
+<h3 id="Representation-and-classification-module"><a href="#Representation-and-classification-module" class="headerlink" title="Representation and classification module"></a>Representation and classification module</h3><p><img src="/images/2020/01/e50c646b0345a85f896b26abe0d35d53.png" alt=""> the network function, builds a representation for a sample image $x \\in R^D$ 主要是建立一个网络，对图片进行再表示，它的分类结果要与原图的分类结果足够接近。 <img src="/images/2020/01/78f82671a69914be48da83ffecfbb42e.png" alt=""> 详细过程参照论文，比较复杂。</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p><img src="/images/2020/01/6b39eaeebf9d845f73242cdb60004a80.png" alt=""></p>
+<h2 id="expriments"><a href="#expriments" class="headerlink" title="expriments"></a>expriments</h2><p>实验部分主要进行Rep模块的对照实验，数据集上的性能比较及算法对噪声的鲁棒性实验。</p>
+<h3 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h3><blockquote>
+<p>Our image renderer R creates a synthetic larger dataset using real face datasets by making background changes and geometric transformations of face images.</p>
+</blockquote>
+<p>将真实的人脸数据背景进行更换，然后再对人脸图片进行几何变换得到合成数据集。具体过程如图所示。 <img src="/images/2020/01/4dc600a7167dd01e6dc50a7f50030a47.png" alt=""> 使用的数据集有CK+、BU-3DFE、COCO dataset.其中COCO dataset 用作背景图。最后合成的数据集部分如图所示。 <img src="/images/2020/01/129c6e7ef5e4c4a5e564afc3ce255b20.png" alt=""></p>
+<h3 id="Expression-recognition-results"><a href="#Expression-recognition-results" class="headerlink" title="Expression recognition results"></a>Expression recognition results</h3><p><img src="/images/2020/01/3d26de5c4ae9e4adf798e7906e823288.png" alt=""> Baseline为PreActResNet18，将其与FERAtt+Cls 和FERAtt + Rep + Cls两种方法进行性能比较，发现再表示对性能的提升有明显的效果。 <img src="/images/2020/01/2effcfe6a06fe696e4ba74dcc1cfa929.png" alt=""> <img src="/images/2020/01/28bdc6ed1023a7ad8320ca781d4fcf3c.png" alt=""></p>
+<h3 id="Rebustness-to-noise"><a href="#Rebustness-to-noise" class="headerlink" title="Rebustness to noise"></a>Rebustness to noise</h3><p><img src="/images/2020/01/ca160a0a38b6391f62903167d8ac154b.png" alt=""> <img src="/images/2020/01/0645fc08ae449ba1ad4afe6bca0fb918.png" alt=""><img src="/images/2020/01/94cff341025800dc28d02de14269eba8.png" alt=""> FERAtt + Rep + Cls算法对噪声的鲁棒性较好，在$\\sigma = 0 - 0.10$对于识别性能几乎无影响，继续增大$\\sigma$的值时，它的识别的精度也一直处于其它算法之上。</p>
+<h2 id="Contribution"><a href="#Contribution" class="headerlink" title="Contribution"></a>Contribution</h2><ol>
+<li>Attention model</li>
+<li>A generator of synthetic images</li>
+<li>Gaussian Manifold Loss</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Attention/" rel="tag"># Attention</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/01/06/facial-expression-recognition-by-de-expression-residue-learning%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="prev" title="Facial Expression Recognition by De-expression Residue Learning阅读笔记">
+                  <i class="fa fa-chevron-left"></i> Facial Expression Recognition by De-expression Residue Learning阅读笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2020/01/09/leetcode2019%E7%AC%AC169%E5%9C%BA%E5%91%A8%E8%B5%9B/" rel="next" title="LeetCode2019第169场周赛">
+                  LeetCode2019第169场周赛 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

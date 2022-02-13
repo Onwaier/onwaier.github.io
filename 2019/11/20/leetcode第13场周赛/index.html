@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="1256. 加密数字题目描述给你一个非负整数 num ，返回它的「加密字符串」。 加密的过程是把一个整数用某个未知函数进行转化，你需要从下表推测出该转化函数：  示例 1： 输入：num &#x3D; 23 输出：”1000” 示例 2： 输入：num &#x3D; 107 输出：”101100” 提示： 0 &lt;&#x3D; num &lt;&#x3D; 10^9 题解1我发现的规律1-2 编码位数为1位从0 - 1，3-6编码位">
+<meta property="og:type" content="website">
+<meta property="og:title" content="LeetCode第13场双周赛">
+<meta property="og:url" content="http://example.com/2019/11/20/leetcode%E7%AC%AC13%E5%9C%BA%E5%91%A8%E8%B5%9B/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="1256. 加密数字题目描述给你一个非负整数 num ，返回它的「加密字符串」。 加密的过程是把一个整数用某个未知函数进行转化，你需要从下表推测出该转化函数：  示例 1： 输入：num &#x3D; 23 输出：”1000” 示例 2： 输入：num &#x3D; 107 输出：”101100” 提示： 0 &lt;&#x3D; num &lt;&#x3D; 10^9 题解1我发现的规律1-2 编码位数为1位从0 - 1，3-6编码位">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://i.loli.net/2019/11/20/qP8LSD2McVuxWC4.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/20/cgwIRQb8XUnNelP.png">
+<meta property="og:image" content="https://i.loli.net/2019/11/20/VYOeulqkWd2syxI.png">
+<meta property="article:published_time" content="2019-11-20T04:39:52.000Z">
+<meta property="article:modified_time" content="2022-02-13T06:10:09.737Z">
+<meta property="article:author" content="Onwaier">
+<meta property="article:tag" content="数组">
+<meta property="article:tag" content="分治法">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2019/11/20/qP8LSD2McVuxWC4.png">
+
+
+<link rel="canonical" href="http://example.com/2019/11/20/leetcode%E7%AC%AC13%E5%9C%BA%E5%91%A8%E8%B5%9B/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2019/11/20/leetcode%E7%AC%AC13%E5%9C%BA%E5%91%A8%E8%B5%9B/","path":"2019/11/20/leetcode第13场周赛/","title":"LeetCode第13场双周赛"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>LeetCode第13场双周赛 | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1256-%E5%8A%A0%E5%AF%86%E6%95%B0%E5%AD%97"><span class="nav-number">1.</span> <span class="nav-text">1256. 加密数字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A31"><span class="nav-number">1.2.</span> <span class="nav-text">题解1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%811"><span class="nav-number">1.3.</span> <span class="nav-text">代码1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A32"><span class="nav-number">1.4.</span> <span class="nav-text">题解2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%812"><span class="nav-number">1.5.</span> <span class="nav-text">代码2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1257-%E6%9C%80%E5%B0%8F%E5%85%AC%E5%85%B1%E5%8C%BA%E5%9F%9F"><span class="nav-number">2.</span> <span class="nav-text">1257. 最小公共区域</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-1"><span class="nav-number">2.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A31-1"><span class="nav-number">2.2.</span> <span class="nav-text">题解1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%811-1"><span class="nav-number">2.3.</span> <span class="nav-text">代码1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1258-%E8%BF%91%E4%B9%89%E8%AF%8D%E5%8F%A5%E5%AD%90"><span class="nav-number">3.</span> <span class="nav-text">1258. 近义词句子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-2"><span class="nav-number">3.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A31-2"><span class="nav-number">3.2.</span> <span class="nav-text">题解1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%811-2"><span class="nav-number">3.3.</span> <span class="nav-text">代码1</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1259-%E4%B8%8D%E7%9B%B8%E4%BA%A4%E7%9A%84%E6%8F%A1%E6%89%8B"><span class="nav-number">4.</span> <span class="nav-text">1259. 不相交的握手</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E7%9B%AE%E6%8F%8F%E8%BF%B0-3"><span class="nav-number">4.1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A2%98%E8%A7%A31-3"><span class="nav-number">4.2.</span> <span class="nav-text">题解1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%811-3"><span class="nav-number">4.3.</span> <span class="nav-text">代码1</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">70</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/20/leetcode%E7%AC%AC13%E5%9C%BA%E5%91%A8%E8%B5%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode第13场双周赛
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-20 12:39:52" itemprop="dateCreated datePublished" datetime="2019-11-20T12:39:52+08:00">2019-11-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 14:10:09" itemprop="dateModified" datetime="2022-02-13T14:10:09+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/11/20/leetcode%E7%AC%AC13%E5%9C%BA%E5%91%A8%E8%B5%9B/" class="post-meta-item leancloud_visitors" data-flag-title="LeetCode第13场双周赛" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/11/20/leetcode%E7%AC%AC13%E5%9C%BA%E5%91%A8%E8%B5%9B/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/20/leetcode第13场周赛/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="1256-加密数字"><a href="#1256-加密数字" class="headerlink" title="1256. 加密数字"></a>1256. 加密数字</h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个非负整数 num ，返回它的「加密字符串」。 加密的过程是把一个整数用某个未知函数进行转化，你需要从下表推测出该转化函数： <a target="_blank" rel="noopener" href="https://i.loli.net/2019/11/20/qP8LSD2McVuxWC4.png" title="题目描述1"><img src="https://i.loli.net/2019/11/20/qP8LSD2McVuxWC4.png" alt="题目描述1" title="题目描述1"></a> 示例 1： 输入：num = 23 输出：”1000” 示例 2： 输入：num = 107 输出：”101100” 提示： 0 &lt;= num &lt;= 10^9</p>
+<h2 id="题解1"><a href="#题解1" class="headerlink" title="题解1"></a>题解1</h2><p>我发现的规律1-2 编码位数为1位从0 - 1，3-6编码位数为2位从00 - 11。7-14编码位数为3位从000 - 111。所以从这个规律中我需要知道2个信息编码的位数及在编码中位置（即第几个）。</p>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">encode</span><span class="params">(<span class="type">int</span> num)</span> </span>&#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> tmp = <span class="number">0</span>, sum = <span class="number">0</span>, res;</span><br><span class="line">        <span class="type">int</span> bit = <span class="number">0</span>;</span><br><span class="line">        string s;</span><br><span class="line">        <span class="keyword">if</span>(num == <span class="number">0</span>)&#123;<span class="comment">//0的话为空串</span></span><br><span class="line">            <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span>(sum &lt;= num)&#123;<span class="comment">//sum = 2 ^ (bit) -1 寻找2^bit - 1 &gt; num</span></span><br><span class="line">            <span class="keyword">if</span>(bit == <span class="number">0</span>)&#123;</span><br><span class="line">                tmp = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                tmp = tmp &lt;&lt; <span class="number">1</span>;</span><br><span class="line">            bit++;</span><br><span class="line">            sum += tmp;</span><br><span class="line">        &#125;</span><br><span class="line">        res = num - (sum - tmp);<span class="comment">//num在bit-1位中编码的位置</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; bit - <span class="number">1</span>; ++i)&#123;</span><br><span class="line">            s.<span class="built_in">push_back</span>(res % <span class="number">2</span> + <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">            res = res &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">reverse</span>(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>());<span class="comment">//逆序</span></span><br><span class="line">        <span class="keyword">return</span> s;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="题解2"><a href="#题解2" class="headerlink" title="题解2"></a>题解2</h2><p>参考圈子中的讨论，其实一个数num的编码为num+1的二进制数的低bit-1位（除去最高位）。 比如num = 6的编码为11相当于7（111）的后两位。 其实反过来题解1可以从侧面证实这种解法的正确性，最后得到的res与num存在以下关系 $latex num = res + 2^{bit - 1} - 1$变化成$latex num + 1 = res + 2^{bit - 1}$ res显然是num + 1的后bit-1位</p>
+<h2 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">string <span class="title">encode</span><span class="params">(<span class="type">int</span> num)</span> </span>&#123;</span><br><span class="line">        string s;</span><br><span class="line">        <span class="type">int</span> res = num + <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(res)&#123;</span><br><span class="line">            s.<span class="built_in">push_back</span>((res &amp; <span class="number">1</span>) + <span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">            res = res &gt;&gt; <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">reverse</span>(s.<span class="built_in">begin</span>(), s.<span class="built_in">end</span>());<span class="comment">//逆序</span></span><br><span class="line">        <span class="keyword">return</span> s.<span class="built_in">substr</span>(<span class="number">1</span>);<span class="comment">//只输出 低bit-1位</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="1257-最小公共区域"><a href="#1257-最小公共区域" class="headerlink" title="1257. 最小公共区域"></a>1257. 最小公共区域</h1><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一些区域列表 regions ，每个列表的第一个区域都包含这个列表内所有其他区域。 很自然地，如果区域 X 包含区域 Y ，那么区域 X 比区域 Y 大。 给定两个区域 region1 和 region2 ，找到同时包含这两个区域的 最小 区域。 如果区域列表中 r1 包含 r2 和 r3 ，那么数据保证 r2 不会包含 r3 。 数据同样保证最小公共区域一定存在。 示例 1： 输入： regions = [[“Earth”,”North America”,”South America”], [“North America”,”United States”,”Canada”], [“United States”,”New York”,”Boston”], [“Canada”,”Ontario”,”Quebec”], [“South America”,”Brazil”]], region1 = “Quebec”, region2 = “New York” 输出：”North America” 提示： 2 &lt;= regions.length &lt;= 10^4 region1 != region2 所有字符串只包含英文字母和空格，且最多只有 20 个字母。</p>
+<h2 id="题解1-1"><a href="#题解1-1" class="headerlink" title="题解1"></a>题解1</h2><p>根据regions建立并查集 然后将region1与region2的所有父结点（包括它们自已）放到v1与v2中。 寻找v1与v2的第一个相交元素即为所示。</p>
+<h2 id="代码1-1"><a href="#代码1-1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    map&lt;string, string&gt;maps;</span><br><span class="line">    <span class="function">string <span class="title">findSmallestRegion</span><span class="params">(vector&lt;vector&lt;string&gt;&gt;&amp; regions, string region1, string region2)</span> </span>&#123;</span><br><span class="line">        vector&lt;string&gt;v1, v2;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; regions.<span class="built_in">size</span>(); ++i)&#123;<span class="comment">//建立并查集</span></span><br><span class="line">            string fa = regions[i][<span class="number">0</span>];</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt; regions[i].<span class="built_in">size</span>(); ++j)&#123;</span><br><span class="line">                maps[regions[i][j]] = fa;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//将region1与region2的所有父结点对应放到v1与v2中。</span></span><br><span class="line">        <span class="comment">//然后寻找v1与v2第1个相交的元素</span></span><br><span class="line">        v1.<span class="built_in">push_back</span>(region1);</span><br><span class="line">        v2.<span class="built_in">push_back</span>(region2);</span><br><span class="line">        string tmp = region1;</span><br><span class="line">        <span class="keyword">while</span>(maps.<span class="built_in">find</span>(tmp) != maps.<span class="built_in">end</span>())&#123;</span><br><span class="line">            tmp = maps[tmp];</span><br><span class="line">            v1.<span class="built_in">push_back</span>(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        tmp = region2;</span><br><span class="line">        <span class="keyword">while</span>(maps.<span class="built_in">find</span>(tmp) != maps.<span class="built_in">end</span>())&#123;</span><br><span class="line">            tmp = maps[tmp];</span><br><span class="line">            v2.<span class="built_in">push_back</span>(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; v1.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="built_in">find</span>(v2.<span class="built_in">begin</span>(), v2.<span class="built_in">end</span>(), v1[i]) != v2.<span class="built_in">end</span>())&#123;</span><br><span class="line">                <span class="keyword">return</span> v1[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="1258-近义词句子"><a href="#1258-近义词句子" class="headerlink" title="1258. 近义词句子"></a>1258. 近义词句子</h1><h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个近义词表 synonyms 和一个句子 text ， synonyms 表中是一些近义词对 ，你可以将句子 text 中每个单词用它的近义词来替换。 请你找出所有用近义词替换后的句子，按 字典序排序 后返回。 示例 1： 输入： synonyms = [[“happy”,”joy”],[“sad”,”sorrow”],[“joy”,”cheerful”]], text = “I am happy today but was sad yesterday” 输出： [“I am cheerful today but was sad yesterday”, “I am cheerful today but was sorrow yesterday”, “I am happy today but was sad yesterday”, “I am happy today but was sorrow yesterday”, “I am joy today but was sad yesterday”, “I am joy today but was sorrow yesterday”] 提示： 0 &lt;= synonyms.length &lt;= 10 synonyms[i].length == 2 synonyms[0] != synonyms[1] 所有单词仅包含英文字母，且长度最多为 10 。 text 最多包含 10 个单词，且单词间用单个空格分隔开。</p>
+<h2 id="题解1-2"><a href="#题解1-2" class="headerlink" title="题解1"></a>题解1</h2><p>题意比较简单，但是比较麻烦。 首先根据近义词对，将所有近义的放到同一个set中 然后将句子text转成单词数组，遍历单词，对每一个单词，在近义词中查找看是否存在近义词，如果存在，则将近义词组中的所有单词添加到v中。 最后通过DFS来生成所有近义的句子。</p>
+<h2 id="代码1-2"><a href="#代码1-2" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;string&gt;res, words;</span><br><span class="line">string tmp;</span><br><span class="line">vector&lt;vector&lt;string&gt;&gt;<span class="built_in">v</span>(<span class="number">15</span>);</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">generate</span><span class="params">(<span class="type">int</span> idx, <span class="type">int</span> n)</span></span>&#123;<span class="comment">//DFS生成句子</span></span><br><span class="line">    <span class="keyword">if</span>(idx &gt;= n)&#123;</span><br><span class="line">        tmp.<span class="built_in">clear</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">                tmp.<span class="built_in">append</span>(words[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                tmp.<span class="built_in">append</span>(<span class="string">&quot; &quot;</span>);</span><br><span class="line">                tmp.<span class="built_in">append</span>(words[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        res.<span class="built_in">push_back</span>(tmp);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> str:v[idx])&#123;</span><br><span class="line">        words.<span class="built_in">push_back</span>(str);</span><br><span class="line">        <span class="built_in">generate</span>(idx + <span class="number">1</span>, n);</span><br><span class="line">        words.<span class="built_in">pop_back</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;string&gt; <span class="title">generateSentences</span><span class="params">(vector&lt;vector&lt;string&gt;&gt;&amp; sy, string text)</span> </span>&#123;</span><br><span class="line">        set&lt;string&gt;sets[<span class="number">15</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">15</span>; ++i)&#123;<span class="comment">//全局变量需要重置，不然执行结果与本地不相同</span></span><br><span class="line">            v[i].<span class="built_in">clear</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        res.<span class="built_in">clear</span>();</span><br><span class="line">        words.<span class="built_in">clear</span>();</span><br><span class="line">        <span class="type">int</span> idx = <span class="number">0</span>, cnt = <span class="number">-1</span>;</span><br><span class="line">        vector&lt;string&gt;sen;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; sy.<span class="built_in">size</span>(); ++i)&#123;<span class="comment">//根据同义词组，将同义的放到同一个set中</span></span><br><span class="line">            <span class="keyword">if</span>(i == <span class="number">0</span>)&#123;</span><br><span class="line">                ++cnt;</span><br><span class="line">                idx =cnt;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                idx = <span class="number">-1</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= cnt; ++j)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(sets[j].<span class="built_in">find</span>(sy[i][<span class="number">0</span>]) != sets[j].<span class="built_in">end</span>()  sets[j].<span class="built_in">find</span>(sy[i][<span class="number">1</span>]) != sets[j].<span class="built_in">end</span>())&#123;</span><br><span class="line">                        idx = j;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(idx == <span class="number">-1</span>)&#123;</span><br><span class="line">                    ++cnt;</span><br><span class="line">                    idx = cnt;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">auto</span> str:sy[i])&#123;</span><br><span class="line">                sets[idx].<span class="built_in">insert</span>(str);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="function">istringstream <span class="title">s</span><span class="params">(text)</span></span>;</span><br><span class="line">        string str;</span><br><span class="line">        <span class="keyword">while</span>(s &gt;&gt; str)&#123;<span class="comment">//句子拆成单词</span></span><br><span class="line">            sen.<span class="built_in">push_back</span>(str);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; sen.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">            <span class="type">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= cnt; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(sets[j].<span class="built_in">find</span>(sen[i]) != sets[j].<span class="built_in">end</span>())&#123;<span class="comment">//如果同义词组中找到该词，则将该同义词组中所有元素放到v[i]中</span></span><br><span class="line">                    flag = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">auto</span> iter :sets[j])&#123;</span><br><span class="line">                        v[i].<span class="built_in">push_back</span>(iter);</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!flag)&#123;</span><br><span class="line">                v[i].<span class="built_in">push_back</span>(sen[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">generate</span>(<span class="number">0</span>, sen.<span class="built_in">size</span>());<span class="comment">//DFS生成句子</span></span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="1259-不相交的握手"><a href="#1259-不相交的握手" class="headerlink" title="1259. 不相交的握手"></a>1259. 不相交的握手</h1><h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>偶数 个人站成一个圆，总人数为 num_people 。每个人与除自己外的一个人握手，所以总共会有 num_people / 2 次握手。 将握手的人之间连线，请你返回连线不会相交的握手方案数。 由于结果可能会很大，请你返回答案 模 10^9+7 后的结果。 示例 1： 输入：num_people = 2 输出：1 示例 2： <a target="_blank" rel="noopener" href="https://i.loli.net/2019/11/20/cgwIRQb8XUnNelP.png"><img src="https://i.loli.net/2019/11/20/cgwIRQb8XUnNelP.png" alt=""></a> 输入：num_people = 4 输出：2 解释：总共有两种方案，第一种方案是 [(1,2),(3,4)] ，第二种方案是 [(2,3),(4,1)] 。 示例 3： <a target="_blank" rel="noopener" href="https://i.loli.net/2019/11/20/VYOeulqkWd2syxI.png"><img src="https://i.loli.net/2019/11/20/VYOeulqkWd2syxI.png" alt=""></a> 输入：num_people = 6 输出：5 示例 4： 输入：num_people = 8 输出：14 提示： 2 &lt;= num_people &lt;= 1000 num_people % 2 == 0</p>
+<h2 id="题解1-3"><a href="#题解1-3" class="headerlink" title="题解1"></a>题解1</h2><p>这题可以用分治法也可以采用打表的形式，最多也就1000人，可以将所有的结果求出来。然后查询。 如果有n个人，g(n)记为n个握手方案的个数。编号为1， 2， 3， 4， ……， n。对于编号1，它只能和2， 4， 6， ……， 8握手，不然导致之间奇数人握手必有交叉。如果1与2握手，则3， 4， ……， n握手转成n-2个人握手问题，方案数为g(n -2)。如果1与4握手，则方案数为g(2) * g(n - 4)。 所以总方案数g(n)存在以下公式。 <script type="math/tex">g(n) = g(0) \* g(n - 2) + g(2) \* g(n - 4) + …… + g(n - 2) \* g(0)</script></p>
+<h2 id="代码1-3"><a href="#代码1-3" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MOD (1000000000 + 7)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numberOfWays</span><span class="params">(<span class="type">int</span> num_people)</span> </span>&#123;</span><br><span class="line">        <span class="type">long</span> <span class="type">long</span> res[<span class="number">1005</span>];</span><br><span class="line">        <span class="built_in">memset</span>(res, <span class="number">0</span>, <span class="built_in">sizeof</span>(res));</span><br><span class="line">        res[<span class="number">0</span>] = res[<span class="number">2</span>] = <span class="number">1</span>, res[<span class="number">4</span>] = <span class="number">2</span>, res[<span class="number">6</span>] = <span class="number">5</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">8</span>; i &lt;= <span class="number">1000</span>; i +=<span class="number">2</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; i; j += <span class="number">2</span>)&#123;</span><br><span class="line">                res[i] = (res[i] + res[j] * res[i - <span class="number">2</span>- j]) % MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res[num_people];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E7%BB%84/" rel="tag"># 数组</a>
+              <a href="/tags/%E5%88%86%E6%B2%BB%E6%B3%95/" rel="tag"># 分治法</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/03/mac%E7%BB%88%E7%AB%AF%E8%B5%B0ssr%E4%BB%A3%E7%90%86/" rel="prev" title="Mac终端走ssr代理">
+                  <i class="fa fa-chevron-left"></i> Mac终端走ssr代理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/11/26/region-attention-networks-for-pose-and-occlusion-robust-facial-expression-recognition%E6%96%87%E7%AB%A0%E8%A7%A3%E8%AF%BB/" rel="next" title="Region Attention Networks for Pose and Occlusion Robust Facial Expression Recognition阅读笔记">
+                  Region Attention Networks for Pose and Occlusion Robust Facial Expression Recognition阅读笔记 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":null,"security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>
