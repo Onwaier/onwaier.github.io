@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.0.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Pisces","darkmode":false,"version":"8.10.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+  <meta name="description" content="参考资料 知乎-Mac的移动硬盘不能装载该如何解决? 命令行卸载Tuxera与使用系统偏好卸载Tuxera Macos 10.15.7系统无法挂载移动盘解决方案 Tuxera NTFS在Mac os 10.15.7系统用命令挂载盘  解决轨迹最开始以为是错误插拔导致硬盘无法挂载。参考资料1，执行相关命令，但发现仍然无法挂载硬盘。然后去苹果社区查相关信息，有人提是因为Tuxera不是最新版本，就按照">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Macos 10.15.7系统下，Tuxera无法挂载NTFS移动盘解决方案">
+<meta property="og:url" content="http://example.com/2022/05/30/Macos-10-15-7%E7%B3%BB%E7%BB%9F%E4%B8%8B%EF%BC%8CTuxera%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BDNTFS%E7%A7%BB%E5%8A%A8%E7%9B%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:site_name" content="Onwaier&#39;s Blog">
+<meta property="og:description" content="参考资料 知乎-Mac的移动硬盘不能装载该如何解决? 命令行卸载Tuxera与使用系统偏好卸载Tuxera Macos 10.15.7系统无法挂载移动盘解决方案 Tuxera NTFS在Mac os 10.15.7系统用命令挂载盘  解决轨迹最开始以为是错误插拔导致硬盘无法挂载。参考资料1，执行相关命令，但发现仍然无法挂载硬盘。然后去苹果社区查相关信息，有人提是因为Tuxera不是最新版本，就按照">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/Users/onwaier/Library/Application%20Support/typora-user-images/image-20220530151450204.png">
+<meta property="article:published_time" content="2022-05-30T07:28:01.000Z">
+<meta property="article:modified_time" content="2022-05-30T07:30:33.828Z">
+<meta property="article:author" content="Onwaier">
+<meta property="article:tag" content="Mac">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/Users/onwaier/Library/Application%20Support/typora-user-images/image-20220530151450204.png">
+
+
+<link rel="canonical" href="http://example.com/2022/05/30/Macos-10-15-7%E7%B3%BB%E7%BB%9F%E4%B8%8B%EF%BC%8CTuxera%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BDNTFS%E7%A7%BB%E5%8A%A8%E7%9B%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://example.com/2022/05/30/Macos-10-15-7%E7%B3%BB%E7%BB%9F%E4%B8%8B%EF%BC%8CTuxera%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BDNTFS%E7%A7%BB%E5%8A%A8%E7%9B%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/","path":"2022/05/30/Macos-10-15-7系统下，Tuxera无法挂载NTFS移动盘解决方案/","title":"Macos 10.15.7系统下，Tuxera无法挂载NTFS移动盘解决方案"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Macos 10.15.7系统下，Tuxera无法挂载NTFS移动盘解决方案 | Onwaier's Blog</title>
+  
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Onwaier's Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">大步后退亦或停止不前，不如匍匐前进</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">1.</span> <span class="nav-text">参考资料</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E8%BD%A8%E8%BF%B9"><span class="nav-number">2.</span> <span class="nav-text">解决轨迹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="nav-number">3.</span> <span class="nav-text">解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3%E6%9D%A1%E5%91%BD%E4%BB%A4"><span class="nav-number">3.1.</span> <span class="nav-text">3条命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%84%9A%E6%9C%AC"><span class="nav-number">3.2.</span> <span class="nav-text">脚本</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Onwaier</p>
+  <div class="site-description" itemprop="description">Onwaier的个人博客</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Onwaier" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Onwaier" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:onwaier@163.com" title="E-Mail → mailto:onwaier@163.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2022/05/30/Macos-10-15-7%E7%B3%BB%E7%BB%9F%E4%B8%8B%EF%BC%8CTuxera%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BDNTFS%E7%A7%BB%E5%8A%A8%E7%9B%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Macos 10.15.7系统下，Tuxera无法挂载NTFS移动盘解决方案
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2022-05-30 15:28:01 / 修改时间：15:30:33" itemprop="dateCreated datePublished" datetime="2022-05-30T15:28:01+08:00">2022-05-30</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Mac/" itemprop="url" rel="index"><span itemprop="name">Mac</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2022/05/30/Macos-10-15-7%E7%B3%BB%E7%BB%9F%E4%B8%8B%EF%BC%8CTuxera%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BDNTFS%E7%A7%BB%E5%8A%A8%E7%9B%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/" class="post-meta-item leancloud_visitors" data-flag-title="Macos 10.15.7系统下，Tuxera无法挂载NTFS移动盘解决方案" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2022/05/30/Macos-10-15-7%E7%B3%BB%E7%BB%9F%E4%B8%8B%EF%BC%8CTuxera%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BDNTFS%E7%A7%BB%E5%8A%A8%E7%9B%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2022/05/30/Macos-10-15-7系统下，Tuxera无法挂载NTFS移动盘解决方案/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/346106923">知乎-Mac的移动硬盘不能装载该如何解决?</a></li>
+<li><a target="_blank" rel="noopener" href="https://macsupport.tuxera.com/hc/en-gb/articles/360021236379">命令行卸载Tuxera</a>与<a target="_blank" rel="noopener" href="https://macsupport.tuxera.com/hc/en-gb/articles/360020954620-How-to-uninstall-NTFS-for-Mac-using-System-Preferences">使用系统偏好卸载Tuxera</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ntfsformac.cn/changjianwenti/paragon-qoiw.html#:~:text=Mac%20os%2010.15.7%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BD%E7%A7%BB%E5%8A%A8%E7%9B%98%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%201%E3%80%81%E6%89%93%E5%BC%80%E5%90%AF%E5%8A%A8%E5%8F%B0%EF%BC%8C%E4%B8%8A%E6%96%B9%E8%BE%93%E5%85%A5%EF%BC%9A%E7%BB%88%E7%AB%AF%EF%BC%88%E6%88%96%E8%80%85%E6%A1%8C%E9%9D%A2%E7%82%B9%E5%87%BB%E5%89%8D%E5%BE%80-%E5%AE%9E%E7%94%A8%E7%A8%8B%E5%BA%8F-%E7%BB%88%E7%AB%AF%EF%BC%89%20%E5%9B%BE2%EF%BC%9A%E7%BB%88%E7%AB%AF,2%E3%80%81%E8%BE%93%E5%85%A5%EF%BC%9A%20sudo%20mkdir%20%2FVolumes%2Fntfs-disk%20%E5%9B%9E%E8%BD%A6%E5%90%8E%E4%BC%9A%E5%87%BA%E7%8E%B0Password%EF%BC%8C%E7%9B%B4%E6%8E%A5%E8%BE%93%E5%85%A5%E7%94%B5%E8%84%91%E5%BC%80%E6%9C%BA%E5%AF%86%E7%A0%81%EF%BC%88%E6%B2%A1%E6%9C%89%E5%A1%AB%E5%86%99%E6%A1%86%EF%BC%8C%E8%BE%93%E5%85%A5%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E5%9B%9E%E8%BD%A6%E5%8D%B3%E5%8F%AF%EF%BC%89%20%E5%9B%BE3%EF%BC%9A%E8%BE%93%E5%85%A5%E5%BC%80%E6%9C%BA%E5%AF%86%E7%A0%81">Macos 10.15.7系统无法挂载移动盘解决方案</a></li>
+<li><a target="_blank" rel="noopener" href="https://i.mairuan.com/support/faq/id/648">Tuxera NTFS在Mac os 10.15.7系统用命令挂载盘</a></li>
+</ol>
+<h2 id="解决轨迹"><a href="#解决轨迹" class="headerlink" title="解决轨迹"></a>解决轨迹</h2><p>最开始以为是错误插拔导致硬盘无法挂载。参考资料<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/346106923">1</a>，执行相关命令，但发现仍然无法挂载硬盘。然后去苹果社区查相关信息，有人提是因为Tuxera不是最新版本，就按照资料2卸载旧版本，重启电脑。这时发现可以挂载硬盘，但只能读不能写，此时，内心窃喜。安装最新版本Tuxera，重启电脑，发现又无法挂载硬盘，回到了最初的起点。我有点怀疑是因为软件与系统不兼容导致的，因为我在卸载掉软件后，是可以正常挂载。所以，我使用“Macos10.15.7无法挂载移动盘”去google找到材料<a target="_blank" rel="noopener" href="https://www.ntfsformac.cn/changjianwenti/paragon-qoiw.html#:~:text=Mac%20os%2010.15.7%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BD%E7%A7%BB%E5%8A%A8%E7%9B%98%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%201%E3%80%81%E6%89%93%E5%BC%80%E5%90%AF%E5%8A%A8%E5%8F%B0%EF%BC%8C%E4%B8%8A%E6%96%B9%E8%BE%93%E5%85%A5%EF%BC%9A%E7%BB%88%E7%AB%AF%EF%BC%88%E6%88%96%E8%80%85%E6%A1%8C%E9%9D%A2%E7%82%B9%E5%87%BB%E5%89%8D%E5%BE%80-%E5%AE%9E%E7%94%A8%E7%A8%8B%E5%BA%8F-%E7%BB%88%E7%AB%AF%EF%BC%89%20%E5%9B%BE2%EF%BC%9A%E7%BB%88%E7%AB%AF,2%E3%80%81%E8%BE%93%E5%85%A5%EF%BC%9A%20sudo%20mkdir%20%2FVolumes%2Fntfs-disk%20%E5%9B%9E%E8%BD%A6%E5%90%8E%E4%BC%9A%E5%87%BA%E7%8E%B0Password%EF%BC%8C%E7%9B%B4%E6%8E%A5%E8%BE%93%E5%85%A5%E7%94%B5%E8%84%91%E5%BC%80%E6%9C%BA%E5%AF%86%E7%A0%81%EF%BC%88%E6%B2%A1%E6%9C%89%E5%A1%AB%E5%86%99%E6%A1%86%EF%BC%8C%E8%BE%93%E5%85%A5%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E5%9B%9E%E8%BD%A6%E5%8D%B3%E5%8F%AF%EF%BC%89%20%E5%9B%BE3%EF%BC%9A%E8%BE%93%E5%85%A5%E5%BC%80%E6%9C%BA%E5%AF%86%E7%A0%81">3</a>，发现Paragon软件可以通过命令来手动挂载以解决不兼容的问题。那Tuxera是否也可以手动挂载那？加上Tuxera关键词，找到材料<a target="_blank" rel="noopener" href="https://i.mairuan.com/support/faq/id/648">4</a>，问题终于得到解决了。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="3条命令"><a href="#3条命令" class="headerlink" title="3条命令"></a>3条命令</h3><ol>
+<li>终端输入<code>sudo mkdir /Volumes/ntfs-disk</code>，需输入开机密码。</li>
+<li><code>diskutil list</code>查看硬盘信息，找到对应条目。我这里对应的是 <em>/dev/disk2s1</em>。</li>
+</ol>
+<p>​        <img src="/Users/onwaier/Library/Application Support/typora-user-images/image-20220530151450204.png" alt="image-20220530151450204"></p>
+<ol>
+<li><code>sudo /Library/Filesystems/tuxera_ntfs.fs/Contents/Resources/mount_tuxera_ntfs -o nodev -o noowners -o nosuid /dev/diskXsY /Volumes/ntfs-disk</code>，需将这里diskXsY替换掉，对应上图，这里就替换成 <em>disk2s1</em>。等待片刻，即可成功挂载，此时可正常读写。</li>
+</ol>
+<p>​        注意：<strong>退出硬盘需重新挂载，为了方便下面提供了脚本方便执行</strong></p>
+<h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tuxera 挂载ntfs硬盘（适用于zsh，bash不知是否可以）</span></span><br><span class="line"><span class="function"><span class="title">tuxera_mount</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    sudo <span class="built_in">mkdir</span> /Volumes/ntfs-disk</span><br><span class="line">    <span class="keyword">if</span> [ ! <span class="variable">$#</span> -eq 0 ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">        sudo /Library/Filesystems/tuxera_ntfs.fs/Contents/Resources/mount_tuxera_ntfs -o nodev -o noowners -o nosuid /dev/<span class="variable">$1</span> /Volumes/ntfs-disk</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;先用diskutil list，查看需要挂载盘的信息&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>tuxera_mount</code>需要接收一个参数。比如对应上图，此参数应为 <em>disk2s1</em>。挂载时，执行命令<code>tuxera_mount disk2s1</code>即可。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Mac/" rel="tag"># Mac</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2022/02/12/hello-world/" rel="prev" title="Hello World">
+                  <i class="fa fa-chevron-left"></i> Hello World
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  <div class="comments" id="disqus_thread">
+    <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+  </div>
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Onwaier</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+<script src="https://cdn.jsdelivr.net/npm/hexo-generator-searchdb@1.4.0/dist/search.js" integrity="sha256-vXZMYLEqsROAXkEw93GGIvaB2ab+QW6w3+1ahD9nXXA=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+
+
+  <script class="next-config" data-name="leancloud_visitors" type="application/json">{"enable":true,"app_id":"gh8MGlPldauVJHzSrVU7V7K2-gzGzoHsz","app_key":"6PhJuVxYccEhTAXWI26qbzpG","server_url":"https://gh8mglpl.lc-cn-n1-shared.com","security":true}</script>
+  <script src="/js/third-party/statistics/lean-analytics.js"></script>
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdn.jsdelivr.net/npm/mathjax@3.2.0/es5/tex-mml-chtml.js","integrity":"sha256-r+3itOMtGGjap0x+10hu6jW/gZCzxHsoKrOd7gyRSGY="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+<script class="next-config" data-name="disqus" type="application/json">{"enable":true,"shortname":"onwaier-blog","count":true,"i18n":{"disqus":"disqus"}}</script>
+<script src="/js/third-party/comments/disqus.js"></script>
+
+</body>
+</html>

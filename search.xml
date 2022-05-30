@@ -2066,4 +2066,33 @@
         <tag>ns2</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Macos 10.15.7系统下，Tuxera无法挂载NTFS移动盘解决方案</title>
+    <url>/2022/05/30/Macos-10-15-7%E7%B3%BB%E7%BB%9F%E4%B8%8B%EF%BC%8CTuxera%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BDNTFS%E7%A7%BB%E5%8A%A8%E7%9B%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a href="https://zhuanlan.zhihu.com/p/346106923">知乎-Mac的移动硬盘不能装载该如何解决?</a></li>
+<li><a href="https://macsupport.tuxera.com/hc/en-gb/articles/360021236379">命令行卸载Tuxera</a>与<a href="https://macsupport.tuxera.com/hc/en-gb/articles/360020954620-How-to-uninstall-NTFS-for-Mac-using-System-Preferences">使用系统偏好卸载Tuxera</a></li>
+<li><a href="https://www.ntfsformac.cn/changjianwenti/paragon-qoiw.html#:~:text=Mac%20os%2010.15.7%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BD%E7%A7%BB%E5%8A%A8%E7%9B%98%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%201%E3%80%81%E6%89%93%E5%BC%80%E5%90%AF%E5%8A%A8%E5%8F%B0%EF%BC%8C%E4%B8%8A%E6%96%B9%E8%BE%93%E5%85%A5%EF%BC%9A%E7%BB%88%E7%AB%AF%EF%BC%88%E6%88%96%E8%80%85%E6%A1%8C%E9%9D%A2%E7%82%B9%E5%87%BB%E5%89%8D%E5%BE%80-%E5%AE%9E%E7%94%A8%E7%A8%8B%E5%BA%8F-%E7%BB%88%E7%AB%AF%EF%BC%89%20%E5%9B%BE2%EF%BC%9A%E7%BB%88%E7%AB%AF,2%E3%80%81%E8%BE%93%E5%85%A5%EF%BC%9A%20sudo%20mkdir%20%2FVolumes%2Fntfs-disk%20%E5%9B%9E%E8%BD%A6%E5%90%8E%E4%BC%9A%E5%87%BA%E7%8E%B0Password%EF%BC%8C%E7%9B%B4%E6%8E%A5%E8%BE%93%E5%85%A5%E7%94%B5%E8%84%91%E5%BC%80%E6%9C%BA%E5%AF%86%E7%A0%81%EF%BC%88%E6%B2%A1%E6%9C%89%E5%A1%AB%E5%86%99%E6%A1%86%EF%BC%8C%E8%BE%93%E5%85%A5%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E5%9B%9E%E8%BD%A6%E5%8D%B3%E5%8F%AF%EF%BC%89%20%E5%9B%BE3%EF%BC%9A%E8%BE%93%E5%85%A5%E5%BC%80%E6%9C%BA%E5%AF%86%E7%A0%81">Macos 10.15.7系统无法挂载移动盘解决方案</a></li>
+<li><a href="https://i.mairuan.com/support/faq/id/648">Tuxera NTFS在Mac os 10.15.7系统用命令挂载盘</a></li>
+</ol>
+<h2 id="解决轨迹"><a href="#解决轨迹" class="headerlink" title="解决轨迹"></a>解决轨迹</h2><p>最开始以为是错误插拔导致硬盘无法挂载。参考资料<a href="https://zhuanlan.zhihu.com/p/346106923">1</a>，执行相关命令，但发现仍然无法挂载硬盘。然后去苹果社区查相关信息，有人提是因为Tuxera不是最新版本，就按照资料2卸载旧版本，重启电脑。这时发现可以挂载硬盘，但只能读不能写，此时，内心窃喜。安装最新版本Tuxera，重启电脑，发现又无法挂载硬盘，回到了最初的起点。我有点怀疑是因为软件与系统不兼容导致的，因为我在卸载掉软件后，是可以正常挂载。所以，我使用“Macos10.15.7无法挂载移动盘”去google找到材料<a href="https://www.ntfsformac.cn/changjianwenti/paragon-qoiw.html#:~:text=Mac%20os%2010.15.7%E7%B3%BB%E7%BB%9F%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BD%E7%A7%BB%E5%8A%A8%E7%9B%98%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%201%E3%80%81%E6%89%93%E5%BC%80%E5%90%AF%E5%8A%A8%E5%8F%B0%EF%BC%8C%E4%B8%8A%E6%96%B9%E8%BE%93%E5%85%A5%EF%BC%9A%E7%BB%88%E7%AB%AF%EF%BC%88%E6%88%96%E8%80%85%E6%A1%8C%E9%9D%A2%E7%82%B9%E5%87%BB%E5%89%8D%E5%BE%80-%E5%AE%9E%E7%94%A8%E7%A8%8B%E5%BA%8F-%E7%BB%88%E7%AB%AF%EF%BC%89%20%E5%9B%BE2%EF%BC%9A%E7%BB%88%E7%AB%AF,2%E3%80%81%E8%BE%93%E5%85%A5%EF%BC%9A%20sudo%20mkdir%20%2FVolumes%2Fntfs-disk%20%E5%9B%9E%E8%BD%A6%E5%90%8E%E4%BC%9A%E5%87%BA%E7%8E%B0Password%EF%BC%8C%E7%9B%B4%E6%8E%A5%E8%BE%93%E5%85%A5%E7%94%B5%E8%84%91%E5%BC%80%E6%9C%BA%E5%AF%86%E7%A0%81%EF%BC%88%E6%B2%A1%E6%9C%89%E5%A1%AB%E5%86%99%E6%A1%86%EF%BC%8C%E8%BE%93%E5%85%A5%E5%AE%8C%E6%88%90%E5%90%8E%EF%BC%8C%E5%9B%9E%E8%BD%A6%E5%8D%B3%E5%8F%AF%EF%BC%89%20%E5%9B%BE3%EF%BC%9A%E8%BE%93%E5%85%A5%E5%BC%80%E6%9C%BA%E5%AF%86%E7%A0%81">3</a>，发现Paragon软件可以通过命令来手动挂载以解决不兼容的问题。那Tuxera是否也可以手动挂载那？加上Tuxera关键词，找到材料<a href="https://i.mairuan.com/support/faq/id/648">4</a>，问题终于得到解决了。</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><h3 id="3条命令"><a href="#3条命令" class="headerlink" title="3条命令"></a>3条命令</h3><ol>
+<li>终端输入<code>sudo mkdir /Volumes/ntfs-disk</code>，需输入开机密码。</li>
+<li><code>diskutil list</code>查看硬盘信息，找到对应条目。我这里对应的是 <em>/dev/disk2s1</em>。</li>
+</ol>
+<p>​        <img src="/Users/onwaier/Library/Application Support/typora-user-images/image-20220530151450204.png" alt="image-20220530151450204"></p>
+<ol>
+<li><code>sudo /Library/Filesystems/tuxera_ntfs.fs/Contents/Resources/mount_tuxera_ntfs -o nodev -o noowners -o nosuid /dev/diskXsY /Volumes/ntfs-disk</code>，需将这里diskXsY替换掉，对应上图，这里就替换成 <em>disk2s1</em>。等待片刻，即可成功挂载，此时可正常读写。</li>
+</ol>
+<p>​        注意：<strong>退出硬盘需重新挂载，为了方便下面提供了脚本方便执行</strong></p>
+<h3 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># tuxera 挂载ntfs硬盘（适用于zsh，bash不知是否可以）</span></span><br><span class="line"><span class="function"><span class="title">tuxera_mount</span></span>()</span><br><span class="line">&#123;</span><br><span class="line">    sudo <span class="built_in">mkdir</span> /Volumes/ntfs-disk</span><br><span class="line">    <span class="keyword">if</span> [ ! <span class="variable">$#</span> -eq 0 ]; <span class="keyword">then</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">        sudo /Library/Filesystems/tuxera_ntfs.fs/Contents/Resources/mount_tuxera_ntfs -o nodev -o noowners -o nosuid /dev/<span class="variable">$1</span> /Volumes/ntfs-disk</span><br><span class="line">    <span class="keyword">else</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;先用diskutil list，查看需要挂载盘的信息&quot;</span></span><br><span class="line">    <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>tuxera_mount</code>需要接收一个参数。比如对应上图，此参数应为 <em>disk2s1</em>。挂载时，执行命令<code>tuxera_mount disk2s1</code>即可。</p>
+]]></content>
+      <categories>
+        <category>Mac</category>
+      </categories>
+      <tags>
+        <tag>Mac</tag>
+      </tags>
+  </entry>
 </search>

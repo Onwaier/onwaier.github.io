@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -161,7 +161,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">55</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -198,6 +198,180 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/01/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95boyer-moore-majority-vote-algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/02/01/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95boyer-moore-majority-vote-algorithm/" class="post-title-link" itemprop="url">摩尔投票法(Boyer–Moore majority vote algorithm)</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-02-01 17:23:58" itemprop="dateCreated datePublished" datetime="2020-02-01T17:23:58+08:00">2020-02-01</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 14:00:14" itemprop="dateModified" datetime="2022-02-13T14:00:14+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+          ，
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/02/01/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95boyer-moore-majority-vote-algorithm/" class="post-meta-item leancloud_visitors" data-flag-title="摩尔投票法(Boyer–Moore majority vote algorithm)" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/02/01/%E6%91%A9%E5%B0%94%E6%8A%95%E7%A5%A8%E6%B3%95boyer-moore-majority-vote-algorithm/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/01/摩尔投票法boyer-moore-majority-vote-algorithm/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://www.cs.ou.edu/~rlpage/dmtools/mjrty.pdf">论文MJRTY A Fast Majority Vote Algorithm</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.cs.utexas.edu/~moore/best-ideas/mjrty/index.html">算法演示网站</a></li>
+<li><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm">维基百科</a></li>
+</ol>
+<h2 id="算法解读"><a href="#算法解读" class="headerlink" title="算法解读"></a>算法解读</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><blockquote>
+<p><img src="/images/2020/02/7c1a38379afd4d065b99dba5c9db906d.png" alt=""></p>
+</blockquote>
+<p>摩尔投票法(Boyer–Moore majority vote algorithm)出自<a target="_blank" rel="noopener" href="https://www.cs.ou.edu/~rlpage/dmtools/mjrty.pdf">论文</a>，算法解决的问题是如何在任意多的候选人（选票无序），选出获得票数最多的那个。常见的算法是扫描一遍选票，对每个候选人进行统计的选票进行统计。当候选人的数目固定时，这个常见算法的时间复杂度为：$O(n)$，当候选人的数目不定时，统计选票可能会执行较长时间，可能需运行$O(n^2)$的时间。当选票有序时，可以很容易编出$O(n)$的程序，首先找到中位数，然后检查中位数的个数是否超过选票的一半。这篇论文针对无序且侯选人不定的情形，提出了摩尔投票算法。算法的比较次数最多是选票（记为n）的两倍，可以在$O(n)$时间内选出获票最多的，空间开销为$O(1)$。</p>
+<h3 id="算法"><a href="#算法" class="headerlink" title="算法"></a>算法</h3><blockquote>
+<p><img src="/images/2020/02/6bba7e6867007df07a6f887e20578913.png" alt=""></p>
+</blockquote>
+<ul>
+<li>形象化描述</li>
+</ul>
+<p>想象着这样一个画面：会议大厅站满了投票代表，每个都有一个牌子上面写着自己所选的候选人的名字。然后选举意见不合的（所选的候选人不同）两个人，会打一架，并且会同时击倒对方。显而易见，如果一个人拥有的选票比其它所有人加起来的选票还要多的话，这个候选人将会赢得这场“战争”，当混乱结束，最后剩下的那个代表（可能会有多个）将会来自多数人所站的阵营。但是如果所有参加候选人的选票都不是大多数（选票都未超过一半），那么最后站在那的代表（一个人）并不能代表所有的选票的大多数。因此，当某人站到最后时，需要统计他所选的候选人的选票是否超过一半（包括倒下的），来判断选票结果是否有效。</p>
+<blockquote>
+<p><img src="/images/2020/02/5e54af168b5a71ac4d82df10f01f1b57.png" alt=""></p>
+</blockquote>
+<ul>
+<li>算法步骤</li>
+</ul>
+<p>算法分为两个阶段：<strong>pairing</strong>阶段和<strong>counting</strong>阶段。</p>
+<ol>
+<li><p><strong>pairing</strong>阶段：两个不同选票的人进行对抗，并会同时击倒对方，当剩下的人都是同一阵营，相同选票时，结束。</p>
+</li>
+<li><p><strong>counting</strong>阶段：计数阶段，对最后剩下的下进行选票计算统计，判断选票是否超过总票数的一半，选票是否有效。</p>
+</li>
+</ol>
+<blockquote>
+<p><img src="/images/2020/02/7bde43514d0c37a58b31d450d109c4df.png" alt=""></p>
+</blockquote>
+<ul>
+<li><strong>pairing</strong>阶段的简化</li>
+</ul>
+<p>选票不同就要大干一架，太过粗鲁，这里提供一种更加现代化的文明方式。 在场的有个叫<code>onwaier</code>的，他很聪明，他想到一个方法。他用他那犀利人目光扫一遍所有代表们的选票，在脑子记住两件事，当前的候选人的名字<code>cand</code>和他对应的计数<code>k</code>（并不是他的选票数）。起始时，<code>k</code>的值为0，看每个人的选票时，先想想现在<code>k</code>是否为0，如果是0就将<code>cand</code>更新为他将看到的候选人的名字并且将<code>k</code>的值更新为1。观察每个人选票的过程，如果这个人的选票与<code>cand</code>相同，则将<code>k</code>的值加1；否则，将<code>k</code>的值减1。最后的<code>cand</code>可能胜选，还需统计他的总选票数是否超过一半。</p>
+<h3 id="算法证明"><a href="#算法证明" class="headerlink" title="算法证明"></a>算法证明</h3><blockquote>
+<p><img src="/images/2020/02/4cefdcdf7b2de8fd13ff4f5d4d47f82b.png" alt=""></p>
+</blockquote>
+<p><strong>证明</strong>： 假设共有n个代表（一人一票，选票总数为n）。当<code>onwaier</code>看到第i个代表的选票时$(1 \leq i \leq n)$，前面他已经看到的所有选票可以分为两组，第一组是<code>k</code>个代表赞同<code>cand</code>；另一组是选票可以全部成对（选票不同）抵销。当处理完所有的选票时，如果存在大多数，则<code>cand</code>当选。 假设存在一个<code>x</code>其不同于<code>cand</code>，但拥有的选票超过$n/2$。但因为第二组的选票可以全部成对抵销，所以<code>x</code>最多的选票数为$(n - k) / 2$，因此<code>x</code>必须要收到第一组的选票才能超过一半，但是第一组的选票都是<code>cand</code>的，出现矛盾，假设不成立。 所以，如果存在大多数，<code>cand</code>就是那个。</p>
+<h3 id="算法演示"><a href="#算法演示" class="headerlink" title="算法演示"></a>算法演示</h3><p>来自<a target="_blank" rel="noopener" href="https://www.cs.utexas.edu/~moore/best-ideas/mjrty/index.html">网站</a> 选票情况为： A A A C C B B C C C B C C 结果应该是<code>C</code></p>
+<ul>
+<li>算法执行过程 <img src="/images/2020/02/algo.gif" alt=""></li>
+</ul>
+<h3 id="算法代码"><a href="#算法代码" class="headerlink" title="算法代码"></a>算法代码</h3><ul>
+<li>伪代码</li>
+</ul>
+<p>伪代码来自<a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Boyer%E2%80%93Moore_majority_vote_algorithm">维基百科</a></p>
+<blockquote>
+<p><img src="/images/2020/02/d9c9ad72b724fb9989247f9050df9b40.png" alt=""></p>
+</blockquote>
+<ul>
+<li>c++代码</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">根据多数元素出现的次数大于n/2且超过其它元素出现次数之和这一特点，进行统计</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">时间复杂度为：O(n)</span></span><br><span class="line"><span class="comment">空间复杂度为：O(1)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">majorityElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>, cand = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//成对抵销阶阶段</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> num:nums)&#123;</span><br><span class="line">        <span class="keyword">if</span>(k == <span class="number">0</span>)&#123;</span><br><span class="line">            cand = num;</span><br><span class="line">            k = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(num == cand)&#123;</span><br><span class="line">                ++k;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                --k;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//计数阶段 判断cand的个数是否超过一半</span></span><br><span class="line">    k = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">auto</span> num:nums)&#123;</span><br><span class="line">        <span class="keyword">if</span>(num == cand)&#123;</span><br><span class="line">            ++k;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(k &lt;= nums.<span class="built_in">size</span>() / <span class="number">2</span>)&#123;</span><br><span class="line">        cand = <span class="number">-1</span>;<span class="comment">//表示未超过一半 </span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cand;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="算法应用"><a href="#算法应用" class="headerlink" title="算法应用"></a>算法应用</h2><p>摩尔投票法的一大应用就是求众数。 相关题目有：</p>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/majority-element/">169. 多数元素</a></li>
+</ol>
+<p>其中题1的代码和上面的c++代码相同，它就是摩尔选票法的直接应用。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">根据多数元素出现的次数大于n/2且超过其它元素出现次数之和这一特点，进行统计</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">时间复杂度为：O(n)</span></span><br><span class="line"><span class="comment">空间复杂度为：O(1)</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">摩尔选票法的直接应用，因为题目说明一定存在大多数，所以不用进行第二阶段</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">majorityElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> cnt = <span class="number">0</span>, res = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> num:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cnt == <span class="number">0</span>)&#123;</span><br><span class="line">                res = num;</span><br><span class="line">                cnt = <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(num == res)&#123;</span><br><span class="line">                    ++cnt;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    --cnt;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/majority-element-ii/">229. 求众数 II</a></li>
+</ol>
+<p>题2的代码则是摩尔选票法的变形。 题2可以看成这样一个情形：一个班里要选副班长，至多2位。每一个投一票，成为副班长得票必须超过总票数的三分之一。 因为可能会产生两名。所以候选人$cand$与计数$cnt$都转成相应的数组形式$cands$与$cnts$，长度都为2。 第一阶段成对抵销时，<code>cands[0]</code>与<code>cands[1]</code>的选票不相互抵销，即如果代表将票投给了<code>cands[0]</code>，则<code>cands[1]</code>对应的<code>cnts[1]</code>的值不变化。 投给<code>cands[1]</code>也是同样的道理。这样就转化成摩尔投票法的原始情形了。 第二阶段计数时，除了要判断两个候选的票数是否超过三分之一，还需判断两个候选是否相同。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">时间复杂度为：O(n)</span></span><br><span class="line"><span class="comment">空间复杂度为：O(1)</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">majorityElement</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> len = nums.<span class="built_in">size</span>();</span><br><span class="line">        vector&lt;<span class="type">int</span>&gt;res, cands, cnts;</span><br><span class="line">        <span class="keyword">if</span>(len == <span class="number">0</span>)&#123;<span class="comment">//没有元素，直接返回空数组</span></span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;</span><br><span class="line">        cands.<span class="built_in">assign</span>(<span class="number">2</span>, nums[<span class="number">0</span>]);</span><br><span class="line">        cnts.<span class="built_in">assign</span>(<span class="number">2</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="comment">//第1阶段 成对抵销</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> num: nums)&#123;</span><br><span class="line">            <span class="type">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; cands.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">                <span class="keyword">if</span>(num == cands[i])&#123;</span><br><span class="line">                    ++cnts[i];</span><br><span class="line">                    flag = <span class="literal">true</span>;</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(!flag)&#123;</span><br><span class="line">                <span class="type">bool</span> flag2 = <span class="literal">false</span>;</span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; cands.<span class="built_in">size</span>(); ++j)&#123;</span><br><span class="line">                    <span class="keyword">if</span>(cnts[j] == <span class="number">0</span>)&#123;</span><br><span class="line">                        flag2 = <span class="literal">true</span>;</span><br><span class="line">                        cands[j] = num;</span><br><span class="line">                        cnts[j]++;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(!flag2)&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; cnts.<span class="built_in">size</span>(); ++j)&#123;</span><br><span class="line">                        --cnts[j];</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//第2阶段 计数 数目要超过三分之一</span></span><br><span class="line">        cnts[<span class="number">0</span>] = cnts[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">if</span>(cands[<span class="number">0</span>] == cands[<span class="number">1</span>])</span><br><span class="line">            cands.<span class="built_in">pop_back</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> num:nums)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; cands.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">                <span class="keyword">if</span>(cands[i] == num)&#123;</span><br><span class="line">                    ++cnts[i];</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; cands.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(cnts[i] &gt; len / <span class="number">3</span>)&#123;</span><br><span class="line">                res.<span class="built_in">push_back</span>(cands[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>至多选出m个代表，每个选票数大于n / (m + 1)</li>
+</ol>
+<p>只需要将题2的判断最后候选是否相同代码进行修改即可。</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1317,120 +1491,6 @@
 <li>A generator of synthetic images</li>
 <li>Gaussian Manifold Loss</li>
 </ol>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/06/facial-expression-recognition-by-de-expression-residue-learning%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Onwaier">
-      <meta itemprop="description" content="Onwaier的个人博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Onwaier's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/01/06/facial-expression-recognition-by-de-expression-residue-learning%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">Facial Expression Recognition by De-expression Residue Learning阅读笔记</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-01-06 16:28:25" itemprop="dateCreated datePublished" datetime="2020-01-06T16:28:25+08:00">2020-01-06</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-13 14:05:17" itemprop="dateModified" datetime="2022-02-13T14:05:17+08:00">2022-02-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E4%BA%BA%E8%84%B8%E8%A1%A8%E6%83%85%E8%AF%86%E5%88%AB/" itemprop="url" rel="index"><span itemprop="name">人脸表情识别</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2020/01/06/facial-expression-recognition-by-de-expression-residue-learning%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="Facial Expression Recognition by De-expression Residue Learning阅读笔记" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2020/01/06/facial-expression-recognition-by-de-expression-residue-learning%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/01/06/facial-expression-recognition-by-de-expression-residue-learning阅读笔记/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h2><p>这是一篇CVPR2018关于表情识别的论文，作者可谓是独辟蹊径，从“De-expression”这一角度进行表情识别的研究。作者通过一些事实和文献发现，人的表情可以分解为Neutral Compoent和Expressive Componet两部分。作者的想法是将人脸经过一个GAN网络得到一张与之对应的中性表情，然后对residue(残余特征)进行训练学习，进一步进行表情分类。</p>
-<h2 id="原文地址"><a href="#原文地址" class="headerlink" title="原文地址"></a>原文地址</h2><p><a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content_cvpr_2018/papers/Yang_Facial_Expression_Recognition_CVPR_2018_paper.pdf">原文地址</a> 没有相应的源代码:sweat:</p>
-<h2 id="Challenge"><a href="#Challenge" class="headerlink" title="Challenge"></a>Challenge</h2><p>现在的大部分研究关注的都是光照，姿态，遮挡等对表情识别的影响。作者关注的是个体差异像年龄，性别，种族背景等因素对表情识别的影响（the current main challenge comes from the large variations of individuals in attributes such as: age, gender, ethnic background and personality.）</p>
-<h2 id="Inspriation"><a href="#Inspriation" class="headerlink" title="Inspriation"></a>Inspriation</h2><ol>
-<li>people are capable of recognizing facial expressions by comparing a subject’s expression with a reference expression (i.e., neutral expression) of the same subject<a target="_blank" rel="noopener" href="http://www.academia.edu/download/32367381/Haxby2000.pdf" title="The distributed human neural system for face perception.">[1]</a>.</li>
-<li>a facial expression can be decomposed to an expressive component and neutral component<a target="_blank" rel="noopener" href="https://www.researchgate.net/profile/Hongcheng_Wang2/publication/4038318_Facial_expression_decomposition/links/0c96052f2b6d962b9c000000/Facial-expression-decomposition.pdf" title="Facial expression decomposition">[2]</a> 人们可以通过一个参考表情来识别其它表情（这里参考表情用的是中性表情）；一个人脸表情可以分为中性部分和表情部分。如图所示。 <img src="/images/2020/01/330fe14bd634a07382f8b24ff992be00.png" alt=""></li>
-</ol>
-<h2 id="Network-architecture"><a href="#Network-architecture" class="headerlink" title="Network architecture"></a>Network architecture</h2><p><img src="/images/2020/01/caf5bfe3ca0b7862d75b8a454ccfed3e.png" alt=""> 网络结构大体可分为两部分：GAN(Generator)用来生成中性表情，并保存有residue，用于训练学习；第二部分是学习残余特征，然后进行表情分类。 网络结构有很多细节没有体现，比如説学习残余特征的网络结构还有5个损失函数都没详细说明，论文中也没有细说。这里主要是学习的是它分解表情的思想。</p>
-<h3 id="Generator"><a href="#Generator" class="headerlink" title="Generator"></a>Generator</h3><p>cGAN<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1411.1784" title="Conditional generative adversarial">[3]</a>被用来从一个给定的图片生成一个中性人脸表情。 cGAN训练的输入是一个图像对$<I\_{input}, I\_{target}>$，而生成器的输出为$I_{output}$。其中$I_{target}$是图片的中性表情的ground truth。$I_{output}$输出的是GAN生成的中性表情 The discriminator tries to distinguish the $&lt; I_{input}, I_{target} &gt;$ from the $&lt; I_{input}, I_{output} &gt;$ 判别器是为了尽力区分输出表情与ground truth之间的差别 the generator tries to not only maximally confuse the discriminator but also generate an image as close to the target image as possible. 而生成器则是尽可能使输出与ground truth足够接近，进而混淆视听。 Generator的目标函数 <img src="/images/2020/01/7419a9100f38f46d614c2643c42ae617.png" alt=""> Discriminator的目标函数 <img src="/images/2020/01/3c6757160eacbcb5b418621905b3bb7a.png" alt=""> cGAN的目标函数 <img src="/images/2020/01/e591d5785c462248fa2f8a506e873217.png" alt=""></p>
-<h2 id="Classification"><a href="#Classification" class="headerlink" title="Classification"></a>Classification</h2><p>直接将ganerator的中间层的De-Expression Residue作为CNN分类器的输入进行表情分类。 具体是将Generator中所有尺寸大小一样的特征图合并在一起，分别输入到4个local的CNN分类器</p>
-<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p><img src="/images/2020/01/b09ef0ff83bbd52c4a985cb4d5207bc1.png" alt=""> 单个loss的系数大小取决于local classifier的表情分类效果 <img src="/images/2020/01/179cc1cf06a0448c1af0d393b471b81e.png" alt=""></p>
-<h2 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h2><h3 id="Visualization-of-Expressive-Component"><a href="#Visualization-of-Expressive-Component" class="headerlink" title="Visualization of Expressive Component"></a>Visualization of Expressive Component</h3><p><img src="/images/2020/01/5fc4d9ff3ea64c9aacbfc75bc7b7344d.png" alt=""> 各个表情的残余特征可视化（从左到右是愤怒，厌恶，害怕，高兴，悲伤，惊讶）</p>
-<h3 id="Visualization-of-Regenerated-Neutral-Faces"><a href="#Visualization-of-Regenerated-Neutral-Faces" class="headerlink" title="Visualization of Regenerated Neutral Faces"></a>Visualization of Regenerated Neutral Faces</h3><p>实验中采用的数据集CK+, MMI, Oulu-CASIA, BP4D+, BU-3DFE , BP4D, BU-4DFE.后2个用于预训练，前面5个方法用于比较实验，体现方法性能 生成器由输入图片得到中性图片 <img src="/images/2020/01/2e507c2dec1d94c8fcbf43b1306e08b6.png" alt=""> <img src="/images/2020/01/0420c28ac92d2dc0ebc90876819f3655.png" alt=""></p>
-<h3 id="Accuracy-on-the-CK-database"><a href="#Accuracy-on-the-CK-database" class="headerlink" title="Accuracy on the CK+ database"></a>Accuracy on the CK+ database</h3><p>CK+与各个方法准确率比较 <img src="/images/2020/01/6e28a3360dfcb01d1eac8f122be6983a.png" alt=""> CK+混淆矩阵 <img src="/images/2020/01/f269360322cf23fb6266a44753a427a7.png" alt=""> 作者后面还在4个数据集上进行相同的实验，都取得比较好的性能，实验结果都处于前2的位置。</p>
 
       
     </div>

@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">68</span>
+          <span class="site-state-item-count">69</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -161,7 +161,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">54</span>
+        <span class="site-state-item-count">55</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -198,6 +198,121 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2019/11/27/leetcode2019%E7%AC%AC-164-%E5%9C%BA%E5%91%A8%E8%B5%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/11/27/leetcode2019%E7%AC%AC-164-%E5%9C%BA%E5%91%A8%E8%B5%9B/" class="post-title-link" itemprop="url">LeetCode2019第 164 场周赛</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2019-11-27 19:44:40" itemprop="dateCreated datePublished" datetime="2019-11-27T19:44:40+08:00">2019-11-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 14:06:43" itemprop="dateModified" datetime="2022-02-13T14:06:43+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2019/11/27/leetcode2019%E7%AC%AC-164-%E5%9C%BA%E5%91%A8%E8%B5%9B/" class="post-meta-item leancloud_visitors" data-flag-title="LeetCode2019第 164 场周赛" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2019/11/27/leetcode2019%E7%AC%AC-164-%E5%9C%BA%E5%91%A8%E8%B5%9B/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/11/27/leetcode2019第-164-场周赛/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="1266-访问所有点的最小时间"><a href="#1266-访问所有点的最小时间" class="headerlink" title="1266. 访问所有点的最小时间"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/minimum-time-visiting-all-points/">1266. 访问所有点的最小时间</a></h1><h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>平面上有 n 个点，点的位置用整数坐标表示 points[i] = [xi, yi]。请你计算访问所有这些点需要的最小时间（以秒为单位）。 你可以按照下面的规则在平面上移动： 每一秒沿水平或者竖直方向移动一个单位长度，或者跨过对角线（可以看作在一秒内向水平和竖直方向各移动一个单位长度）。 必须按照数组中出现的顺序来访问这些点。 示例 1： <img src="/images/2019/11/df66aa01420aca6ff3b64ace60f4a805.png" alt=""> 输入：points = [[1,1],[3,4],[-1,0]] 输出：7 解释：一条最佳的访问路径是： [1,1] -&gt; [2,2] -&gt; [3,3] -&gt; [3,4] -&gt; [2,3] -&gt; [1,2] -&gt; [0,1] -&gt; [-1,0] 从 [1,1] 到 [3,4] 需要 3 秒 从 [3,4] 到 [-1,0] 需要 4 秒 一共需要 7 秒 示例 2： 输入：points = [[3,2],[-2,2]] 输出：5  提示： points.length == n 1 &lt;= n &lt;= 100 points[i].length == 2 -1000 &lt;= points[i][0], points[i][1] &lt;= 1000</p>
+<h2 id="题解1"><a href="#题解1" class="headerlink" title="题解1"></a>题解1</h2><p>相邻两点间访问时，如果横坐标相等或者纵坐标相等，直接沿竖直方向或水平方向移动一个单位长度。如果不相等，则先沿对角线移动使横坐标或纵坐标相等，然后再水平或垂直移动。</p>
+<h2 id="代码1"><a href="#代码1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minTimeToVisitAllPoints</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; points)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>, len = points.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; len; ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(points[i][<span class="number">0</span>] == points[i - <span class="number">1</span>][<span class="number">0</span>])&#123;<span class="comment">//横坐标相等</span></span><br><span class="line">                sum += <span class="built_in">abs</span>(points[i][<span class="number">1</span>] - points[i - <span class="number">1</span>][<span class="number">1</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(points[i][<span class="number">1</span>] == points[i - <span class="number">1</span>][<span class="number">1</span>])&#123;<span class="comment">//纵坐标相等</span></span><br><span class="line">                sum += <span class="built_in">abs</span>(points[i][<span class="number">0</span>] - points[i - <span class="number">1</span>][<span class="number">0</span>]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(<span class="built_in">abs</span>(points[i][<span class="number">0</span>] - points[i - <span class="number">1</span>][<span class="number">0</span>]) &lt; <span class="built_in">abs</span>(points[i][<span class="number">1</span>] - points[i - <span class="number">1</span>][<span class="number">1</span>]))&#123;<span class="comment">//纵</span></span><br><span class="line">                    sum = sum + <span class="built_in">abs</span>(points[i][<span class="number">1</span>] - points[i - <span class="number">1</span>][<span class="number">1</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    sum = sum + <span class="built_in">abs</span>(points[i][<span class="number">0</span>] - points[i - <span class="number">1</span>][<span class="number">0</span>]);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="题解2"><a href="#题解2" class="headerlink" title="题解2"></a>题解2</h2><p>仔细观察代码1发现，相邻两点的访问时间等于横纵坐标差值的绝对值较大的一个。</p>
+<h2 id="代码2"><a href="#代码2" class="headerlink" title="代码2"></a>代码2</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">minTimeToVisitAllPoints</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; points)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>, len = points.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt; len; ++i)&#123;</span><br><span class="line">            sum = sum + <span class="built_in">max</span>(<span class="built_in">abs</span>(points[i][<span class="number">0</span>] - points[i - <span class="number">1</span>][<span class="number">0</span>]), <span class="built_in">abs</span>(points[i][<span class="number">1</span>] - points[i - <span class="number">1</span>][<span class="number">1</span>]));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> sum;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="1267-统计参与通信的服务器"><a href="#1267-统计参与通信的服务器" class="headerlink" title="1267. 统计参与通信的服务器"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/count-servers-that-communicate/">1267. 统计参与通信的服务器</a></h1><h2 id="题目描述-1"><a href="#题目描述-1" class="headerlink" title="题目描述"></a>题目描述</h2><p>这里有一幅服务器分布图，服务器的位置标识在 m * n 的整数矩阵网格 grid 中，1 表示单元格上有服务器，0 表示没有。 如果两台服务器位于同一行或者同一列，我们就认为它们之间可以进行通信。 请你统计并返回能够与至少一台其他服务器进行通信的服务器的数量。 示例 1： <img src="/images/2019/11/a96d7db2b101e8527d55bda773645f97.png" alt=""> 输入：grid = [[1,0],[0,1]] 输出：0 解释：没有一台服务器能与其他服务器进行通信。 示例 2： <img src="/images/2019/11/fd62279ac67a882b4852014db8fb414d.png" alt=""> 输入：grid = [[1,0],[1,1]] 输出：3 解释：所有这些服务器都至少可以与一台别的服务器进行通信。 示例 3： <img src="/images/2019/11/870f2bf7033033c201c65bf6f25d2753.png" alt=""> 输入：grid = [[1,1,0,0],[0,0,1,0],[0,0,1,0],[0,0,0,1]] 输出：4 解释：第一行的两台服务器互相通信，第三列的两台服务器互相通信，但右下角的服务器无法与其他服务器通信。   提示： m == grid.length n == grid[i].length 1 &lt;= m &lt;= 250 1 &lt;= n &lt;= 250 grid[i][j] == 0 or 1</p>
+<h2 id="题解1-1"><a href="#题解1-1" class="headerlink" title="题解1"></a>题解1</h2><p>判断每台服务器所在行或者列除了它自己外，有没有其它的服务器，有的话表示可以通信，计数+1。否则，无法通信。</p>
+<h2 id="代码1-1"><a href="#代码1-1" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">countServers</span><span class="params">(vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;&amp; grid)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> rows = grid.<span class="built_in">size</span>(), cols = grid[<span class="number">0</span>].<span class="built_in">size</span>(), cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; rows; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; cols; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(grid[i][j])&#123;</span><br><span class="line">                    <span class="comment">//行</span></span><br><span class="line">                    <span class="type">bool</span> flag = <span class="literal">false</span>;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>; k &lt; cols; ++k)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(k != j &amp;&amp; grid[i][k])&#123;</span><br><span class="line">                            flag = <span class="literal">true</span>;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="comment">//列</span></span><br><span class="line">                    <span class="keyword">for</span>(<span class="type">int</span> k = <span class="number">0</span>; k &lt; rows; ++k)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(k != i &amp;&amp; grid[k][j])&#123;</span><br><span class="line">                            flag = <span class="literal">true</span>;</span><br><span class="line">                            <span class="keyword">break</span>;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                    <span class="keyword">if</span>(flag)&#123;</span><br><span class="line">                        ++cnt;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="1268-搜索推荐系统"><a href="#1268-搜索推荐系统" class="headerlink" title="1268. 搜索推荐系统"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/search-suggestions-system/">1268. 搜索推荐系统</a></h1><h2 id="题目描述-2"><a href="#题目描述-2" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个产品数组 products 和一个字符串 searchWord ，products  数组中每个产品都是一个字符串。 请你设计一个推荐系统，在依次输入单词 searchWord 的每一个字母后，推荐 products 数组中前缀与 searchWord 相同的最多三个产品。如果前缀相同的可推荐产品超过三个，请按字典序返回最小的三个。 请你以二维列表的形式，返回在输入 searchWord 每个字母后相应的推荐产品的列表。 示例 1： 输入：products = [“mobile”,”mouse”,”moneypot”,”monitor”,”mousepad”], searchWord = “mouse” 输出：[ [“mobile”,”moneypot”,”monitor”], [“mobile”,”moneypot”,”monitor”], [“mouse”,”mousepad”], [“mouse”,”mousepad”], [“mouse”,”mousepad”] ] 解释：按字典序排序后的产品列表是 [“mobile”,”moneypot”,”monitor”,”mouse”,”mousepad”] 输入 m 和 mo，由于所有产品的前缀都相同，所以系统返回字典序最小的三个产品 [“mobile”,”moneypot”,”monitor”] 输入 mou， mous 和 mouse 后系统都返回 [“mouse”,”mousepad”] 示例 2： 输入：products = [“havana”], searchWord = “havana” 输出：[[“havana”],[“havana”],[“havana”],[“havana”],[“havana”],[“havana”]] 示例 3： 输入：products = [“bags”,”baggage”,”banner”,”box”,”cloths”], searchWord = “bags” 输出：[[“baggage”,”bags”,”banner”],[“baggage”,”bags”,”banner”],[“baggage”,”bags”],[“bags”]] 示例 4： 输入：products = [“havana”], searchWord = “tatiana” 输出：[[],[],[],[],[],[],[]] 提示： 1 &lt;= products.length &lt;= 1000 1 &lt;= products[i].length &lt;= 2 * 10^4 products[i] 中所有的字符都是小写英文字母。 1 &lt;= searchWord.length &lt;= 1000 searchWord 中所有字符都是小写英文字母。</p>
+<h2 id="题解1-2"><a href="#题解1-2" class="headerlink" title="题解1"></a>题解1</h2><p>首先需将products中的字符串按照字典序排序，然后依次寻找seachWord每个字母后与之匹配的product（最多三个）。</p>
+<h2 id="代码1-2"><a href="#代码1-2" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;string&gt;&gt; <span class="built_in">suggestedProducts</span>(vector&lt;string&gt;&amp; prod, string searchWord) &#123;</span><br><span class="line">        <span class="built_in">sort</span>(prod.<span class="built_in">begin</span>(), prod.<span class="built_in">end</span>());</span><br><span class="line">        vector&lt;vector&lt;string&gt;&gt;res;</span><br><span class="line">        vector&lt;string&gt;tmp;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; searchWord.<span class="built_in">size</span>(); ++i)&#123;<span class="comment">//以每个字母前的子串进行匹配</span></span><br><span class="line">            string s = searchWord.<span class="built_in">substr</span>(<span class="number">0</span>, i + <span class="number">1</span>);</span><br><span class="line">            tmp.<span class="built_in">clear</span>();</span><br><span class="line">            <span class="type">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt; prod.<span class="built_in">size</span>(); ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(cnt &lt; <span class="number">3</span> &amp;&amp; prod[j].<span class="built_in">substr</span>(<span class="number">0</span>, i + <span class="number">1</span>) == s)&#123;<span class="comment">//匹配且最多只能有三个</span></span><br><span class="line">                    tmp.<span class="built_in">push_back</span>(prod[j]);</span><br><span class="line">                    ++cnt;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            res.<span class="built_in">push_back</span>(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="1269-停在原地的方案数"><a href="#1269-停在原地的方案数" class="headerlink" title="1269. 停在原地的方案数"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/number-of-ways-to-stay-in-the-same-place-after-some-steps/">1269. 停在原地的方案数</a></h1><h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>有一个长度为 arrLen 的数组，开始有一个指针在索引 0 处。 每一步操作中，你可以将指针向左或向右移动 1 步，或者停在原地（指针不能被移动到数组范围外）。 给你两个整数 steps 和 arrLen ，请你计算并返回：在恰好执行 steps 次操作以后，指针仍然指向索引 0 处的方案数。 由于答案可能会很大，请返回方案数 模 10^9 + 7 后的结果。  示例 1： 输入：steps = 3, arrLen = 2 输出：4 解释：3 步后，总共有 4 种不同的方法可以停在索引 0 处。 向右，向左，不动 不动，向右，向左 向右，不动，向左 不动，不动，不动 示例  2： 输入：steps = 2, arrLen = 4 输出：2 解释：2 步后，总共有 2 种不同的方法可以停在索引 0 处。 向右，向左 不动，不动 示例 3： 输入：steps = 4, arrLen = 2 输出：8 提示： 1 &lt;= steps &lt;= 500 1 &lt;= arrLen &lt;= 10^6</p>
+<h2 id="题解1-3"><a href="#题解1-3" class="headerlink" title="题解1"></a>题解1</h2><p>如果进行dfs搜索，会超时。我们进行记忆化搜索，将已经计算过的存储下来，避免重复遍历与计算， 大大减少时间。</p>
+<h2 id="代码1-3"><a href="#代码1-3" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MOD (1000000007)</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">记忆化搜索</span></span><br><span class="line"><span class="comment">dp[j][i] = dp[j - 1][i - 1]  + dp[j - 1][j] + dp[j - 1][i + 1]</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">map&lt;pair&lt;<span class="type">int</span>, <span class="type">int</span>&gt;, <span class="type">int</span>&gt;mark;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> pos, <span class="type">int</span> steps, <span class="type">int</span> n)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(steps == <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> pos == <span class="number">0</span>?<span class="number">1</span>:<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(mark.<span class="built_in">find</span>(<span class="built_in">make_pair</span>(pos, steps - <span class="number">1</span>))!= mark.<span class="built_in">end</span>())&#123;</span><br><span class="line">        mark[<span class="built_in">make_pair</span>(pos, steps)] =  mark[<span class="built_in">make_pair</span>(pos, steps - <span class="number">1</span>)] % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">else</span>&#123;</span><br><span class="line">       mark[<span class="built_in">make_pair</span>(pos, steps)] = <span class="built_in">dfs</span>(pos, steps - <span class="number">1</span>, n) % MOD;</span><br><span class="line">   &#125;</span><br><span class="line">    <span class="keyword">if</span>(pos - <span class="number">1</span> &gt;= <span class="number">0</span>)&#123;<span class="comment">//左移</span></span><br><span class="line">        <span class="keyword">if</span>(mark.<span class="built_in">find</span>(<span class="built_in">make_pair</span>(pos - <span class="number">1</span>, steps - <span class="number">1</span>)) != mark.<span class="built_in">end</span>())&#123;</span><br><span class="line">            mark[<span class="built_in">make_pair</span>(pos, steps)] = (mark[<span class="built_in">make_pair</span>(pos, steps)] + mark[<span class="built_in">make_pair</span>(pos - <span class="number">1</span>, steps - <span class="number">1</span>)]) % MOD;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            mark[<span class="built_in">make_pair</span>(pos, steps)] = (mark[<span class="built_in">make_pair</span>(pos, steps)] + <span class="built_in">dfs</span>(pos - <span class="number">1</span>, steps - <span class="number">1</span>, n)) % MOD;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(pos + <span class="number">1</span> &lt; n)&#123;</span><br><span class="line">        <span class="keyword">if</span>(mark.<span class="built_in">find</span>(<span class="built_in">make_pair</span>(pos + <span class="number">1</span>, steps - <span class="number">1</span>)) != mark.<span class="built_in">end</span>())&#123;</span><br><span class="line">            mark[<span class="built_in">make_pair</span>(pos, steps)] = (mark[<span class="built_in">make_pair</span>(pos, steps)] + mark[<span class="built_in">make_pair</span>(pos + <span class="number">1</span>, steps - <span class="number">1</span>)]) % MOD;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            mark[<span class="built_in">make_pair</span>(pos, steps)] = (mark[<span class="built_in">make_pair</span>(pos, steps)] + <span class="built_in">dfs</span>(pos + <span class="number">1</span>, steps - <span class="number">1</span>, n)) % MOD;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> mark[<span class="built_in">make_pair</span>(pos, steps)];</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numWays</span><span class="params">(<span class="type">int</span> steps, <span class="type">int</span> arrLen)</span> </span>&#123;</span><br><span class="line">        mark.<span class="built_in">clear</span>();</span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(<span class="number">0</span>, steps, arrLen);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="题解2-1"><a href="#题解2-1" class="headerlink" title="题解2"></a>题解2</h2><p>动态规划 $dp(pos, steps) = dp(pos- 1, steps - 1) + dp(pos. steps - 1) + dp(pos + 1, steps - 1)$ 其中dp(pos, steps)表示从0出发，最后经过steps步回到pos的方案数，而对于每一步有三种方案：向左移，停在原地，向右移。由此得到转移方程。</p>
+<h2 id="代码2-1"><a href="#代码2-1" class="headerlink" title="代码2"></a>代码2</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MOD (1000000007)</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">numWays</span><span class="params">(<span class="type">int</span> steps, <span class="type">int</span> arrLen)</span> </span>&#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;<span class="built_in">dp</span>(<span class="number">505</span>, <span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(<span class="number">505</span>, <span class="number">0</span>));</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= steps; ++i)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= <span class="built_in">min</span>(arrLen - <span class="number">1</span>, i); ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(j - <span class="number">1</span> &gt;= <span class="number">0</span>)&#123;</span><br><span class="line">                    dp[j][i] = (dp[j][i] + dp[j - <span class="number">1</span>][i - <span class="number">1</span>]) % MOD; </span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">if</span>(j + <span class="number">1</span> &lt;= i)&#123;</span><br><span class="line">                    dp[j][i] = (dp[j][i] + dp[j + <span class="number">1</span>][i - <span class="number">1</span>]) % MOD;</span><br><span class="line">                &#125;</span><br><span class="line">                dp[j][i] = (dp[j][i] + dp[j][i - <span class="number">1</span>]) % MOD;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">0</span>][steps];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1162,110 +1277,6 @@
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>此题与“组合之和”一题有两个不同：一是该题数组中的数字可能会重复；二是每个数字在每个组合中只能使用一次。 数字重复带来的一个问题是组合可能会重复，所以需要做去重处理。 同“组合之和”一题一样，这里使用的也是递归+剪枝，这里首先对数据进行排序，方便剪枝和去重。 每个数字只能使用一次，可以修改递归的起点，之前是i，这里可以修改为i + 1。 其它细节具体见代码。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; res;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;sol;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> beg, <span class="type">int</span> target)</span></span>&#123;<span class="comment">//递归</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = beg; i &lt; nums.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">            <span class="keyword">if</span>(target - nums[i] &lt; <span class="number">0</span>)&#123;<span class="comment">//之和大于则直接return</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(i &gt; beg &amp;&amp; nums[i] == nums[i - <span class="number">1</span>])&#123;<span class="comment">//去重</span></span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            sol.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">            <span class="keyword">if</span>(target == nums[i])&#123;<span class="comment">//满足条件 放到题解中</span></span><br><span class="line">                res.<span class="built_in">push_back</span>(sol);</span><br><span class="line">                sol.<span class="built_in">pop_back</span>();</span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="built_in">dfs</span>(nums, i + <span class="number">1</span>, target - nums[i]);<span class="comment">//之和小于target，则继续向下递归，注意此时beg是从i+1开始的</span></span><br><span class="line">                sol.<span class="built_in">pop_back</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">combinationSum2</span>(vector&lt;<span class="type">int</span>&gt;&amp; candidates, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">sort</span>(candidates.<span class="built_in">begin</span>(), candidates.<span class="built_in">end</span>());</span><br><span class="line">        <span class="built_in">dfs</span>(candidates, <span class="number">0</span>, target);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <h2 id="运行结果"><a href="#运行结果" class="headerlink" title="运行结果"></a>运行结果</h2><p><a target="_blank" rel="noopener" href="https://i.loli.net/2019/09/13/Uu6FY3HoNKxnqgd.png"><img src="https://i.loli.net/2019/09/13/Uu6FY3HoNKxnqgd.png" alt=""></a></p>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/09/11/39-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C-%E5%8A%9B%E6%89%A3%EF%BC%88leetcode%EF%BC%89/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Onwaier">
-      <meta itemprop="description" content="Onwaier的个人博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Onwaier's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/09/11/39-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C-%E5%8A%9B%E6%89%A3%EF%BC%88leetcode%EF%BC%89/" class="post-title-link" itemprop="url">39. 组合总和 - 力扣（LeetCode）</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-09-11 15:02:09" itemprop="dateCreated datePublished" datetime="2019-09-11T15:02:09+08:00">2019-09-11</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-13 13:43:28" itemprop="dateModified" datetime="2022-02-13T13:43:28+08:00">2022-02-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/LeetCode/" itemprop="url" rel="index"><span itemprop="name">LeetCode</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/09/11/39-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C-%E5%8A%9B%E6%89%A3%EF%BC%88leetcode%EF%BC%89/" class="post-meta-item leancloud_visitors" data-flag-title="39. 组合总和 - 力扣（LeetCode）" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2019/09/11/39-%E7%BB%84%E5%90%88%E6%80%BB%E5%92%8C-%E5%8A%9B%E6%89%A3%EF%BC%88leetcode%EF%BC%89/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/09/11/39-组合总和-力扣（leetcode）/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>给定一个无重复元素的数组 candidates 和一个目标数 target ，找出 candidates 中所有可以使数字和为 target 的组合。 candidates 中的数字可以无限制重复被选取。 说明： 所有数字（包括 target）都是正整数。 解集不能包含重复的组合。 示例 1: 输入: candidates = [2,3,6,7], target = 7, 所求解集为: [ [7], [2,2,3] ] 示例 2: 输入: candidates = [2,3,5], target = 8, 所求解集为: [   [2,2,2,2],   [2,3,3],   [3,5] ]</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>递归搜索+剪枝 详细见<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/combination-sum/solution/hui-su-suan-fa-jian-zhi-python-dai-ma-java-dai-m-2/">下图</a>，图是以示例1为例的。 <a target="_blank" rel="noopener" href="https://i.loli.net/2019/09/11/U2uTlmXCpS4oB5M.png"><img src="https://i.loli.net/2019/09/11/U2uTlmXCpS4oB5M.png" alt=""></a></p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">//递归+剪枝</span></span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt;res;</span><br><span class="line">    vector&lt;<span class="type">int</span>&gt;sol;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums, <span class="type">int</span> beg, <span class="type">int</span> target)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = beg; i &lt; nums.<span class="built_in">size</span>(); ++i)&#123;</span><br><span class="line">            sol.<span class="built_in">push_back</span>(nums[i]);</span><br><span class="line">            <span class="keyword">if</span>(target - nums[i] &gt; <span class="number">0</span>)&#123;<span class="comment">//继续向下搜索</span></span><br><span class="line">                <span class="built_in">dfs</span>(nums, i, target - nums[i]);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(target - nums[i] == <span class="number">0</span>)&#123;<span class="comment">//将符合题意的解放到res中</span></span><br><span class="line">                res.<span class="built_in">push_back</span>(sol);</span><br><span class="line">            &#125;</span><br><span class="line">            sol.<span class="built_in">pop_back</span>();<span class="comment">//回溯的时候记得弹出最后一个元素</span></span><br><span class="line">            <span class="keyword">if</span>(target - nums[i] &lt; <span class="number">0</span>)&#123;<span class="comment">//剪枝，如果当前的sol中所有元素之和大于target,则直接return</span></span><br><span class="line">                <span class="keyword">return</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">combinationSum</span>(vector&lt;<span class="type">int</span>&gt;&amp; candidates, <span class="type">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">sort</span>(candidates.<span class="built_in">begin</span>(), candidates.<span class="built_in">end</span>());</span><br><span class="line">        <span class="built_in">dfs</span>(candidates, <span class="number">0</span>, target);</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="执行结果"><a href="#执行结果" class="headerlink" title="执行结果"></a>执行结果</h2><p><a target="_blank" rel="noopener" href="https://i.loli.net/2019/09/11/ozlH1JCfxpEYIOd.png"><img src="https://i.loli.net/2019/09/11/ozlH1JCfxpEYIOd.png" alt=""></a></p>
 
       
     </div>
