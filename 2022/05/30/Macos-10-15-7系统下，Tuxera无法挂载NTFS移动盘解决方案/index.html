@@ -27,13 +27,13 @@
 <meta property="og:site_name" content="Onwaier&#39;s Blog">
 <meta property="og:description" content="参考资料 知乎-Mac的移动硬盘不能装载该如何解决? 命令行卸载Tuxera与使用系统偏好卸载Tuxera Macos 10.15.7系统无法挂载移动盘解决方案 Tuxera NTFS在Mac os 10.15.7系统用命令挂载盘  解决轨迹最开始以为是错误插拔导致硬盘无法挂载。参考资料1，执行相关命令，但发现仍然无法挂载硬盘。然后去苹果社区查相关信息，有人提是因为Tuxera不是最新版本，就按照">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/Users/onwaier/Library/Application%20Support/typora-user-images/image-20220530151450204.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/onwaiers/Picture/master/img/image-20220530151450204.png">
 <meta property="article:published_time" content="2022-05-30T07:28:01.000Z">
-<meta property="article:modified_time" content="2022-05-30T07:30:33.828Z">
+<meta property="article:modified_time" content="2022-05-30T08:18:06.954Z">
 <meta property="article:author" content="Onwaier">
 <meta property="article:tag" content="Mac">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/Users/onwaier/Library/Application%20Support/typora-user-images/image-20220530151450204.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/onwaiers/Picture/master/img/image-20220530151450204.png">
 
 
 <link rel="canonical" href="http://example.com/2022/05/30/Macos-10-15-7%E7%B3%BB%E7%BB%9F%E4%B8%8B%EF%BC%8CTuxera%E6%97%A0%E6%B3%95%E6%8C%82%E8%BD%BDNTFS%E7%A7%BB%E5%8A%A8%E7%9B%98%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
@@ -239,7 +239,7 @@
       <span class="post-meta-item-text">发表于</span>
       
 
-      <time title="创建时间：2022-05-30 15:28:01 / 修改时间：15:30:33" itemprop="dateCreated datePublished" datetime="2022-05-30T15:28:01+08:00">2022-05-30</time>
+      <time title="创建时间：2022-05-30 15:28:01 / 修改时间：16:18:06" itemprop="dateCreated datePublished" datetime="2022-05-30T15:28:01+08:00">2022-05-30</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -293,7 +293,7 @@
 <li>终端输入<code>sudo mkdir /Volumes/ntfs-disk</code>，需输入开机密码。</li>
 <li><code>diskutil list</code>查看硬盘信息，找到对应条目。我这里对应的是 <em>/dev/disk2s1</em>。</li>
 </ol>
-<p>​        <img src="/Users/onwaier/Library/Application Support/typora-user-images/image-20220530151450204.png" alt="image-20220530151450204"></p>
+<p>​        <img src="https://raw.githubusercontent.com/onwaiers/Picture/master/img/image-20220530151450204.png" alt="image-20220530151450204"></p>
 <ol>
 <li><code>sudo /Library/Filesystems/tuxera_ntfs.fs/Contents/Resources/mount_tuxera_ntfs -o nodev -o noowners -o nosuid /dev/diskXsY /Volumes/ntfs-disk</code>，需将这里diskXsY替换掉，对应上图，这里就替换成 <em>disk2s1</em>。等待片刻，即可成功挂载，此时可正常读写。</li>
 </ol>
