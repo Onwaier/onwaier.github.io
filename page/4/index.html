@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -161,7 +161,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-count">56</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -198,6 +198,137 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/01/06/feratt-facial-expression-recognition-with-attention-net%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/01/06/feratt-facial-expression-recognition-with-attention-net%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">FERAtt: Facial Expression Recognition with Attention Net阅读笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-01-06 20:29:25" itemprop="dateCreated datePublished" datetime="2020-01-06T20:29:25+08:00">2020-01-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 14:05:50" itemprop="dateModified" datetime="2022-02-13T14:05:50+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E4%BA%BA%E8%84%B8%E8%A1%A8%E6%83%85%E8%AF%86%E5%88%AB/" itemprop="url" rel="index"><span itemprop="name">人脸表情识别</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/01/06/feratt-facial-expression-recognition-with-attention-net%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" class="post-meta-item leancloud_visitors" data-flag-title="FERAtt: Facial Expression Recognition with Attention Net阅读笔记" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/01/06/feratt-facial-expression-recognition-with-attention-net%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/01/06/feratt-facial-expression-recognition-with-attention-net阅读笔记/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h2><p>这是一篇CVPRW2019的论文，作者将Attention机制引入到人脸表情识别中。提出Attention model，并写出了一个合成图片的生成器，模型对噪声有较强的鲁棒性，并在CK+，BU-3DFE数据集上有一定的性能提升。</p>
+<h2 id="原文地址和github源码地址"><a href="#原文地址和github源码地址" class="headerlink" title="原文地址和github源码地址"></a>原文地址和github源码地址</h2><p><a target="_blank" rel="noopener" href="http://openaccess.thecvf.com/content_CVPRW_2019/papers/MBCCV/Fernandez_FERAtt_Facial_Expression_Recognition_With_Attention_Net_CVPRW_2019_paper.pdf">原文地址</a> <a target="_blank" rel="noopener" href="https://github.com/pedrodiamel/ferattention">github源码地址</a></p>
+<h2 id="Problem"><a href="#Problem" class="headerlink" title="Problem"></a>Problem</h2><blockquote>
+<p>Recent developments for the facial expression recognition problem consider processing the entire image regardless of the face crop location within the image. Such developments bring in extraneous artifacts, including noise,which might be harmful for classification as well as incur in unnecessary additional computational cost. This is problematic as the minutiae that characterizes facial expressions can be affected by elements such as hair, jewelry, and other environmental objects not defining the actual face and as part of the image background.</p>
+</blockquote>
+<p>作者认为现在存在的很多研究关注在整张人脸，带来不必要的计算，并引入了一些噪声可能对识别性能产生影响，引入的一些因素像头发，珠宝等并不能决定表情识别的结果，应该作为图片的背景。</p>
+<h2 id="Method"><a href="#Method" class="headerlink" title="Method"></a>Method</h2><p>引入Attention机制，像人类的视觉感知一样，只关注目标区域的处理，与之无关的信息直接丢弃。如图所示。 <img src="/images/2020/01/98f0ed8bc463b9a20b4782c4b6a68fb8.png" alt=""><img src="/images/2020/01/505ffabc6a64bcbd5c26e320570eafad.png" alt=""></p>
+<h2 id="Network-architecture"><a href="#Network-architecture" class="headerlink" title="Network architecture"></a>Network architecture</h2><p><img src="/images/2020/01/fdcd31b5324549e3bdefbcd6330fe65d.png" alt=""> 网络结构由4部分组成：注意力模块，特征提取模块，重建模块和分类表示模块。</p>
+<h3 id="Attention-Module"><a href="#Attention-Module" class="headerlink" title="Attention Module"></a>Attention Module</h3><p><img src="/images/2020/01/f76e64e1b7af96ed39806180bd5dde21.png" alt=""> Attention模块将传统的人脸检测来用图像分割来代替。用了U-net来对图片进行分割，输出的是人脸的掩模。如图所示 <img src="/images/2020/01/86bcf19e0523e7fe72f5e1d3471112ec.png" alt=""><img src="/images/2020/01/ee75c94c91828d1209e92a61b9664428.png" alt=""></p>
+<h3 id="Feature-extration-Module"><a href="#Feature-extration-Module" class="headerlink" title="Feature extration Module"></a>Feature extration Module</h3><blockquote>
+<p>Four ResBlocks were used to extract high-dimensional features for image attention and to maintain spatial information; no pooling or strided convolutional layers were used.</p>
+</blockquote>
+<p>使用4个ResBlocks来提取高维度特征，保留空间信息。如图所示。 <img src="/images/2020/01/86bcf19e0523e7fe72f5e1d3471112ec.png" alt=""><img src="/images/2020/01/822c0cf06bd22a1e5900a56743403fa8.png" alt=""></p>
+<h3 id="Reconstruction-Module"><a href="#Reconstruction-Module" class="headerlink" title="Reconstruction Module"></a>Reconstruction Module</h3><blockquote>
+<p>The reconstruction layer adjusts the attention map to create an enhanced input to the representation module. This module has two convolutional layers, a Relu layer, and an Average Pooling layer which, by design choice, resizes the input image of 128 × 128 to 32 × 32.</p>
+</blockquote>
+<p><img src="/images/2020/01/f92f5b8b65b3e763a49f6851932497e0.png" alt=""></p>
+<h3 id="Representation-and-classification-module"><a href="#Representation-and-classification-module" class="headerlink" title="Representation and classification module"></a>Representation and classification module</h3><p><img src="/images/2020/01/e50c646b0345a85f896b26abe0d35d53.png" alt=""> the network function, builds a representation for a sample image $x \\in R^D$ 主要是建立一个网络，对图片进行再表示，它的分类结果要与原图的分类结果足够接近。 <img src="/images/2020/01/78f82671a69914be48da83ffecfbb42e.png" alt=""> 详细过程参照论文，比较复杂。</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p><img src="/images/2020/01/6b39eaeebf9d845f73242cdb60004a80.png" alt=""></p>
+<h2 id="expriments"><a href="#expriments" class="headerlink" title="expriments"></a>expriments</h2><p>实验部分主要进行Rep模块的对照实验，数据集上的性能比较及算法对噪声的鲁棒性实验。</p>
+<h3 id="Datasets"><a href="#Datasets" class="headerlink" title="Datasets"></a>Datasets</h3><blockquote>
+<p>Our image renderer R creates a synthetic larger dataset using real face datasets by making background changes and geometric transformations of face images.</p>
+</blockquote>
+<p>将真实的人脸数据背景进行更换，然后再对人脸图片进行几何变换得到合成数据集。具体过程如图所示。 <img src="/images/2020/01/4dc600a7167dd01e6dc50a7f50030a47.png" alt=""> 使用的数据集有CK+、BU-3DFE、COCO dataset.其中COCO dataset 用作背景图。最后合成的数据集部分如图所示。 <img src="/images/2020/01/129c6e7ef5e4c4a5e564afc3ce255b20.png" alt=""></p>
+<h3 id="Expression-recognition-results"><a href="#Expression-recognition-results" class="headerlink" title="Expression recognition results"></a>Expression recognition results</h3><p><img src="/images/2020/01/3d26de5c4ae9e4adf798e7906e823288.png" alt=""> Baseline为PreActResNet18，将其与FERAtt+Cls 和FERAtt + Rep + Cls两种方法进行性能比较，发现再表示对性能的提升有明显的效果。 <img src="/images/2020/01/2effcfe6a06fe696e4ba74dcc1cfa929.png" alt=""> <img src="/images/2020/01/28bdc6ed1023a7ad8320ca781d4fcf3c.png" alt=""></p>
+<h3 id="Rebustness-to-noise"><a href="#Rebustness-to-noise" class="headerlink" title="Rebustness to noise"></a>Rebustness to noise</h3><p><img src="/images/2020/01/ca160a0a38b6391f62903167d8ac154b.png" alt=""> <img src="/images/2020/01/0645fc08ae449ba1ad4afe6bca0fb918.png" alt=""><img src="/images/2020/01/94cff341025800dc28d02de14269eba8.png" alt=""> FERAtt + Rep + Cls算法对噪声的鲁棒性较好，在$\\sigma = 0 - 0.10$对于识别性能几乎无影响，继续增大$\\sigma$的值时，它的识别的精度也一直处于其它算法之上。</p>
+<h2 id="Contribution"><a href="#Contribution" class="headerlink" title="Contribution"></a>Contribution</h2><ol>
+<li>Attention model</li>
+<li>A generator of synthetic images</li>
+<li>Gaussian Manifold Loss</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1200,124 +1331,6 @@
 <h1 id="1278-分割回文串-III"><a href="#1278-分割回文串-III" class="headerlink" title="1278. 分割回文串 III"></a><a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/palindrome-partitioning-iii/submissions/">1278. 分割回文串 III</a></h1><h2 id="题目描述-3"><a href="#题目描述-3" class="headerlink" title="题目描述"></a>题目描述</h2><p>给你一个由小写字母组成的字符串 s，和一个整数 k。 请你按下面的要求分割字符串： 首先，你可以将 s 中的部分字符修改为其他的小写英文字母。 接着，你需要把 s 分割成 k 个非空且不相交的子串，并且每个子串都是回文串。 请返回以这种方式分割字符串所需修改的最少字符数。 示例 1： 输入：s = “abc”, k = 2 输出：1 解释：你可以把字符串分割成 “ab” 和 “c”，并修改 “ab” 中的 1 个字符，将它变成回文串。 示例 2： 输入：s = “aabbc”, k = 3 输出：0 解释：你可以把字符串分割成 “aa”、”bb” 和 “c”，它们都是回文串。 示例 3： 输入：s = “leetcode”, k = 8 输出：0   提示： 1 &lt;= k &lt;= s.length &lt;= 100 s 中只含有小写英文字母。</p>
 <h2 id="题解1-3"><a href="#题解1-3" class="headerlink" title="题解1"></a>题解1</h2><p>动态规划 dp[i][j]表示长度为j的字符串，划成i个回文串所需最少替换次数。 其中dp[i][j]的状态转换方程为 $dp[i][j] = min(dp[i][j], dp[i - 1][k] + deal(k, j - 1))\space k=i-1, \dots, j - 1$</p>
 <h2 id="代码1-3"><a href="#代码1-3" class="headerlink" title="代码1"></a>代码1</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">define</span> MAX (1 &lt;&lt; 30)</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">cal</span><span class="params">(string s, <span class="type">int</span> beg, <span class="type">int</span> end)</span></span>&#123;<span class="comment">//计算变成回文串的步数</span></span><br><span class="line">    <span class="type">int</span> len = end - beg + <span class="number">1</span>, res = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span>(len &lt;= <span class="number">0</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = beg, j = end; i &lt; beg + (end - beg + <span class="number">1</span>) / <span class="number">2</span>; ++i, --j)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i] != s[j])&#123;</span><br><span class="line">                ++res;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">palindromePartition</span><span class="params">(string s, <span class="type">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> dp[<span class="number">105</span>][<span class="number">105</span>];<span class="comment">//dp[i][j]表示将长为j的字符串分成i段</span></span><br><span class="line">        <span class="type">int</span> len =  s.<span class="built_in">size</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt;= <span class="number">100</span>; ++i)&#123;<span class="comment">//初始化</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">0</span>; j &lt;= <span class="number">100</span>; ++j)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i  &gt;=  j)&#123;</span><br><span class="line">                    dp[i][j] = <span class="number">0</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span>&#123;</span><br><span class="line">                    dp[i][j] = MAX;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">1</span>; i &lt;= k; ++i)&#123;<span class="comment">//分段</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = i; j &lt;= len; ++j)&#123;<span class="comment">//j的长度</span></span><br><span class="line">                <span class="keyword">for</span>(<span class="type">int</span> k = i - <span class="number">1</span>; k &lt;= j; ++k)&#123;</span><br><span class="line">                    dp[i][j] = <span class="built_in">min</span>(dp[i][j], dp[i - <span class="number">1</span>][k] + <span class="built_in">cal</span>(s, k, j - <span class="number">1</span>));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[k][len];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/12/01/%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8Cns2-lab22-tcl%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Onwaier">
-      <meta itemprop="description" content="Onwaier的个人博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Onwaier's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2019/12/01/%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8Cns2-lab22-tcl%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">调试运行ns2 lab22.tcl中遇到的问题</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2019-12-01 23:29:42" itemprop="dateCreated datePublished" datetime="2019-12-01T23:29:42+08:00">2019-12-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-13 13:54:55" itemprop="dateModified" datetime="2022-02-13T13:54:55+08:00">2022-02-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/ns/" itemprop="url" rel="index"><span itemprop="name">ns</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2019/12/01/%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8Cns2-lab22-tcl%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="调试运行ns2 lab22.tcl中遇到的问题" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2019/12/01/%E8%B0%83%E8%AF%95%E8%BF%90%E8%A1%8Cns2-lab22-tcl%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/12/01/调试运行ns2-lab22-tcl中遇到的问题/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>需要用到threshold来计算不同的无线传输模型的传输矩离，但使用gcc编译过程中出错。 首先进入ns文件夹下的<code>indep-utils/propagation</code>，我的路径是<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/indep-utils/propagation</code> 编辑命令为<code>g++ -lm threshold.cc -o threshold</code></p>
-<h2 id="错误1-报错”threshold-cc-56-22-fatal-error-iostream-h-没有那个文件或目录”"><a href="#错误1-报错”threshold-cc-56-22-fatal-error-iostream-h-没有那个文件或目录”" class="headerlink" title="错误1 报错”threshold.cc:56:22: fatal error: iostream.h: 没有那个文件或目录”"></a>错误1 报错”threshold.cc:56:22: fatal error: iostream.h: 没有那个文件或目录”</h2><p>找到<code>#include&lt;iostream.h&gt;</code>这一行，把<code>#include&lt;iostream.h&gt;</code>修改为<code>#include&lt;iostream&gt;</code>,并添加命令空间std，代码为<code>using namespace std;</code> 编译再次出现新的错误</p>
-<h2 id="错误2-报错”threshold-cc-211-30-error-‘strcmp’-was-not-declared-in-this-scope”"><a href="#错误2-报错”threshold-cc-211-30-error-‘strcmp’-was-not-declared-in-this-scope”" class="headerlink" title="错误2 报错”threshold.cc:211:30: error: ‘strcmp’ was not declared in this scope”"></a>错误2 报错”threshold.cc:211:30: error: ‘strcmp’ was not declared in this scope”</h2><p><code>strcmp</code>函数是关于字符串的操作，头文件为<code>#include&lt;string.h&gt;</code>，而文件中并未包含，加入<code>#include&lt;string.h&gt;</code>一行。 再次编译，没有报错，编译成功。 以Two Ray Ground，希望有效的传输距离为250m为例。 输入命令<code>./threshold -m TwoRayGround 250</code> 运行结果如图所示。 <img src="https://img-blog.csdnimg.cn/20191201154059892.png" alt="运行结果"> 执行命令<code>ns test_2nodes.tcl</code>出错，</p>
-<h2 id="错误3-报错”invalid-command-name-“Agent-mUDP””"><a href="#错误3-报错”invalid-command-name-“Agent-mUDP””" class="headerlink" title="错误3 报错”invalid command name “Agent/mUDP””"></a>错误3 报错”invalid command name “Agent/mUDP””</h2><p>查询发现<strong>mUDP,mUdpSink,mTcpsink是NS2中没有的，是后来人写的。所以要使用此功能必须自行加入。</strong>下载mUDP, mUdpSink的文件，要下载的有下列几个文件 mudp.cc、mudp.h、mudpsink.cc、mudpsink.h。下载地址为:<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1y8HluXPEQVDm8O8Ei34nNQ">百度网盘</a>，提取码为<code>65j6</code>。<a target="_blank" rel="noopener" href="http://onwaier.com:7777/share/oywQUpGI">个人网盘</a>。 具体如何添加参照<a target="_blank" rel="noopener" href="https://www.cnblogs.com/helloWaston/p/4549735.html">博客1</a>和<a target="_blank" rel="noopener" href="http://blog.sina.com.cn/s/blog_4bb73ce80100m18r.html">博客2</a> 下面以我的路径（ns在<code>/home/onwaier</code>）来说明配置过程 1. 在<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35</code>目录下新建文件夹，添加刚才下载的文件<code>mtcpsink.cc</code>、<code>mtcpsink.h</code>、<code>mudp.cc</code>、<code>mudp.h</code>、<code>mudpsink.cc</code>、<code>mudpsink.h</code>。 2. 修改<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/common/packet.h</code>，在<code>struct hdr_cmn&#123;&#125;</code>中添加以下代码</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> frametype_; <span class="comment">//added by smallko</span></span><br><span class="line"><span class="type">double</span>  sendtime_;  <span class="comment">// added by smallko</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> pkt_id_; <span class="comment">// added by smallko</span></span><br><span class="line"><span class="type">unsigned</span> <span class="type">int</span> frame_pkt_id_; <span class="comment">//added by smallko</span></span><br></pre></td></tr></table></figure>
-<ol>
-<li>修改<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/Makefile</code>,找到<code>OBJ_CC</code>这一行， 在其下行添加代码<code>measure/mtcpsink.o measure/mudp.o measure/mudpsink.o \</code>。注意Makefile对于语法要求很高，不能有空行或多余的空格。</li>
-<li>修改<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35/tcl/lib/ns-default.tcl</code>，找到<code>Delayer set debug_ false</code>这一行，在其下一行添加<code>Agent/mUDP set packetSize_ 1000</code>。</li>
-<li>执行命令<code>./configure --with-tcl-ver=8.5;make clean;make</code> 出现新的错误。</li>
-</ol>
-<h2 id="错误4-报错”cannot-call-constructor-mUdpAgent-UdpAgent’-directly-fpermissive-“"><a href="#错误4-报错”cannot-call-constructor-mUdpAgent-UdpAgent’-directly-fpermissive-“" class="headerlink" title="错误4 报错”cannot call constructor mUdpAgent::UdpAgent’ directly [-fpermissive]“"></a>错误4 报错”cannot call constructor mUdpAgent::UdpAgent’ directly [-fpermissive]“</h2><ol>
-<li>在makefile中加入以下<code>CCOPT = -Wall -Wno-write-strings -fpermissive</code></li>
-<li>修改<code>measure/mudp.cc</code> 将代码</li>
-</ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mUdpAgent::<span class="built_in">mUdpAgent</span>() : <span class="built_in">id_</span>(<span class="number">0</span>), <span class="built_in">openfile</span>(<span class="number">0</span>)  </span><br><span class="line">&#123;  </span><br><span class="line">        <span class="built_in">bind</span>(<span class="string">&quot;packetSize_&quot;</span>, &amp;size_);  </span><br><span class="line">       UdpAgent::<span class="built_in">UdpAgent</span>();  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-<p>改为</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">mUdpAgent::<span class="built_in">mUdpAgent</span>() :<span class="built_in">UdpAgent</span>(), <span class="built_in">id_</span>(<span class="number">0</span>), <span class="built_in">openfile</span>(<span class="number">0</span>)  </span><br><span class="line">&#123;  </span><br><span class="line">        <span class="built_in">bind</span>(<span class="string">&quot;packetSize_&quot;</span>, &amp;size_);  </span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-<p>重新编译，运行通过。 但仍有上述问题<code>invalid command name &quot;Agent/mUDP&quot;</code> 尝试进入目录<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35</code>，执行<code>./install</code>，然后进入目录<code>/home/onwaier/ns-allinone-2.35_gcc482/ns-allinone-2.35/ns-2.35</code>执行<code>sudo make install</code>。 再次执行命令<code>ns test_2nodes.tcl</code>，运行结果为： <img src="https://img-blog.csdnimg.cn/2019120121585676.png" alt="执行结果"></p>
-
       
     </div>
 

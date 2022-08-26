@@ -2095,4 +2095,31 @@
         <tag>gcc编译安装</tag>
       </tags>
   </entry>
+  <entry>
+    <title>hexo的基本用法</title>
+    <url>/2022/08/27/hexo%E7%9A%84%E5%9F%BA%E6%9C%AC%E7%94%A8%E6%B3%95/</url>
+    <content><![CDATA[<h2 id="创建hexo工程"><a href="#创建hexo工程" class="headerlink" title="创建hexo工程"></a>创建hexo工程</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+<p>使用hexo初始化hexo项目，将会创建一个文件夹blog</p>
+<h2 id="新建post"><a href="#新建post" class="headerlink" title="新建post"></a>新建post</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> blog</span><br><span class="line">hexo new “HelloWorld”</span><br></pre></td></tr></table></figure>
+<p>进入blog文件夹，创建名为HelloWorld.md文件，位置为<code>blog/sources/_posts/</code></p>
+<h2 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo generate <span class="comment"># hexo g</span></span><br></pre></td></tr></table></figure>
+<p>将Markdown格式的文件解析成可以使用浏览器查看的HTML文件，HTML文件存储在blog/public目录下。</p>
+<h2 id="运行hexo服务器"><a href="#运行hexo服务器" class="headerlink" title="运行hexo服务器"></a>运行hexo服务器</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo server <span class="comment"># hexo s</span></span><br></pre></td></tr></table></figure>
+<p>打开命令行提示的网址，便能查看我们的blog</p>
+<p>如需修改 <strong>HelloWorld.md</strong>文件，只需直接编辑，然后再次执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo generate </span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<h2 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h2><p>执行以下命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo d <span class="comment"># 需先执行hexo g 生成静态文件</span></span><br></pre></td></tr></table></figure>
+<p>即可在公网访问到文章。</p>
+<h2 id="创建草稿"><a href="#创建草稿" class="headerlink" title="创建草稿"></a>创建草稿</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo new draft draft1</span><br></pre></td></tr></table></figure>
+<p>创建名为draft1.md，在<code>blog/sources/_drafts</code></p>
+<p>查看已有草稿</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo --draft</span><br></pre></td></tr></table></figure>
+<h2 id="推送文章"><a href="#推送文章" class="headerlink" title="推送文章"></a>推送文章</h2><p>将草稿draft1.md转至<code>blog/sources/_drafts</code>，可执行</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">hexo publish draft1</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
 </search>

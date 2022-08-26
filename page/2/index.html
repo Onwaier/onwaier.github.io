@@ -150,7 +150,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">69</span>
+          <span class="site-state-item-count">70</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -161,7 +161,7 @@
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">55</span>
+        <span class="site-state-item-count">56</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -198,6 +198,197 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/03/03/python%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7-pdb/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Onwaier">
+      <meta itemprop="description" content="Onwaier的个人博客">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Onwaier's Blog">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2020/03/03/python%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7-pdb/" class="post-title-link" itemprop="url">python调试工具 -- pdb</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2020-03-03 20:20:03" itemprop="dateCreated datePublished" datetime="2020-03-03T20:20:03+08:00">2020-03-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2022-02-13 13:43:28" itemprop="dateModified" datetime="2022-02-13T13:43:28+08:00">2022-02-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/uncategorized/" itemprop="url" rel="index"><span itemprop="name">uncategorized</span></a>
+        </span>
+    </span>
+
+  
+    <span id="/2020/03/03/python%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7-pdb/" class="post-meta-item leancloud_visitors" data-flag-title="python调试工具 -- pdb" title="阅读次数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span class="leancloud-visitors-count"></span>
+    </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Disqus：</span>
+    
+    <a title="disqus" href="/2020/03/03/python%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7-pdb/#disqus_thread" itemprop="discussionUrl">
+      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/03/03/python调试工具-pdb/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
+<li><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3/library/pdb.html">官方文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/37294138">10分钟教程掌握Python调试器pdb</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.im/post/5ce2bfb5e51d455070226ef5">Python 必备 debug 神器：pdb</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1c2212fc28a6">PDB——Python调试利器详解</a></li>
+</ol>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>pdb是python的内置模块，类似c++中的gdb的存在，可用于在命令行中对代码进行调试。</p>
+<h2 id="进入调试"><a href="#进入调试" class="headerlink" title="进入调试"></a>进入调试</h2><ol>
+<li>修改代码</li>
+</ol>
+<blockquote>
+<p>The typical usage to break into the debugger from a running program is to insert at the location you want to break into the debugger.</p>
+</blockquote>
+<p>在需要调试的位置插入以下代码，运行的时候，会在插入位置停止进入调试模式。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pdb</span><br><span class="line">pdb.set_trace()</span><br></pre></td></tr></table></figure>
+<ol>
+<li>脚本执行调试</li>
+</ol>
+<blockquote>
+<p>pdb.py can also be invoked as a script to debug other scripts</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># myscript.py为要调试的程序</span></span><br><span class="line">python3 -m pdb myscript.py</span><br></pre></td></tr></table></figure>
+<p>推荐使用方法2，重要的是不会添加额外的代码污染代码，更加灵活。</p>
+<h2 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h2><p>命令</p>
+<p>功能</p>
+<p><strong>_断点有关的命令_</strong></p>
+<p><strong>b(break)</strong></p>
+<p>查看已设的所有断点</p>
+<p><strong>b no</strong></p>
+<p>设置断点，no是断点所在的行号</p>
+<p><strong>b filename:no</strong></p>
+<p>将断点添加到某个文件中</p>
+<p><strong>b funcname</strong></p>
+<p>为函数funcname的第一行设置断点</p>
+<p><strong>tbreak(break)</strong></p>
+<p>同b，临时断点，执行一次自动清除</p>
+<p><strong>tbreak no</strong></p>
+<p>略</p>
+<p><strong>tbeak filename:no</strong></p>
+<p>略</p>
+<p><strong>tbreak funcname</strong></p>
+<p>略</p>
+<p><strong>disable bno</strong></p>
+<p>禁用指定序号断点，但未删除</p>
+<p><strong>enable bno</strong></p>
+<p>启用指定序号断点</p>
+<p><strong>cl</strong></p>
+<p>清除所有断点(包括临时断点)</p>
+<p><strong>cl bno1[bno2 ……]</strong></p>
+<p>清除指定序号的断点，多个用空格分隔</p>
+<p><strong>cl filename:no</strong></p>
+<p>清除某文件所在行号的断点</p>
+<p><strong>_调试相关的命令_</strong></p>
+<p><strong>s(step)</strong></p>
+<p>执行下一句，遇到函数会进入到函数内部执行</p>
+<p><strong>n(next)</strong></p>
+<p>执行下一句，不会进入函数</p>
+<p><strong>r(return)</strong></p>
+<p>执行当前所在函数的返回处</p>
+<p><strong>c(continue)</strong></p>
+<p>执行到下一个断点处</p>
+<p><strong>unt(until)</strong></p>
+<p>退出当前循环或堆栈，遇到断点会停止</p>
+<p><strong>unt no</strong></p>
+<p>执行到指定行号处停止</p>
+<p><strong>_查看代码或变量值_</strong></p>
+<p><strong>l(list)</strong></p>
+<p>列出当前执行行周围的11行代码</p>
+<p><strong>l no</strong></p>
+<p>列出指定行号周围的11行代码</p>
+<p><strong>l no1 no2</strong></p>
+<p>列出no1 no2间的行号</p>
+<p><strong>ll</strong></p>
+<p>列出所有代码</p>
+<p><strong>p exp</strong></p>
+<p>打印某变量或表达式的值</p>
+<p><strong>pp exp</strong></p>
+<p>好看一点打印某变量或表达式的值</p>
+<p><strong>a</strong></p>
+<p>查看所在函数的参数与参数值</p>
+<p><strong>what is var</strong></p>
+<p>查看变量的类型</p>
+<p><strong>_其它_</strong></p>
+<p><strong>restart</strong></p>
+<p>重新运行</p>
+<p><strong>run</strong></p>
+<p>类似restart</p>
+<p><strong>q(quit)</strong></p>
+<p>退出调试</p>
+<p><strong>interact</strong></p>
+<p>启动一个python的交互式解释器，使用当前代码的全局命名空间 ctrl + d退出</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1311,174 +1502,6 @@
 </blockquote>
 <p>将<code>PIL image</code>交给<code>DataLoader</code>，必须要将<code>PIL image</code>先进行处理，即将其转为<code>tensor</code>，所以对图片仍需进行<code>transform</code>，将其它随机裁剪注释掉，仅保留<code>PIP image</code>转为<code>tensor</code>的代码。</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">transform_train = transforms.Compose([</span><br><span class="line">    <span class="comment">#transforms.RandomCrop(44),</span></span><br><span class="line">    <span class="comment">#transforms.RandomHorizontalFlip(),</span></span><br><span class="line">    transforms.ToTensor(),</span><br><span class="line">])</span><br><span class="line"></span><br><span class="line">transform_test = transforms.Compose([</span><br><span class="line">    <span class="comment">#transforms.TenCrop(cut_size),</span></span><br><span class="line">    transforms.Lambda(<span class="keyword">lambda</span> crops: torch.stack([transforms.ToTensor()(crop) <span class="keyword">for</span> crop <span class="keyword">in</span> crops])),</span><br><span class="line">])</span><br></pre></td></tr></table></figure>
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2020/02/03/numpy%EF%BC%8Copencv%E5%8F%8Aipl-image-%E6%A0%BC%E5%BC%8F%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Onwaier">
-      <meta itemprop="description" content="Onwaier的个人博客">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Onwaier's Blog">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/02/03/numpy%EF%BC%8Copencv%E5%8F%8Aipl-image-%E6%A0%BC%E5%BC%8F%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" class="post-title-link" itemprop="url">Numpy，Opencv及PIL.Image 格式相互转换</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2020-02-03 03:05:06" itemprop="dateCreated datePublished" datetime="2020-02-03T03:05:06+08:00">2020-02-03</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">更新于</span>
-      <time title="修改时间：2022-02-13 14:27:22" itemprop="dateModified" datetime="2022-02-13T14:27:22+08:00">2022-02-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">分类于</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/pytorch/" itemprop="url" rel="index"><span itemprop="name">pytorch</span></a>
-        </span>
-    </span>
-
-  
-    <span id="/2020/02/03/numpy%EF%BC%8Copencv%E5%8F%8Aipl-image-%E6%A0%BC%E5%BC%8F%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/" class="post-meta-item leancloud_visitors" data-flag-title="Numpy，Opencv及PIL.Image 格式相互转换" title="阅读次数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span class="leancloud-visitors-count"></span>
-    </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Disqus：</span>
-    
-    <a title="disqus" href="/2020/02/03/numpy%EF%BC%8Copencv%E5%8F%8Aipl-image-%E6%A0%BC%E5%BC%8F%E7%9B%B8%E4%BA%92%E8%BD%AC%E6%8D%A2/#disqus_thread" itemprop="discussionUrl">
-      <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2020/02/03/numpy，opencv及ipl-image-格式相互转换/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ol>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31261509/article/details/94383575">Python OpenCV中的numpy与图像类型转换</a> </li>
-<li><a target="_blank" rel="noopener" href="https://github.com/llSourcell/Object_Detection_demo_LIVE/issues/6">解决ndarray的类型错误</a> </li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_19707521/article/details/78367617">Python OpenCV格式和PIL.Image格式 互转</a></li>
-<li><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/706086c1b8ba">python模块 opencv-python与PIL.Image图像常用方法与相互转换</a></li>
-<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/87441580">OpenCV读取图片与PIL读取图片的差别</a></li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/JohinieLi/article/details/81012572">python中PIL.Image，OpenCV，Numpy图像格式相互转换</a> </li>
-<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/tsq292978891/article/details/78767326">PIL.Image和np.ndarray图片与Tensor之间的转换</a></li>
-</ol>
-<h2 id="Numpy与Opencv格式互转"><a href="#Numpy与Opencv格式互转" class="headerlink" title="Numpy与Opencv格式互转"></a>Numpy与Opencv格式互转</h2><p>参照<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31261509/article/details/94383575">资料1</a></p>
-<blockquote>
-<p>Python OpenCV存储图像使用的是Numpy存储，所以可以将Numpy当做图像类型操作，操作之前还需进行类型转换，转换到int8类型</p>
-</blockquote>
-<p>对Opencv存储的图像格式进行验证</p>
-<ul>
-<li><strong>输入：</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">numpy与Opencv图像类型的转换</span></span><br><span class="line"><span class="string">&gt; Python OpenCV存储图像使用的是Numpy存储，所以可以将Numpy当做图像类型操作，操作之前还需进行类型转换，转换到int8类型</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;./Messi.jpg&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;shape:&quot;</span> + <span class="built_in">str</span>(img.shape))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(img)) <span class="comment">#数据类型显示为numpy.ndarray</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>输出：</strong></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">shape:(500, 500, 3)</span><br><span class="line">&lt;class &#x27;numpy.ndarray&#x27;&gt;</span><br></pre></td></tr></table></figure>
-<p>存储类型为numpy.ndarray，这是否表明numpy与Opencv可以直接互操作呢？答案是否定的。因为图像存放时，每个像素值都是非负的，并且取值范围受限于存储位数的限制，所以将numpy.ndarray存储为图像格式，需要先将其进行类型转换。</p>
-<ul>
-<li><strong>输入：</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">array = np.ones([<span class="number">20</span>, <span class="number">30</span>])</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;shape:&quot;</span> + <span class="built_in">str</span>(array.shape))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(array)) <span class="comment">#数据类型显示numpy.ndarray 与Opencv图像类型格式相同</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以将ndarray作为Opencv图片进行处理，但在处理之前一般进行类型转换</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">类型转换时需注意，我参照博客转成int8类型，可以写入，但是单通道转多通道会出错</span></span><br><span class="line"><span class="string">Assertion failed) VScn::contains(scn) &amp;&amp; VDcn::contains(dcn) &amp;&amp; VDepth::contains(depth) in function &#x27;CvtHelper&#x27;</span></span><br><span class="line"><span class="string">参照github是类型错误导致的</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line">array = np.uint8(array)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;shape:&quot;</span> + <span class="built_in">str</span>(array.shape))</span><br><span class="line">cv2.imwrite(<span class="string">&#x27;test.jpg&#x27;</span>, array)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 类型转换</span></span><br><span class="line">array = cv2.cvtColor(array, cv2.COLOR_GRAY2BGR)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;shape:&quot;</span> + <span class="built_in">str</span>(array.shape))</span><br><span class="line">cv2.imwrite(<span class="string">&#x27;test2.jpg&#x27;</span>, array)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>输出：</strong></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shape:(20, 30)</span><br><span class="line">&lt;class &#x27;numpy.ndarray&#x27;&gt;</span><br><span class="line">shape:(20, 30)</span><br><span class="line">shape:(20, 30, 3)</span><br></pre></td></tr></table></figure>
-<p>正如注释所写，类型转换时，要注意，我参照<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_31261509/article/details/94383575">资料1</a>转为int8，在通道转换时出现了错误<strong>Assertion failed) VScn::contains(scn) &amp;&amp; VDcn::contains(dcn) &amp;&amp; VDepth::contains(depth) in function ‘CvtHelper’</strong>，参照<a target="_blank" rel="noopener" href="https://github.com/llSourcell/Object_Detection_demo_LIVE/issues/6">资料2</a>进行解决。</p>
-<h2 id="IPL-Image与Opencv相互转换"><a href="#IPL-Image与Opencv相互转换" class="headerlink" title="IPL.Image与Opencv相互转换"></a>IPL.Image与Opencv相互转换</h2><p>先复习一下Opencv与IPL.Image的读，写，显示</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Opencv 图像的读，写，显示</span></span><br><span class="line"><span class="string">PIL.Image的读，写，显示</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Opencv读</span></span><br><span class="line">img = cv2.imread(<span class="string">&#x27;Messi.jpg&#x27;</span>)</span><br><span class="line"><span class="comment"># Opencv写</span></span><br><span class="line">cv2.imwrite(<span class="string">&#x27;Messi2.jpg&#x27;</span>, img)</span><br><span class="line"><span class="comment"># Opencv显示</span></span><br><span class="line">cv2.imshow(<span class="string">&#x27;Messi&#x27;</span>, img)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># PIL.Image读</span></span><br><span class="line">img = Image.<span class="built_in">open</span>(<span class="string">&#x27;Messi.jpg&#x27;</span>)</span><br><span class="line"><span class="comment"># PIL.Image写</span></span><br><span class="line">img.save(<span class="string">&#x27;Messi3.jpg&#x27;</span>)</span><br><span class="line"><span class="comment"># PIL.Image显示</span></span><br><span class="line">img.show()</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>Image.open()读取的通道顺序是RGB，cv2.imread()读取的通道顺序为BGR。 Image.open()函数只是保持了图像被读取的状态，但是图像的真实数据并未被读取，因此如果对需要操作图像每个元素，如输出某个像素的RGB值等，需要执行对象的load()方法读取数据 PIL.Image.save()直接保存RGB的图片 cv2.imwirte()保存图片的时候相当于做了BGR2RGB再去保存</p>
-</blockquote>
-<p><strong>OpenCV转换成PIL.Image格式</strong></p>
-<ul>
-<li><strong>代码：</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2  </span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image  </span><br><span class="line"><span class="keyword">import</span> numpy </span><br><span class="line">img = cv2.imread(<span class="string">&quot;Messi.jpg&quot;</span>)</span><br><span class="line">cv2.imshow(<span class="string">&quot;OpenCV&quot;</span>,img)</span><br><span class="line">Image.fromarray(cv2.cvtColor(img,cv2.COLOR_BGR2RGB))  </span><br></pre></td></tr></table></figure>
-<p><strong>PIL.Image转换成OpenCV格式：</strong></p>
-<ul>
-<li><strong>代码：</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2  </span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image  </span><br><span class="line"><span class="keyword">import</span> numpy  </span><br><span class="line">image = Image.<span class="built_in">open</span>(<span class="string">&quot;Messi.jpg&quot;</span>)  </span><br><span class="line">img = cv2.cvtColor(numpy.asarray(image),cv2.COLOR_RGB2BGR)</span><br></pre></td></tr></table></figure>
-<h2 id="PIL-Image与Numpy格式的相互转换"><a href="#PIL-Image与Numpy格式的相互转换" class="headerlink" title="PIL.Image与Numpy格式的相互转换"></a>PIL.Image与Numpy格式的相互转换</h2><p>相当于 Opencv与PIL.Image的相互转换少了通道的变换。</p>
-<ul>
-<li><strong>Numpy转PIL.Image</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image  </span><br><span class="line"><span class="keyword">import</span> numpy </span><br><span class="line">array = np.ones(<span class="number">100</span>, <span class="number">200</span>)</span><br><span class="line">Image.fromarray(array)  </span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>PIL.Image转Numpy</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> numpy </span><br><span class="line">image = Image.<span class="built_in">open</span>(<span class="string">&quot;Messi.jpg&quot;</span>)</span><br><span class="line">array = numpy.asarray(image)</span><br></pre></td></tr></table></figure>
-<h2 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h2><p>参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/JohinieLi/article/details/81012572">资料6</a></p>
-<h3 id="list与tuple转换"><a href="#list与tuple转换" class="headerlink" title="list与tuple转换"></a>list与tuple转换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]<span class="comment">#a is a list</span></span><br><span class="line">b = <span class="built_in">tuple</span>(a) <span class="comment"># b is a tuple</span></span><br><span class="line">c = <span class="built_in">list</span>(b) <span class="comment"># c is a list</span></span><br></pre></td></tr></table></figure>
-<h3 id="list-tuple-ndarray转换"><a href="#list-tuple-ndarray转换" class="headerlink" title="list,tuple,ndarray转换"></a>list,tuple,ndarray转换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>] <span class="comment"># a is a list</span></span><br><span class="line">arr = np.array(a) <span class="comment"># arr is a ndarray</span></span><br><span class="line">b = <span class="built_in">tuple</span>(arr) <span class="comment"># b is a tuple</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a = (<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)<span class="comment"># a is a tuple</span></span><br><span class="line">arr = np.arr(a) <span class="comment"># arr is a ndarray</span></span><br><span class="line">b = <span class="built_in">list</span>(arr) <span class="comment"># b is a list</span></span><br></pre></td></tr></table></figure>
-<h3 id="torch的tensor与numpy转换"><a href="#torch的tensor与numpy转换" class="headerlink" title="torch的tensor与numpy转换"></a>torch的tensor与numpy转换</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tensor 转numpy</span></span><br><span class="line">array = a.numpy() <span class="comment"># a is a tensor</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># numpy 转tensor</span></span><br><span class="line">torch.from_numpy(array) <span class="comment"># array is a ndarray</span></span><br></pre></td></tr></table></figure>
-<h3 id="tensor与PIL-image转换"><a href="#tensor与PIL-image转换" class="headerlink" title="tensor与PIL image转换"></a>tensor与PIL image转换</h3><p>pytorch官方提供了<code>torchvision.transforms</code>包,可以用<code>transforms</code>来实现tensor 与PIL image的转换</p>
-<blockquote>
-<p>ToTensor把一个取值范围是[0,255]的PIL.Image或者shape为(H,W,C)的numpy.ndarray，转换成形状为[C,H,W]，取值范围是[0,1.0]的torch.FloadTensor</p>
-</blockquote>
-<ul>
-<li>tensor与PIL image的转换</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> torch</span><br><span class="line"><span class="keyword">from</span> torchvision <span class="keyword">import</span> transforms</span><br><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> cv2</span><br><span class="line"></span><br><span class="line"><span class="comment"># PIL Image转tensor</span></span><br><span class="line"></span><br><span class="line">transform1 = transforms.Compose([</span><br><span class="line">    <span class="keyword">pass</span>, <span class="comment"># 这里可以写对PIL的相关操作（裁剪，旋转等）</span></span><br><span class="line">    transforms.ToTensor(), </span><br><span class="line">    ]</span><br><span class="line">)</span><br><span class="line">img_PIL = Image.<span class="built_in">open</span>(<span class="string">&#x27;test.jpg&#x27;</span>).convert(<span class="string">&#x27;RGB&#x27;</span>)</span><br><span class="line">img_PIL_tensor = transform1(img_PIL)<span class="comment"># 将PIL image转为tensor</span></span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(img_PIL))</span><br><span class="line"><span class="built_in">print</span>(<span class="built_in">type</span>(img_PIL_tensor))</span><br><span class="line"></span><br><span class="line"><span class="comment"># transforms也提供了tensor转PIL image的方法</span></span><br><span class="line">new_img_PIL = transforms.ToPILImage()(img_PIL_Tensor).convert(<span class="string">&#x27;RGB&#x27;</span>)</span><br><span class="line"></span><br><span class="line">transform2 = transforms.Compose([</span><br><span class="line">    <span class="keyword">pass</span>, <span class="comment"># transform没有对Opencv的相关操作（裁剪，旋转等）</span></span><br><span class="line">    transforms.ToTensor(), </span><br><span class="line">    ]</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">img_Opencv = cv2.imread(<span class="string">&#x27;test&#x27;</span>.jpg)</span><br><span class="line">img_Opencv_tensor = transform2(img_Opencv)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
       
     </div>
 
